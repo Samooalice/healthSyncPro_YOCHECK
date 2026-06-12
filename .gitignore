@@ -1,0 +1,23 @@
+# 루트 .gitignore (모노레포)
+node_modules/
+.env
+.env.*
+!.env.example
+# 비밀/문서 원본
+1.doc/**/*.docx
+1.doc/**/*.pdf
+1.doc/
+
+# OS / 에디터
+.DS_Store
+Thumbs.db
+*.log
+
+# 빌드 산출물
+web/.next/
+web/out/
+web/node_modules/
+ml/__pycache__/
+ml/.venv/
+*.pyc
+

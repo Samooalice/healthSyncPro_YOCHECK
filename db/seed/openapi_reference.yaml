@@ -1,0 +1,612 @@
+openapi: 3.1.0
+info:
+  title: 만성질환 관리 통합플랫폼 API
+  description: >
+    요화학분석기 기반 만성질환 관리 통합플랫폼의 REST API.
+    위험계층화·등급 산출(P1·P3)은 SaMD 후보 기능이며 인허가를 전제로 한다.
+  version: 1.0.0
+  contact:
+    name: SDC WellCare
+servers:
+  - url: https://api.sdcwellcare.example/api/v1
+    description: production
+  - url: https://staging-api.sdcwellcare.example/api/v1
+    description: staging
+security:
+  - bearerAuth: []
+tags:
+  - name: auth
+  - name: measurements
+  - name: assessments
+  - name: care
+  - name: contents
+  - name: gamification
+  - name: clinician
+  - name: admin
+
+paths:
+  /auth/register:
+    post:
+      tags: [auth]
+      summary: 회원가입(동의 포함)
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/RegisterRequest' }
+      responses:
+        '201': { description: 생성됨, content: { application/json: { schema: { $ref: '#/components/schemas/TokenResponse' } } } }
+        '400': { $ref: '#/components/responses/ValidationError' }
+
+  /auth/login:
+    post:
+      tags: [auth]
+      summary: 로그인
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/LoginRequest' }
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/TokenResponse' } } } }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+
+  /auth/refresh:
+    post:
+      tags: [auth]
+      summary: 토큰 갱신
+      security: []
+      requestBody:
+        required: true
+        content: { application/json: { schema: { type: object, properties: { refresh_token: { type: string } }, required: [refresh_token] } } }
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/TokenResponse' } } } }
+
+  /users/me:
+    get:
+      tags: [auth]
+      summary: 내 프로필
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/UserProfile' } } } }
+    patch:
+      tags: [auth]
+      summary: 프로필 수정
+      requestBody: { required: true, content: { application/json: { schema: { $ref: '#/components/schemas/UserProfileUpdate' } } } }
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/UserProfile' } } } }
+
+  /consents:
+    post:
+      tags: [auth]
+      summary: 동의 등록/철회
+      requestBody: { required: true, content: { application/json: { schema: { $ref: '#/components/schemas/ConsentRequest' } } } }
+      responses:
+        '201': { description: 기록됨 }
+
+  /devices:
+    post:
+      tags: [measurements]
+      summary: 디바이스 등록
+      requestBody: { required: true, content: { application/json: { schema: { $ref: '#/components/schemas/DeviceRegister' } } } }
+      responses:
+        '201': { description: 등록됨, content: { application/json: { schema: { $ref: '#/components/schemas/Device' } } } }
+
+  /measurements:
+    get:
+      tags: [measurements]
+      summary: 측정 이력(시계열)
+      parameters:
+        - { name: from, in: query, schema: { type: string, format: date-time } }
+        - { name: to, in: query, schema: { type: string, format: date-time } }
+        - { name: cursor, in: query, schema: { type: string } }
+        - { name: limit, in: query, schema: { type: integer, default: 20, maximum: 100 } }
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/MeasurementList' } } } }
+    post:
+      tags: [measurements]
+      summary: 측정 결과 업로드(분석기)
+      parameters:
+        - { name: Idempotency-Key, in: header, required: true, schema: { type: string } }
+      requestBody: { required: true, content: { application/json: { schema: { $ref: '#/components/schemas/MeasurementCreate' } } } }
+      responses:
+        '202': { description: 분석 큐잉, content: { application/json: { schema: { $ref: '#/components/schemas/MeasurementAccepted' } } } }
+        '422': { $ref: '#/components/responses/MeasurementInvalid' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+
+  /measurements/camera:
+    post:
+      tags: [measurements]
+      summary: 카메라 이미지 업로드·판독
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                device_id: { type: string, format: uuid }
+                measured_at: { type: string, format: date-time }
+                image: { type: string, format: binary }
+              required: [device_id, image]
+      responses:
+        '202': { description: 판독·분석 큐잉, content: { application/json: { schema: { $ref: '#/components/schemas/MeasurementAccepted' } } } }
+
+  /measurements/{id}:
+    get:
+      tags: [measurements]
+      summary: 단건 조회(보정 포함)
+      parameters: [ { name: id, in: path, required: true, schema: { type: string, format: uuid } } ]
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/MeasurementDetail' } } } }
+        '404': { $ref: '#/components/responses/NotFound' }
+
+  /assessments:
+    get:
+      tags: [assessments]
+      summary: 위험평가 이력
+      parameters:
+        - { name: disease, in: query, schema: { $ref: '#/components/schemas/DiseaseCode' } }
+        - { name: cursor, in: query, schema: { type: string } }
+        - { name: limit, in: query, schema: { type: integer, default: 20 } }
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/AssessmentList' } } } }
+
+  /assessments/{id}:
+    get:
+      tags: [assessments]
+      summary: 위험평가 상세
+      parameters: [ { name: id, in: path, required: true, schema: { type: string, format: uuid } } ]
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/Assessment' } } } }
+        '404': { $ref: '#/components/responses/NotFound' }
+
+  /assessments/{id}/explanation:
+    get:
+      tags: [assessments]
+      summary: 설명·SHAP·반사실 (P4)
+      parameters: [ { name: id, in: path, required: true, schema: { type: string, format: uuid } } ]
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/Explanation' } } } }
+
+  /assessments/{id}/report:
+    get:
+      tags: [assessments]
+      summary: 리포트 PDF
+      parameters: [ { name: id, in: path, required: true, schema: { type: string, format: uuid } } ]
+      responses:
+        '200': { description: PDF, content: { application/pdf: { schema: { type: string, format: binary } } } }
+
+  /baselines:
+    get:
+      tags: [assessments]
+      summary: 내 기준선 조회
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { type: array, items: { $ref: '#/components/schemas/Baseline' } } } } }
+
+  /care-actions:
+    get:
+      tags: [care]
+      summary: 케어 액션 목록
+      parameters: [ { name: status, in: query, schema: { $ref: '#/components/schemas/CareStatus' } } ]
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { type: array, items: { $ref: '#/components/schemas/CareAction' } } } } }
+
+  /care-actions/{id}:
+    patch:
+      tags: [care]
+      summary: 액션 상태 변경
+      parameters: [ { name: id, in: path, required: true, schema: { type: string, format: uuid } } ]
+      requestBody: { required: true, content: { application/json: { schema: { $ref: '#/components/schemas/CareActionUpdate' } } } }
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/CareActionResult' } } } }
+
+  /referrals:
+    post:
+      tags: [care]
+      summary: 진료의뢰 생성
+      requestBody: { required: true, content: { application/json: { schema: { type: object, properties: { assessment_id: { type: string, format: uuid }, clinic_id: { type: string, format: uuid } }, required: [assessment_id] } } } }
+      responses:
+        '201': { description: 생성됨, content: { application/json: { schema: { $ref: '#/components/schemas/Referral' } } } }
+
+  /feedback:
+    post:
+      tags: [care]
+      summary: 재검·진료결과 환류 등록
+      requestBody: { required: true, content: { application/json: { schema: { $ref: '#/components/schemas/FeedbackCreate' } } } }
+      responses:
+        '201': { description: 등록됨, content: { application/json: { schema: { type: object, properties: { id: { type: string }, queued_for_retraining: { type: boolean } } } } } }
+
+  /contents/feed:
+    get:
+      tags: [contents]
+      summary: 개인화 콘텐츠 피드(큐레이션)
+      parameters:
+        - { name: assessment_id, in: query, schema: { type: string, format: uuid } }
+        - { name: limit, in: query, schema: { type: integer, default: 10 } }
+        - { name: cursor, in: query, schema: { type: string } }
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/ContentFeed' } } } }
+
+  /contents/{id}:
+    get:
+      tags: [contents]
+      summary: 콘텐츠 상세
+      parameters: [ { name: id, in: path, required: true, schema: { type: string } } ]
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/Content' } } } }
+
+  /contents/{id}/engage:
+    post:
+      tags: [contents]
+      summary: 참여 이벤트(읽음·완료)
+      parameters: [ { name: id, in: path, required: true, schema: { type: string } } ]
+      requestBody: { required: true, content: { application/json: { schema: { type: object, properties: { event: { type: string, enum: [content_view, content_read, quiz_complete, content_dismiss] } }, required: [event] } } } }
+      responses:
+        '200': { description: 기록됨 }
+
+  /gamification/me:
+    get:
+      tags: [gamification]
+      summary: 내 목표·미션·포인트
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/GamificationState' } } } }
+
+  /clinician/patients:
+    get:
+      tags: [clinician]
+      summary: 담당 환자 목록
+      parameters:
+        - { name: grade, in: query, schema: { $ref: '#/components/schemas/GradeCode' } }
+        - { name: disease, in: query, schema: { $ref: '#/components/schemas/DiseaseCode' } }
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { type: array, items: { $ref: '#/components/schemas/PatientSummary' } } } } }
+
+  /clinician/patients/{id}/clinical-report:
+    get:
+      tags: [clinician]
+      summary: 임상 리포트(근거 중심)
+      parameters: [ { name: id, in: path, required: true, schema: { type: string } } ]
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/ClinicalReport' } } } }
+
+  /admin/contents:
+    post:
+      tags: [admin]
+      summary: 콘텐츠 생성
+      requestBody: { required: true, content: { application/json: { schema: { $ref: '#/components/schemas/ContentCreate' } } } }
+      responses:
+        '201': { description: 생성됨, content: { application/json: { schema: { $ref: '#/components/schemas/Content' } } } }
+
+  /admin/contents/{id}/review:
+    post:
+      tags: [admin]
+      summary: 의료자문 검수
+      parameters: [ { name: id, in: path, required: true, schema: { type: string } } ]
+      requestBody: { required: true, content: { application/json: { schema: { type: object, properties: { decision: { type: string, enum: [approved, rejected] }, comment: { type: string } }, required: [decision] } } } }
+      responses:
+        '200': { description: 처리됨 }
+
+  /admin/curation-rules:
+    post:
+      tags: [admin]
+      summary: 큐레이션 규칙 등록
+      requestBody: { required: true, content: { application/json: { schema: { $ref: '#/components/schemas/CurationRule' } } } }
+      responses:
+        '201': { description: 생성됨 }
+
+components:
+  securitySchemes:
+    bearerAuth: { type: http, scheme: bearer, bearerFormat: JWT }
+
+  responses:
+    ValidationError:
+      description: 요청 검증 실패
+      content: { application/problem+json: { schema: { $ref: '#/components/schemas/Problem' } } }
+    Unauthorized:
+      description: 인증 필요/실패
+      content: { application/problem+json: { schema: { $ref: '#/components/schemas/Problem' } } }
+    Forbidden:
+      description: 권한 없음
+      content: { application/problem+json: { schema: { $ref: '#/components/schemas/Problem' } } }
+    NotFound:
+      description: 리소스 없음
+      content: { application/problem+json: { schema: { $ref: '#/components/schemas/Problem' } } }
+    MeasurementInvalid:
+      description: 측정값 범위/형식 오류
+      content: { application/problem+json: { schema: { $ref: '#/components/schemas/Problem' } } }
+
+  schemas:
+    Problem:
+      type: object
+      properties:
+        type: { type: string }
+        title: { type: string }
+        status: { type: integer }
+        detail: { type: string }
+        error_code: { type: string }
+        errors: { type: array, items: { type: object } }
+
+    DiseaseCode: { type: string, enum: [kidney, diabetes, hypertension, uti, liver, dehydration] }
+    GradeCode: { type: string, enum: [low, moderate, high, very_high] }
+    CareStatus: { type: string, enum: [assigned, in_progress, done, expired] }
+
+    RegisterRequest:
+      type: object
+      required: [account_type, credentials, consents]
+      properties:
+        account_type: { type: string, enum: [b2c, facility, clinician, admin] }
+        credentials: { type: object, properties: { email: { type: string }, password: { type: string } } }
+        profile: { type: object, properties: { birth_year: { type: integer }, sex: { type: string, enum: [M, F, O] } } }
+        consents:
+          type: array
+          items: { type: object, properties: { consent_type: { type: string }, granted: { type: boolean }, version: { type: string } } }
+
+    LoginRequest:
+      type: object
+      required: [email, password]
+      properties:
+        email: { type: string }
+        password: { type: string }
+
+    TokenResponse:
+      type: object
+      properties:
+        access_token: { type: string }
+        refresh_token: { type: string }
+        token_type: { type: string, default: Bearer }
+        expires_in: { type: integer, example: 900 }
+
+    UserProfile:
+      type: object
+      properties:
+        id: { type: string, format: uuid }
+        account_type: { type: string }
+        locale: { type: string, default: ko-KR }
+        birth_year: { type: integer }
+        sex: { type: string }
+
+    UserProfileUpdate:
+      type: object
+      properties:
+        locale: { type: string }
+
+    ConsentRequest:
+      type: object
+      required: [consent_type, granted, version]
+      properties:
+        consent_type: { type: string, enum: [sensitive_health, marketing, research, third_party] }
+        granted: { type: boolean }
+        version: { type: string }
+
+    DeviceRegister:
+      type: object
+      required: [device_model]
+      properties:
+        device_model: { type: string }
+        serial: { type: string }
+        calibration: { type: object }
+
+    Device:
+      type: object
+      properties:
+        id: { type: string, format: uuid }
+        device_model: { type: string }
+        registered_at: { type: string, format: date-time }
+
+    MeasurementValues:
+      type: object
+      properties:
+        glucose: { type: integer, minimum: 0, maximum: 4 }
+        protein: { type: integer, minimum: 0, maximum: 4 }
+        ph: { type: number, minimum: 4.5, maximum: 9.0 }
+        specific_gravity: { type: number, minimum: 1.000, maximum: 1.030 }
+        ketone: { type: integer, minimum: 0, maximum: 4 }
+        blood: { type: integer, minimum: 0, maximum: 4 }
+        leukocyte: { type: integer, minimum: 0, maximum: 4 }
+        nitrite: { type: integer, minimum: 0, maximum: 1 }
+        urobilinogen: { type: number, minimum: 0.1, maximum: 8.0 }
+        bilirubin: { type: integer, minimum: 0, maximum: 3 }
+        vitamin_c: { type: integer, minimum: 0, maximum: 3 }
+
+    MeasurementCreate:
+      type: object
+      required: [device_id, measured_at, source, values]
+      properties:
+        device_id: { type: string, format: uuid }
+        measured_at: { type: string, format: date-time }
+        source: { type: string, enum: [analyzer, camera] }
+        values: { $ref: '#/components/schemas/MeasurementValues' }
+        meta: { type: object, properties: { timezone: { type: string }, fasting: { type: boolean } } }
+
+    MeasurementAccepted:
+      type: object
+      properties:
+        measurement_id: { type: string, format: uuid }
+        status: { type: string, example: processing }
+        analysis_eta_sec: { type: integer, example: 3 }
+
+    MeasurementDetail:
+      type: object
+      properties:
+        id: { type: string, format: uuid }
+        measured_at: { type: string, format: date-time }
+        source: { type: string }
+        values: { $ref: '#/components/schemas/MeasurementValues' }
+        correction:
+          type: object
+          properties:
+            corrected: { type: object }
+            confidence_wt: { type: object }
+            sg_normalized: { type: boolean }
+            vitc_flag: { type: boolean }
+
+    MeasurementList:
+      type: object
+      properties:
+        items: { type: array, items: { $ref: '#/components/schemas/MeasurementDetail' } }
+        next_cursor: { type: string }
+
+    Baseline:
+      type: object
+      properties:
+        analyte: { type: string }
+        mean: { type: number }
+        sd: { type: number }
+        cv: { type: number }
+        n_samples: { type: integer }
+
+    RiskResult:
+      type: object
+      properties:
+        disease: { $ref: '#/components/schemas/DiseaseCode' }
+        risk_score: { type: number, minimum: 0, maximum: 1 }
+        risk_grade: { $ref: '#/components/schemas/GradeCode' }
+        standard_grade: { type: string, example: A2/yellow }
+        is_samd_output: { type: boolean }
+        model_version: { type: string }
+
+    Assessment:
+      type: object
+      properties:
+        id: { type: string, format: uuid }
+        measurement_id: { type: string, format: uuid }
+        assessed_at: { type: string, format: date-time }
+        results: { type: array, items: { $ref: '#/components/schemas/RiskResult' } }
+        baseline_context: { type: object }
+
+    AssessmentList:
+      type: object
+      properties:
+        items: { type: array, items: { $ref: '#/components/schemas/Assessment' } }
+        next_cursor: { type: string }
+
+    ShapItem:
+      type: object
+      properties:
+        analyte: { type: string }
+        contribution: { type: number }
+        direction: { type: string, enum: [increase, decrease] }
+
+    Explanation:
+      type: object
+      properties:
+        assessment_id: { type: string, format: uuid }
+        disease: { $ref: '#/components/schemas/DiseaseCode' }
+        shap_top: { type: array, items: { $ref: '#/components/schemas/ShapItem' } }
+        text_user: { type: string }
+        text_clinician: { type: string }
+        counterfactual: { type: array, items: { type: object } }
+        safety_notice: { type: string }
+
+    CareAction:
+      type: object
+      properties:
+        id: { type: string, format: uuid }
+        action_type: { type: string, enum: [lifestyle, recheck, referral, emergency] }
+        grade_trigger: { $ref: '#/components/schemas/GradeCode' }
+        payload: { type: object }
+        status: { $ref: '#/components/schemas/CareStatus' }
+        due_at: { type: string, format: date-time }
+
+    CareActionUpdate:
+      type: object
+      properties:
+        status: { $ref: '#/components/schemas/CareStatus' }
+        completed_at: { type: string, format: date-time }
+
+    CareActionResult:
+      type: object
+      properties:
+        id: { type: string, format: uuid }
+        status: { $ref: '#/components/schemas/CareStatus' }
+        points_awarded: { type: integer }
+
+    Referral:
+      type: object
+      properties:
+        id: { type: string, format: uuid }
+        report_url: { type: string }
+        status: { type: string }
+
+    FeedbackCreate:
+      type: object
+      required: [assessment_id, label_type, label_value]
+      properties:
+        assessment_id: { type: string, format: uuid }
+        label_type: { type: string, enum: [recheck_result, clinical_dx, false_positive, false_negative] }
+        label_value: { type: object }
+
+    Content:
+      type: object
+      properties:
+        id: { type: string }
+        category: { type: string }
+        format: { type: string }
+        audience: { type: string }
+        title: { type: string }
+        body: { type: string }
+        source_refs: { type: array, items: { type: string } }
+
+    ContentCreate:
+      type: object
+      required: [category, title, audience]
+      properties:
+        category: { type: string }
+        title: { type: string }
+        body: { type: string }
+        format: { type: string }
+        audience: { type: string }
+        source_refs: { type: array, items: { type: string } }
+
+    ContentFeedItem:
+      type: object
+      properties:
+        content_id: { type: string }
+        category: { type: string }
+        format: { type: string }
+        title: { type: string }
+        summary: { type: string }
+        curated_by_rule: { type: string }
+        priority: { type: integer }
+
+    ContentFeed:
+      type: object
+      properties:
+        items: { type: array, items: { $ref: '#/components/schemas/ContentFeedItem' } }
+        next_cursor: { type: string }
+
+    CurationRule:
+      type: object
+      required: [content_id, condition]
+      properties:
+        content_id: { type: string }
+        condition: { type: object }
+        priority: { type: integer, default: 100 }
+
+    GamificationState:
+      type: object
+      properties:
+        points: { type: integer }
+        streak_days: { type: integer }
+        badges: { type: array, items: { type: string } }
+        goals: { type: array, items: { type: object } }
+
+    PatientSummary:
+      type: object
+      properties:
+        patient_pseudo_id: { type: string }
+        latest_grade: { $ref: '#/components/schemas/GradeCode' }
+        latest_assessed_at: { type: string, format: date-time }
+        unread_alerts: { type: integer }
+
+    ClinicalReport:
+      type: object
+      properties:
+        patient_pseudo_id: { type: string }
+        period: { type: object }
+        trend: { type: array, items: { type: object } }
+        current_assessment: { $ref: '#/components/schemas/RiskResult' }
+        evidence: { type: object }
+        cdm_summary: { type: object }

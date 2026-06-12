@@ -1,0 +1,83 @@
+# =====================================================================
+# algo_params.yaml — 알고리즘 파라미터 시드 (구현 출발 기본값)
+# 주의: 모든 값은 검증·임상자문으로 확정. 모델 버전과 함께 레지스트리 기록.
+# =====================================================================
+
+correction:          # P2
+  sg_ref: 1.015
+  sg_min: 1.001
+  sg_max: 1.030
+  vitc_decay: 0.15
+  conf_floor: 0.30
+  vitc_targets: [glucose, blood, bilirubin, nitrite]
+
+baseline:            # P1
+  ewma_alpha: 0.20
+  n_min: 3
+  reset_months: 6
+
+change_detection:    # P1
+  k: 2.0
+  persistence_n: 2
+  min_delta:        # 항목별 최소 이탈폭
+    glucose: 1
+    protein: 1
+    ph: 0.5
+    specific_gravity: 0.005
+    ketone: 1
+    blood: 1
+    leukocyte: 1
+    nitrite: 1
+    urobilinogen: 0.5
+    bilirubin: 1
+
+grade_thresholds:    # P1·P3 등급 컷오프
+  low:       [0.00, 0.249]
+  moderate:  [0.25, 0.499]
+  high:      [0.50, 0.749]
+  very_high: [0.75, 1.000]
+
+disease_weights:     # 의심지수 초기 가중치 (예시: 신장)
+  kidney:
+    protein_dev: 0.45
+    blood_dev: 0.20
+    leukocyte_dev: 0.10
+    sg_trend: 0.10
+    protein_persistence: 0.15
+
+lightgbm:
+  objective: binary
+  num_leaves: 31
+  learning_rate: 0.05
+  n_estimators: 300
+  max_depth: -1
+  min_child_samples: 30
+  subsample: 0.8
+  colsample_bytree: 0.8
+  class_weight: balanced
+  metric: [auc, binary_logloss]
+
+performance_targets:  # 내부 검증 기준 (규제용 임상 근거 아님)
+  auroc_min: 0.80
+  recall_min: 0.75
+  specificity_min: 0.70
+  ece_max: 0.05
+
+explanation:          # P4
+  top_k: 5
+  user_visible_k: 3
+  counterfactual_target: low
+  counterfactual_max: 2
+
+analyte_master:       # 정상 참고 / 콜드스타트 SD
+  glucose:          { normal: "0", cold_sd: 0.5 }
+  protein:          { normal: "0", cold_sd: 0.4 }
+  ph:               { normal: "4.5-8.0", cold_sd: 0.7 }
+  specific_gravity: { normal: "1.005-1.030", cold_sd: 0.006 }
+  ketone:           { normal: "0", cold_sd: 0.4 }
+  blood:            { normal: "0", cold_sd: 0.4 }
+  leukocyte:        { normal: "0", cold_sd: 0.4 }
+  nitrite:          { normal: "0", cold_sd: 0.3 }
+  urobilinogen:     { normal: "0.1-1.0", cold_sd: 0.5 }
+  bilirubin:        { normal: "0", cold_sd: 0.3 }
+  vitamin_c:        { normal: "0", cold_sd: 0.4 }

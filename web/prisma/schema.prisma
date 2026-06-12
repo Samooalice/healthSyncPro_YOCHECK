@@ -1,0 +1,372 @@
+generator client {
+  provider        = "prisma-client"
+  output          = "../src/generated/prisma"
+  previewFeatures = ["partialIndexes"]
+}
+
+datasource db {
+  provider = "postgresql"
+  schemas  = ["care", "secure"]
+}
+
+model audit_log {
+  id          BigInt   @id @default(autoincrement())
+  actor_id    String?  @db.Uuid
+  action      String   @db.VarChar(60)
+  target      String?  @db.VarChar(120)
+  ip          String?  @db.Inet
+  detail      Json?
+  occurred_at DateTime @default(now()) @db.Timestamptz(6)
+
+  @@index([actor_id, occurred_at(sort: Desc)], map: "idx_audit_actor_time")
+  @@schema("care")
+}
+
+model baseline {
+  user_id      String       @db.Uuid
+  analyte      String       @db.VarChar(30)
+  mean         Decimal      @db.Decimal
+  sd           Decimal      @db.Decimal
+  cv           Decimal?     @db.Decimal
+  n_samples    Int
+  updated_at   DateTime     @default(now()) @db.Timestamptz(6)
+  user_account user_account @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@id([user_id, analyte])
+  @@schema("care")
+}
+
+model care_action {
+  id              String           @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  user_id         String           @db.Uuid
+  assessment_id   String?          @db.Uuid
+  action_type     String           @db.VarChar(40)
+  grade_trigger   String?          @db.VarChar(20)
+  payload         Json?
+  status          String?          @default("assigned") @db.VarChar(20)
+  due_at          DateTime?        @db.Timestamptz(6)
+  created_at      DateTime         @default(now()) @db.Timestamptz(6)
+  risk_assessment risk_assessment? @relation(fields: [assessment_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  user_account    user_account     @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@index([user_id, status], map: "idx_care_user_status")
+  @@schema("care")
+}
+
+model consent {
+  id           String       @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  user_id      String       @db.Uuid
+  consent_type String       @db.VarChar(40)
+  granted      Boolean
+  version      String       @db.VarChar(20)
+  granted_at   DateTime     @default(now()) @db.Timestamptz(6)
+  user_account user_account @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@schema("care")
+}
+
+model content {
+  id                    String                  @id @db.VarChar(40)
+  category              String                  @db.VarChar(40)
+  title                 String                  @db.VarChar(200)
+  body                  String?
+  format                String?                 @db.VarChar(20)
+  audience              String                  @db.VarChar(20)
+  medical_review        String?                 @default("pending") @db.VarChar(20)
+  reviewer_id           String?                 @db.Uuid
+  source_refs           Json?
+  status                String?                 @default("draft") @db.VarChar(20)
+  published_at          DateTime?               @db.Timestamptz(6)
+  created_at            DateTime                @default(now()) @db.Timestamptz(6)
+  updated_at            DateTime                @default(now()) @db.Timestamptz(6)
+  payload               Json?
+  content_curation_rule content_curation_rule[]
+
+  @@index([category, status], map: "idx_content_cat_status")
+  @@schema("care")
+}
+
+model content_curation_rule {
+  id         String   @id @db.VarChar(40)
+  content_id String   @db.VarChar(40)
+  condition  Json
+  priority   Int?     @default(100)
+  active     Boolean? @default(true)
+  content    content  @relation(fields: [content_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@index([active, priority], map: "idx_curation_active")
+  @@schema("care")
+}
+
+model correction {
+  measurement_id String      @id @db.Uuid
+  measured_at    DateTime    @db.Timestamptz(6)
+  corrected      Json
+  confidence_wt  Json
+  sg_normalized  Boolean?    @default(false)
+  vitc_flag      Boolean?    @default(false)
+  created_at     DateTime    @default(now()) @db.Timestamptz(6)
+  measurement    measurement @relation(fields: [measurement_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@schema("care")
+}
+
+model device {
+  id            String        @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  user_id       String        @db.Uuid
+  device_model  String        @db.VarChar(80)
+  serial_enc    Bytes?
+  calibration   Json?
+  registered_at DateTime      @default(now()) @db.Timestamptz(6)
+  user_account  user_account  @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  measurement   measurement[]
+
+  @@schema("care")
+}
+
+model explanation {
+  assessment_id   String          @id @db.Uuid
+  shap_values     Json
+  text_user       String
+  text_clinician  String
+  counterfactual  Json?
+  report_url      String?
+  created_at      DateTime        @default(now()) @db.Timestamptz(6)
+  risk_assessment risk_assessment @relation(fields: [assessment_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@schema("care")
+}
+
+model feedback_label {
+  id              String           @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  user_id         String           @db.Uuid
+  assessment_id   String?          @db.Uuid
+  label_type      String           @db.VarChar(30)
+  label_value     Json
+  recorded_at     DateTime         @default(now()) @db.Timestamptz(6)
+  risk_assessment risk_assessment? @relation(fields: [assessment_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  user_account    user_account     @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@schema("care")
+}
+
+model gamification_state {
+  user_id      String       @id @db.Uuid
+  points       Int?         @default(0)
+  streak_days  Int?         @default(0)
+  badges       Json?        @default("[]")
+  goals        Json?        @default("[]")
+  updated_at   DateTime     @default(now()) @db.Timestamptz(6)
+  user_account user_account @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@schema("care")
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model measurement {
+  id               String       @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  user_id          String       @db.Uuid
+  device_id        String?      @db.Uuid
+  measured_at      DateTime     @db.Timestamptz(6)
+  source           String       @db.VarChar(20)
+  glucose          Decimal?     @db.Decimal
+  protein          Decimal?     @db.Decimal
+  ph               Decimal?     @db.Decimal
+  specific_gravity Decimal?     @db.Decimal
+  ketone           Decimal?     @db.Decimal
+  blood            Decimal?     @db.Decimal
+  leukocyte        Decimal?     @db.Decimal
+  nitrite          Decimal?     @db.Decimal
+  urobilinogen     Decimal?     @db.Decimal
+  bilirubin        Decimal?     @db.Decimal
+  vitamin_c        Decimal?     @db.Decimal
+  raw_image_url    String?
+  meta             Json?
+  created_at       DateTime     @default(now()) @db.Timestamptz(6)
+  correction       correction?
+  device           device?      @relation(fields: [device_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  user_account     user_account @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@index([user_id, measured_at(sort: Desc)], map: "idx_meas_user_time")
+  @@schema("care")
+}
+
+model notification_template {
+  id        String   @id @db.VarChar(40)
+  channel   String   @db.VarChar(20)
+  title     String?  @db.VarChar(200)
+  body      String
+  variables Json?    @default("[]")
+  active    Boolean? @default(true)
+
+  @@schema("care")
+}
+
+model referral {
+  id              String           @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  user_id         String           @db.Uuid
+  assessment_id   String?          @db.Uuid
+  report_url      String?
+  clinic_id       String?          @db.Uuid
+  status          String?          @default("created") @db.VarChar(20)
+  created_at      DateTime         @default(now()) @db.Timestamptz(6)
+  risk_assessment risk_assessment? @relation(fields: [assessment_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  user_account    user_account     @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@schema("care")
+}
+
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model risk_assessment {
+  id             String           @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  user_id        String           @db.Uuid
+  measurement_id String           @db.Uuid
+  disease        String           @db.VarChar(30)
+  risk_score     Decimal          @db.Decimal
+  risk_grade     String           @db.VarChar(20)
+  standard_grade String?          @db.VarChar(20)
+  model_version  String           @db.VarChar(40)
+  is_samd_output Boolean?         @default(true)
+  assessed_at    DateTime         @default(now()) @db.Timestamptz(6)
+  care_action    care_action[]
+  explanation    explanation?
+  feedback_label feedback_label[]
+  referral       referral[]
+  user_account   user_account     @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@index([disease, risk_grade], map: "idx_assess_disease_grade")
+  @@index([user_id, assessed_at(sort: Desc)], map: "idx_assess_user_time")
+  @@schema("care")
+}
+
+model schema_migration {
+  filename   String   @id
+  applied_at DateTime @default(now()) @db.Timestamptz(6)
+
+  @@schema("care")
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model user_account {
+  id                 String              @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  pseudo_id          String              @unique @db.VarChar(64)
+  account_type       String              @db.VarChar(20)
+  status             String              @default("active") @db.VarChar(20)
+  locale             String?             @default("ko-KR") @db.VarChar(10)
+  auth_user_id       String?             @db.Uuid
+  created_at         DateTime            @default(now()) @db.Timestamptz(6)
+  updated_at         DateTime            @default(now()) @db.Timestamptz(6)
+  email              String?             @unique(map: "uq_user_email", where: raw("(email IS NOT NULL)")) @db.VarChar(255)
+  password_hash      String?
+  display_name       String?             @db.VarChar(80)
+  is_super           Boolean             @default(false)
+  baseline           baseline[]
+  care_action        care_action[]
+  clinician_profile  clinician_profile?
+  consent            consent[]
+  device             device[]
+  feedback_label     feedback_label[]
+  gamification_state gamification_state?
+  measurement        measurement[]
+  mission_log        mission_log[]
+  notification       notification[]
+  phr_record         phr_record?
+  referral           referral[]
+  risk_assessment    risk_assessment[]
+  user_content_log   user_content_log[]
+  user_pii           user_pii?
+
+  @@schema("care")
+}
+
+model user_content_log {
+  id           BigInt       @id @default(autoincrement())
+  user_id      String       @db.Uuid
+  content_id   String       @db.VarChar(40)
+  event        String       @db.VarChar(30)
+  occurred_at  DateTime     @default(now()) @db.Timestamptz(6)
+  user_account user_account @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@index([user_id, occurred_at(sort: Desc)], map: "idx_ucl_user")
+  @@schema("care")
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model user_pii {
+  user_id      String       @id @db.Uuid
+  name_enc     Bytes?
+  phone_enc    Bytes?
+  birth_year   Int?         @db.SmallInt
+  sex          String?      @db.Char(1)
+  created_at   DateTime     @default(now()) @db.Timestamptz(6)
+  user_account user_account @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@schema("secure")
+}
+
+model phr_record {
+  id           String       @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  user_id      String       @unique(map: "uq_phr_user") @db.Uuid
+  source       String?      @default("myhealthway") @db.VarChar(40)
+  subject_name String?      @db.VarChar(80)
+  report_date  DateTime?    @db.Date
+  summary      Json
+  flags        Json
+  raw          Json?
+  created_at   DateTime     @default(now()) @db.Timestamptz(6)
+  updated_at   DateTime     @default(now()) @db.Timestamptz(6)
+  user_account user_account @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@schema("care")
+}
+
+model notification {
+  id           String       @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  user_id      String       @db.Uuid
+  template_id  String?      @db.VarChar(40)
+  channel      String       @default("inapp") @db.VarChar(20)
+  category     String       @default("info") @db.VarChar(20)
+  title        String       @db.VarChar(200)
+  body         String
+  ref_type     String?      @db.VarChar(40)
+  ref_id       String?      @db.VarChar(64)
+  read_at      DateTime?    @db.Timestamptz(6)
+  created_at   DateTime     @default(now()) @db.Timestamptz(6)
+  user_account user_account @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@index([user_id, read_at], map: "idx_notif_unread")
+  @@index([user_id, created_at(sort: Desc)], map: "idx_notif_user")
+  @@schema("care")
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model clinician_profile {
+  user_id       String       @id @db.Uuid
+  license_type  String       @db.VarChar(20)
+  license_no    String?      @db.VarChar(60)
+  organization  String?      @db.VarChar(120)
+  department    String?      @db.VarChar(60)
+  verified      Boolean      @default(false)
+  verified_by   String?      @db.Uuid
+  verified_at   DateTime?    @db.Timestamptz(6)
+  reject_reason String?
+  created_at    DateTime     @default(now()) @db.Timestamptz(6)
+  user_account  user_account @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@schema("care")
+}
+
+model mission_log {
+  id           BigInt       @id @default(autoincrement())
+  user_id      String       @db.Uuid
+  mission_key  String       @db.VarChar(40)
+  mission_date DateTime     @db.Date
+  points       Int          @default(0)
+  created_at   DateTime     @default(now()) @db.Timestamptz(6)
+  user_account user_account @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@unique([user_id, mission_key, mission_date])
+  @@index([user_id, mission_date(sort: Desc)], map: "idx_mission_user_date")
+  @@schema("care")
+}

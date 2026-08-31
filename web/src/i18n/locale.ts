@@ -1,6 +1,8 @@
-"use server";
+import "server-only";
 
-// 로케일 읽기/쓰기 — 쿠키 기반(경로 접두사 없음).
+// 현재 로케일 판정 — 쿠키 기반(경로 접두사 없음).
+// 변경(쓰기)은 서버 액션인 ./localeActions.ts 에 있다.
+// 읽기 함수를 "use server" 모듈에 두면 클라이언트가 호출 가능한 엔드포인트로 노출되므로 분리한다.
 import { cookies, headers } from "next/headers";
 import { DEFAULT_LOCALE, LOCALE_COOKIE, LOCALES, isLocale, type Locale } from "./config";
 
@@ -36,16 +38,4 @@ export async function getUserLocale(): Promise<Locale> {
   const c = store.get(LOCALE_COOKIE)?.value;
   if (isLocale(c)) return c;
   return (await fromAcceptLanguage()) ?? DEFAULT_LOCALE;
-}
-
-/** 언어 스위처에서 호출하는 서버 액션. */
-export async function setUserLocale(locale: Locale): Promise<void> {
-  if (!isLocale(locale)) return;
-  const store = await cookies();
-  store.set(LOCALE_COOKIE, locale, {
-    path: "/",
-    maxAge: 60 * 60 * 24 * 365,
-    sameSite: "lax",
-    httpOnly: false,
-  });
 }

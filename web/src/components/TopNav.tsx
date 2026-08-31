@@ -2,20 +2,23 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { Bell } from "lucide-react";
 import { logout } from "@/lib/auth/actions";
+import LocaleSwitcher from "@/components/LocaleSwitcher";
+import type { Locale } from "@/i18n/config";
 
 const USER_LINKS = [
-  { href: "/dashboard", label: "대시보드" },
-  { href: "/measure", label: "측정" },
-  { href: "/contents", label: "콘텐츠" },
-  { href: "/care", label: "케어" },
-  { href: "/missions", label: "미션" },
-];
+  { href: "/dashboard", key: "dashboard" },
+  { href: "/measure", key: "measure" },
+  { href: "/contents", key: "contents" },
+  { href: "/care", key: "care" },
+  { href: "/missions", key: "missions" },
+] as const;
 const PORTAL_LINKS = [
-  { href: "/clinician/patients", label: "환자 목록" },
-  { href: "/admin", label: "관리자" },
-];
+  { href: "/clinician/patients", key: "patients" },
+  { href: "/admin", key: "admin" },
+] as const;
 
 // 랜딩·인증·계정선택에서는 상단 네비 숨김
 const HIDE = ["/", "/login", "/signup", "/switch"];
@@ -23,11 +26,23 @@ const HIDE = ["/", "/login", "/signup", "/switch"];
 interface Props {
   user: { name: string; role: string; impersonating: boolean } | null;
   unread?: number;
+  locale: Locale;
 }
 
-export default function TopNav({ user, unread = 0 }: Props) {
+export default function TopNav({ user, unread = 0, locale }: Props) {
+  const t = useTranslations("nav");
   const pathname = usePathname() || "/";
-  if (HIDE.includes(pathname)) return null;
+
+  if (HIDE.includes(pathname)) {
+    // 랜딩은 자체 헤더에 언어 탭을 두고 있다. 로그인·가입·계정선택에는
+    // 헤더가 없으므로, 로그인 전에도 언어를 바꿀 수 있도록 떠 있는 탭만 얹는다.
+    if (pathname === "/") return null;
+    return (
+      <div className="fixed right-4 top-4 z-50">
+        <LocaleSwitcher current={locale} />
+      </div>
+    );
+  }
 
   const links = user && (user.role === "clinician" || user.role === "admin") ? PORTAL_LINKS : USER_LINKS;
   const homeHref = user && (user.role === "clinician" || user.role === "admin") ? "/clinician/patients" : "/dashboard";
@@ -46,7 +61,7 @@ export default function TopNav({ user, unread = 0 }: Props) {
               return (
                 <Link key={l.href} href={l.href} className="text-sm transition-colors"
                   style={{ color: active ? "var(--color-primary)" : "var(--color-body)", fontWeight: active ? 700 : 500 }}>
-                  {l.label}
+                  {t(l.key)}
                 </Link>
               );
             })}
@@ -54,14 +69,15 @@ export default function TopNav({ user, unread = 0 }: Props) {
         </div>
 
         <div className="flex items-center gap-2">
+          <LocaleSwitcher current={locale} />
           {user ? (
             <>
               {user.impersonating && (
                 <Link href="/switch" className="rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold text-primary">
-                  계정 전환
+                  {t("switchAccount")}
                 </Link>
               )}
-              <Link href="/alerts" className="relative rounded-lg p-2 text-gray-500 transition hover:text-ink" aria-label="알림">
+              <Link href="/alerts" className="relative rounded-lg p-2 text-gray-500 transition hover:text-ink" aria-label={t("alerts")}>
                 <Bell size={18} strokeWidth={1.75} />
                 {unread > 0 && (
                   <span className="absolute -right-0.5 -top-0.5 grid h-4 min-w-4 place-items-center rounded-full bg-[#D4691B] px-1 text-[10px] font-bold text-white">{unread > 9 ? "9+" : unread}</span>
@@ -69,11 +85,11 @@ export default function TopNav({ user, unread = 0 }: Props) {
               </Link>
               <span className="hidden text-sm text-body sm:inline">{user.name}</span>
               <form action={logout}>
-                <button type="submit" className="rounded-lg px-3 py-1.5 text-sm font-medium text-subtle transition-colors hover:text-ink">로그아웃</button>
+                <button type="submit" className="rounded-lg px-3 py-1.5 text-sm font-medium text-subtle transition-colors hover:text-ink">{t("logout")}</button>
               </form>
             </>
           ) : (
-            <Link href="/login" className="rounded-lg px-3 py-1.5 text-sm font-medium text-body hover:text-ink">로그인</Link>
+            <Link href="/login" className="rounded-lg px-3 py-1.5 text-sm font-medium text-body hover:text-ink">{t("login")}</Link>
           )}
         </div>
       </div>

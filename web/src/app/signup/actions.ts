@@ -1,5 +1,7 @@
 "use server";
 
+import { getTranslations } from "next-intl/server";
+
 import crypto from "node:crypto";
 import { redirect } from "next/navigation";
 import { prisma } from "@/lib/db";
@@ -16,8 +18,9 @@ export async function signup(_prev: SignupState, formData: FormData): Promise<Si
   const email = String(formData.get("email") ?? "").trim().toLowerCase();
   const pw = String(formData.get("password") ?? "");
 
-  if (!name || !email || !pw) return { error: "이름·이메일·비밀번호를 모두 입력하세요." };
-  if (pw.length < 8) return { error: "비밀번호는 8자 이상이어야 합니다." };
+  const t = await getTranslations("authError");
+  if (!name || !email || !pw) return { error: t("requiredFields") };
+  if (pw.length < 8) return { error: t("passwordTooShort") };
 
   const consents = CONSENT_DEFS.map((d) => ({
     type: d.type,
@@ -25,11 +28,11 @@ export async function signup(_prev: SignupState, formData: FormData): Promise<Si
     granted: formData.get(`consent_${d.type}`) === "on",
   }));
   if (!consents.filter((c) => c.required).every((c) => c.granted)) {
-    return { error: "필수 동의 항목에 동의해야 가입할 수 있습니다." };
+    return { error: t("consentRequired") };
   }
 
   const exists = await prisma.user_account.findFirst({ where: { email } });
-  if (exists) return { error: "이미 가입된 이메일입니다." };
+  if (exists) return { error: t("emailTaken") };
 
   const pseudo = "b2c-" + crypto.randomBytes(6).toString("hex");
   const account = await prisma.$transaction(async (tx) => {

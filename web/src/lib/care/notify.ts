@@ -1,11 +1,14 @@
 // 알림 생성 — 인앱 채널. 외부 채널(push/sms/kakao)은 발송 어댑터로 확장.
 // 톤: 권고(상담 권유). 지시·응급 표현 금지. (참고: 세부데이터 E.3, tone-guidance)
-// 문구는 care.notification_template(있으면)에서 렌더하고, 없으면 인라인 폴백.
+// 문구는 care.notification_template(있으면)에서 렌더하고, 없으면 카탈로그 폴백.
+//
+// 다국어: notification 행에는 기준어(ko) 문장을 저장한다(발송 기록·감사용).
+// 화면(알림함)은 template_id 와 참조 대상으로 현재 언어에서 다시 렌더한다
+// (lib/care/notifyRender.ts). 그래서 템플릿 변수는 재구성 가능한 것만 쓴다.
 import { prisma } from "@/lib/db";
-
-const DISEASE_KO: Record<string, string> = {
-  kidney: "신장", diabetes: "당뇨", hypertension: "고혈압", uti: "요로감염", liver: "간담도",
-};
+import { translatorFor } from "@/i18n/translator";
+import { DEFAULT_LOCALE } from "@/i18n/config";
+import { NOTIFY_TEMPLATES, type NotifyTemplateId } from "./notifyRender";
 
 interface TopResult {
   disease: string;
@@ -15,13 +18,22 @@ interface TopResult {
 
 interface Rendered { title: string; body: string }
 
-/** notification_template에서 {var} 치환해 렌더. 템플릿 없으면 fallback 사용. */
-async function render(templateId: string, vars: Record<string, string>, fallback: Rendered): Promise<Rendered> {
+/**
+ * notification_template(DB 운영 문구)이 있으면 그것으로, 없으면 카탈로그 폴백으로 렌더.
+ * DB 템플릿은 운영자가 고칠 수 있는 한국어 원문이며, 다국어는 카탈로그가 담당한다.
+ */
+async function render(templateId: NotifyTemplateId, vars: Record<string, string>): Promise<Rendered> {
+  const t = await translatorFor(DEFAULT_LOCALE);
+  const spec = NOTIFY_TEMPLATES[templateId];
+  const fallback: Rendered = {
+    title: t(spec.title, vars),
+    body: t(spec.body, vars),
+  };
   try {
-    const t = await prisma.notification_template.findUnique({ where: { id: templateId } });
-    if (!t || t.active === false) return fallback;
+    const row = await prisma.notification_template.findUnique({ where: { id: templateId } });
+    if (!row || row.active === false) return fallback;
     const interp = (s: string | null) => (s ?? "").replace(/\{(\w+)\}/g, (_, k) => vars[k] ?? `{${k}}`);
-    return { title: interp(t.title) || fallback.title, body: interp(t.body) || fallback.body };
+    return { title: interp(row.title) || fallback.title, body: interp(row.body) || fallback.body };
   } catch {
     return fallback;
   }
@@ -29,12 +41,10 @@ async function render(templateId: string, vars: Record<string, string>, fallback
 
 /** 분석 완료 시 알림 생성 — 결과 준비 + (주의↑) 위험 안내. */
 export async function notifyAnalysis(userId: string, top: TopResult, assessmentId: string): Promise<void> {
-  const dz = DISEASE_KO[top.disease] ?? top.disease;
+  const t = await translatorFor(DEFAULT_LOCALE);
+  const dz = t(`disease.${top.disease}`);
 
-  const ready = await render("NT_RESULT_READY", {}, {
-    title: "검사 결과가 준비됐어요",
-    body: "이번 측정 결과와 맞춤 케어를 확인해 보세요.",
-  });
+  const ready = await render("NT_RESULT_READY", {});
   await prisma.notification.create({
     data: {
       user_id: userId, template_id: "NT_RESULT_READY", channel: "inapp", category: "result",
@@ -43,10 +53,7 @@ export async function notifyAnalysis(userId: string, top: TopResult, assessmentI
   });
 
   if (top.risk_grade === "high" || top.risk_grade === "very_high") {
-    const risk = await render("NT_RISK", { disease: dz }, {
-      title: `${dz} 결과를 확인해 주세요`,
-      body: `${dz} 관련 신호가 평소보다 높게 나왔어요. 결과를 자세히 확인하고, 필요하면 의료진과 상담해 보시길 권해요.`,
-    });
+    const risk = await render("NT_RISK", { disease: dz });
     await prisma.notification.create({
       data: {
         user_id: userId, template_id: "NT_RISK", channel: "inapp", category: "risk",
@@ -56,19 +63,18 @@ export async function notifyAnalysis(userId: string, top: TopResult, assessmentI
   }
 }
 
-/** 재측정 리마인더(케어 액션 due 기반 — 데모는 생성 시 즉시 안내). */
-export async function notifyRecheck(userId: string, dueAt: Date | null): Promise<void> {
-  const dueStr = dueAt ? new Date(dueAt).toLocaleDateString("ko-KR") : "";
-  const r = await render("NT_RECHECK_DUE", { due: dueStr }, {
-    title: "재측정을 권해요",
-    body: dueAt
-      ? `추세 확인을 위해 ${dueStr}까지 다시 한 번 측정해 보시길 권해요.`
-      : "추세 확인을 위해 다시 한 번 측정해 보시길 권해요.",
-  });
+/** 케어 액션·환류 등 단순 안내 알림 생성(변수 없음). */
+export async function notifySimple(
+  userId: string,
+  templateId: NotifyTemplateId,
+  category: string,
+  ref: { type: string; id: string | null },
+): Promise<void> {
+  const r = await render(templateId, {});
   await prisma.notification.create({
     data: {
-      user_id: userId, template_id: "NT_RECHECK_DUE", channel: "inapp", category: "recheck",
-      title: r.title, body: r.body, ref_type: "care_action", ref_id: null,
+      user_id: userId, template_id: templateId, channel: "inapp", category,
+      title: r.title, body: r.body, ref_type: ref.type, ref_id: ref.id,
     },
   });
 }

@@ -1,0 +1,1316 @@
+{
+  "meta": {
+    "title": "SDC WellCare · Nền tảng quản lý bệnh mạn tính",
+    "description": "Nền tảng tích hợp quản lý bệnh mạn tính dựa trên máy phân tích hóa sinh nước tiểu — đo, phân tích, hiểu, hành động"
+  },
+  "nav": {
+    "dashboard": "Bảng tổng quan",
+    "measure": "Đo",
+    "contents": "Nội dung",
+    "care": "Chăm sóc",
+    "missions": "Nhiệm vụ",
+    "patients": "Danh sách bệnh nhân",
+    "admin": "Quản trị",
+    "switchAccount": "Chuyển tài khoản",
+    "alerts": "Thông báo",
+    "logout": "Đăng xuất",
+    "login": "Đăng nhập",
+    "signup": "Đăng ký"
+  },
+  "common": {
+    "save": "Lưu",
+    "cancel": "Hủy",
+    "close": "Đóng",
+    "confirm": "Xác nhận",
+    "back": "Quay lại",
+    "next": "Tiếp",
+    "submit": "Gửi",
+    "loading": "Đang tải…",
+    "empty": "Không có nội dung để hiển thị.",
+    "none": "Không có",
+    "all": "Tất cả",
+    "search": "Tìm kiếm",
+    "print": "In",
+    "dash": "-",
+    "riskOf": "Nguy cơ {disease} {score}",
+    "standardGrade": "Kiểu KDIGO {grade}",
+    "recommended": "Nội dung dành cho bạn",
+    "noData": "Không có dữ liệu",
+    "printPdf": "In / PDF"
+  },
+  "analyte": {
+    "protein": "Protein niệu",
+    "glucose": "Glucose niệu",
+    "blood": "Hồng cầu ẩn",
+    "leukocyte": "Bạch cầu",
+    "ketone": "Ceton",
+    "nitrite": "Nitrit",
+    "bilirubin": "Bilirubin",
+    "urobilinogen": "Urobilinogen",
+    "ph": "Độ pH",
+    "specific_gravity": "Tỷ trọng",
+    "vitamin_c": "Vitamin C"
+  },
+  "analyteValue": {
+    "negative": "Âm tính",
+    "trace": "Vết",
+    "p1": "1+",
+    "p2": "2+",
+    "p3": "3+",
+    "p4": "4+"
+  },
+  "status": {
+    "normal": "Bình thường",
+    "caution": "Ranh giới",
+    "abnormal": "Bất thường",
+    "info": "Tham khảo",
+    "inRange": "Trong giới hạn bình thường"
+  },
+  "grade": {
+    "low": "Tốt",
+    "moderate": "Cần theo dõi",
+    "high": "Cần chú ý",
+    "very_high": "Cao"
+  },
+  "care": {
+    "lifestyle": "Nhiệm vụ lối sống",
+    "recheck": "Nên đo lại",
+    "referral": "Bản tóm tắt để đi khám",
+    "emergency": "Nên trao đổi với nhân viên y tế"
+  },
+  "disease": {
+    "kidney": "Thận",
+    "diabetes": "Đái tháo đường",
+    "hypertension": "Tăng huyết áp",
+    "uti": "Nhiễm khuẩn đường tiết niệu",
+    "liver": "Gan mật"
+  },
+  "diseaseFull": {
+    "kidney": "Bệnh thận mạn",
+    "diabetes": "Đái tháo đường",
+    "hypertension": "Tăng huyết áp",
+    "uti": "Nhiễm khuẩn đường tiết niệu",
+    "liver": "Gan mật"
+  },
+  "clinical": {
+    "significance": {
+      "protein": "Chỉ dấu tổn thương cầu thận hoặc ống thận. Protein niệu dai dẳng liên quan đến tiến triển bệnh thận mạn và nguy cơ tim mạch (nên định lượng albumin niệu).",
+      "glucose": "Xuất hiện khi đường huyết vượt ngưỡng thận (khoảng 180 mg/dL). Gợi ý nghi ngờ đái tháo đường hoặc kiểm soát đường huyết kém (kiểm tra đường huyết đói và HbA1c).",
+      "blood": "Tiểu máu — cần phân biệt sỏi tiết niệu, nhiễm khuẩn, viêm cầu thận, khối u. Nếu kéo dài, cân nhắc chẩn đoán hình ảnh và tế bào học nước tiểu.",
+      "leukocyte": "Tiểu mủ — gợi ý nhiễm khuẩn đường tiết niệu. Đánh giá cùng nitrit và triệu chứng.",
+      "nitrite": "Gợi ý nhiễm vi khuẩn gram âm (vi khuẩn đường ruột). Khi kèm bạch cầu, khả năng nhiễm khuẩn tiết niệu tăng lên.",
+      "ketone": "Ceton niệu — nhiễm toan ceton do đái tháo đường, nhịn ăn hoặc chế độ ăn ít carbohydrate. Cần chú ý khi kèm tăng đường huyết.",
+      "bilirubin": "Manh mối của bệnh gan mật (vàng da tắc mật, tổn thương tế bào gan). Kết hợp với xét nghiệm chức năng gan.",
+      "urobilinogen": "Khi tăng, có thể do tan máu hoặc bệnh tế bào gan. Diễn giải cùng với bilirubin.",
+      "specific_gravity": "Phản ánh khả năng cô đặc của thận và tình trạng nước của cơ thể. Manh mối của mất nước hoặc đái tháo nhạt.",
+      "ph": "Manh mối về tình trạng toan kiềm, loại sỏi và nhiễm khuẩn tiết niệu. Nước tiểu kiềm kéo dài gợi ý nhiễm vi khuẩn sinh urease.",
+      "vitamin_c": "Yếu tố gây nhiễu que thử — ở nồng độ cao có thể gây âm tính giả với hồng cầu ẩn và glucose niệu. Cần lưu ý khi diễn giải kết quả."
+    },
+    "guideline": {
+      "kidney": {
+        "reference": "Hướng dẫn KDIGO 2024 về bệnh thận mạn — phân tầng nguy cơ theo eGFR và albumin niệu/ACR (xanh/vàng/cam/đỏ)",
+        "staging": "Protein niệu bán định lượng chỉ là bước sàng lọc. Chẩn đoán xác định và phân giai đoạn cần creatinin huyết thanh (eGFR) và định lượng ACR.",
+        "followup": "Khuyến nghị: creatinin huyết thanh và eGFR, tỷ số albumin/creatinin niệu (uACR), chuyển khám thận học nếu cần."
+      },
+      "diabetes": {
+        "reference": "Hội Đái tháo đường Hàn Quốc / ADA — tiêu chuẩn chẩn đoán theo đường huyết đói và HbA1c (glucose niệu là chỉ số hỗ trợ)",
+        "staging": "Glucose niệu dương tính gợi ý khả năng tăng đường huyết nhưng không phải tiêu chuẩn chẩn đoán. Xác nhận bằng đường huyết đói và HbA1c.",
+        "followup": "Khuyến nghị: đường huyết đói và HbA1c, sàng lọc biến chứng đái tháo đường (thận, đáy mắt)."
+      },
+      "hypertension": {
+        "reference": "Hội Tăng huyết áp Hàn Quốc — phân loại huyết áp phòng khám/tại nhà, đánh giá tổn thương cơ quan đích",
+        "staging": "Protein niệu được dùng như chỉ dấu tổn thương cơ quan đích (thận) do tăng huyết áp. Đánh giá cùng trị số huyết áp.",
+        "followup": "Khuyến nghị: đo huyết áp lặp lại, albumin niệu, đánh giá yếu tố nguy cơ như điện tâm đồ và lipid."
+      },
+      "uti": {
+        "reference": "Hướng dẫn điều trị nhiễm khuẩn tiết niệu — tổng hợp tiểu mủ, nitrit và triệu chứng, phân biệt vi khuẩn niệu không triệu chứng",
+        "staging": "Bạch cầu và nitrit dương tính kèm triệu chứng tiểu tiện gợi ý nhiễm khuẩn tiết niệu. Trường hợp không triệu chứng có thể không cần điều trị.",
+        "followup": "Khuyến nghị: cấy nước tiểu và kháng sinh đồ khi có triệu chứng; đánh giá nguyên nhân với trường hợp tái phát."
+      },
+      "liver": {
+        "reference": "Đánh giá gan mật — kiểu hình bilirubin và urobilinogen kết hợp xét nghiệm chức năng gan",
+        "staging": "Bilirubin và urobilinogen niệu là manh mối hỗ trợ. Cần phân biệt kiểu tắc mật với kiểu tế bào gan.",
+        "followup": "Khuyến nghị: xét nghiệm chức năng gan (AST/ALT/ALP/bilirubin toàn phần), chẩn đoán hình ảnh nếu cần."
+      }
+    }
+  },
+  "driver": {
+    "source": {
+      "urine": "Xét nghiệm nước tiểu",
+      "phr": "Khám sức khỏe",
+      "pattern": "Mẫu hình"
+    },
+    "urine": {
+      "label": "{name} niệu",
+      "high": "Xét nghiệm nước tiểu cho thấy {name} ở mức {value} (bình thường: {normal}).",
+      "normal": "{name} trong nước tiểu của bạn là {value}, nằm trong giới hạn bình thường."
+    },
+    "yesNo": {
+      "present": "Có",
+      "absent": "Không",
+      "confirmed": "Hồ sơ khám sức khỏe của bạn có ghi nhận {label}.",
+      "none": "Không ghi nhận {label}."
+    },
+    "applies": {
+      "yes": "Có",
+      "no": "Không"
+    },
+    "bool": {
+      "yes": "Có",
+      "no": "Không"
+    },
+    "count": {
+      "items": "{n} mục",
+      "times": "{n} lần"
+    },
+    "label": {
+      "phr_glucose": "Đường huyết đói khi khám",
+      "phr_egfr": "Chức năng thận (eGFR)",
+      "phr_bmi": "Chỉ số khối cơ thể (BMI)",
+      "phr_diabetes": "Chẩn đoán hoặc dùng thuốc đái tháo đường",
+      "phr_hypertension": "Chẩn đoán hoặc dùng thuốc tăng huyết áp",
+      "phr_dyslipidemia": "Ghi nhận rối loạn lipid máu",
+      "phr_kidney_watch": "Dấu hiệu cần theo dõi về thận",
+      "phr_overweight": "Thừa cân",
+      "pos_burden": "Số mục xét nghiệm dương tính",
+      "uti_flag": "Bạch cầu và nitrit cùng dương tính",
+      "dka_flag": "Glucose niệu và ceton cùng dương tính",
+      "nephritis_flag": "Protein và hồng cầu ẩn cùng dương tính",
+      "protein_consec_pos": "Protein niệu dương tính liên tiếp"
+    },
+    "normal": {
+      "phr_glucose": "dưới 100",
+      "phr_egfr": "từ 90 trở lên",
+      "phr_bmi": "18,5–24,9"
+    },
+    "missing": {
+      "phr_glucose": "Không có kết quả đường huyết đói.",
+      "phr_egfr": "Không có kết quả eGFR.",
+      "phr_bmi": "Không có kết quả BMI."
+    },
+    "sentence": {
+      "phr_glucose": "Đường huyết đói khi khám của bạn là {value} mg/dL (bình thường: dưới 100).",
+      "phr_glucose_high": "Đường huyết đói khi khám của bạn là {value} mg/dL (bình thường: dưới 100). Mức này hơi cao.",
+      "phr_egfr": "Mức lọc của thận (eGFR) của bạn là {value} (bình thường: từ 90 trở lên).",
+      "phr_egfr_low": "Mức lọc của thận (eGFR) của bạn là {value} (bình thường: từ 90 trở lên). Mức này hơi thấp.",
+      "phr_bmi": "Chỉ số khối cơ thể (BMI) của bạn là {value} (bình thường: 18,5–24,9).",
+      "phr_bmi_high": "Chỉ số khối cơ thể (BMI) của bạn là {value} (bình thường: 18,5–24,9). Mức này thuộc nhóm thừa cân.",
+      "phr_overweight": "Cân nặng của bạn nằm trong giới hạn bình thường.",
+      "phr_overweight_high": "Cân nặng của bạn hơi cao một chút.",
+      "pos_burden": "Có {n} mục dương tính trong xét nghiệm nước tiểu.",
+      "uti_flag": "Xuất hiện tổ hợp gợi ý nhiễm khuẩn tiết niệu (bạch cầu + nitrit).",
+      "dka_flag": "Xuất hiện tổ hợp gợi ý rối loạn kiểm soát đường huyết (glucose niệu + ceton).",
+      "nephritis_flag": "Xuất hiện tổ hợp gợi ý viêm thận (protein + hồng cầu ẩn).",
+      "protein_consec_pos": "Protein niệu dương tính {n} lần liên tiếp. Đây là một dấu hiệu dai dẳng."
+    }
+  },
+  "feature": {
+    "protein_dev": "Protein niệu",
+    "blood_dev": "Hồng cầu ẩn",
+    "leukocyte_dev": "Bạch cầu",
+    "protein_personal_dev": "Protein tăng so với mức nền cá nhân",
+    "protein_persistence": "Protein niệu dai dẳng",
+    "nephritis_rule": "Protein + hồng cầu ẩn (gợi ý viêm cầu thận)",
+    "phr_egfr": "eGFR giảm khi khám",
+    "phr_egfr_trend": "Xu hướng eGFR giảm khi khám",
+    "phr_kidney_watch": "Dấu hiệu thận cần theo dõi khi khám",
+    "phr_htn": "Tăng huyết áp (nguy cơ tổn thương thận)",
+    "phr_dm": "Đái tháo đường (nguy cơ bệnh thận do đái tháo đường)",
+    "glucose_urine": "Glucose niệu",
+    "ketone_urine": "Ceton",
+    "dka_rule": "Glucose niệu + ceton (gợi ý DKA)",
+    "phr_fasting_glucose": "Đường huyết đói khi khám",
+    "phr_glucose_trend": "Xu hướng đường huyết đói tăng khi khám",
+    "phr_dm_flag": "Chẩn đoán / dùng thuốc đái tháo đường",
+    "phr_overweight": "Thừa cân (BMI ≥ 25)",
+    "protein_marker": "Protein niệu (chỉ dấu tổn thương thận)",
+    "phr_htn_flag": "Chẩn đoán / dùng thuốc tăng huyết áp",
+    "leukocyte": "Bạch cầu",
+    "nitrite": "Nitrit",
+    "blood": "Hồng cầu ẩn",
+    "uti_rule": "Bạch cầu + nitrit (gợi ý nhiễm khuẩn tiết niệu do vi khuẩn)",
+    "bilirubin": "Bilirubin",
+    "urobilinogen": "Urobilinogen"
+  },
+  "safety": {
+    "screening": "Thông tin này là thông tin sàng lọc nhằm hỗ trợ quản lý sức khỏe, không phải chẩn đoán y khoa.",
+    "recheck": "Xu hướng qua nhiều lần đo quan trọng hơn một kết quả đơn lẻ. Bạn nên đo lại.",
+    "consult": "Nếu triệu chứng kéo dài hoặc bạn lo lắng, hãy trao đổi với nhân viên y tế.",
+    "emergency": "Đã xuất hiện dấu hiệu nguy cơ rõ rệt. Bạn nên trao đổi với nhân viên y tế.",
+    "notDx": "Chỉ riêng kết quả này không dùng để chẩn đoán bệnh.",
+    "privacy": "Thông tin sức khỏe được lưu trữ tách biệt và bảo vệ, chỉ sử dụng trong phạm vi bạn đồng ý.",
+    "vitc": "Việc dùng vitamin C có thể làm giảm phản ứng của một số mục (hồng cầu ẩn, glucose niệu) nên đã được tính đến khi hiệu chỉnh."
+  },
+  "explain": {
+    "tone": {
+      "low": "Hiện chưa thấy dấu hiệu nguy cơ nổi bật nào.",
+      "moderate": "Có dấu hiệu đáng lưu ý hơn thường lệ. Bạn có thể đo lại sau vài ngày để xem xu hướng.",
+      "high": "Đây là mức cần chú ý. Bạn nên đo lại sớm và trao đổi với nhân viên y tế.",
+      "very_high": "Đã xuất hiện dấu hiệu nguy cơ rõ rệt. Bạn nên trao đổi với nhân viên y tế."
+    },
+    "userLow": "{disease}: {tone}",
+    "userSignals": "Đã ghi nhận các dấu hiệu liên quan đến {disease} ({labels}). {tone}",
+    "clinician": "Nguy cơ {disease} {score} ({grade}). Yếu tố đóng góp chính: {contrib}. Đây là kết quả phân tích sàng lọc, không thay thế chẩn đoán hay kê đơn.",
+    "clinicianStd": "Nguy cơ {disease} {score} ({grade}) · mức chuẩn {standard}. Yếu tố đóng góp chính: {contrib}. Đây là kết quả phân tích sàng lọc, không thay thế chẩn đoán hay kê đơn.",
+    "ifImproved": "nếu {label} cải thiện"
+  },
+  "rec": {
+    "kidney": {
+      "hydration": "Uống đủ nước",
+      "less_salt": "Giảm đồ ăn mặn",
+      "bp_glucose": "Quản lý huyết áp và đường huyết",
+      "kidney_eval": "Nếu protein niệu kéo dài, hãy hỏi về đánh giá chức năng thận"
+    },
+    "diabetes": {
+      "fasting_glucose": "Kiểm tra đường huyết đói",
+      "less_carb": "Giảm tinh bột tinh chế và đồ uống ngọt",
+      "walk_after_meal": "Vận động nhẹ sau bữa ăn",
+      "glucose_test": "Nếu lặp lại, hãy hỏi về xét nghiệm đường huyết"
+    },
+    "hypertension": {
+      "low_salt_weight": "Ăn nhạt và quản lý cân nặng",
+      "bp_log": "Ghi lại huyết áp đều đặn",
+      "consult_uncontrolled": "Nếu huyết áp không được kiểm soát tốt, hãy xin tư vấn"
+    },
+    "uti": {
+      "hydration": "Uống đủ nước",
+      "no_holding": "Không nhịn tiểu lâu",
+      "consult_symptoms": "Nếu có triệu chứng như tiểu buốt, tiểu nhiều lần, hãy trao đổi với nhân viên y tế"
+    },
+    "liver": {
+      "avoid_alcohol": "Tránh uống rượu bia quá mức",
+      "liver_test": "Nếu kéo dài, hãy hỏi về xét nghiệm máu chức năng gan"
+    }
+  },
+  "medClass": {
+    "diabetes": "Đái tháo đường",
+    "hypertension": "Tăng huyết áp",
+    "dyslipidemia": "Rối loạn lipid máu",
+    "gastro": "Bệnh tiêu hóa"
+  },
+  "phrFlag": {
+    "diabetes": "Đái tháo đường",
+    "hypertension": "Tăng huyết áp",
+    "dyslipidemia": "Rối loạn lipid máu",
+    "kidney_watch": "Theo dõi thận",
+    "overweight": "Thừa cân"
+  },
+  "phrMetric": {
+    "glucose": "Đường huyết đói",
+    "egfr": "eGFR",
+    "bmi": "BMI",
+    "chol": "Cholesterol toàn phần",
+    "bp": "Huyết áp",
+    "ldl": "Cholesterol LDL",
+    "tg": "Triglycerid",
+    "creatinine": "Creatinin",
+    "hb": "Hemoglobin",
+    "weight": "Cân nặng",
+    "waist": "Vòng eo",
+    "sbp": "Huyết áp tâm thu",
+    "dbp": "Huyết áp tâm trương",
+    "hdl": "Cholesterol HDL",
+    "urine_protein": "Protein niệu",
+    "height": "Chiều cao"
+  },
+  "trendDir": {
+    "up": "tăng",
+    "down": "giảm",
+    "flat": "ổn định"
+  },
+  "dashboard": {
+    "titleNamed": "Bảng tổng quan sức khỏe của {name}",
+    "titleMine": "Bảng tổng quan sức khỏe của tôi",
+    "subtitle": "Xem kết quả đo và phần chăm sóc phù hợp chỉ trong một màn hình.",
+    "newMeasurement": "+ Đo mới",
+    "emptyTitle": "Bạn chưa có lần đo nào.",
+    "startFirst": "Bắt đầu lần đo đầu tiên",
+    "urgentNote": "Có kết quả cần chú ý. Hãy xem lại kết quả và cân nhắc đo lại.",
+    "recentResult": "Kết quả gần nhất",
+    "viewDetail": "Xem chi tiết kết quả →",
+    "todayMissions": "Nhiệm vụ hôm nay",
+    "viewAllMissions": "Xem tất cả nhiệm vụ →",
+    "myActivity": "Hoạt động của tôi",
+    "points": "Điểm",
+    "streakDays": "Ngày liên tiếp",
+    "badges": "Huy hiệu",
+    "measureCount": "{n} lần đo"
+  },
+  "missions": {
+    "title": "Nhiệm vụ · Huy hiệu",
+    "subtitle": "Đo đều đặn và những thay đổi nhỏ trong sinh hoạt sẽ trở thành thói quen sức khỏe.",
+    "points": "Điểm",
+    "pointsSub": "Tích lũy hoạt động",
+    "streak": "Đo liên tiếp",
+    "streakSub": "Chuỗi ngày",
+    "days": "{n} ngày",
+    "badgesEarned": "Huy hiệu đạt được",
+    "badgesSub": "Bộ sưu tập",
+    "today": "Nhiệm vụ hôm nay",
+    "doneCount": "Hoàn thành {done}/{total}",
+    "perMission": "+{p}P mỗi nhiệm vụ",
+    "goal": "Mục tiêu sức khỏe",
+    "completed": "Đã hoàn thành",
+    "markDone": "Đánh dấu hoàn thành",
+    "resetNote": "※ Nhiệm vụ được đặt lại vào 0 giờ mỗi ngày và liên kết với nội dung quản lý lối sống.",
+    "trendTitle": "Xu hướng cải thiện nguy cơ",
+    "trendEmpty": "Khi bạn bắt đầu đo, thay đổi về nguy cơ sẽ được vẽ ở đây.",
+    "riskScore": "Điểm nguy cơ đại diện",
+    "trendNeedMore": "Khi có thêm lần đo, chúng tôi sẽ so sánh thay đổi giúp bạn.",
+    "trendImproved": "Điểm nguy cơ gần đây đã thấp hơn lúc ban đầu. Xu hướng rất tốt!",
+    "trendFlat": "Điểm nguy cơ chưa ổn định. Hãy thử quản lý bằng nhiệm vụ và đo lại.",
+    "trendNote": "※ Điểm nguy cơ càng gần 0 thì càng thấp. Đây là giá trị kết hợp xét nghiệm nước tiểu và khám sức khỏe.",
+    "badgeCollection": "Bộ sưu tập huy hiệu",
+    "disclaimer": "Điểm và huy hiệu là phần thưởng hoạt động nhằm giúp hình thành thói quen sức khỏe, không bảo đảm hiệu quả y khoa. Việc liên kết với các phần thưởng bên ngoài như trợ cấp thực hành lối sống lành mạnh vẫn đang trong giai đoạn xem xét chính sách. Việc đo và quản lý lối sống hoàn toàn tự nguyện."
+  },
+  "mission": {
+    "common": {
+      "water": {
+        "label": "Uống 1,5 L nước",
+        "tip": "Uống từng ít một và thường xuyên sẽ tốt cho thận và đường tiết niệu."
+      },
+      "walk": {
+        "label": "Đi bộ nhẹ 20 phút",
+        "tip": "Đi bộ nhẹ sau bữa ăn tốt cho việc quản lý đường huyết và huyết áp."
+      },
+      "salt": {
+        "label": "Giảm đồ ăn mặn",
+        "tip": "Hãy thử giảm natri từ nước canh và thực phẩm chế biến sẵn."
+      }
+    },
+    "kidney": {
+      "water": {
+        "label": "Uống 1,5 L nước",
+        "tip": "Nước giúp thận đào thải chất cặn bã."
+      },
+      "salt": {
+        "label": "Giảm nước canh và đồ ăn mặn",
+        "tip": "Hạn chế natri giúp ích cho protein niệu và huyết áp."
+      },
+      "protein_care": {
+        "label": "Xem lại thực phẩm bổ sung protein quá mức",
+        "tip": "Có thể gây gánh nặng cho thận, hãy kiểm tra liều lượng phù hợp."
+      }
+    },
+    "diabetes": {
+      "sugar": {
+        "label": "Uống nước thay vì đồ uống ngọt",
+        "tip": "Giảm đường giúp đường huyết dao động nhẹ nhàng hơn."
+      },
+      "walk": {
+        "label": "Đi bộ 20 phút sau bữa ăn",
+        "tip": "Vận động sau bữa ăn làm giảm đỉnh đường huyết."
+      },
+      "carb_care": {
+        "label": "Giảm tinh bột tinh chế",
+        "tip": "Hãy chọn ngũ cốc nguyên hạt thay cho gạo trắng và bột mì."
+      }
+    },
+    "hypertension": {
+      "salt": {
+        "label": "Thực hiện chế độ ăn nhạt",
+        "tip": "Giảm natri giúp ích trực tiếp cho việc kiểm soát huyết áp."
+      },
+      "walk": {
+        "label": "20 phút vận động nhịp điệu",
+        "tip": "Vận động nhịp điệu đều đặn giúp hạ huyết áp."
+      },
+      "bp_check": {
+        "label": "Ghi lại huyết áp tại nhà",
+        "tip": "Hãy đo vào cùng khung giờ để theo dõi xu hướng."
+      }
+    },
+    "uti": {
+      "water": {
+        "label": "Uống đủ nước",
+        "tip": "Uống nước giúp đào thải vi khuẩn."
+      },
+      "hold_less": {
+        "label": "Không nhịn tiểu",
+        "tip": "Đi tiểu đều đặn tốt cho sức khỏe đường tiết niệu."
+      },
+      "hygiene": {
+        "label": "Xem lại thói quen vệ sinh",
+        "tip": "Vệ sinh cơ bản giúp giảm tái phát."
+      }
+    }
+  },
+  "badge": {
+    "first_measure": {
+      "label": "Bước đầu tiên",
+      "desc": "Bạn đã hoàn thành lần đo đầu tiên"
+    },
+    "streak_3": {
+      "label": "3 ngày liên tiếp",
+      "desc": "Đo 3 ngày liên tiếp"
+    },
+    "streak_7": {
+      "label": "Trọn một tuần",
+      "desc": "Đo 7 ngày liên tiếp"
+    },
+    "streak_30": {
+      "label": "Thói quen một tháng",
+      "desc": "Đo 30 ngày liên tiếp"
+    },
+    "mission_master": {
+      "label": "Bậc thầy nhiệm vụ",
+      "desc": "Hoàn thành tổng cộng 10 nhiệm vụ"
+    },
+    "risk_improved": {
+      "label": "Khởi đầu cải thiện",
+      "desc": "Nguy cơ đã giảm so với trước"
+    }
+  },
+  "goal": {
+    "kidney": "Giữ protein niệu âm tính",
+    "diabetes": "Giữ glucose niệu âm tính và đường huyết ổn định",
+    "hypertension": "Giữ huyết áp và protein niệu ổn định",
+    "uti": "Đưa bạch cầu và nitrit trở lại âm tính",
+    "liver": "Giữ bilirubin trong giới hạn bình thường"
+  },
+  "result": {
+    "title": "Báo cáo quản lý sức khỏe tổng hợp",
+    "byDisease": "Nguy cơ theo bệnh",
+    "urinalysis": "Xét nghiệm hóa sinh nước tiểu (11 mục)",
+    "colItem": "Mục",
+    "colValue": "Giá trị",
+    "colNormal": "Giới hạn bình thường",
+    "colJudgment": "Đánh giá",
+    "currentUrine": "<b>{name}</b> trong nước tiểu hiện tại: <v>{value}</v>",
+    "normalInline": "bình thường {normal}",
+    "trendNote": "※ Biểu đồ này chỉ thể hiện một mục là <b>{name} niệu</b> (màu xanh là bình thường). Nguy cơ {disease} ({score}) là giá trị kết hợp xét nghiệm nước tiểu và khám sức khỏe, nên dù mục này bình thường thì các yếu tố khác vẫn có thể làm tăng nguy cơ.",
+    "phrTitle": "Dữ liệu khám sức khỏe (My HealthWay)",
+    "phrEmpty": "Chưa có dữ liệu khám sức khỏe (PHR). Nếu bạn liên kết hồ sơ sức khỏe của mình, dữ liệu sẽ được kết hợp với kết quả nước tiểu để tạo <b>báo cáo sức khỏe tổng hợp</b>.",
+    "meds": "Thuốc đang dùng: {list}",
+    "diagnoses": "Chẩn đoán: {list}",
+    "historyTitle": "Lịch sử đo hóa sinh nước tiểu",
+    "historyNote": "Thay đổi theo từng mục qua {n} lần đo gần nhất. Màu sắc thể hiện đánh giá (<g>xanh: bình thường</g>·<o>cam: bất thường</o>·<s>xám: tham khảo</s>), và giá trị in đậm ngoài cùng bên phải là lần đo này.",
+    "phrTrendTitle": "Xu hướng khám sức khỏe",
+    "checkupCount": "{n} lần khám",
+    "phrTrendNote": "Thay đổi của các chỉ số khám sức khỏe theo thời gian. Dù giá trị hiện tại bình thường, nếu có <b>xu hướng xấu đi</b> (ví dụ eGFR giảm, đường huyết đói tăng) thì vẫn đáng để xem sớm.",
+    "phrTrendDisclaimer": "※ Xu hướng khám sức khỏe chỉ mang tính tham khảo, không phải chẩn đoán. Các xu hướng xấu đi như eGFR giảm hay đường huyết đói tăng nên được xem cùng nhân viên y tế trong lần khám tới.",
+    "whyTitle": "Vì sao có kết quả này?",
+    "engineLgbm": "Phân tích AI (LightGBM)",
+    "engineDefault": "Bộ phân tích",
+    "whyNote": "Các yếu tố dưới đây đã ảnh hưởng đến đánh giá nguy cơ lần này. <b>Màu cam</b> là yếu tố làm tăng nguy cơ.",
+    "impact": "Mức ảnh hưởng {level}",
+    "impactLevel": {
+      "high": "cao",
+      "mid": "trung bình",
+      "low": "thấp"
+    },
+    "whyDisclaimer": "※ Mức nguy cơ là kết quả phân tích kết hợp xét nghiệm nước tiểu và khám sức khỏe (PHR). Dù một mục nước tiểu bình thường, hồ sơ khám sức khỏe vẫn có thể khiến nguy cơ được đánh giá cao hơn.",
+    "careTitle": "Hành động được khuyến nghị",
+    "dueBy": "hạn {date}",
+    "disclaimer": "Báo cáo này là thông tin sàng lọc kết hợp xét nghiệm hóa sinh nước tiểu với dữ liệu khám sức khỏe (PHR), không phải chẩn đoán y khoa. Nếu triệu chứng kéo dài hoặc bạn lo lắng, hãy trao đổi với nhân viên y tế.",
+    "samdNote": "Phân tầng nguy cơ và xếp mức là các chức năng với điều kiện tiên quyết là được cấp phép thiết bị y tế (SaMD). (mô hình {model})"
+  },
+  "patient": {
+    "noName": "(không có tên)",
+    "male": "Nam",
+    "female": "Nữ",
+    "sex": "Giới tính",
+    "age": "Tuổi",
+    "years": "{n} tuổi",
+    "times": "{n} lần",
+    "period": "Thời gian theo dõi",
+    "measureCount": "Số lần đo",
+    "toReport": "Báo cáo lâm sàng",
+    "noAssessment": "Không có dữ liệu đánh giá.",
+    "riskTitle": "Đánh giá nguy cơ (đầu ra SaMD) · đa bệnh",
+    "model": "mô hình {version}",
+    "colDisease": "Bệnh",
+    "colScore": "Điểm nguy cơ",
+    "colGrade": "Mức",
+    "colStandard": "Mức chuẩn",
+    "colSignificance": "Ý nghĩa lâm sàng",
+    "abnormalCount": "{n} dấu hiệu bất thường",
+    "mainAnalyteNote": "Chỉ số liên quan đến bệnh chính ({disease})",
+    "proteinNote": "Chỉ số chức năng thận (protein niệu)",
+    "quantTitle": "Diễn giải định lượng hóa sinh nước tiểu (11 mục)",
+    "shapTitle": "Yếu tố đóng góp nguy cơ (SHAP)",
+    "guidelineTitle": "Tham chiếu hướng dẫn",
+    "staging": "Diễn giải giai đoạn",
+    "followup": "Theo dõi khuyến nghị",
+    "phrTitle": "My HealthWay (khám sức khỏe quốc gia · thuốc)",
+    "phrCounts": "{checkups} lần khám · {meds} loại thuốc",
+    "medClasses": "Nhóm thuốc: {list}",
+    "diagnoses": "Chẩn đoán / nhận định: {list}",
+    "carePlanTitle": "Kế hoạch chăm sóc · tóm tắt quản lý bệnh mạn tính",
+    "noCareAction": "Không có hành động chăm sóc",
+    "emrNote": "Việc tự động tạo tham chiếu hướng dẫn và biểu mẫu hành chính quản lý bệnh mạn tính sẽ được bổ sung khi tích hợp EMR (Step 6+).",
+    "disclaimer": "Bản tóm tắt này là kết quả phân tích sàng lọc, không thay thế chẩn đoán hay kê đơn lâm sàng. Phân tầng nguy cơ và xếp mức có điều kiện tiên quyết là được cấp phép thiết bị y tế (SaMD). Quyết định cuối cùng thuộc về đánh giá lâm sàng của nhân viên y tế."
+  },
+  "report": {
+    "backToPatient": "Bảng tổng quan bệnh nhân",
+    "title": "Báo cáo phân tích lâm sàng",
+    "subtitle": "Phân tích kết hợp hóa sinh nước tiểu + My HealthWay",
+    "subject": "Đối tượng",
+    "pseudoId": "ID ẩn danh",
+    "multiRisk": "Đánh giá nguy cơ đa bệnh",
+    "samdCandidate": "Đầu ra ứng viên SaMD · mô hình {version}",
+    "colStandardKdigo": "Mức chuẩn (kiểu KDIGO)",
+    "evidenceTitle": "Bằng chứng — các yếu tố đóng góp chính",
+    "contribution": "đóng góp {value}",
+    "abnormalTitle": "Tóm tắt dấu hiệu bất thường",
+    "allNormal": "Cả 11 mục hóa sinh nước tiểu đều trong giới hạn bình thường.",
+    "proteinTrend": "Xu hướng protein niệu",
+    "chronicFlags": "Dấu hiệu bệnh mạn tính: {list}",
+    "emrNote": "Việc trích dẫn hướng dẫn và tự động tạo biểu mẫu hành chính quản lý bệnh mạn tính sẽ mở rộng khi tích hợp EMR.",
+    "disclaimer": "Báo cáo này là kết quả phân tích sàng lọc kết hợp xét nghiệm hóa sinh nước tiểu với dữ liệu My HealthWay (PHR), không thay thế chẩn đoán hay kê đơn lâm sàng. Phân tầng nguy cơ và xếp mức có điều kiện tiên quyết là được cấp phép thiết bị y tế (SaMD). Quyết định cuối cùng thuộc về đánh giá lâm sàng của nhân viên y tế."
+  },
+  "portal": {
+    "title": "Cổng dành cho nhân viên y tế",
+    "subtitle": "Xem tình trạng nhóm bệnh nhân và thứ tự ưu tiên nguy cơ trong một màn hình · dựa trên định danh ẩn",
+    "persons": "{n} người",
+    "kpiPatients": "Bệnh nhân quản lý",
+    "kpiPatientsSub": "đã có đánh giá",
+    "kpiHighRisk": "Nguy cơ cao",
+    "kpiHighRiskSub": "Cao + Cần chú ý",
+    "kpiRecent": "Đo trong 7 ngày qua",
+    "kpiRecentSub": "mới phát sinh",
+    "kpiTotal": "Tổng số lần đo",
+    "kpiTotalSub": "tất cả xét nghiệm",
+    "gradeDist": "Phân bố mức nguy cơ",
+    "diseaseDist": "Phân bố bệnh nguy cơ chính",
+    "colPatient": "Bệnh nhân",
+    "colTopDisease": "Bệnh nguy cơ chính",
+    "colLastAssessed": "Đánh giá gần nhất",
+    "report": "Báo cáo",
+    "noMatch": "Không có bệnh nhân phù hợp với bộ lọc.",
+    "disclaimer": "※ Phân tầng nguy cơ và xếp mức là đầu ra ứng viên SaMD. Chúng không thay thế chẩn đoán hay kê đơn lâm sàng, và quyết định cuối cùng thuộc về đánh giá lâm sàng của nhân viên y tế."
+  },
+  "careStatus": {
+    "assigned": "Đã lên lịch",
+    "in_progress": "Đang thực hiện",
+    "done": "Hoàn thành",
+    "expired": "Hết hạn"
+  },
+  "careDesc": {
+    "lifestyle": "Quản lý nguy cơ bằng các nhiệm vụ lối sống.",
+    "recheck": "Bạn nên đo lại để xem xu hướng.",
+    "referral": "Chúng tôi sẽ chuẩn bị bản tóm tắt hữu ích khi bạn đi khám.",
+    "emergency": "Ở mức này, bạn nên trao đổi với nhân viên y tế."
+  },
+  "carePage": {
+    "empty": "Bạn chưa có hành động chăm sóc nào.",
+    "goMeasure": "Đi đo ngay",
+    "dueAt": "Hạn: {date}",
+    "referralTitle": "Bản tóm tắt để đi khám",
+    "createSummary": "Tạo bản tóm tắt",
+    "referralEmpty": "Bạn có thể tạo bản tóm tắt để tham khảo khi trao đổi với nhân viên y tế.",
+    "created": "Đã tạo",
+    "feedbackTitle": "Cho chúng tôi biết kết quả đo lại",
+    "feedbackNote": "Kết quả bạn chia sẻ sẽ được dùng để cải thiện độ chính xác của phân tích (huấn luyện lại).",
+    "outcome": {
+      "improved": "Đã tốt hơn",
+      "stable": "Vẫn như cũ",
+      "worsened": "Đã xấu hơn"
+    },
+    "pdfNote": "※ Bản PDF của báo cáo đi khám và tích hợp EMR sẽ được mở rộng ở phần tích hợp bên ngoài (Step 6+)."
+  },
+  "chart": {
+    "noData": "Chưa có dữ liệu xu hướng.",
+    "trendOf": "Xu hướng {name}",
+    "current": "Hiện tại"
+  },
+  "contentTab": {
+    "all": "Tất cả",
+    "result_explain": "Giải thích kết quả",
+    "disease_edu": "Thông tin bệnh",
+    "quiz": "Câu đố",
+    "lifestyle": "Quản lý lối sống",
+    "risk_action": "Hướng dẫn hành động",
+    "motivation": "Động lực",
+    "safety": "Thông báo an toàn",
+    "caregiver": "Người chăm sóc"
+  },
+  "contentFormat": {
+    "card": "Thẻ",
+    "article": "Bài viết",
+    "quiz": "Câu đố",
+    "checklist": "Danh sách kiểm",
+    "step_guide": "Hướng dẫn theo bước"
+  },
+  "contentsPage": {
+    "forYou": "Phù hợp với kết quả của bạn",
+    "empty": "Chưa có nội dung được đăng trong phân loại này.",
+    "note": "Mọi nội dung đều được đăng sau khi qua thẩm định y khoa và thẩm định pháp quy. Thông tin này hỗ trợ quản lý sức khỏe và không thay thế chẩn đoán y khoa.",
+    "source": "Nguồn: {source}",
+    "detailNote": "Nội dung này là thông tin sàng lọc phục vụ quản lý sức khỏe, được đăng sau khi qua thẩm định y khoa và pháp quy. Nội dung không thay thế chẩn đoán y khoa; nếu bạn lo lắng, hãy trao đổi với nhân viên y tế."
+  },
+  "contentView": {
+    "doneToday": "Hoàn thành hôm nay <b>{done}/{total}</b>",
+    "checklistNote": "※ Việc hoàn thành nhiệm vụ và tích điểm sẽ được lưu vào tài khoản ở phần trò chơi hóa (Step 7).",
+    "quizResult": "Kết quả",
+    "quizScore": "Đúng {correct} / {total}"
+  },
+  "phr": {
+    "parsing": "Đang phân tích {n} tệp…",
+    "badJson": "Đây không phải tệp JSON, hoặc định dạng không hợp lệ.",
+    "uploadFailed": "Tải lên thất bại (HTTP {status}). Vui lòng kiểm tra nhật ký máy chủ.",
+    "addedToExisting": "đã thêm {n} bản ghi vào dữ liệu hiện có",
+    "linkedTotal": "đã liên kết {n} bản ghi",
+    "skippedFiles": "(đã bỏ qua {n} tệp bị lỗi)",
+    "applied": "Đã áp dụng dữ liệu khám sức khỏe — {addNote} · {checkups} lần khám",
+    "processing": "Đang xử lý…",
+    "ctaCompact": "Thêm / cập nhật khám sức khỏe",
+    "cta": "Liên kết khám sức khỏe (hồ sơ sức khỏe của tôi)",
+    "note": "※ Hãy tải lên tệp JSON (phr_…json) đã tải về từ hồ sơ sức khỏe của bạn; tệp sẽ được kết hợp với kết quả nước tiểu để tạo báo cáo tổng hợp. Bạn có thể chọn <b>nhiều tệp cùng lúc</b>, và tải lên lại sẽ <b>cộng dồn</b> vào bản ghi hiện có."
+  },
+  "stub": {
+    "planned": "dự kiến ở {step}",
+    "elements": "Các thành phần sẽ có trên màn hình này",
+    "note": "Đây là khung màn hình dựa trên danh sách ở mục 9.1 của kế hoạch. Chức năng sẽ được bổ sung ở {step}."
+  },
+  "errors": {
+    "title": "Đã xảy ra sự cố tạm thời",
+    "lead": "Vui lòng thử lại sau giây lát. Nếu sự cố tiếp diễn, hãy liên hệ quản trị viên.",
+    "code": "Mã lỗi: {digest}",
+    "retry": "Thử lại",
+    "toDashboard": "Về bảng tổng quan",
+    "toHome": "Về trang chủ",
+    "notFoundTitle": "Không tìm thấy trang",
+    "notFoundLead": "Địa chỉ có thể đã thay đổi hoặc trang đã bị xóa."
+  },
+  "notify": {
+    "resultReady": {
+      "title": "Kết quả xét nghiệm đã sẵn sàng",
+      "body": "Hãy xem kết quả lần đo này và phần chăm sóc phù hợp với bạn."
+    },
+    "risk": {
+      "title": "Hãy kiểm tra kết quả {disease}",
+      "body": "Các dấu hiệu liên quan đến {disease} cao hơn thường lệ. Hãy xem kỹ kết quả và trao đổi với nhân viên y tế nếu cần."
+    },
+    "referral": {
+      "title": "Bản tóm tắt để đi khám đã sẵn sàng",
+      "body": "Chúng tôi đã tạo bản tóm tắt bạn có thể mang theo khi đi khám. Bạn có thể xem ở màn hình Chăm sóc."
+    },
+    "feedback": {
+      "title": "Đã ghi nhận kết quả đo lại của bạn",
+      "body": "Thông tin bạn chia sẻ sẽ giúp cải thiện độ chính xác của phân tích (huấn luyện lại). Xin cảm ơn."
+    }
+  },
+  "admin": {
+    "title": "Bảng điều khiển quản trị",
+    "subtitle": "Quản lý tình hình vận hành dịch vụ và các chỉ số pháp quy · chất lượng trong một màn hình.",
+    "system": "Hệ thống",
+    "statUsers": "Người dùng",
+    "statUsersSub": "tổng {n}",
+    "statClinicians": "Nhân viên y tế đang hoạt động",
+    "statPending": "{n} chờ duyệt",
+    "statApproved": "Đã duyệt xong",
+    "statRecent7": "{n} trong 7 ngày qua",
+    "statAssessments": "Đánh giá nguy cơ",
+    "statSamd": "SaMD {n}",
+    "statPublishedTotal": "đã đăng / tổng",
+    "statAudit": "Nhật ký kiểm toán",
+    "statRules": "{n} quy tắc",
+    "diseaseDist": "Phân bố đánh giá theo bệnh",
+    "contentFlow": "Quy trình nội dung",
+    "areas": "Khu vực quản lý",
+    "manage": "Quản lý",
+    "view": "Xem",
+    "waiting": "{n} chờ",
+    "recentActivity": "Hoạt động gần đây",
+    "noRecords": "Không có bản ghi",
+    "area": {
+      "clinicians": "Duyệt nhân viên y tế",
+      "users": "Người dùng · thiết bị",
+      "contents": "Nội dung · CMS",
+      "curation": "Quy tắc tuyển chọn",
+      "regulatory": "Nhánh pháp quy",
+      "audit": "Nhật ký kiểm toán",
+      "system": "Trạng thái hệ thống",
+      "portal": "Cổng nhân viên y tế"
+    },
+    "areaCliniciansPending": "{n} yêu cầu đăng ký đang chờ duyệt",
+    "areaCliniciansDesc": "Quản lý xác minh chứng chỉ và phê duyệt nhân viên y tế",
+    "areaUsersDesc": "Tình hình tài khoản, thiết bị và lần đo",
+    "areaContentsDesc": "Quy trình soạn, thẩm định và đăng nội dung",
+    "areaCurationDesc": "Quy tắc cá nhân hóa và trình mô phỏng",
+    "areaRegulatoryDesc": "Tách nhánh SaMD/wellness, nhãn và mức độ sẵn sàng",
+    "areaAuditDesc": "Bản ghi bất biến về truy cập PHI, đăng nội dung và hơn thế",
+    "areaSystemDesc": "Sức khỏe phụ thuộc, sự kiện bảo mật và khả năng quan sát",
+    "areaPortalDesc": "Theo dõi bệnh nhân và báo cáo lâm sàng"
+  },
+  "contentStatus": {
+    "draft": "Bản nháp",
+    "medical_review": "Thẩm định y khoa",
+    "ra_review": "Thẩm định pháp quy",
+    "ready": "Chờ đăng",
+    "published": "Đang đăng",
+    "unpublished": "Đã gỡ đăng"
+  },
+  "auditAction": {
+    "view_phi": "Truy cập thông tin bệnh nhân",
+    "view_admin": "Truy cập bảng điều khiển quản trị",
+    "content_publish": "Đăng nội dung",
+    "content_unpublish": "Gỡ đăng nội dung",
+    "clinician_signup": "Yêu cầu đăng ký nhân viên y tế",
+    "clinician_verify": "Xét duyệt nhân viên y tế",
+    "login": "Đăng nhập",
+    "login_failed": "Đăng nhập thất bại",
+    "login_blocked": "Chặn đăng nhập (giới hạn tần suất)",
+    "account_switch": "Chuyển tài khoản"
+  },
+  "audit": {
+    "subtitle": "Bản ghi truy cập PHI, đăng nội dung và hành vi quản trị (200 mục gần nhất)",
+    "console": "Bảng điều khiển",
+    "colTime": "Thời điểm",
+    "colActor": "Người thực hiện",
+    "colAction": "Hành vi",
+    "colTarget": "Đối tượng",
+    "empty": "Không có bản ghi.",
+    "note": "※ Nhật ký kiểm toán chỉ ghi thêm (append-only); khi vận hành thực tế sẽ áp dụng chính sách chống sửa đổi và thời hạn lưu trữ."
+  },
+  "curation": {
+    "title": "Quy tắc tuyển chọn",
+    "subtitle": "Theo thứ tự ưu tiên (số nhỏ hơn được xét trước), nội dung đã đăng phù hợp với điều kiện sẽ hiển thị trong bảng tin cá nhân hóa.",
+    "firstTime": "Lần đo đầu tiên",
+    "condDisease": "bệnh {value}",
+    "condGrade": "mức {value}",
+    "condTrend": "xu hướng {value}",
+    "condStreak": "đo liên tiếp {value}",
+    "condAny": "(tất cả)",
+    "colPriority": "Ưu tiên",
+    "colCondition": "Điều kiện",
+    "colContent": "Nội dung hiển thị",
+    "colStatus": "Trạng thái",
+    "live": "Đang đăng",
+    "notLive": "Chưa đăng",
+    "note": "※ Trình chỉnh sửa quy tắc dạng giao diện và trình mô phỏng xung đột sẽ được bổ sung sau. Quy tắc trỏ tới nội dung chưa đăng sẽ không hiển thị dù khớp điều kiện."
+  },
+  "accountType": {
+    "b2c": "Người dùng",
+    "facility": "Cơ sở",
+    "clinician": "Nhân viên y tế",
+    "admin": "Quản trị viên"
+  },
+  "adminUsers": {
+    "subtitle": "Tình hình tài khoản, thiết bị và lần đo · dựa trên định danh ẩn",
+    "colUser": "Người dùng",
+    "colType": "Loại",
+    "colEmail": "Email",
+    "colDevice": "Thiết bị",
+    "active": "Đang hoạt động",
+    "empty": "Không có người dùng thuộc loại này.",
+    "note": "※ Tên thật và thông tin liên hệ được mã hóa và lưu trong lược đồ secure; bảng điều khiển hiển thị chủ yếu dữ liệu ẩn danh và tổng hợp. Các thay đổi như đình chỉ tài khoản hay rút lại đồng ý đều được ghi vào nhật ký kiểm toán."
+  },
+  "license": {
+    "doctor": "Bác sĩ",
+    "nurse": "Điều dưỡng",
+    "medtech": "Kỹ thuật viên xét nghiệm"
+  },
+  "clinicianStatus": {
+    "pending": "Chờ duyệt",
+    "active": "Đã duyệt",
+    "rejected": "Bị từ chối"
+  },
+  "adminClinicians": {
+    "subtitle": "Sau khi xác minh chứng chỉ và phê duyệt, việc đăng nhập vào cổng sẽ được kích hoạt · {n} yêu cầu chờ duyệt",
+    "licenseType": "Loại chứng chỉ",
+    "licenseNo": "Số chứng chỉ",
+    "organization": "Nơi công tác",
+    "department": "Chuyên khoa",
+    "rejectReasonShown": "Lý do từ chối: {reason}",
+    "rejectReasonPlaceholder": "Lý do từ chối (không bắt buộc)",
+    "approve": "Duyệt",
+    "reject": "Từ chối",
+    "empty": "Không có yêu cầu đăng ký của nhân viên y tế.",
+    "note": "※ Số chứng chỉ được che bớt, và việc duyệt/từ chối đều được ghi vào nhật ký kiểm toán. Khi vận hành thực tế sẽ tích hợp quy trình xác thực chứng chỉ từ bên ngoài."
+  },
+  "contentCategory": {
+    "result_explain": "Giải thích kết quả",
+    "disease_edu": "Thông tin bệnh",
+    "lifestyle": "Quản lý lối sống",
+    "risk_action": "Hướng dẫn hành động",
+    "motivation": "Động lực",
+    "safety": "An toàn",
+    "clinician": "Nhân viên y tế",
+    "caregiver": "Người chăm sóc"
+  },
+  "reviewState": {
+    "approved": "Đã duyệt",
+    "rejected": "Từ chối",
+    "waiting": "Chờ"
+  },
+  "contentAction": {
+    "submit": "Gửi thẩm định",
+    "med_approve": "Duyệt y khoa",
+    "med_reject": "Từ chối",
+    "ra_approve": "Duyệt pháp quy",
+    "ra_reject": "Từ chối",
+    "publish": "Đăng",
+    "unpublish": "Gỡ đăng",
+    "republish": "Đăng lại"
+  },
+  "cms": {
+    "title": "Quản lý nội dung (CMS)",
+    "subtitle": "Quy trình thẩm định: bản nháp → thẩm định y khoa → thẩm định pháp quy → chờ đăng → đăng · {n} đang chờ thẩm định",
+    "colContent": "Nội dung",
+    "colCategory": "Phân loại",
+    "colActions": "Thao tác",
+    "note": "※ Nội dung chưa qua thẩm định y khoa sẽ không được đăng, và bảng tin cá nhân hóa chỉ hiển thị nội dung đang đăng."
+  },
+  "regulatory": {
+    "title": "Nhánh pháp quy · chuẩn bị thí điểm",
+    "subtitle": "SaMD (ứng viên thiết bị y tế) · tách nhánh wellness · mức độ sẵn sàng cấp phép",
+    "intendedUseTitle": "Mục đích sử dụng dự kiến (Intended Use)",
+    "intendedUseLabel": {
+      "purpose": "Mục đích sử dụng",
+      "users": "Đối tượng sử dụng",
+      "environment": "Môi trường sử dụng",
+      "notIntended": "Không dùng cho"
+    },
+    "intendedUse": {
+      "purpose": "Kết hợp xét nghiệm hóa sinh (nước tiểu) với hồ sơ sức khỏe cá nhân (PHR) để sàng lọc và phân tầng nguy cơ bệnh mạn tính, đồng thời hỗ trợ người dùng hiểu kết quả, quản lý lối sống và kết nối tư vấn với nhân viên y tế.",
+      "users": "Người dùng phổ thông (quản lý sức khỏe) · nhân viên y tế (hỗ trợ theo dõi) · cơ sở / trung tâm khám sức khỏe.",
+      "environment": "Môi trường có kết nối internet tại nhà, trung tâm khám sức khỏe, cơ sở y tế và nơi khác.",
+      "notIntended": "Không thay thế chẩn đoán xác định, kê đơn hay quyết định y tế cấp cứu; quyết định lâm sàng cuối cùng thuộc về nhân viên y tế."
+    },
+    "kpiTotal": "Tổng số đánh giá nguy cơ",
+    "kpiSamd": "Đầu ra ứng viên SaMD",
+    "kpiWellness": "Đầu ra wellness",
+    "kpiPublished": "Nội dung đã đăng",
+    "featureTitle": "Phân loại nhánh theo chức năng (nhận diện ứng viên SaMD)",
+    "colFeature": "Chức năng",
+    "colTrack": "Nhánh",
+    "colLikelihood": "Khả năng là SaMD",
+    "colBasis": "Căn cứ (giả định)",
+    "track": {
+      "samd": "Ứng viên thiết bị y tế",
+      "wellness": "Wellness",
+      "review": "Cần xem xét"
+    },
+    "feature": {
+      "risk_strat": {
+        "label": "Phân tầng nguy cơ (điểm và mức nguy cơ theo bệnh)",
+        "likelihood": "Cao",
+        "basis": "Tạo ra và cung cấp thông tin nguy cơ bệnh"
+      },
+      "standard_grade": {
+        "label": "Tính mức nguy cơ chuẩn (kiểu KDIGO)",
+        "likelihood": "Cao",
+        "basis": "Ánh xạ sang hệ phân loại lâm sàng"
+      },
+      "explain_report": {
+        "label": "Báo cáo giải thích (căn cứ nguy cơ, SHAP)",
+        "likelihood": "Trung bình",
+        "basis": "Phụ thuộc vào phân tầng nguy cơ"
+      },
+      "measure_collect": {
+        "label": "Thu thập số đo và hiệu chỉnh chất lượng",
+        "likelihood": "Thấp–trung bình",
+        "basis": "Mang tính xử lý dữ liệu"
+      },
+      "lifestyle_content": {
+        "label": "Nội dung quản lý lối sống và giáo dục",
+        "likelihood": "Thấp",
+        "basis": "Thông tin sức khỏe phổ thông"
+      },
+      "gamification": {
+        "label": "Trò chơi hóa và nhiệm vụ",
+        "likelihood": "Thấp",
+        "basis": "Tạo động lực"
+      }
+    },
+    "featureNote": "※ Phân loại này là giả định; khả năng áp dụng SaMD và mức phân loại thực tế được xác định qua tư vấn trước với MFDS. Các nhánh được tách và ghi nhật ký qua cờ <code>is_samd_output</code>.",
+    "prepTitle": "Tài liệu chuẩn bị cấp phép",
+    "prepStarted": "đã bắt đầu {done}/{total}",
+    "prepDoc": {
+      "intended_use": {
+        "doc": "Bản mô tả mục đích sử dụng dự kiến (Intended Use)",
+        "note": "Đã có bản tóm tắt trong mô-đun này — vẫn cần tài liệu chính thức"
+      },
+      "srs": {
+        "doc": "Bản đặc tả yêu cầu phần mềm",
+        "note": "Liên kết với kế hoạch triển khai chi tiết"
+      },
+      "risk_mgmt": {
+        "doc": "Hồ sơ quản lý rủi ro (phân tích và giảm thiểu nguy hại)",
+        "note": "Cần soạn theo định dạng ISO 14971"
+      },
+      "lifecycle": {
+        "doc": "Tài liệu vòng đời phần mềm",
+        "note": "Quy trình phát triển và kiểm chứng theo IEC 62304"
+      },
+      "vnv": {
+        "doc": "Hồ sơ kiểm chứng và xác nhận (V&V)",
+        "note": "Liên kết với kiểm thử khói E2E và chiến lược kiểm thử"
+      },
+      "clinical_eval": {
+        "doc": "Tài liệu đánh giá lâm sàng",
+        "note": "Tài liệu tham khảo và dữ liệu nội bộ (thí điểm)"
+      },
+      "cybersecurity": {
+        "doc": "Tài liệu an ninh mạng",
+        "note": "Đã áp dụng header bảo mật, giới hạn tần suất và nhật ký kiểm toán (Step 8)"
+      },
+      "usability": {
+        "doc": "Tài liệu về tính khả dụng (Usability)",
+        "note": "Cần kiểm thử khả dụng"
+      },
+      "labeling": {
+        "doc": "Tài liệu nhãn và hiển thị",
+        "note": "Đã áp dụng thông báo sàng lọc, không chẩn đoán trên toàn bộ màn hình"
+      }
+    },
+    "prepStatus": {
+      "ready": "Xong",
+      "partial": "Một phần",
+      "todo": "Cần làm"
+    },
+    "pilotTitle": "Kiểm chứng lâm sàng · các giai đoạn thí điểm",
+    "pilotPhase": {
+      "internal": {
+        "phase": "Kiểm chứng nội bộ",
+        "goal": "Tính tái lập của thuật toán, hành trình người dùng đầu-cuối, rà soát bảo mật"
+      },
+      "facility": {
+        "phase": "Thí điểm tại cơ sở / trung tâm khám",
+        "goal": "Đánh giá tính hữu ích và khả dụng của phân tầng nguy cơ trên dữ liệu thực tế"
+      },
+      "clinical": {
+        "phase": "Đánh giá lâm sàng",
+        "goal": "Thu thập bằng chứng về hiệu năng và an toàn so với xét nghiệm chuẩn"
+      },
+      "submission": {
+        "phase": "Nộp hồ sơ cấp phép SaMD",
+        "goal": "Nộp hồ sơ kỹ thuật và gói đánh giá lâm sàng (MFDS)"
+      }
+    },
+    "pilotStatus": {
+      "done": "Xong",
+      "active": "Đang thực hiện",
+      "todo": "Dự kiến"
+    },
+    "modelNote": "Đang theo dõi {n} phiên bản mô hình · triển khai được kiểm soát bằng SOP quản lý thay đổi (giả định).",
+    "disclaimer": "※ Dịch vụ hiện vận hành theo nhánh quản lý sức khỏe (wellness); phân tầng nguy cơ và xếp mức là đầu ra ứng viên với điều kiện tiên quyết là được cấp phép thiết bị y tế (SaMD). Phạm vi và thời điểm phát hành phụ thuộc kết quả rà soát pháp quy và tư vấn trước."
+  },
+  "secEvent": {
+    "login_failed": "Đăng nhập thất bại",
+    "login_blocked": "Chặn do giới hạn tần suất",
+    "view_phi": "Truy cập thông tin bệnh nhân",
+    "clinician_verify": "Xét duyệt nhân viên y tế"
+  },
+  "system": {
+    "mlUrlMissing": "Chưa cấu hình ML_SERVICE_URL",
+    "overall": {
+      "healthy": "Bình thường",
+      "degraded": "Suy giảm (dự phòng ML)",
+      "unhealthy": "Sự cố"
+    },
+    "overallNote": "Trạng thái tổng thể của dịch vụ · cơ sở dữ liệu là phụ thuộc cốt lõi; khi ML gặp sự cố, bộ quy tắc sẽ tự động thay thế",
+    "depDb": "lược đồ care/secure · phụ thuộc cốt lõi",
+    "depMl": "Dịch vụ suy luận ML (LightGBM)",
+    "depMlNote": "cổng 8800 · chuyển sang dự phòng khi gặp sự cố",
+    "secMetrics": "Chỉ số bảo mật (24 giờ qua)",
+    "phiViews": "Truy cập PHI",
+    "cumulative": "Lũy kế: {list}",
+    "noEvents": "Không có sự kiện",
+    "recentSec": "Sự kiện bảo mật xác thực gần đây",
+    "noRecentSec": "Không có sự kiện bảo mật xác thực gần đây.",
+    "runtime": "Thông tin môi trường chạy",
+    "env": "Môi trường",
+    "appVersion": "Phiên bản ứng dụng",
+    "healthEndpoint": "Điểm cuối kiểm tra sức khỏe",
+    "note": "※ Đã áp dụng header bảo mật (CSP, HSTS, X-Frame-Options và hơn thế), giới hạn tần suất, ghi log có cấu trúc và nhật ký kiểm toán. Khi vận hành thực tế sẽ mở rộng với thu thập log bên ngoài, APM và cảnh báo."
+  },
+  "alertCategory": {
+    "result": "Kết quả",
+    "risk": "Nguy cơ",
+    "recheck": "Đo lại",
+    "care": "Chăm sóc",
+    "info": "Thông tin"
+  },
+  "alerts": {
+    "markAllRead": "Đánh dấu đã đọc tất cả",
+    "empty": "Bạn chưa có thông báo nào.",
+    "note": "※ Các kênh bên ngoài như push, SMS và KakaoTalk sẽ mở rộng qua bộ điều hợp gửi tin (cần khóa của nhà cung cấp)."
+  },
+  "consent": {
+    "sensitive_health": {
+      "label": "[Bắt buộc] Thu thập và sử dụng thông tin nhạy cảm (thông tin sức khỏe) và điều khoản dịch vụ",
+      "desc": "Thông tin sức khỏe như giá trị xét nghiệm nước tiểu và phân tích nguy cơ được xử lý nhằm cung cấp dịch vụ."
+    },
+    "research": {
+      "label": "[Tùy chọn] Sử dụng cho nghiên cứu và thống kê (đã ẩn danh)",
+      "desc": "Sau khi ẩn danh, dữ liệu được dùng để cải thiện thuật toán và phục vụ nghiên cứu."
+    },
+    "marketing": {
+      "label": "[Tùy chọn] Nhận thông tin tiếp thị",
+      "desc": "Nhận mẹo sức khỏe và tin tức dịch vụ qua email và các kênh khác."
+    },
+    "clinician_terms": {
+      "label": "[Bắt buộc] Điều khoản dành cho nhân viên y tế và đồng ý cung cấp thông tin chứng chỉ",
+      "desc": "Loại chứng chỉ, số chứng chỉ và nơi công tác được xử lý nhằm mục đích xác minh tư cách (phê duyệt)."
+    },
+    "phi_handling": {
+      "label": "[Bắt buộc] Cam kết xử lý và bảo vệ thông tin sức khỏe bệnh nhân (PHI)",
+      "desc": "Tôi chỉ truy cập thông tin bệnh nhân trong phạm vi mục đích khám chữa và quản lý, và đồng ý rằng mọi lần truy cập đều được ghi vào nhật ký kiểm toán."
+    }
+  },
+  "me": {
+    "title": "Trang của tôi",
+    "profile": "Hồ sơ",
+    "name": "Họ tên",
+    "role": "Vai trò",
+    "consent": "Quản lý đồng ý",
+    "agreed": "Đã đồng ý",
+    "agreedWithdraw": "Đã đồng ý · rút lại",
+    "notAgreedGrant": "Chưa đồng ý · đồng ý",
+    "consentNote": "※ Thay đổi về đồng ý được ghi lại trong lịch sử. Việc rút lại đồng ý với thông tin nhạy cảm (bắt buộc) được xử lý qua bộ phận hỗ trợ khách hàng.",
+    "devices": "Thiết bị đã đăng ký",
+    "noDevices": "Chưa có thiết bị nào được đăng ký. Bạn có thể kết nối máy đo từ màn hình đo."
+  },
+  "onboarding": {
+    "welcome": "Chào mừng bạn",
+    "greet": "Cùng bắt đầu nhé",
+    "greetNamed": "{name} ơi, cùng bắt đầu nhé",
+    "lead": "Đây là hướng dẫn ngắn để bắt đầu quản lý sức khỏe bằng một lần đo.",
+    "toDashboard": "Về bảng tổng quan",
+    "step": {
+      "measure": {
+        "title": "Đo",
+        "desc": "Kết nối máy đo, hoặc dùng bản demo, để đo 11 mục nước tiểu."
+      },
+      "read": {
+        "title": "Đọc kết quả",
+        "desc": "Xem màu sắc — xanh (tốt), vàng (cần theo dõi), cam (cần chú ý), đỏ (cao) — cùng với phần giải thích."
+      },
+      "safety": {
+        "title": "Lưu ý an toàn",
+        "desc": "Đây là thông tin sàng lọc. Nội dung không thay thế chẩn đoán y khoa; nếu bạn lo lắng, hãy trao đổi với nhân viên y tế."
+      }
+    }
+  },
+  "switchPage": {
+    "eyebrow": "Đang đăng nhập bằng tài khoản quản trị cấp cao",
+    "title": "Bạn muốn vào bằng tài khoản nào?",
+    "lead": "Chuyển sang tài khoản đã chọn để xem màn hình tương ứng. Bạn có thể chuyển lại bất cứ lúc nào.",
+    "select": "Chọn",
+    "sub": {
+      "b2c": "Đo · kết quả · chăm sóc",
+      "clinician": "Theo dõi bệnh nhân · báo cáo lâm sàng"
+    }
+  },
+  "auth": {
+    "toHome": "Về trang chủ",
+    "login": "Đăng nhập",
+    "signup": "Đăng ký",
+    "loggingIn": "Đang đăng nhập…",
+    "signingUp": "Đang đăng ký…",
+    "email": "Email",
+    "password": "Mật khẩu",
+    "name": "Họ tên",
+    "namePlaceholder": "Nguyễn Văn A",
+    "passwordPlaceholder": "Từ 8 ký tự trở lên",
+    "choose": "Vui lòng chọn",
+    "loginPanelTitle": "Quản lý sớm bệnh mạn tính,<br></br>bắt đầu từ một lần xét nghiệm nước tiểu",
+    "loginPanelLead": "Trải nghiệm vòng chăm sóc khép kín: đo, phân tích, hiểu, hành động.",
+    "loginLead": "Đăng nhập vào tài khoản và tiếp tục quản lý sức khỏe của bạn.",
+    "noAccount": "Bạn chưa có tài khoản?",
+    "haveAccount": "Bạn đã có tài khoản?",
+    "clinicianSignupShort": "Đăng ký nhân viên y tế",
+    "demoAccounts": "Tài khoản demo (mật khẩu demo1234)",
+    "demo": {
+      "super": "Tài khoản cấp cao (chọn tài khoản)",
+      "doctor": "Nhân viên y tế",
+      "user": "Người dùng · Choi Eun-seop"
+    },
+    "signupPanelTitle": "Cùng nhau bước bước đầu tiên<br></br>trong quản lý sức khỏe",
+    "signupPanelLead": "Đăng ký đơn giản để bắt đầu đo, phân tích và nhận phần chăm sóc phù hợp.",
+    "signupLead": "Tạo tài khoản và bắt đầu quản lý sức khỏe của bạn.",
+    "areYouClinician": "Bạn là nhân viên y tế?",
+    "clinicianSignup": "Yêu cầu đăng ký nhân viên y tế",
+    "clinPanelTitle": "Cổng nhân viên y tế<br></br>yêu cầu đăng ký",
+    "clinPanelLead": "Tài khoản dành riêng cho nhân viên y tế để theo dõi bệnh nhân, xem báo cáo lâm sàng và quản lý bệnh mạn tính.",
+    "clinPanelNote": "Để bảo vệ thông tin sức khỏe bệnh nhân (PHI), chứng chỉ của bạn sẽ được xác minh và quản trị viên sẽ phê duyệt yêu cầu.",
+    "toGeneralSignup": "Đăng ký thông thường",
+    "clinLead": "Sau khi chứng chỉ được xác minh và quản trị viên phê duyệt, bạn có thể sử dụng cổng.",
+    "clinSubmitted": "Đã tiếp nhận yêu cầu của bạn",
+    "clinSubmittedNote": "Sau khi quản trị viên xác minh thông tin chứng chỉ và phê duyệt, bạn có thể đăng nhập bằng email đã đăng ký. Trước khi được duyệt, việc đăng nhập sẽ bị hạn chế.",
+    "toLoginScreen": "Tới màn hình đăng nhập",
+    "licenseTypeLabel": "Loại chứng chỉ",
+    "licenseNo": "Số chứng chỉ (chứng nhận)",
+    "licenseNoPlaceholder": "ví dụ: Số 12345",
+    "organization": "Cơ sở y tế công tác",
+    "organizationPlaceholder": "Bệnh viện / phòng khám",
+    "department": "Chuyên khoa (không bắt buộc)",
+    "departmentPlaceholder": "Nội khoa, thận học, v.v.",
+    "submitting": "Đang gửi…",
+    "submitApplication": "Gửi yêu cầu"
+  },
+  "landing": {
+    "nav": {
+      "features": "Tính năng",
+      "how": "Cách hoạt động",
+      "clinician": "Cho nhân viên y tế",
+      "contact": "Liên hệ"
+    },
+    "getStarted": "Bắt đầu",
+    "eyebrow": "11 mục hóa sinh nước tiểu · AI cá nhân hóa",
+    "heroTitle": "Chỉ một lần xét nghiệm nước tiểu,<br></br>nhìn thấy bệnh mạn tính <em>từ sớm</em>",
+    "heroLead": "Chúng tôi phân tích số đo từ máy phân tích hóa sinh nước tiểu bằng AI cá nhân hóa để phát hiện sớm nguy cơ về thận, đái tháo đường và tăng huyết áp, rồi kết nối bạn với phần giải thích dễ hiểu và chăm sóc phù hợp.",
+    "startFree": "Bắt đầu miễn phí",
+    "tryMeasure": "Trải nghiệm đo thử",
+    "tryMeasureShort": "Đo thử",
+    "heroDisclaimer": "Đây là dịch vụ cung cấp thông tin sàng lọc và không thay thế chẩn đoán y khoa.",
+    "sampleScreen": "Màn hình mẫu",
+    "sampleResult": "Kết quả đo mẫu",
+    "kidneyIndex": "Chỉ số nguy cơ thận · KDIGO A2",
+    "sampleComment": "Chỉ số protein cao hơn thường lệ một chút. Hãy thử đo lại sau vài ngày để xem xu hướng.",
+    "featuresEyebrow": "Đo · phân tích · hiểu · hành động",
+    "featuresTitle": "Vòng chăm sóc khép kín, không đứt đoạn",
+    "featuresLead": "Công nghệ đã được cấp bằng sáng chế (P1–P5), chuyển thành trải nghiệm sản phẩm thực tế.",
+    "feature": {
+      "analysis": {
+        "tag": "Phân tích",
+        "title": "Phân tích nguy cơ cá nhân hóa",
+        "desc": "Chúng tôi so sánh 11 mục hóa sinh nước tiểu với mức nền cá nhân để phát hiện sớm nguy cơ về thận, đái tháo đường và nhiễm khuẩn tiết niệu."
+      },
+      "explain": {
+        "tag": "Giải thích",
+        "title": "Báo cáo có thể giải thích",
+        "desc": "Chúng tôi cho biết vì sao có kết quả đó, kèm các mục đóng góp bằng ngôn ngữ dễ hiểu và căn cứ dành cho nhân viên y tế."
+      },
+      "loop": {
+        "tag": "Chăm sóc",
+        "title": "Vòng chăm sóc khép kín",
+        "desc": "Từ hướng dẫn hành động theo mức, đo lại, đến bản tóm tắt đi khám — từ đo đến hành động."
+      },
+      "device": {
+        "tag": "Kết nối",
+        "title": "Kết nối máy đo",
+        "desc": "Kết nối trực tiếp với máy phân tích hóa sinh nước tiểu để đo và phân tích mà không cần nhập tay."
+      }
+    },
+    "howTitle": "Bốn bước, từ đo đến hành động",
+    "step": {
+      "measure": {
+        "title": "Đo",
+        "desc": "Kết nối máy đo và đo 11 mục nước tiểu."
+      },
+      "analyze": {
+        "title": "Phân tích",
+        "desc": "Hiệu chỉnh và AI cá nhân hóa phân tầng nguy cơ."
+      },
+      "understand": {
+        "title": "Hiểu",
+        "desc": "Giải thích dễ hiểu và căn cứ giúp bạn nắm rõ kết quả."
+      },
+      "act": {
+        "title": "Hành động",
+        "desc": "Chăm sóc phù hợp và nội dung biến hiểu biết thành thực hành."
+      }
+    },
+    "forClinicians": "Dành cho nhân viên y tế",
+    "clinicianTitle": "Cổng nhân viên y tế lấy bằng chứng làm trung tâm",
+    "clinicianLead": "Theo dõi bệnh nhân theo thứ tự nguy cơ, mức chuẩn, căn cứ đóng góp và hỗ trợ hành chính quản lý bệnh mạn tính. Báo cáo định lượng hỗ trợ quyết định lâm sàng.",
+    "clinicianCta": "Xem trước màn hình nhân viên y tế",
+    "samplePatients": "Danh sách bệnh nhân mẫu",
+    "byRisk": "Theo nguy cơ",
+    "demoPatient": {
+      "p1": "Kim",
+      "p2": "Lee",
+      "p3": "Park"
+    },
+    "sampleNote": "Màn hình mẫu · phân tầng nguy cơ không thay thế chẩn đoán.",
+    "ctaEyebrow": "Bắt đầu ngay hôm nay",
+    "ctaTitle": "Quản lý sớm bệnh mạn tính,<br></br>bắt đầu từ một lần đo",
+    "trust": {
+      "company": "Công ty SDC WellCare",
+      "encryption": "Thông tin sức khỏe được mã hóa và lưu trữ tách biệt",
+      "advisory": "Nội dung có cố vấn của nhân viên y tế",
+      "standards": "Thiết kế dựa trên chuẩn y khoa"
+    },
+    "footerCompany": "Công ty cổ phần SDC WellCare<br></br>Nền tảng quản lý bệnh mạn tính dựa trên máy phân tích hóa sinh nước tiểu",
+    "footer": {
+      "product": "Sản phẩm",
+      "partner": "Đối tác",
+      "account": "Tài khoản"
+    },
+    "footerDisclaimer": "Dịch vụ này cung cấp thông tin sàng lọc hỗ trợ quản lý sức khỏe và không thay thế chẩn đoán y khoa. Phân tầng nguy cơ và xếp mức có điều kiện tiên quyết là được cấp phép thiết bị y tế (SaMD)."
+  },
+  "measure": {
+    "title": "Đo xét nghiệm nước tiểu",
+    "lead": "Kết nối máy phân tích hóa sinh nước tiểu và đo 11 mục.",
+    "connectTitle": "Kết nối máy đo (BLE)",
+    "scanConnect": "Tìm & kết nối thiết bị",
+    "startMeasure": "Bắt đầu đo",
+    "bleNote": "Thiết bị YOCHECK / PhotoMT / OptoSta. Chỉ hoạt động trên Chrome và Edge (Web Bluetooth).",
+    "demoTitle": "Đo thử (không cần que thử)",
+    "runDemo": "Chạy đo thử",
+    "demoNote": "Gói phản hồi của máy đo được tạo mô phỏng và chạy qua cùng bộ phân tích để hiển thị kết quả.",
+    "analyzer": "Máy đo",
+    "demoAnalyzer": "Máy đo demo",
+    "unnamedDevice": "(không có tên)",
+    "measureFailed": "Xử lý phép đo thất bại",
+    "status": {
+      "idle": "Đang chờ",
+      "unsupported": "Trình duyệt không hỗ trợ",
+      "scanning": "Đang tìm thiết bị…",
+      "connecting": "Đang kết nối…",
+      "connected": "Đã kết nối",
+      "disconnected": "Mất kết nối",
+      "connectFailed": "Kết nối thất bại",
+      "measuring": "Đang đo…",
+      "sendFailed": "Gửi thất bại",
+      "stripError": "Lỗi que thử",
+      "analyzing": "Đang phân tích…",
+      "done": "Đo xong",
+      "analyzeFailed": "Phân tích thất bại"
+    },
+    "scenario": {
+      "normal": "Bình thường (tất cả các mục bình thường)",
+      "uti": "Nghi ngờ nhiễm khuẩn tiết niệu (bạch cầu, nitrit)",
+      "diabetes": "Nghi ngờ đái tháo đường (glucose, ceton)",
+      "kidney": "Nghi ngờ vấn đề về thận (protein niệu, hồng cầu ẩn)"
+    },
+    "log": {
+      "noBluetooth": "Không hỗ trợ Web Bluetooth — cần Chrome hoặc Edge",
+      "selectedDevice": "Thiết bị đã chọn: {name}",
+      "subscribed": "Đã kết nối và đăng ký nhận thông báo — sẵn sàng đo",
+      "connectFailed": "Kết nối thất bại: {message}",
+      "txCommand": "TX → %TS (lệnh đo)",
+      "awaitingResponse": "Đã gửi lệnh — đang chờ phản hồi…",
+      "sendFailed": "Gửi lệnh đo thất bại: {message}",
+      "stripError": "Thiết bị báo ERR — không có que thử. Hãy lắp que và đo lại",
+      "received": "Đã nhận xong — đang phân tích kết quả",
+      "demoRun": "Đo thử ({scenario})",
+      "analyzed": "Phân tích xong — chuyển tới màn hình kết quả",
+      "analyzeFailed": "Phân tích thất bại: {message}"
+    }
+  },
+  "authError": {
+    "rateLimited": "Có quá nhiều lần thử đăng nhập. Vui lòng thử lại sau {minutes} phút.",
+    "badCredentials": "Email hoặc mật khẩu không đúng.",
+    "pendingApproval": "Yêu cầu đăng ký của bạn đang chờ quản trị viên phê duyệt. Bạn có thể đăng nhập sau khi được duyệt.",
+    "rejected": "Yêu cầu đăng ký của bạn đã bị từ chối. Vui lòng liên hệ quản trị viên.",
+    "suspended": "Tài khoản này đang bị hạn chế. Vui lòng liên hệ quản trị viên.",
+    "requiredFields": "Vui lòng nhập đầy đủ họ tên, email và mật khẩu.",
+    "passwordTooShort": "Mật khẩu phải có ít nhất 8 ký tự.",
+    "consentRequired": "Bạn cần đồng ý các mục bắt buộc để đăng ký.",
+    "emailTaken": "Email này đã được đăng ký.",
+    "licenseTypeRequired": "Vui lòng chọn loại chứng chỉ.",
+    "licenseNoRequired": "Vui lòng nhập số chứng chỉ (chứng nhận).",
+    "organizationRequired": "Vui lòng nhập cơ sở y tế công tác.",
+    "clinicianConsentRequired": "Bạn cần đồng ý các mục đồng ý và cam kết bắt buộc để gửi yêu cầu.",
+    "emailTakenClinician": "Email này đã có tài khoản hoặc yêu cầu đang chờ.",
+    "noReasonGiven": "Không ghi lý do"
+  },
+  "apiError": {
+    "loginRequired": "Bạn cần đăng nhập.",
+    "loginRequiredMeasure": "Bạn cần đăng nhập. Phép đo chỉ được lưu vào tài khoản của chính bạn.",
+    "badJsonBody": "Không thể phân tích nội dung JSON.",
+    "phrInvalid": "Không tìm thấy dữ liệu FHIR PHR hợp lệ. Vui lòng tải lên tệp JSON đã tải về từ hồ sơ sức khỏe của bạn.",
+    "phrOwnerMismatch": "Hồ sơ sức khỏe đã tải lên thuộc về ‘{owner}’ nhưng tài khoản đang đăng nhập là ‘{account}’. Bạn chỉ có thể liên kết hồ sơ sức khỏe mang tên chính mình.",
+    "phrEmpty": "Không tìm thấy thông tin khám sức khỏe, thuốc hoặc chẩn đoán. Vui lòng kiểm tra xem đây có phải tệp hồ sơ sức khỏe hợp lệ không.",
+    "phrInternal": "Đã xảy ra lỗi khi xử lý PHR. Vui lòng kiểm tra nhật ký máy chủ. (Nếu máy chủ dev đang chạy, có thể cần khởi động lại để áp dụng thay đổi của Prisma.)",
+    "measurementInvalid": "Kiểm tra giá trị đo thất bại",
+    "measuredAtFuture": "Thời điểm đo không thể ở tương lai.",
+    "analysisInternal": "Đã xảy ra lỗi trong quá trình phân tích.",
+    "assessmentNotFound": "Không tìm thấy đánh giá nguy cơ."
+  }
+}

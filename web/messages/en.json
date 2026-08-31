@@ -1,0 +1,1316 @@
+{
+  "meta": {
+    "title": "SDC WellCare · Chronic Disease Management",
+    "description": "An integrated chronic disease management platform built on urine chemistry analysis — measure, analyze, understand, act"
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "measure": "Measure",
+    "contents": "Content",
+    "care": "Care",
+    "missions": "Missions",
+    "patients": "Patients",
+    "admin": "Admin",
+    "switchAccount": "Switch account",
+    "alerts": "Notifications",
+    "logout": "Log out",
+    "login": "Log in",
+    "signup": "Sign up"
+  },
+  "common": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "close": "Close",
+    "confirm": "Confirm",
+    "back": "Back",
+    "next": "Next",
+    "submit": "Submit",
+    "loading": "Loading…",
+    "empty": "Nothing to show.",
+    "none": "None",
+    "all": "All",
+    "search": "Search",
+    "print": "Print",
+    "dash": "-",
+    "riskOf": "{disease} risk {score}",
+    "standardGrade": "KDIGO-style {grade}",
+    "recommended": "Recommended for you",
+    "noData": "No data",
+    "printPdf": "Print / PDF"
+  },
+  "analyte": {
+    "protein": "Urine protein",
+    "glucose": "Urine glucose",
+    "blood": "Occult blood",
+    "leukocyte": "Leukocytes",
+    "ketone": "Ketones",
+    "nitrite": "Nitrite",
+    "bilirubin": "Bilirubin",
+    "urobilinogen": "Urobilinogen",
+    "ph": "Acidity (pH)",
+    "specific_gravity": "Specific gravity",
+    "vitamin_c": "Vitamin C"
+  },
+  "analyteValue": {
+    "negative": "Negative",
+    "trace": "Trace",
+    "p1": "1+",
+    "p2": "2+",
+    "p3": "3+",
+    "p4": "4+"
+  },
+  "status": {
+    "normal": "Normal",
+    "caution": "Borderline",
+    "abnormal": "Abnormal",
+    "info": "Note",
+    "inRange": "Within normal range"
+  },
+  "grade": {
+    "low": "Good",
+    "moderate": "Watch",
+    "high": "Caution",
+    "very_high": "High"
+  },
+  "care": {
+    "lifestyle": "Lifestyle mission",
+    "recheck": "Re-measurement suggested",
+    "referral": "Referral summary",
+    "emergency": "Talking with a clinician is suggested"
+  },
+  "disease": {
+    "kidney": "Kidney",
+    "diabetes": "Diabetes",
+    "hypertension": "Hypertension",
+    "uti": "Urinary tract infection",
+    "liver": "Hepatobiliary"
+  },
+  "diseaseFull": {
+    "kidney": "Chronic kidney disease",
+    "diabetes": "Diabetes",
+    "hypertension": "Hypertension",
+    "uti": "Urinary tract infection",
+    "liver": "Hepatobiliary"
+  },
+  "clinical": {
+    "significance": {
+      "protein": "Marker of glomerular or tubular injury. Persistent proteinuria is associated with CKD progression and cardiovascular risk (quantitative albuminuria recommended).",
+      "glucose": "Appears when blood glucose exceeds the renal threshold (~180 mg/dL). Suggests possible diabetes or poor glycemic control (check fasting glucose and HbA1c).",
+      "blood": "Hematuria — requires differentiation among urolithiasis, infection, glomerulonephritis and tumor. If persistent, consider imaging and urine cytology.",
+      "leukocyte": "Pyuria — suggests urinary tract infection. Interpret together with nitrite and symptoms.",
+      "nitrite": "Suggests gram-negative (enteric) bacterial infection. Combined with leukocytes, the likelihood of UTI increases.",
+      "ketone": "Ketonuria — diabetic ketoacidosis, starvation or low-carbohydrate diet. Take care when accompanied by hyperglycemia.",
+      "bilirubin": "A clue to hepatobiliary disease (obstructive jaundice, hepatocellular injury). Link with liver function tests.",
+      "urobilinogen": "When elevated, hemolysis or hepatocellular disease is possible. Interpret together with bilirubin.",
+      "specific_gravity": "Reflects renal concentrating ability and hydration status. A clue to dehydration or diabetes insipidus.",
+      "ph": "A clue to acid-base status, stone type and urinary tract infection. Persistent alkaline urine suggests urease-producing bacterial infection.",
+      "vitamin_c": "Assay interferent — at high concentrations it can cause false negatives for occult blood and urine glucose. Take care when interpreting results."
+    },
+    "guideline": {
+      "kidney": {
+        "reference": "KDIGO 2024 CKD guideline — risk stratification based on eGFR and albuminuria/ACR (green/yellow/orange/red)",
+        "staging": "Semi-quantitative urine protein is a screening step. Confirmation and staging require serum creatinine (eGFR) and quantitative ACR.",
+        "followup": "Suggested: serum creatinine and eGFR, urine albumin-to-creatinine ratio (uACR), nephrology referral if needed."
+      },
+      "diabetes": {
+        "reference": "Korean Diabetes Association / ADA — fasting glucose and HbA1c diagnostic criteria (urine glucose is a supporting indicator)",
+        "staging": "Positive urine glucose suggests possible hyperglycemia but is not a diagnostic criterion. Confirm with fasting glucose and HbA1c.",
+        "followup": "Suggested: fasting glucose and HbA1c, screening for diabetic complications (renal, retinal)."
+      },
+      "hypertension": {
+        "reference": "Korean Society of Hypertension — office and home blood pressure classification, target organ damage assessment",
+        "staging": "Proteinuria is used as an indicator of hypertensive target organ (kidney) damage. Interpret together with blood pressure readings.",
+        "followup": "Suggested: repeated blood pressure measurement, urine albumin, and risk factor assessment such as ECG and lipids."
+      },
+      "uti": {
+        "reference": "UTI practice guideline — pyuria, nitrite and symptoms combined, differentiating asymptomatic bacteriuria",
+        "staging": "Positive leukocytes and nitrite with voiding symptoms suggest UTI. Asymptomatic cases may not require treatment.",
+        "followup": "Suggested: urine culture and antibiotic susceptibility when symptomatic; evaluate the cause in recurrent cases."
+      },
+      "liver": {
+        "reference": "Hepatobiliary assessment — bilirubin and urobilinogen pattern plus liver function tests",
+        "staging": "Urine bilirubin and urobilinogen are supporting clues. The pattern (obstructive vs. hepatocellular) needs to be differentiated.",
+        "followup": "Suggested: liver function tests (AST/ALT/ALP/total bilirubin), imaging if needed."
+      }
+    }
+  },
+  "driver": {
+    "source": {
+      "urine": "Urinalysis",
+      "phr": "Health checkup",
+      "pattern": "Pattern"
+    },
+    "urine": {
+      "label": "Urine {name}",
+      "high": "Your urinalysis showed {name} at {value} (normal: {normal}).",
+      "normal": "Your urine {name} was {value}, within the normal range."
+    },
+    "yesNo": {
+      "present": "Yes",
+      "absent": "No",
+      "confirmed": "{label} was found in your health checkup records.",
+      "none": "No {label} was found."
+    },
+    "applies": {
+      "yes": "Applies",
+      "no": "Does not apply"
+    },
+    "bool": {
+      "yes": "Yes",
+      "no": "No"
+    },
+    "count": {
+      "items": "{n} items",
+      "times": "{n} times"
+    },
+    "label": {
+      "phr_glucose": "Checkup fasting glucose",
+      "phr_egfr": "Kidney function (eGFR)",
+      "phr_bmi": "Body mass index (BMI)",
+      "phr_diabetes": "Diabetes diagnosis or medication",
+      "phr_hypertension": "Hypertension diagnosis or medication",
+      "phr_dyslipidemia": "Dyslipidemia record",
+      "phr_kidney_watch": "Kidney-related finding to watch",
+      "phr_overweight": "Overweight",
+      "pos_burden": "Number of positive test items",
+      "uti_flag": "Leukocytes and nitrite both positive",
+      "dka_flag": "Urine glucose and ketones both positive",
+      "nephritis_flag": "Protein and occult blood both positive",
+      "protein_consec_pos": "Consecutive positive proteinuria"
+    },
+    "normal": {
+      "phr_glucose": "under 100",
+      "phr_egfr": "90 or above",
+      "phr_bmi": "18.5–24.9"
+    },
+    "missing": {
+      "phr_glucose": "There is no fasting glucose record.",
+      "phr_egfr": "There is no eGFR record.",
+      "phr_bmi": "There is no BMI record."
+    },
+    "sentence": {
+      "phr_glucose": "Your checkup fasting glucose is {value} mg/dL (normal: under 100).",
+      "phr_glucose_high": "Your checkup fasting glucose is {value} mg/dL (normal: under 100). That is on the high side.",
+      "phr_egfr": "Your kidney filtration rate (eGFR) is {value} (normal: 90 or above).",
+      "phr_egfr_low": "Your kidney filtration rate (eGFR) is {value} (normal: 90 or above). That is somewhat low.",
+      "phr_bmi": "Your body mass index (BMI) is {value} (normal: 18.5–24.9).",
+      "phr_bmi_high": "Your body mass index (BMI) is {value} (normal: 18.5–24.9). That is in the overweight range.",
+      "phr_overweight": "Your weight is within the normal range.",
+      "phr_overweight_high": "Your weight is a little on the high side.",
+      "pos_burden": "{n} items came back positive on your urinalysis.",
+      "uti_flag": "A combination suggesting urinary tract infection (leukocytes + nitrite) appeared together.",
+      "dka_flag": "A combination suggesting impaired glucose control (urine glucose + ketones) appeared.",
+      "nephritis_flag": "A combination suggesting kidney inflammation (protein + occult blood) appeared.",
+      "protein_consec_pos": "Proteinuria has been positive {n} times in a row. That is a persistent signal."
+    }
+  },
+  "feature": {
+    "protein_dev": "Urine protein",
+    "blood_dev": "Occult blood",
+    "leukocyte_dev": "Leukocytes",
+    "protein_personal_dev": "Protein rise vs. personal baseline",
+    "protein_persistence": "Persistent proteinuria",
+    "nephritis_rule": "Protein + occult blood (suggests glomerulonephritis)",
+    "phr_egfr": "Reduced eGFR on checkup",
+    "phr_egfr_trend": "Declining eGFR trend on checkup",
+    "phr_kidney_watch": "Kidney finding to watch on checkup",
+    "phr_htn": "Hypertension (risk of kidney damage)",
+    "phr_dm": "Diabetes (risk of diabetic nephropathy)",
+    "glucose_urine": "Urine glucose",
+    "ketone_urine": "Ketones",
+    "dka_rule": "Urine glucose + ketones (suggests DKA)",
+    "phr_fasting_glucose": "Checkup fasting glucose",
+    "phr_glucose_trend": "Rising fasting glucose trend on checkup",
+    "phr_dm_flag": "Diabetes diagnosis / medication",
+    "phr_overweight": "Overweight (BMI ≥ 25)",
+    "protein_marker": "Urine protein (kidney damage marker)",
+    "phr_htn_flag": "Hypertension diagnosis / medication",
+    "leukocyte": "Leukocytes",
+    "nitrite": "Nitrite",
+    "blood": "Occult blood",
+    "uti_rule": "Leukocytes + nitrite (suggests bacterial UTI)",
+    "bilirubin": "Bilirubin",
+    "urobilinogen": "Urobilinogen"
+  },
+  "safety": {
+    "screening": "This information is screening information intended to support health management, and it is not a medical diagnosis.",
+    "recheck": "A trend across several measurements matters more than a single result. Re-measurement is recommended.",
+    "consult": "If symptoms persist or you are concerned, please talk with a healthcare professional.",
+    "emergency": "Clear risk signals appeared. Talking with a healthcare professional is recommended.",
+    "notDx": "This result alone does not diagnose any condition.",
+    "privacy": "Your health information is stored separately and protected, and is used only within the scope of your consent.",
+    "vitc": "Vitamin C intake can lower the response of some items (occult blood, urine glucose), and this has been accounted for in the correction."
+  },
+  "explain": {
+    "tone": {
+      "low": "No prominent risk signals are showing right now.",
+      "moderate": "There are signals worth watching compared with your usual results. Consider re-measuring in a few days to check the trend.",
+      "high": "This is a level that needs attention. Re-measuring soon and talking with a healthcare professional is recommended.",
+      "very_high": "Clear risk signals appeared. Talking with a healthcare professional is recommended."
+    },
+    "userLow": "{disease}: {tone}",
+    "userSignals": "Signals related to {disease} ({labels}) were found. {tone}",
+    "clinician": "{disease} risk {score} ({grade}). Main contributors: {contrib}. This is a screening analysis result and does not replace diagnosis or prescription.",
+    "clinicianStd": "{disease} risk {score} ({grade}) · standard grade {standard}. Main contributors: {contrib}. This is a screening analysis result and does not replace diagnosis or prescription.",
+    "ifImproved": "if {label} improves"
+  },
+  "rec": {
+    "kidney": {
+      "hydration": "Drink enough water",
+      "less_salt": "Cut back on salty food",
+      "bp_glucose": "Manage blood pressure and blood glucose",
+      "kidney_eval": "If proteinuria persists, discuss kidney function assessment"
+    },
+    "diabetes": {
+      "fasting_glucose": "Check your fasting glucose",
+      "less_carb": "Cut back on refined carbohydrates and sweet drinks",
+      "walk_after_meal": "Light activity after meals",
+      "glucose_test": "If it recurs, discuss a blood glucose test"
+    },
+    "hypertension": {
+      "low_salt_weight": "Low-salt diet and weight management",
+      "bp_log": "Log your blood pressure regularly",
+      "consult_uncontrolled": "If blood pressure is not well controlled, seek advice"
+    },
+    "uti": {
+      "hydration": "Drink enough water",
+      "no_holding": "Do not hold urine for long",
+      "consult_symptoms": "If you have symptoms such as painful or frequent urination, talk with a healthcare professional"
+    },
+    "liver": {
+      "avoid_alcohol": "Avoid heavy drinking",
+      "liver_test": "If it persists, discuss a liver function blood test"
+    }
+  },
+  "medClass": {
+    "diabetes": "Diabetes",
+    "hypertension": "Hypertension",
+    "dyslipidemia": "Dyslipidemia",
+    "gastro": "Gastrointestinal"
+  },
+  "phrFlag": {
+    "diabetes": "Diabetes",
+    "hypertension": "Hypertension",
+    "dyslipidemia": "Dyslipidemia",
+    "kidney_watch": "Kidney watch",
+    "overweight": "Overweight"
+  },
+  "phrMetric": {
+    "glucose": "Fasting glucose",
+    "egfr": "eGFR",
+    "bmi": "BMI",
+    "chol": "Total cholesterol",
+    "bp": "Blood pressure",
+    "ldl": "LDL cholesterol",
+    "tg": "Triglycerides",
+    "creatinine": "Creatinine",
+    "hb": "Hemoglobin",
+    "weight": "Weight",
+    "waist": "Waist circumference",
+    "sbp": "Systolic blood pressure",
+    "dbp": "Diastolic blood pressure",
+    "hdl": "HDL cholesterol",
+    "urine_protein": "Urine protein",
+    "height": "Height"
+  },
+  "trendDir": {
+    "up": "rising",
+    "down": "falling",
+    "flat": "steady"
+  },
+  "dashboard": {
+    "titleNamed": "{name}, your health dashboard",
+    "titleMine": "My health dashboard",
+    "subtitle": "See your measurement results and tailored care at a glance.",
+    "newMeasurement": "+ New measurement",
+    "emptyTitle": "You do not have any measurements yet.",
+    "startFirst": "Start your first measurement",
+    "urgentNote": "There is a result that needs attention. Please review it and consider re-measuring.",
+    "recentResult": "Latest result",
+    "viewDetail": "View full result →",
+    "todayMissions": "Today's missions",
+    "viewAllMissions": "See all missions →",
+    "myActivity": "My activity",
+    "points": "Points",
+    "streakDays": "Day streak",
+    "badges": "Badges",
+    "measureCount": "{n} measurements"
+  },
+  "missions": {
+    "title": "Missions · Badges",
+    "subtitle": "Steady measurement and small daily habits add up to lasting health habits.",
+    "points": "Points",
+    "pointsSub": "Activity rewards",
+    "streak": "Measurement streak",
+    "streakSub": "Streak",
+    "days": "{n} days",
+    "badgesEarned": "Badges earned",
+    "badgesSub": "Collection",
+    "today": "Today's missions",
+    "doneCount": "{done}/{total} done",
+    "perMission": "+{p}P per mission",
+    "goal": "Health goal",
+    "completed": "Completed",
+    "markDone": "Mark as done",
+    "resetNote": "※ Missions reset every day at midnight and are linked to lifestyle content.",
+    "trendTitle": "Risk improvement trend",
+    "trendEmpty": "Once you start measuring, changes in your risk score will be drawn here.",
+    "riskScore": "Overall risk score",
+    "trendNeedMore": "As measurements build up, we will compare the changes for you.",
+    "trendImproved": "Your recent risk score is lower than when you started. Great trend!",
+    "trendFlat": "Your risk score is not settled yet. Try managing it with missions and re-measurement.",
+    "trendNote": "※ The closer the risk score is to 0, the lower the risk. It combines urinalysis and health checkup data.",
+    "badgeCollection": "Badge collection",
+    "disclaimer": "Points and badges are activity rewards designed to help build health habits, and they do not guarantee any medical effect. Linking to external rewards such as health-behavior incentives is still under policy review. Measurement and lifestyle management are entirely voluntary."
+  },
+  "mission": {
+    "common": {
+      "water": {
+        "label": "Drink 1.5 L of water",
+        "tip": "Sipping little and often supports kidney and urinary tract health."
+      },
+      "walk": {
+        "label": "Take a light 20-minute walk",
+        "tip": "A light walk after meals helps with blood glucose and blood pressure."
+      },
+      "salt": {
+        "label": "Cut back on salty food",
+        "tip": "Try reducing sodium from soups and processed foods."
+      }
+    },
+    "kidney": {
+      "water": {
+        "label": "Drink 1.5 L of water",
+        "tip": "Fluids help the kidneys clear waste products."
+      },
+      "salt": {
+        "label": "Cut back on soup broth and salty food",
+        "tip": "Limiting sodium helps with proteinuria and blood pressure."
+      },
+      "protein_care": {
+        "label": "Review excessive protein supplements",
+        "tip": "They can burden the kidneys, so check that the amount is appropriate."
+      }
+    },
+    "diabetes": {
+      "sugar": {
+        "label": "Choose water over sweet drinks",
+        "tip": "Less sugar means gentler swings in blood glucose."
+      },
+      "walk": {
+        "label": "Walk for 20 minutes after meals",
+        "tip": "Activity after meals lowers post-meal glucose spikes."
+      },
+      "carb_care": {
+        "label": "Cut back on refined carbohydrates",
+        "tip": "Choose whole grains instead of white rice and white flour."
+      }
+    },
+    "hypertension": {
+      "salt": {
+        "label": "Follow a low-salt diet",
+        "tip": "Reducing sodium directly helps with blood pressure control."
+      },
+      "walk": {
+        "label": "20 minutes of aerobic exercise",
+        "tip": "Regular aerobic exercise helps bring blood pressure down."
+      },
+      "bp_check": {
+        "label": "Log your home blood pressure",
+        "tip": "Measure at the same time of day to follow the trend."
+      }
+    },
+    "uti": {
+      "water": {
+        "label": "Drink plenty of water",
+        "tip": "Fluid intake helps flush out bacteria."
+      },
+      "hold_less": {
+        "label": "Do not hold in urine",
+        "tip": "Regular voiding is good for urinary tract health."
+      },
+      "hygiene": {
+        "label": "Review your hygiene habits",
+        "tip": "Basic hygiene reduces recurrence."
+      }
+    }
+  },
+  "badge": {
+    "first_measure": {
+      "label": "First step",
+      "desc": "You completed your first measurement"
+    },
+    "streak_3": {
+      "label": "3 days in a row",
+      "desc": "Measured 3 days in a row"
+    },
+    "streak_7": {
+      "label": "A full week",
+      "desc": "Measured 7 days in a row"
+    },
+    "streak_30": {
+      "label": "A month of habit",
+      "desc": "Measured 30 days in a row"
+    },
+    "mission_master": {
+      "label": "Mission master",
+      "desc": "Completed 10 missions in total"
+    },
+    "risk_improved": {
+      "label": "Turning point",
+      "desc": "Your risk score went down compared with before"
+    }
+  },
+  "goal": {
+    "kidney": "Keep urine protein negative",
+    "diabetes": "Keep urine glucose negative and blood glucose steady",
+    "hypertension": "Keep blood pressure and proteinuria stable",
+    "uti": "Return leukocytes and nitrite to negative",
+    "liver": "Keep bilirubin within normal range"
+  },
+  "result": {
+    "title": "Integrated health management report",
+    "byDisease": "Risk by condition",
+    "urinalysis": "Urinalysis (11 items)",
+    "colItem": "Item",
+    "colValue": "Value",
+    "colNormal": "Normal range",
+    "colJudgment": "Result",
+    "currentUrine": "Current urine <b>{name}</b>: <v>{value}</v>",
+    "normalInline": "normal {normal}",
+    "trendNote": "※ This graph shows only the single item <b>urine {name}</b> (green means normal). Your {disease} risk ({score}) combines urinalysis with your health checkup, so even when this item is normal other factors can still raise the risk.",
+    "phrTitle": "Health checkup data (My HealthWay)",
+    "phrEmpty": "There is no health checkup (PHR) data yet. If you link My Health Records, it is combined with your urinalysis result to build a <b>comprehensive health report</b>.",
+    "meds": "Medication: {list}",
+    "diagnoses": "Diagnoses: {list}",
+    "historyTitle": "Urinalysis history",
+    "historyNote": "Changes per item across your last {n} measurements. Colors show the result (<g>green normal</g>·<o>orange abnormal</o>·<s>gray note</s>), and the bold value on the far right is this measurement.",
+    "phrTrendTitle": "Health checkup trends",
+    "checkupCount": "{n} checkups",
+    "phrTrendNote": "How your checkup values change over time. Even when the current value is normal, a <b>worsening trend</b> (for example falling eGFR or rising fasting glucose) is worth looking at early.",
+    "phrTrendDisclaimer": "※ Checkup trends are for reference and are not a diagnosis. Worsening trends such as falling eGFR or rising fasting glucose are worth reviewing with a healthcare professional at your next visit.",
+    "whyTitle": "Why this result?",
+    "engineLgbm": "AI analysis (LightGBM)",
+    "engineDefault": "Analysis engine",
+    "whyNote": "The factors below influenced this risk assessment. <b>Orange</b> marks factors that raised the risk.",
+    "impact": "Impact {level}",
+    "impactLevel": {
+      "high": "high",
+      "mid": "medium",
+      "low": "low"
+    },
+    "whyDisclaimer": "※ The risk score comes from analyzing your urinalysis together with your health checkup (PHR). Even if a single urine item is normal, your checkup records may push the risk higher.",
+    "careTitle": "Suggested actions",
+    "dueBy": "due {date}",
+    "disclaimer": "This report is screening information that combines urinalysis with health checkup (PHR) data; it is not a medical diagnosis. If symptoms persist or you are concerned, please talk with a healthcare professional.",
+    "samdNote": "Risk stratification and grading are features that presuppose medical device (SaMD) regulatory clearance. (model {model})"
+  },
+  "patient": {
+    "noName": "(no name)",
+    "male": "M",
+    "female": "F",
+    "sex": "Sex",
+    "age": "Age",
+    "years": "{n} yrs",
+    "times": "{n}",
+    "period": "Observation period",
+    "measureCount": "Measurements",
+    "toReport": "Clinical report",
+    "noAssessment": "There is no assessment data.",
+    "riskTitle": "Risk assessment (SaMD output) · multi-condition",
+    "model": "model {version}",
+    "colDisease": "Condition",
+    "colScore": "Risk score",
+    "colGrade": "Grade",
+    "colStandard": "Standard grade",
+    "colSignificance": "Clinical significance",
+    "abnormalCount": "{n} abnormal findings",
+    "mainAnalyteNote": "Indicator related to the leading condition ({disease})",
+    "proteinNote": "Renal function (proteinuria) indicator",
+    "quantTitle": "Quantitative urinalysis (11 items)",
+    "shapTitle": "Risk contributors (SHAP)",
+    "guidelineTitle": "Guideline reference",
+    "staging": "Staging",
+    "followup": "Suggested follow-up",
+    "phrTitle": "My HealthWay (national checkup · medication)",
+    "phrCounts": "{checkups} checkups · {meds} medications",
+    "medClasses": "Medication classes: {list}",
+    "diagnoses": "Diagnoses / findings: {list}",
+    "carePlanTitle": "Care plan · chronic care summary",
+    "noCareAction": "No care actions",
+    "emrNote": "Guideline references and chronic care administrative forms will be generated automatically once EMR integration lands (Step 6+).",
+    "disclaimer": "This summary is a screening analysis result and does not replace clinical diagnosis or prescription. Risk stratification and grading presuppose medical device (SaMD) regulatory clearance. The final judgment rests with the clinician."
+  },
+  "report": {
+    "backToPatient": "Patient dashboard",
+    "title": "Clinical analysis report",
+    "subtitle": "Combined urinalysis + My HealthWay analysis",
+    "subject": "Subject",
+    "pseudoId": "Pseudonym ID",
+    "multiRisk": "Multi-condition risk assessment",
+    "samdCandidate": "SaMD candidate output · model {version}",
+    "colStandardKdigo": "Standard grade (KDIGO-style)",
+    "evidenceTitle": "Evidence — main contributors",
+    "contribution": "contribution {value}",
+    "abnormalTitle": "Abnormal findings summary",
+    "allNormal": "All 11 urinalysis items are within normal range.",
+    "proteinTrend": "Urine protein trend",
+    "chronicFlags": "Chronic condition flags: {list}",
+    "emrNote": "Guideline citations and chronic care administrative forms will expand with EMR integration.",
+    "disclaimer": "This report is a screening analysis combining urinalysis with My HealthWay (PHR) data and does not replace clinical diagnosis or prescription. Risk stratification and grading presuppose medical device (SaMD) regulatory clearance. The final judgment rests with the clinician."
+  },
+  "portal": {
+    "title": "Clinician portal",
+    "subtitle": "See your cohort status and risk priorities at a glance · pseudonym based",
+    "persons": "{n}",
+    "kpiPatients": "Patients",
+    "kpiPatientsSub": "with assessments",
+    "kpiHighRisk": "High risk",
+    "kpiHighRiskSub": "High + Caution",
+    "kpiRecent": "Last 7 days",
+    "kpiRecentSub": "new measurements",
+    "kpiTotal": "Total measurements",
+    "kpiTotalSub": "all tests",
+    "gradeDist": "Risk grade distribution",
+    "diseaseDist": "Leading condition distribution",
+    "colPatient": "Patient",
+    "colTopDisease": "Leading condition",
+    "colLastAssessed": "Last assessed",
+    "report": "Report",
+    "noMatch": "No patients match these filters.",
+    "disclaimer": "※ Risk stratification and grading are SaMD candidate outputs. They do not replace clinical diagnosis or prescription, and the final judgment rests with the clinician."
+  },
+  "careStatus": {
+    "assigned": "Scheduled",
+    "in_progress": "In progress",
+    "done": "Done",
+    "expired": "Expired"
+  },
+  "careDesc": {
+    "lifestyle": "Manage your risk with lifestyle missions.",
+    "recheck": "Re-measuring is suggested so you can check the trend.",
+    "referral": "We will prepare a summary report that helps at your appointment.",
+    "emergency": "At this level, talking with a healthcare professional is suggested."
+  },
+  "carePage": {
+    "empty": "You do not have any care actions yet.",
+    "goMeasure": "Go and measure",
+    "dueAt": "Due: {date}",
+    "referralTitle": "Referral summary",
+    "createSummary": "Create summary",
+    "referralEmpty": "You can create a summary report to bring to a consultation with a healthcare professional.",
+    "created": "Created",
+    "feedbackTitle": "Tell us your re-measurement result",
+    "feedbackNote": "Sharing your follow-up result feeds back into improving analysis accuracy (retraining).",
+    "outcome": {
+      "improved": "It got better",
+      "stable": "About the same",
+      "worsened": "It got worse"
+    },
+    "pdfNote": "※ Referral report PDF and EMR integration will expand with external integrations (Step 6+)."
+  },
+  "chart": {
+    "noData": "There is no trend data yet.",
+    "trendOf": "{name} trend",
+    "current": "Now"
+  },
+  "contentTab": {
+    "all": "All",
+    "result_explain": "Result explained",
+    "disease_edu": "Condition info",
+    "quiz": "Quiz",
+    "lifestyle": "Lifestyle",
+    "risk_action": "Action guide",
+    "motivation": "Motivation",
+    "safety": "Safety notice",
+    "caregiver": "Caregiver"
+  },
+  "contentFormat": {
+    "card": "Card",
+    "article": "Article",
+    "quiz": "Quiz",
+    "checklist": "Checklist",
+    "step_guide": "Step guide"
+  },
+  "contentsPage": {
+    "forYou": "Matched to your result",
+    "empty": "There is no published content in this category.",
+    "note": "All content is published after medical and regulatory review. This information supports health management and does not replace a medical diagnosis.",
+    "source": "Source: {source}",
+    "detailNote": "This content is health management screening information published after medical and regulatory review. It does not replace a medical diagnosis; if you are concerned, talking with a healthcare professional is recommended."
+  },
+  "contentView": {
+    "doneToday": "Done today <b>{done}/{total}</b>",
+    "checklistNote": "※ Mission completion and points are saved to your account under gamification (Step 7).",
+    "quizResult": "Result",
+    "quizScore": "{correct} / {total} correct"
+  },
+  "phr": {
+    "parsing": "Analyzing {n} files…",
+    "badJson": "This is not a JSON file, or the format is not valid.",
+    "uploadFailed": "Upload failed (HTTP {status}). Please check the server log.",
+    "addedToExisting": "{n} records added to your existing data",
+    "linkedTotal": "{n} records linked",
+    "skippedFiles": "({n} files skipped due to errors)",
+    "applied": "Health checkup data applied — {addNote} · {checkups} checkups",
+    "processing": "Processing…",
+    "ctaCompact": "Add / update checkup",
+    "cta": "Link health checkup (My Health Records)",
+    "note": "※ Upload the JSON file (phr_…json) downloaded from My Health Records and it will be combined with your urinalysis into a comprehensive report. You can select <b>several files at once</b>, and uploading again <b>adds to</b> your existing records."
+  },
+  "stub": {
+    "planned": "planned for {step}",
+    "elements": "What goes on this screen",
+    "note": "This is the skeleton based on the screen list in section 9.1 of the plan. The functionality lands in {step}."
+  },
+  "errors": {
+    "title": "Something went wrong for a moment",
+    "lead": "Please try again shortly. If the problem continues, contact your administrator.",
+    "code": "Error code: {digest}",
+    "retry": "Try again",
+    "toDashboard": "To dashboard",
+    "toHome": "To home",
+    "notFoundTitle": "We could not find that page",
+    "notFoundLead": "The address may have changed or the page may have been removed."
+  },
+  "notify": {
+    "resultReady": {
+      "title": "Your test result is ready",
+      "body": "Take a look at this measurement result and your tailored care."
+    },
+    "risk": {
+      "title": "Please check your {disease} result",
+      "body": "Signals related to {disease} came back higher than usual. Please review the result in detail and, if needed, talk with a healthcare professional."
+    },
+    "referral": {
+      "title": "Your referral summary is ready",
+      "body": "We created a summary report you can bring to a consultation. You can find it on the Care screen."
+    },
+    "feedback": {
+      "title": "Your re-measurement result was recorded",
+      "body": "What you shared feeds back into improving analysis accuracy (retraining). Thank you."
+    }
+  },
+  "admin": {
+    "title": "Admin console",
+    "subtitle": "Manage service operations and regulatory/quality indicators at a glance.",
+    "system": "System",
+    "statUsers": "Users",
+    "statUsersSub": "{n} total",
+    "statClinicians": "Active clinicians",
+    "statPending": "{n} awaiting approval",
+    "statApproved": "All approved",
+    "statRecent7": "{n} in last 7 days",
+    "statAssessments": "Risk assessments",
+    "statSamd": "SaMD {n}",
+    "statPublishedTotal": "published / total",
+    "statAudit": "Audit log",
+    "statRules": "{n} rules",
+    "diseaseDist": "Assessments by condition",
+    "contentFlow": "Content workflow",
+    "areas": "Management areas",
+    "manage": "Manage",
+    "view": "View",
+    "waiting": "{n} waiting",
+    "recentActivity": "Recent activity",
+    "noRecords": "No records",
+    "area": {
+      "clinicians": "Clinician approval",
+      "users": "Users · devices",
+      "contents": "Content · CMS",
+      "curation": "Curation rules",
+      "regulatory": "Regulatory track",
+      "audit": "Audit log",
+      "system": "System status",
+      "portal": "Clinician portal"
+    },
+    "areaCliniciansPending": "{n} sign-up requests awaiting approval",
+    "areaCliniciansDesc": "Clinician credential verification and approval",
+    "areaUsersDesc": "Accounts, devices and measurement activity",
+    "areaContentsDesc": "Content authoring, review and publishing workflow",
+    "areaCurationDesc": "Personalization rules and simulator",
+    "areaRegulatoryDesc": "SaMD/wellness separation, labeling and readiness",
+    "areaAuditDesc": "Immutable records of PHI access, content publishing and more",
+    "areaSystemDesc": "Dependency health, security events and observability",
+    "areaPortalDesc": "Patient monitoring and clinical reports"
+  },
+  "contentStatus": {
+    "draft": "Draft",
+    "medical_review": "Medical review",
+    "ra_review": "Regulatory review",
+    "ready": "Ready to publish",
+    "published": "Published",
+    "unpublished": "Unpublished"
+  },
+  "auditAction": {
+    "view_phi": "Patient data access",
+    "view_admin": "Admin console access",
+    "content_publish": "Content published",
+    "content_unpublish": "Content unpublished",
+    "clinician_signup": "Clinician sign-up request",
+    "clinician_verify": "Clinician approval review",
+    "login": "Log in",
+    "login_failed": "Failed login",
+    "login_blocked": "Login blocked (rate limit)",
+    "account_switch": "Account switch"
+  },
+  "audit": {
+    "subtitle": "Records of PHI access, content publishing and administrative actions (latest 200)",
+    "console": "Console",
+    "colTime": "Time",
+    "colActor": "Actor",
+    "colAction": "Action",
+    "colTarget": "Target",
+    "empty": "There are no records.",
+    "note": "※ The audit log is append-only. In production, tamper protection and retention policies apply."
+  },
+  "curation": {
+    "title": "Curation rules",
+    "subtitle": "Published content matching each condition is shown in the personalized feed, in priority order (lower first).",
+    "firstTime": "First measurement",
+    "condDisease": "condition {value}",
+    "condGrade": "grade {value}",
+    "condTrend": "trend {value}",
+    "condStreak": "streak {value}",
+    "condAny": "(any)",
+    "colPriority": "Priority",
+    "colCondition": "Condition",
+    "colContent": "Content shown",
+    "colStatus": "Status",
+    "live": "Live",
+    "notLive": "Not live",
+    "note": "※ A GUI rule editor and conflict simulator will come later. Rules pointing at unpublished content will not surface even when they match."
+  },
+  "accountType": {
+    "b2c": "User",
+    "facility": "Facility",
+    "clinician": "Clinician",
+    "admin": "Admin"
+  },
+  "adminUsers": {
+    "subtitle": "Accounts, devices and measurement activity · pseudonym based",
+    "colUser": "User",
+    "colType": "Type",
+    "colEmail": "Email",
+    "colDevice": "Devices",
+    "active": "Active",
+    "empty": "There are no users of this type.",
+    "note": "※ Real names and contact details are stored encrypted in the secure schema; the console shows pseudonymized and aggregate data. Changes such as account suspension or consent withdrawal are written to the audit log."
+  },
+  "license": {
+    "doctor": "Physician",
+    "nurse": "Nurse",
+    "medtech": "Medical technologist"
+  },
+  "clinicianStatus": {
+    "pending": "Awaiting approval",
+    "active": "Approved",
+    "rejected": "Rejected"
+  },
+  "adminClinicians": {
+    "subtitle": "Once the license is verified and approved, portal login is enabled · {n} awaiting approval",
+    "licenseType": "License type",
+    "licenseNo": "License number",
+    "organization": "Organization",
+    "department": "Department",
+    "rejectReasonShown": "Reason for rejection: {reason}",
+    "rejectReasonPlaceholder": "Reason for rejection (optional)",
+    "approve": "Approve",
+    "reject": "Reject",
+    "empty": "There are no clinician sign-up requests.",
+    "note": "※ License numbers are masked, and approvals and rejections are written to the audit log. In production, external license verification is integrated."
+  },
+  "contentCategory": {
+    "result_explain": "Result explained",
+    "disease_edu": "Condition info",
+    "lifestyle": "Lifestyle",
+    "risk_action": "Action guide",
+    "motivation": "Motivation",
+    "safety": "Safety",
+    "clinician": "Clinician",
+    "caregiver": "Caregiver"
+  },
+  "reviewState": {
+    "approved": "Approved",
+    "rejected": "Rejected",
+    "waiting": "Waiting"
+  },
+  "contentAction": {
+    "submit": "Submit for review",
+    "med_approve": "Medical approve",
+    "med_reject": "Reject",
+    "ra_approve": "Regulatory approve",
+    "ra_reject": "Reject",
+    "publish": "Publish",
+    "unpublish": "Unpublish",
+    "republish": "Republish"
+  },
+  "cms": {
+    "title": "Content management (CMS)",
+    "subtitle": "Review workflow: draft → medical review → regulatory review → ready → published · {n} awaiting review",
+    "colContent": "Content",
+    "colCategory": "Category",
+    "colActions": "Actions",
+    "note": "※ Content that has not passed medical review is never published, and only published content appears in the personalized feed."
+  },
+  "regulatory": {
+    "title": "Regulatory track · pilot readiness",
+    "subtitle": "SaMD (medical device candidate) · wellness separation · regulatory readiness",
+    "intendedUseTitle": "Intended Use",
+    "intendedUseLabel": {
+      "purpose": "Purpose",
+      "users": "Intended users",
+      "environment": "Use environment",
+      "notIntended": "Not intended for"
+    },
+    "intendedUse": {
+      "purpose": "Combines urine chemistry testing with personal health records (PHR) to screen and stratify chronic disease risk, and helps users understand their results, manage daily habits and connect with clinicians.",
+      "users": "General users (health management), clinicians (monitoring support), facilities and checkup centers.",
+      "environment": "Home, checkup centers, healthcare institutions and other settings with an internet connection.",
+      "notIntended": "It does not replace definitive diagnosis, prescription or emergency medical judgment; the final clinical judgment rests with the clinician."
+    },
+    "kpiTotal": "All risk assessments",
+    "kpiSamd": "SaMD candidate output",
+    "kpiWellness": "Wellness output",
+    "kpiPublished": "Published content",
+    "featureTitle": "Track classification by feature (SaMD candidate identification)",
+    "colFeature": "Feature",
+    "colTrack": "Track",
+    "colLikelihood": "SaMD likelihood",
+    "colBasis": "Basis (assumption)",
+    "track": {
+      "samd": "Medical device candidate",
+      "wellness": "Wellness",
+      "review": "Needs review"
+    },
+    "feature": {
+      "risk_strat": {
+        "label": "Risk stratification (risk score and grade per condition)",
+        "likelihood": "High",
+        "basis": "Produces and provides disease risk information"
+      },
+      "standard_grade": {
+        "label": "Standard risk grading (KDIGO-style)",
+        "likelihood": "High",
+        "basis": "Maps onto a clinical classification system"
+      },
+      "explain_report": {
+        "label": "Explanation report (risk evidence, SHAP)",
+        "likelihood": "Medium",
+        "basis": "Dependent on risk stratification"
+      },
+      "measure_collect": {
+        "label": "Measurement collection and quality correction",
+        "likelihood": "Low–medium",
+        "basis": "Data processing in nature"
+      },
+      "lifestyle_content": {
+        "label": "Lifestyle and educational content",
+        "likelihood": "Low",
+        "basis": "General health information"
+      },
+      "gamification": {
+        "label": "Gamification and missions",
+        "likelihood": "Low",
+        "basis": "Motivation"
+      }
+    },
+    "featureNote": "※ This classification is an assumption; actual SaMD applicability and class are confirmed through MFDS pre-consultation. Tracks are separated and logged via the <code>is_samd_output</code> flag.",
+    "prepTitle": "Regulatory submission documents",
+    "prepStarted": "{done}/{total} started",
+    "prepDoc": {
+      "intended_use": {
+        "doc": "Intended Use specification",
+        "note": "Summary defined in this module — formal documentation still needed"
+      },
+      "srs": {
+        "doc": "Software requirements specification",
+        "note": "Linked to the detailed execution plan"
+      },
+      "risk_mgmt": {
+        "doc": "Risk management file (hazard analysis and mitigation)",
+        "note": "Needs to be written in ISO 14971 format"
+      },
+      "lifecycle": {
+        "doc": "Software lifecycle documentation",
+        "note": "IEC 62304 development and verification process"
+      },
+      "vnv": {
+        "doc": "Verification and validation (V&V) records",
+        "note": "Linked to E2E smoke tests and test strategy"
+      },
+      "clinical_eval": {
+        "doc": "Clinical evaluation material",
+        "note": "Literature plus in-house data (pilot)"
+      },
+      "cybersecurity": {
+        "doc": "Cybersecurity documentation",
+        "note": "Security headers, rate limiting and audit log applied (Step 8)"
+      },
+      "usability": {
+        "doc": "Usability engineering material",
+        "note": "Usability testing needed"
+      },
+      "labeling": {
+        "doc": "Labeling material",
+        "note": "Non-diagnostic screening notice applied across all screens"
+      }
+    },
+    "prepStatus": {
+      "ready": "Done",
+      "partial": "Partial",
+      "todo": "Needed"
+    },
+    "pilotTitle": "Clinical validation · pilot phases",
+    "pilotPhase": {
+      "internal": {
+        "phase": "Internal validation",
+        "goal": "Algorithm reproducibility, end-to-end user journey, security review"
+      },
+      "facility": {
+        "phase": "Facility / checkup center pilot",
+        "goal": "Assess usefulness and usability of risk stratification on real-world data"
+      },
+      "clinical": {
+        "phase": "Clinical evaluation",
+        "goal": "Collect performance and safety evidence against standard testing"
+      },
+      "submission": {
+        "phase": "SaMD regulatory submission",
+        "goal": "Submit the technical file and clinical evaluation package (MFDS)"
+      }
+    },
+    "pilotStatus": {
+      "done": "Done",
+      "active": "In progress",
+      "todo": "Planned"
+    },
+    "modelNote": "Tracking {n} model versions · deployment gated by a change-control SOP (assumption).",
+    "disclaimer": "※ The service currently operates on the health management (wellness) track. Risk stratification and grading are candidate outputs that presuppose medical device (SaMD) regulatory clearance. Release scope and timing follow the outcome of regulatory review and pre-consultation."
+  },
+  "secEvent": {
+    "login_failed": "Failed login",
+    "login_blocked": "Rate-limit block",
+    "view_phi": "Patient data access",
+    "clinician_verify": "Clinician approval review"
+  },
+  "system": {
+    "mlUrlMissing": "ML_SERVICE_URL is not configured",
+    "overall": {
+      "healthy": "Healthy",
+      "degraded": "Degraded (ML fallback)",
+      "unhealthy": "Down"
+    },
+    "overallNote": "Overall service status · the database is a core dependency; if ML fails, the rule engine takes over automatically",
+    "depDb": "care/secure schema · core dependency",
+    "depMl": "ML inference service (LightGBM)",
+    "depMlNote": "port 8800 · falls back on failure",
+    "secMetrics": "Security metrics (last 24 hours)",
+    "phiViews": "PHI access",
+    "cumulative": "Cumulative: {list}",
+    "noEvents": "No events",
+    "recentSec": "Recent authentication security events",
+    "noRecentSec": "There are no recent authentication security events.",
+    "runtime": "Runtime information",
+    "env": "Environment",
+    "appVersion": "App version",
+    "healthEndpoint": "Health endpoint",
+    "note": "※ Security headers (CSP, HSTS, X-Frame-Options and more), rate limiting, structured logging and the audit log are in place. In production this expands with external log collection, APM and alerting."
+  },
+  "alertCategory": {
+    "result": "Result",
+    "risk": "Risk",
+    "recheck": "Re-measure",
+    "care": "Care",
+    "info": "Info"
+  },
+  "alerts": {
+    "markAllRead": "Mark all read",
+    "empty": "You have no notifications yet.",
+    "note": "※ External channels such as push, SMS and KakaoTalk expand through delivery adapters (provider keys required)."
+  },
+  "consent": {
+    "sensitive_health": {
+      "label": "[Required] Collection and use of sensitive health information, and terms of service",
+      "desc": "Health information such as urinalysis values and risk analysis is processed to provide the service."
+    },
+    "research": {
+      "label": "[Optional] Use for research and statistics (de-identified)",
+      "desc": "After de-identification, data is used to improve algorithms and for research."
+    },
+    "marketing": {
+      "label": "[Optional] Receive marketing information",
+      "desc": "Receive health tips and service news by email and other channels."
+    },
+    "clinician_terms": {
+      "label": "[Required] Clinician terms of service and consent to provide license information",
+      "desc": "License type, number and organization are processed for credential verification (approval)."
+    },
+    "phi_handling": {
+      "label": "[Required] Pledge on handling and protecting patient health information (PHI)",
+      "desc": "I will access patient information only within the scope of care and management purposes, and I agree that every access is recorded in the audit log."
+    }
+  },
+  "me": {
+    "title": "My page",
+    "profile": "Profile",
+    "name": "Name",
+    "role": "Role",
+    "consent": "Consent management",
+    "agreed": "Agreed",
+    "agreedWithdraw": "Agreed · withdraw",
+    "notAgreedGrant": "Not agreed · agree",
+    "consentNote": "※ Consent changes are recorded in history. Withdrawing consent for sensitive information (required) is handled through customer support.",
+    "devices": "Registered devices",
+    "noDevices": "No devices registered yet. You can connect an analyzer from the measurement screen."
+  },
+  "onboarding": {
+    "welcome": "Welcome",
+    "greet": "Let us get started",
+    "greetNamed": "{name}, let us get started",
+    "lead": "Here is a quick guide to starting health management with a measurement.",
+    "toDashboard": "To dashboard",
+    "step": {
+      "measure": {
+        "title": "Measure",
+        "desc": "Connect an analyzer, or use the demo, to measure 11 urine items."
+      },
+      "read": {
+        "title": "Read the result",
+        "desc": "Read the colors — green (good), yellow (watch), orange (caution), red (high) — together with the explanation."
+      },
+      "safety": {
+        "title": "Safety notice",
+        "desc": "This is screening information. It does not replace a medical diagnosis; if you are concerned, talk with a healthcare professional."
+      }
+    }
+  },
+  "switchPage": {
+    "eyebrow": "Signed in as super account",
+    "title": "Which account would you like to enter?",
+    "lead": "Switch to the selected account to review its screens. You can switch again at any time.",
+    "select": "Select",
+    "sub": {
+      "b2c": "Measure · results · care",
+      "clinician": "Patient monitoring · clinical reports"
+    }
+  },
+  "auth": {
+    "toHome": "Home",
+    "login": "Log in",
+    "signup": "Sign up",
+    "loggingIn": "Logging in…",
+    "signingUp": "Signing up…",
+    "email": "Email",
+    "password": "Password",
+    "name": "Name",
+    "namePlaceholder": "Jane Doe",
+    "passwordPlaceholder": "8 characters or more",
+    "choose": "Please choose",
+    "loginPanelTitle": "Early chronic disease care,<br></br>starting with a urine test",
+    "loginPanelLead": "Experience the closed care loop: measure, analyze, understand, act.",
+    "loginLead": "Log in to your account and continue managing your health.",
+    "noAccount": "No account yet?",
+    "haveAccount": "Already have an account?",
+    "clinicianSignupShort": "Clinician sign-up",
+    "demoAccounts": "Demo accounts (password demo1234)",
+    "demo": {
+      "super": "Super account (pick an account)",
+      "doctor": "Clinician",
+      "user": "User · Choi Eun-seop"
+    },
+    "signupPanelTitle": "Take the first step<br></br>in managing your health",
+    "signupPanelLead": "Sign up in moments and start measuring, analyzing and getting tailored care.",
+    "signupLead": "Create an account and start managing your health.",
+    "areYouClinician": "Are you a clinician?",
+    "clinicianSignup": "Clinician sign-up request",
+    "clinPanelTitle": "Clinician portal<br></br>sign-up request",
+    "clinPanelLead": "A clinician-only account for patient monitoring, clinical reports and chronic disease management.",
+    "clinPanelNote": "To protect patient health information (PHI), your license is verified and an administrator approves the request.",
+    "toGeneralSignup": "General sign-up",
+    "clinLead": "Once your license is verified and an administrator approves it, you can use the portal.",
+    "clinSubmitted": "Your request has been received",
+    "clinSubmittedNote": "Once an administrator verifies your license details and approves the request, you can log in with the email you registered. Login is restricted until then.",
+    "toLoginScreen": "Go to login",
+    "licenseTypeLabel": "License type",
+    "licenseNo": "License (certification) number",
+    "licenseNoPlaceholder": "e.g. No. 12345",
+    "organization": "Healthcare organization",
+    "organizationPlaceholder": "General hospital / clinic",
+    "department": "Department (optional)",
+    "departmentPlaceholder": "Internal medicine, nephrology, etc.",
+    "submitting": "Submitting…",
+    "submitApplication": "Submit request"
+  },
+  "landing": {
+    "nav": {
+      "features": "Features",
+      "how": "How it works",
+      "clinician": "For clinicians",
+      "contact": "Contact"
+    },
+    "getStarted": "Get started",
+    "eyebrow": "11 urine chemistry items · personalized AI",
+    "heroTitle": "One urine test,<br></br>chronic disease spotted <em>early</em>",
+    "heroLead": "We analyze urine chemistry analyzer readings with personalized AI to detect kidney, diabetes and hypertension risk early, then connect you to plain-language explanations and tailored care.",
+    "startFree": "Start for free",
+    "tryMeasure": "Try a measurement",
+    "tryMeasureShort": "Try measuring",
+    "heroDisclaimer": "This service provides screening information and does not replace a medical diagnosis.",
+    "sampleScreen": "Sample screen",
+    "sampleResult": "Sample measurement result",
+    "kidneyIndex": "Kidney risk index · KDIGO A2",
+    "sampleComment": "Your protein level is a little higher than usual. Consider measuring again in a few days to check the trend.",
+    "featuresEyebrow": "Measure · analyze · understand · act",
+    "featuresTitle": "A care loop without gaps",
+    "featuresLead": "Patented technology (P1–P5), turned into a real product experience.",
+    "feature": {
+      "analysis": {
+        "tag": "Analysis",
+        "title": "Personalized risk analysis",
+        "desc": "We compare 11 urine chemistry items against your personal baseline to spot kidney, diabetes and urinary tract infection risk early."
+      },
+      "explain": {
+        "tag": "Explain",
+        "title": "Explainable report",
+        "desc": "We show why you got this result, with contributing items in plain language alongside the clinical evidence."
+      },
+      "loop": {
+        "tag": "Care",
+        "title": "Closed care loop",
+        "desc": "From action guides by grade to re-measurement and referral, measurement carries through to action."
+      },
+      "device": {
+        "tag": "Device",
+        "title": "Analyzer integration",
+        "desc": "Connect directly to a urine chemistry analyzer to measure and analyze without manual entry."
+      }
+    },
+    "howTitle": "Four steps, from measurement to action",
+    "step": {
+      "measure": {
+        "title": "Measure",
+        "desc": "Connect the analyzer and measure 11 urine items."
+      },
+      "analyze": {
+        "title": "Analyze",
+        "desc": "Correction and personalized AI stratify the risk."
+      },
+      "understand": {
+        "title": "Understand",
+        "desc": "Plain explanations and evidence make the result clear."
+      },
+      "act": {
+        "title": "Act",
+        "desc": "Tailored care and content turn insight into practice."
+      }
+    },
+    "forClinicians": "For clinicians",
+    "clinicianTitle": "An evidence-first clinician portal",
+    "clinicianLead": "Risk-ordered patient monitoring, standard grading, contribution evidence and chronic care administrative support. Quantitative reports that support clinical judgment.",
+    "clinicianCta": "Preview the clinician view",
+    "samplePatients": "Sample patient list",
+    "byRisk": "By risk",
+    "demoPatient": {
+      "p1": "Kim",
+      "p2": "Lee",
+      "p3": "Park"
+    },
+    "sampleNote": "Sample screen · risk stratification does not replace diagnosis.",
+    "ctaEyebrow": "Start today",
+    "ctaTitle": "Early chronic disease care,<br></br>starting with one measurement",
+    "trust": {
+      "company": "SDC WellCare Inc.",
+      "encryption": "Health data encrypted and stored separately",
+      "advisory": "Clinician-advised content",
+      "standards": "Designed on medical standards"
+    },
+    "footerCompany": "SDC WellCare Inc.<br></br>Chronic disease management platform built on urine chemistry analysis",
+    "footer": {
+      "product": "Product",
+      "partner": "Partners",
+      "account": "Account"
+    },
+    "footerDisclaimer": "This service provides screening information to support health management and does not replace a medical diagnosis. Risk stratification and grading presuppose medical device (SaMD) regulatory clearance."
+  },
+  "measure": {
+    "title": "Urine test measurement",
+    "lead": "Connect a urine chemistry analyzer and measure 11 items.",
+    "connectTitle": "Analyzer connection (BLE)",
+    "scanConnect": "Scan & connect",
+    "startMeasure": "Start measurement",
+    "bleNote": "YOCHECK / PhotoMT / OptoSta devices. Works in Chrome and Edge only (Web Bluetooth).",
+    "demoTitle": "Demo measurement (no strip needed)",
+    "runDemo": "Run demo measurement",
+    "demoNote": "A synthetic analyzer response packet runs through the same parsing and analysis engine to show a result.",
+    "analyzer": "Analyzer",
+    "demoAnalyzer": "Demo analyzer",
+    "unnamedDevice": "(unnamed)",
+    "measureFailed": "Measurement processing failed",
+    "status": {
+      "idle": "Idle",
+      "unsupported": "Unsupported browser",
+      "scanning": "Scanning for devices…",
+      "connecting": "Connecting…",
+      "connected": "Connected",
+      "disconnected": "Disconnected",
+      "connectFailed": "Connection failed",
+      "measuring": "Measuring…",
+      "sendFailed": "Send failed",
+      "stripError": "Strip error",
+      "analyzing": "Analyzing…",
+      "done": "Measurement complete",
+      "analyzeFailed": "Analysis failed"
+    },
+    "scenario": {
+      "normal": "Normal (all items normal)",
+      "uti": "Suspected UTI (leukocytes, nitrite)",
+      "diabetes": "Suspected diabetes (glucose, ketones)",
+      "kidney": "Suspected kidney issue (proteinuria, occult blood)"
+    },
+    "log": {
+      "noBluetooth": "Web Bluetooth is not supported — Chrome or Edge is required",
+      "selectedDevice": "Selected device: {name}",
+      "subscribed": "Connected and subscribed to notifications — ready to measure",
+      "connectFailed": "Connection failed: {message}",
+      "txCommand": "TX → %TS (measure command)",
+      "awaitingResponse": "Command sent — waiting for response…",
+      "sendFailed": "Failed to send measurement command: {message}",
+      "stripError": "Device ERR — no strip. Insert one and measure again",
+      "received": "Reception complete — analyzing result",
+      "demoRun": "Demo measurement ({scenario})",
+      "analyzed": "Analysis complete — moving to the result screen",
+      "analyzeFailed": "Analysis failed: {message}"
+    }
+  },
+  "authError": {
+    "rateLimited": "Too many login attempts. Please try again in {minutes} minutes.",
+    "badCredentials": "The email or password is incorrect.",
+    "pendingApproval": "Your sign-up request is awaiting administrator approval. You can log in once it is approved.",
+    "rejected": "Your sign-up request was rejected. Please contact an administrator.",
+    "suspended": "This account is restricted. Please contact an administrator.",
+    "requiredFields": "Please enter your name, email and password.",
+    "passwordTooShort": "The password must be at least 8 characters.",
+    "consentRequired": "You must agree to the required consent items to sign up.",
+    "emailTaken": "This email is already registered.",
+    "licenseTypeRequired": "Please select a license type.",
+    "licenseNoRequired": "Please enter your license (certification) number.",
+    "organizationRequired": "Please enter your healthcare organization.",
+    "clinicianConsentRequired": "You must agree to the required consent and pledge items to submit the request.",
+    "emailTakenClinician": "This email already has an account or a pending request.",
+    "noReasonGiven": "No reason given"
+  },
+  "apiError": {
+    "loginRequired": "Login is required.",
+    "loginRequiredMeasure": "Login is required. Measurements are saved only to your own account.",
+    "badJsonBody": "The JSON body could not be parsed.",
+    "phrInvalid": "No valid FHIR PHR data was found. Please upload the JSON file downloaded from My Health Records.",
+    "phrOwnerMismatch": "The uploaded health record belongs to ‘{owner}’ but the signed-in account is ‘{account}’. You can only link health records issued in your own name.",
+    "phrEmpty": "No checkup, medication or diagnosis information was found. Please check that this is a valid My Health Records file.",
+    "phrInternal": "An error occurred while processing the PHR. Please check the server log. (If the dev server is running, a restart may be needed to pick up Prisma changes.)",
+    "measurementInvalid": "Measurement value validation failed",
+    "measuredAtFuture": "The measurement time cannot be in the future.",
+    "analysisInternal": "An error occurred during analysis processing.",
+    "assessmentNotFound": "The risk assessment could not be found."
+  }
+}

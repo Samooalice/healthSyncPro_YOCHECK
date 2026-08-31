@@ -1,0 +1,1316 @@
+{
+  "meta": {
+    "title": "SDC WellCare · 만성질환 관리 플랫폼",
+    "description": "요화학분석기 기반 만성질환 관리 통합플랫폼 — 측정·분석·이해·행동"
+  },
+  "nav": {
+    "dashboard": "대시보드",
+    "measure": "측정",
+    "contents": "콘텐츠",
+    "care": "케어",
+    "missions": "미션",
+    "patients": "환자 목록",
+    "admin": "관리자",
+    "switchAccount": "계정 전환",
+    "alerts": "알림",
+    "logout": "로그아웃",
+    "login": "로그인",
+    "signup": "회원가입"
+  },
+  "common": {
+    "save": "저장",
+    "cancel": "취소",
+    "close": "닫기",
+    "confirm": "확인",
+    "back": "뒤로",
+    "next": "다음",
+    "submit": "제출",
+    "loading": "불러오는 중…",
+    "empty": "표시할 내용이 없습니다.",
+    "none": "없음",
+    "all": "전체",
+    "search": "검색",
+    "print": "인쇄",
+    "dash": "-",
+    "riskOf": "{disease} 위험 {score}",
+    "standardGrade": "KDIGO형 {grade}",
+    "recommended": "맞춤 콘텐츠",
+    "noData": "데이터 없음",
+    "printPdf": "인쇄 / PDF"
+  },
+  "analyte": {
+    "protein": "요단백",
+    "glucose": "요당",
+    "blood": "잠혈",
+    "leukocyte": "백혈구",
+    "ketone": "케톤",
+    "nitrite": "아질산염",
+    "bilirubin": "빌리루빈",
+    "urobilinogen": "유로빌리노겐",
+    "ph": "산도(pH)",
+    "specific_gravity": "비중",
+    "vitamin_c": "비타민C"
+  },
+  "analyteValue": {
+    "negative": "음성",
+    "trace": "미량",
+    "p1": "1+",
+    "p2": "2+",
+    "p3": "3+",
+    "p4": "4+"
+  },
+  "status": {
+    "normal": "정상",
+    "caution": "주의",
+    "abnormal": "이상",
+    "info": "참고",
+    "inRange": "정상 범위"
+  },
+  "grade": {
+    "low": "양호",
+    "moderate": "관찰 필요",
+    "high": "주의",
+    "very_high": "높음"
+  },
+  "care": {
+    "lifestyle": "생활관리 미션",
+    "recheck": "재측정 권장",
+    "referral": "진료의뢰 리포트",
+    "emergency": "의료진 상담 권장"
+  },
+  "disease": {
+    "kidney": "신장",
+    "diabetes": "당뇨",
+    "hypertension": "고혈압",
+    "uti": "요로감염",
+    "liver": "간담도"
+  },
+  "clinical": {
+    "significance": {
+      "protein": "사구체·세뇨관 손상 지표. 지속성 단백뇨는 CKD 진행·심혈관 위험과 연관(알부민뇨 정량 권고).",
+      "glucose": "혈당이 신장 역치(~180mg/dL)를 넘으면 출현. 당뇨 의심·혈당조절 불량 시사(공복혈당·HbA1c 확인).",
+      "blood": "혈뇨 — 요로결석·감염·사구체신염·종양 등 감별 필요. 지속 시 영상·요세포검사 고려.",
+      "leukocyte": "농뇨 — 요로감염 시사. 아질산염·증상과 종합 판단.",
+      "nitrite": "그람음성균(장내세균) 감염 시사. 백혈구 동반 시 요로감염 가능성↑.",
+      "ketone": "케톤뇨 — 당뇨케톤산증·기아·저탄수화물 식이. 고혈당 동반 시 주의.",
+      "bilirubin": "간담도 질환(폐쇄성 황달·간세포 손상) 단서. 간기능검사 연계.",
+      "urobilinogen": "상승 시 용혈·간세포 질환 가능. 빌리루빈과 함께 해석.",
+      "specific_gravity": "신장 농축능·수화상태 반영. 탈수·요붕증 등 단서.",
+      "ph": "산-염기 상태·결석 유형·요로감염 단서. 지속적 알칼리뇨는 요소분해균 감염 시사.",
+      "vitamin_c": "시험지 교란요인 — 고농도 시 잠혈·요당 위음성 가능. 결과 해석 시 주의."
+    },
+    "guideline": {
+      "kidney": {
+        "reference": "KDIGO 2024 CKD 가이드라인 — eGFR·알부민뇨(ACR) 기반 위험계층(녹/황/주황/적)",
+        "staging": "요단백 반정량은 선별 단계. 확진·병기설정은 혈청 크레아티닌(eGFR)·ACR 정량 필요.",
+        "followup": "권고: 혈청 크레아티닌·eGFR, 소변 알부민/크레아티닌비(uACR), 필요 시 신장내과 의뢰."
+      },
+      "diabetes": {
+        "reference": "대한당뇨병학회·ADA — 공복혈당/HbA1c 진단기준 (요당은 보조지표)",
+        "staging": "요당 양성은 고혈당 가능성 시사이나 진단기준 아님. 공복혈당·HbA1c로 확인.",
+        "followup": "권고: 공복혈당·HbA1c, 당뇨 합병증(신장·안저) 선별."
+      },
+      "hypertension": {
+        "reference": "대한고혈압학회 — 진료실/가정혈압 분류, 표적장기손상 평가",
+        "staging": "단백뇨는 고혈압성 표적장기(신장) 손상 지표로 활용. 혈압 측정값과 종합.",
+        "followup": "권고: 반복 혈압측정, 소변 알부민, 심전도·지질 등 위험인자 평가."
+      },
+      "uti": {
+        "reference": "요로감염 진료지침 — 농뇨·아질산염·증상 종합, 무증상 세균뇨 감별",
+        "staging": "백혈구·아질산염 양성 + 배뇨증상 시 UTI 가능성. 무증상은 치료 대상 아닐 수 있음.",
+        "followup": "권고: 증상 동반 시 요배양·항생제 감수성, 재발성은 원인 평가."
+      },
+      "liver": {
+        "reference": "간담도 평가 — 빌리루빈·유로빌리노겐 패턴 + 간기능검사",
+        "staging": "요 빌리루빈/유로빌리노겐은 보조 단서. 패턴(폐쇄성 vs 간세포성) 감별 필요.",
+        "followup": "권고: 간기능검사(AST/ALT/ALP/총빌리루빈), 필요 시 영상검사."
+      }
+    }
+  },
+  "driver": {
+    "source": {
+      "urine": "소변검사",
+      "phr": "건강검진",
+      "pattern": "패턴"
+    },
+    "urine": {
+      "label": "소변 {name}",
+      "high": "소변검사에서 {name}이(가) {value}로 나왔어요 (정상: {normal}).",
+      "normal": "소변검사 {name}은(는) {value}로 정상 범위예요."
+    },
+    "yesNo": {
+      "present": "있음",
+      "absent": "없음",
+      "confirmed": "건강검진 기록에 {label}이(가) 확인됐어요.",
+      "none": "{label}은(는) 없어요."
+    },
+    "applies": {
+      "yes": "해당",
+      "no": "비해당"
+    },
+    "bool": {
+      "yes": "예",
+      "no": "아니오"
+    },
+    "count": {
+      "items": "{n}개",
+      "times": "{n}회"
+    },
+    "label": {
+      "phr_glucose": "건강검진 공복혈당",
+      "phr_egfr": "신장 기능(eGFR)",
+      "phr_bmi": "체질량지수(BMI)",
+      "phr_diabetes": "당뇨 진단·약 복용",
+      "phr_hypertension": "고혈압 진단·약 복용",
+      "phr_dyslipidemia": "이상지질혈증(고지혈증) 기록",
+      "phr_kidney_watch": "신장 관련 주의 소견",
+      "phr_overweight": "과체중",
+      "pos_burden": "양성으로 나온 검사 항목 수",
+      "uti_flag": "백혈구·아질산염 동시 양성",
+      "dka_flag": "요당·케톤 동시 양성",
+      "nephritis_flag": "단백·잠혈 동시 양성",
+      "protein_consec_pos": "단백뇨 연속 양성"
+    },
+    "normal": {
+      "phr_glucose": "100 미만",
+      "phr_egfr": "90 이상",
+      "phr_bmi": "18.5~24.9"
+    },
+    "missing": {
+      "phr_glucose": "공복혈당 기록이 없어요.",
+      "phr_egfr": "eGFR 기록이 없어요.",
+      "phr_bmi": "BMI 기록이 없어요."
+    },
+    "sentence": {
+      "phr_glucose": "건강검진 공복혈당이 {value} mg/dL예요 (정상: 100 미만).",
+      "phr_glucose_high": "건강검진 공복혈당이 {value} mg/dL예요 (정상: 100 미만). 높은 편이에요.",
+      "phr_egfr": "신장 여과기능(eGFR)이 {value}예요 (정상: 90 이상).",
+      "phr_egfr_low": "신장 여과기능(eGFR)이 {value}예요 (정상: 90 이상). 다소 낮아요.",
+      "phr_bmi": "체질량지수(BMI)가 {value}예요 (정상: 18.5~24.9).",
+      "phr_bmi_high": "체질량지수(BMI)가 {value}예요 (정상: 18.5~24.9). 과체중 범위예요.",
+      "phr_overweight": "체중은 정상 범위예요.",
+      "phr_overweight_high": "체중이 다소 높은 편이에요.",
+      "pos_burden": "소변검사에서 {n}개 항목이 양성으로 나왔어요.",
+      "uti_flag": "요로감염을 시사하는 조합(백혈구+아질산염)이 함께 나왔어요.",
+      "dka_flag": "혈당 조절 이상을 시사하는 조합(요당+케톤)이 나왔어요.",
+      "nephritis_flag": "신장 염증을 시사하는 조합(단백+잠혈)이 나왔어요.",
+      "protein_consec_pos": "단백뇨가 {n}회 연속 나왔어요. 지속되는 신호예요."
+    }
+  },
+  "dashboard": {
+    "titleNamed": "{name} 님의 건강 대시보드",
+    "titleMine": "내 건강 대시보드",
+    "subtitle": "측정 결과와 맞춤 케어를 한눈에 확인하세요.",
+    "newMeasurement": "+ 새 측정",
+    "emptyTitle": "아직 측정 기록이 없어요.",
+    "startFirst": "첫 측정 시작하기",
+    "urgentNote": "주의가 필요한 결과가 있어요. 결과를 확인하고 재측정을 권해요.",
+    "recentResult": "최근 결과",
+    "viewDetail": "결과 상세 보기 →",
+    "todayMissions": "오늘의 미션",
+    "viewAllMissions": "미션 전체 보기 →",
+    "myActivity": "내 활동",
+    "points": "포인트",
+    "streakDays": "연속일",
+    "badges": "뱃지",
+    "measureCount": "측정 {n}회"
+  },
+  "missions": {
+    "title": "미션 · 뱃지",
+    "subtitle": "꾸준한 측정과 작은 생활 실천이 건강 습관이 됩니다.",
+    "points": "포인트",
+    "pointsSub": "활동 적립",
+    "streak": "연속 측정",
+    "streakSub": "스트릭",
+    "days": "{n}일",
+    "badgesEarned": "획득 뱃지",
+    "badgesSub": "수집",
+    "today": "오늘의 미션",
+    "doneCount": "{done}/{total} 완료",
+    "perMission": "미션당 +{p}P",
+    "goal": "건강 목표",
+    "completed": "완료됨",
+    "markDone": "완료하기",
+    "resetNote": "※ 미션은 매일 0시 초기화됩니다. 생활관리 콘텐츠와 연동돼요.",
+    "trendTitle": "위험 개선 추세",
+    "trendEmpty": "측정을 시작하면 위험도 변화가 여기에 그려져요.",
+    "riskScore": "대표 위험점수",
+    "trendNeedMore": "측정이 쌓이면 변화를 비교해 드려요.",
+    "trendImproved": "최근 위험점수가 처음보다 낮아졌어요. 좋은 흐름이에요!",
+    "trendFlat": "위험점수가 아직 안정적이지 않아요. 미션과 재측정으로 관리해 보세요.",
+    "trendNote": "※ 위험점수는 0에 가까울수록 낮음. 소변검사와 건강검진을 함께 본 값이에요.",
+    "badgeCollection": "뱃지 컬렉션",
+    "disclaimer": "포인트·뱃지는 건강 습관 형성을 돕기 위한 활동 보상이며, 의료적 효과를 보장하지 않습니다. 건강생활실천지원금 등 외부 보상 연계는 정책 검토 단계입니다. 측정·생활관리는 자율적으로 진행하세요."
+  },
+  "mission": {
+    "common": {
+      "water": {
+        "label": "물 1.5L 마시기",
+        "tip": "조금씩 자주 마시면 신장·요로 건강에 도움이 돼요."
+      },
+      "walk": {
+        "label": "가볍게 20분 걷기",
+        "tip": "식후 가벼운 걷기는 혈당·혈압 관리에 좋아요."
+      },
+      "salt": {
+        "label": "짠 음식 줄이기",
+        "tip": "국물·가공식품의 나트륨을 줄여보세요."
+      }
+    },
+    "kidney": {
+      "water": {
+        "label": "물 1.5L 마시기",
+        "tip": "수분은 신장 노폐물 배출을 도와요."
+      },
+      "salt": {
+        "label": "국물·짠 음식 줄이기",
+        "tip": "나트륨 제한은 단백뇨·혈압 관리에 도움돼요."
+      },
+      "protein_care": {
+        "label": "과한 단백 보충제 점검",
+        "tip": "신장에 부담될 수 있어 적정량을 확인해요."
+      }
+    },
+    "diabetes": {
+      "sugar": {
+        "label": "단 음료 대신 물 마시기",
+        "tip": "당 섭취를 줄이면 혈당 변동이 완만해져요."
+      },
+      "walk": {
+        "label": "식후 20분 걷기",
+        "tip": "식후 활동은 혈당 스파이크를 낮춰요."
+      },
+      "carb_care": {
+        "label": "정제 탄수화물 줄이기",
+        "tip": "흰쌀·밀가루 대신 통곡물을 골라보세요."
+      }
+    },
+    "hypertension": {
+      "salt": {
+        "label": "저염 식단 실천",
+        "tip": "나트륨을 줄이면 혈압 관리에 직접 도움돼요."
+      },
+      "walk": {
+        "label": "유산소 20분",
+        "tip": "규칙적 유산소는 혈압을 낮추는 데 좋아요."
+      },
+      "bp_check": {
+        "label": "가정 혈압 기록",
+        "tip": "같은 시간대에 측정해 추세를 살펴요."
+      }
+    },
+    "uti": {
+      "water": {
+        "label": "물 충분히 마시기",
+        "tip": "수분 섭취는 세균 배출을 도와요."
+      },
+      "hold_less": {
+        "label": "소변 참지 않기",
+        "tip": "규칙적인 배뇨가 요로 건강에 좋아요."
+      },
+      "hygiene": {
+        "label": "위생 습관 점검",
+        "tip": "기본 위생 관리로 재발을 줄여요."
+      }
+    }
+  },
+  "badge": {
+    "first_measure": {
+      "label": "첫 걸음",
+      "desc": "첫 측정을 완료했어요"
+    },
+    "streak_3": {
+      "label": "3일 연속",
+      "desc": "3일 연속 측정"
+    },
+    "streak_7": {
+      "label": "한 주 완주",
+      "desc": "7일 연속 측정"
+    },
+    "streak_30": {
+      "label": "한 달 습관",
+      "desc": "30일 연속 측정"
+    },
+    "mission_master": {
+      "label": "미션 마스터",
+      "desc": "미션 누적 10회 완료"
+    },
+    "risk_improved": {
+      "label": "개선의 시작",
+      "desc": "위험도가 이전보다 낮아졌어요"
+    }
+  },
+  "goal": {
+    "kidney": "요단백 음성 유지하기",
+    "diabetes": "요당 음성·혈당 안정 유지",
+    "hypertension": "혈압·단백뇨 안정 유지",
+    "uti": "백혈구·아질산염 음성 회복",
+    "liver": "빌리루빈 정상 유지"
+  },
+  "phrFlag": {
+    "diabetes": "당뇨",
+    "hypertension": "고혈압",
+    "dyslipidemia": "이상지질혈증",
+    "kidney_watch": "신장주의",
+    "overweight": "과체중"
+  },
+  "phrMetric": {
+    "glucose": "공복혈당",
+    "egfr": "eGFR",
+    "bmi": "BMI",
+    "chol": "총콜레스테롤",
+    "bp": "혈압",
+    "ldl": "LDL콜레스테롤",
+    "tg": "중성지방",
+    "creatinine": "크레아티닌",
+    "hb": "혈색소",
+    "weight": "체중",
+    "waist": "허리둘레",
+    "sbp": "수축기 혈압",
+    "dbp": "이완기 혈압",
+    "hdl": "HDL콜레스테롤",
+    "urine_protein": "요단백",
+    "height": "키"
+  },
+  "trendDir": {
+    "up": "상승",
+    "down": "하락",
+    "flat": "유지"
+  },
+  "result": {
+    "title": "통합 건강관리 상세보고",
+    "byDisease": "질환별 위험",
+    "urinalysis": "요화학 검사 (11항목)",
+    "colItem": "항목",
+    "colValue": "측정값",
+    "colNormal": "정상범위",
+    "colJudgment": "판정",
+    "currentUrine": "현재 소변 <b>{name}</b>: <v>{value}</v>",
+    "normalInline": "정상 {normal}",
+    "trendNote": "※ 이 그래프는 <b>소변 {name}</b> 한 항목이에요(정상이면 초록). {disease} 위험({score})은 소변과 건강검진을 함께 본 값이라, 이 항목이 정상이어도 다른 요인 때문에 위험할 수 있어요.",
+    "phrTitle": "건강검진 데이터 (마이헬스데이터)",
+    "phrEmpty": "아직 건강검진(PHR) 데이터가 없어요. 나의건강기록을 연동하면 요화학 결과와 합쳐 <b>종합 건강 보고서</b>가 만들어져요.",
+    "meds": "복약: {list}",
+    "diagnoses": "진단: {list}",
+    "historyTitle": "요화학 측정 이력",
+    "historyNote": "최근 {n}회 측정의 항목별 변화예요. 색은 판정(<g>초록 정상</g>·<o>주황 이상</o>·<s>회색 참고</s>)을, 가장 오른쪽 굵은 값이 이번 측정이에요.",
+    "phrTrendTitle": "건강검진 추세",
+    "checkupCount": "{n}회 검진",
+    "phrTrendNote": "건강검진 수치의 시간에 따른 변화예요. 현재값이 정상이어도 <b>악화 추세</b>(예: eGFR 하락·공복혈당 상승)면 미리 살펴볼 가치가 있어요.",
+    "phrTrendDisclaimer": "※ 검진 추세는 참고용이며 진단이 아니에요. eGFR 하락·공복혈당 상승 등 악화 추세는 다음 진료 때 의료진과 함께 확인하세요.",
+    "whyTitle": "왜 이런 결과인가요?",
+    "engineLgbm": "AI 분석(LightGBM)",
+    "engineDefault": "분석 엔진",
+    "whyNote": "아래 요인들이 이번 위험 판정에 영향을 줬어요. <b>주황색</b>은 위험을 높인 요인이에요.",
+    "impact": "영향 {level}",
+    "impactLevel": {
+      "high": "높음",
+      "mid": "중간",
+      "low": "낮음"
+    },
+    "whyDisclaimer": "※ 위험도는 소변검사와 건강검진(PHR)을 함께 분석한 결과예요. 소변 한 항목이 정상이어도, 건강검진 기록 때문에 위험이 높게 평가될 수 있어요.",
+    "careTitle": "권장 행동",
+    "dueBy": "기한 {date}",
+    "disclaimer": "본 보고는 요화학 검사와 건강검진(PHR)을 결합한 선별 정보이며, 의료적 진단이 아닙니다. 증상이 지속되거나 우려되면 의료진과 상담하세요.",
+    "samdNote": "위험계층화·등급 산출은 의료기기(SaMD) 인허가를 전제로 하는 기능입니다. (모델 {model})"
+  },
+  "patient": {
+    "noName": "(이름 없음)",
+    "male": "남",
+    "female": "여",
+    "sex": "성별",
+    "age": "나이",
+    "years": "{n}세",
+    "times": "{n}회",
+    "period": "관찰 기간",
+    "measureCount": "측정 횟수",
+    "toReport": "임상 리포트",
+    "noAssessment": "평가 데이터가 없습니다.",
+    "riskTitle": "위험 평가 (SaMD 출력) · 다질환",
+    "model": "모델 {version}",
+    "colDisease": "질환",
+    "colScore": "위험점수",
+    "colGrade": "등급",
+    "colStandard": "표준등급",
+    "colSignificance": "임상적 의의",
+    "abnormalCount": "이상소견 {n}건",
+    "mainAnalyteNote": "대표질환({disease}) 관련 지표",
+    "proteinNote": "신기능(단백뇨) 지표",
+    "quantTitle": "요화학 정량해석 (11항목)",
+    "shapTitle": "위험 기여 요인 (SHAP)",
+    "guidelineTitle": "가이드라인 참고",
+    "staging": "병기 해석",
+    "followup": "권고 추적",
+    "phrTitle": "마이헬스데이터 (국가검진·복약)",
+    "phrCounts": "검진 {checkups}건 · 복약 {meds}종",
+    "medClasses": "복약 분류: {list}",
+    "diagnoses": "진단/소견: {list}",
+    "carePlanTitle": "케어플랜 · 만관제 요약",
+    "noCareAction": "케어 액션 없음",
+    "emrNote": "참고 가이드라인·만관제 행정 폼 자동생성은 EMR 연동(Step 6+)에서 채워집니다.",
+    "disclaimer": "본 요약은 선별 분석 결과로, 임상적 진단·처방을 대체하지 않습니다. 위험계층화·등급 산출은 의료기기(SaMD) 인허가를 전제로 합니다. 최종 판단은 의료진의 임상적 평가에 따릅니다."
+  },
+  "report": {
+    "backToPatient": "환자 대시보드",
+    "title": "임상 분석 리포트",
+    "subtitle": "요화학 + 마이헬스데이터 결합 분석",
+    "subject": "대상",
+    "pseudoId": "가명 ID",
+    "multiRisk": "다질환 위험 평가",
+    "samdCandidate": "SaMD 후보 출력 · 모델 {version}",
+    "colStandardKdigo": "표준등급(KDIGO형)",
+    "evidenceTitle": "근거 — 주요 기여 요인",
+    "contribution": "기여 {value}",
+    "abnormalTitle": "이상소견 요약",
+    "allNormal": "요화학 11항목 모두 정상 범위입니다.",
+    "proteinTrend": "요단백 추세",
+    "chronicFlags": "만성질환 플래그: {list}",
+    "emrNote": "참고 가이드라인 인용·만관제 행정 폼 자동생성은 EMR 연동 시 확장됩니다.",
+    "disclaimer": "본 리포트는 요화학 검사와 마이헬스데이터(PHR)를 결합한 선별 분석 결과로, 임상적 진단·처방을 대체하지 않습니다. 위험계층화·등급 산출은 의료기기(SaMD) 인허가를 전제로 합니다. 최종 판단은 의료진의 임상적 평가에 따릅니다."
+  },
+  "portal": {
+    "title": "의료진 포털",
+    "subtitle": "관리 코호트 현황과 위험 우선순위를 한눈에 확인하세요 · 가명 기반",
+    "persons": "{n}명",
+    "kpiPatients": "관리 환자",
+    "kpiPatientsSub": "평가 보유",
+    "kpiHighRisk": "고위험",
+    "kpiHighRiskSub": "높음+주의",
+    "kpiRecent": "최근 7일 측정",
+    "kpiRecentSub": "신규 유입",
+    "kpiTotal": "누적 측정",
+    "kpiTotalSub": "전체 검사",
+    "gradeDist": "위험등급 분포",
+    "diseaseDist": "대표 위험질환 분포",
+    "colPatient": "환자",
+    "colTopDisease": "대표 위험질환",
+    "colLastAssessed": "최근 평가",
+    "report": "리포트",
+    "noMatch": "조건에 맞는 환자가 없습니다.",
+    "disclaimer": "※ 위험계층화·등급은 의료기기(SaMD) 후보 출력입니다. 임상적 진단·처방을 대체하지 않으며 최종 판단은 의료진의 임상적 평가에 따릅니다."
+  },
+  "careStatus": {
+    "assigned": "예정",
+    "in_progress": "진행중",
+    "done": "완료",
+    "expired": "만료"
+  },
+  "careDesc": {
+    "lifestyle": "생활습관 미션으로 위험을 관리해요.",
+    "recheck": "추세 확인을 위해 재측정을 권해요.",
+    "referral": "진료에 도움이 되는 요약 리포트를 준비해요.",
+    "emergency": "의료진과 상담해 보시길 권하는 단계예요."
+  },
+  "carePage": {
+    "empty": "아직 케어 액션이 없어요.",
+    "goMeasure": "측정하러 가기",
+    "dueAt": "기한: {date}",
+    "referralTitle": "진료의뢰 요약",
+    "createSummary": "요약 만들기",
+    "referralEmpty": "의료진 상담 시 참고할 요약 리포트를 만들 수 있어요.",
+    "created": "생성됨",
+    "feedbackTitle": "재측정 결과 알려주기",
+    "feedbackNote": "다시 측정한 결과를 알려주시면 분석 정확도 개선(재학습)에 반영돼요.",
+    "outcome": {
+      "improved": "좋아졌어요",
+      "stable": "비슷해요",
+      "worsened": "나빠졌어요"
+    },
+    "pdfNote": "※ 진료의뢰 리포트 PDF·EMR 연계는 외부 연동(Step 6+)에서 확장됩니다."
+  },
+  "admin": {
+    "title": "관리자 콘솔",
+    "subtitle": "서비스 운영 현황과 규제·품질 지표를 한눈에 관리하세요.",
+    "system": "시스템",
+    "statUsers": "이용자",
+    "statUsersSub": "전체 {n}",
+    "statClinicians": "활성 의료진",
+    "statPending": "승인대기 {n}",
+    "statApproved": "승인완료",
+    "statRecent7": "최근7일 {n}",
+    "statAssessments": "위험평가",
+    "statSamd": "SaMD {n}",
+    "statPublishedTotal": "게시/전체",
+    "statAudit": "감사로그",
+    "statRules": "규칙 {n}",
+    "diseaseDist": "질환별 평가 분포",
+    "contentFlow": "콘텐츠 워크플로",
+    "areas": "관리 영역",
+    "manage": "관리",
+    "view": "보기",
+    "waiting": "{n} 대기",
+    "recentActivity": "최근 활동",
+    "noRecords": "기록 없음",
+    "area": {
+      "clinicians": "의료진 승인",
+      "users": "사용자 · 디바이스",
+      "contents": "콘텐츠 · CMS",
+      "curation": "큐레이션 규칙",
+      "regulatory": "규제 트랙",
+      "audit": "감사로그",
+      "system": "시스템 상태",
+      "portal": "의료진 포털"
+    },
+    "areaCliniciansPending": "가입 신청 {n}건 승인 대기",
+    "areaCliniciansDesc": "의료진 자격검증·승인 관리",
+    "areaUsersDesc": "계정·기기·측정 현황",
+    "areaContentsDesc": "콘텐츠 작성·검수·게시 워크플로",
+    "areaCurationDesc": "개인화 규칙·시뮬레이터",
+    "areaRegulatoryDesc": "SaMD/웰니스 분리·표시·준비도",
+    "areaAuditDesc": "PHI 접근·콘텐츠 게시 등 불변 기록",
+    "areaSystemDesc": "의존성 헬스·보안 이벤트·관측성",
+    "areaPortalDesc": "환자 모니터링·임상 리포트"
+  },
+  "contentStatus": {
+    "draft": "초안",
+    "medical_review": "의료검수",
+    "ra_review": "규제검수",
+    "ready": "게시대기",
+    "published": "게시중",
+    "unpublished": "게시중단"
+  },
+  "auditAction": {
+    "view_phi": "환자정보 열람",
+    "view_admin": "관리 콘솔 접근",
+    "content_publish": "콘텐츠 게시",
+    "content_unpublish": "콘텐츠 게시중단",
+    "clinician_signup": "의료진 가입신청",
+    "clinician_verify": "의료진 승인심사",
+    "login": "로그인",
+    "login_failed": "로그인 실패",
+    "login_blocked": "로그인 차단(레이트리밋)",
+    "account_switch": "계정 전환"
+  },
+  "audit": {
+    "subtitle": "PHI 접근·콘텐츠 게시·관리 행위 기록 (최근 200건)",
+    "console": "콘솔",
+    "colTime": "시각",
+    "colActor": "행위자",
+    "colAction": "행위",
+    "colTarget": "대상",
+    "empty": "기록이 없습니다.",
+    "note": "※ 감사로그는 추가 전용(append-only)으로 운영하며, 운영 단계에서는 변조 방지·보존기간 정책을 적용합니다."
+  },
+  "curation": {
+    "title": "큐레이션 규칙",
+    "subtitle": "우선순위(낮을수록 먼저)로 조건에 맞는 게시 콘텐츠를 개인화 피드에 노출합니다.",
+    "firstTime": "첫 측정",
+    "condDisease": "질환 {value}",
+    "condGrade": "등급 {value}",
+    "condTrend": "추세 {value}",
+    "condStreak": "연속측정 {value}",
+    "condAny": "(전체)",
+    "colPriority": "우선",
+    "colCondition": "조건",
+    "colContent": "노출 콘텐츠",
+    "colStatus": "상태",
+    "live": "게시중",
+    "notLive": "미게시",
+    "note": "※ 규칙 GUI 편집기·충돌 시뮬레이터는 추후 확장. 미게시 콘텐츠를 가리키는 규칙은 매칭돼도 노출되지 않습니다."
+  },
+  "accountType": {
+    "b2c": "이용자",
+    "facility": "시설",
+    "clinician": "의료진",
+    "admin": "관리자"
+  },
+  "adminUsers": {
+    "subtitle": "계정·기기·측정 현황 · 가명 기반",
+    "colUser": "사용자",
+    "colType": "유형",
+    "colEmail": "이메일",
+    "colDevice": "기기",
+    "active": "활성",
+    "empty": "해당 유형의 사용자가 없습니다.",
+    "note": "※ 실명·연락처는 secure 스키마에 암호화 저장되며, 콘솔은 가명·집계 중심으로 표시합니다. 계정 정지·동의 철회 등 변경 작업은 감사로그에 기록됩니다."
+  },
+  "license": {
+    "doctor": "의사",
+    "nurse": "간호사",
+    "medtech": "임상병리사"
+  },
+  "clinicianStatus": {
+    "pending": "승인 대기",
+    "active": "승인됨",
+    "rejected": "반려됨"
+  },
+  "adminClinicians": {
+    "subtitle": "면허 확인 후 승인하면 포털 로그인이 활성화됩니다 · 승인 대기 {n}건",
+    "licenseType": "면허 종류",
+    "licenseNo": "면허번호",
+    "organization": "소속",
+    "department": "진료과",
+    "rejectReasonShown": "반려 사유: {reason}",
+    "rejectReasonPlaceholder": "반려 사유(선택)",
+    "approve": "승인",
+    "reject": "반려",
+    "empty": "의료진 가입 신청이 없습니다.",
+    "note": "※ 면허번호는 마스킹 표시되며, 승인/반려는 감사로그에 기록됩니다. 운영 단계에서는 면허 진위확인(외부 검증) 절차를 연동합니다."
+  },
+  "contentCategory": {
+    "result_explain": "결과해설",
+    "disease_edu": "질환정보",
+    "lifestyle": "생활관리",
+    "risk_action": "행동지침",
+    "motivation": "동기부여",
+    "safety": "안전",
+    "clinician": "의료진",
+    "caregiver": "보호자"
+  },
+  "reviewState": {
+    "approved": "승인",
+    "rejected": "반려",
+    "waiting": "대기"
+  },
+  "contentAction": {
+    "submit": "검수 제출",
+    "med_approve": "의료 승인",
+    "med_reject": "반려",
+    "ra_approve": "규제 승인",
+    "ra_reject": "반려",
+    "publish": "게시",
+    "unpublish": "게시중단",
+    "republish": "재게시"
+  },
+  "cms": {
+    "title": "콘텐츠 관리 (CMS)",
+    "subtitle": "검수 워크플로: 초안 → 의료검수 → 규제검수 → 게시대기 → 게시 · 검수 대기 {n}건",
+    "colContent": "콘텐츠",
+    "colCategory": "분류",
+    "colActions": "작업",
+    "note": "※ 의료검수를 통과하지 못한 콘텐츠는 게시되지 않으며, 개인화 피드에는 게시중(published) 콘텐츠만 노출됩니다."
+  },
+  "regulatory": {
+    "title": "규제 트랙 · 파일럿 준비",
+    "subtitle": "SaMD(의료기기 후보) · 웰니스 분리 · 인허가 준비도",
+    "intendedUseTitle": "의도된 사용 (Intended Use)",
+    "intendedUseLabel": {
+      "purpose": "사용 목적",
+      "users": "사용 대상",
+      "environment": "사용 환경",
+      "notIntended": "사용 제외"
+    },
+    "intendedUse": {
+      "purpose": "요화학(소변) 검사와 개인 건강기록(PHR)을 결합해 만성질환 위험을 선별·계층화하고, 사용자의 이해·생활관리·의료진 상담 연계를 돕는다.",
+      "users": "일반 이용자(건강관리)·의료진(모니터링 보조)·시설/검진센터.",
+      "environment": "가정·검진센터·의료기관 등에서 인터넷 연결 환경.",
+      "notIntended": "확정 진단·처방·응급의료 판단을 대체하지 않으며, 최종 임상 판단은 의료진에게 있다."
+    },
+    "kpiTotal": "전체 위험평가",
+    "kpiSamd": "SaMD 후보 출력",
+    "kpiWellness": "웰니스 출력",
+    "kpiPublished": "게시 콘텐츠",
+    "featureTitle": "기능별 트랙 분류 (SaMD 후보 식별)",
+    "colFeature": "기능",
+    "colTrack": "트랙",
+    "colLikelihood": "SaMD 가능성",
+    "colBasis": "근거(가정)",
+    "track": {
+      "samd": "의료기기 후보",
+      "wellness": "웰니스",
+      "review": "검토 필요"
+    },
+    "feature": {
+      "risk_strat": {
+        "label": "위험계층화(질환별 위험점수·등급)",
+        "likelihood": "높음",
+        "basis": "질환 위험 정보를 산출·제공"
+      },
+      "standard_grade": {
+        "label": "표준 위험등급 산출(KDIGO형)",
+        "likelihood": "높음",
+        "basis": "임상 분류 체계 매핑"
+      },
+      "explain_report": {
+        "label": "설명 리포트(위험 근거·SHAP)",
+        "likelihood": "중간",
+        "basis": "위험계층화에 종속"
+      },
+      "measure_collect": {
+        "label": "측정 수집·품질보정",
+        "likelihood": "낮음~중간",
+        "basis": "데이터 처리 성격"
+      },
+      "lifestyle_content": {
+        "label": "생활관리·교육 콘텐츠",
+        "likelihood": "낮음",
+        "basis": "일반 건강정보"
+      },
+      "gamification": {
+        "label": "게이미피케이션·미션",
+        "likelihood": "낮음",
+        "basis": "동기부여"
+      }
+    },
+    "featureNote": "※ 분류는 가정이며, 실제 SaMD 해당성·등급은 식약처 사전상담에서 확정합니다. 트랙은 <code>is_samd_output</code> 플래그로 분리·로깅됩니다.",
+    "prepTitle": "인허가 준비 문서",
+    "prepStarted": "{done}/{total} 착수",
+    "prepDoc": {
+      "intended_use": {
+        "doc": "의도된 사용 명세(Intended Use)",
+        "note": "본 모듈에 요약본 정의 — 정식 문서화 필요"
+      },
+      "srs": {
+        "doc": "소프트웨어 요구사항 명세",
+        "note": "상세실행판 연계"
+      },
+      "risk_mgmt": {
+        "doc": "위험관리 파일(위해 분석·완화)",
+        "note": "ISO 14971 형식 작성 필요"
+      },
+      "lifecycle": {
+        "doc": "소프트웨어 생명주기 문서",
+        "note": "IEC 62304 개발·검증 프로세스"
+      },
+      "vnv": {
+        "doc": "검증·확인(V&V) 기록",
+        "note": "E2E 스모크·테스트 전략 연계"
+      },
+      "clinical_eval": {
+        "doc": "임상 평가 자료",
+        "note": "문헌·자체 데이터(파일럿)"
+      },
+      "cybersecurity": {
+        "doc": "사이버보안 문서",
+        "note": "보안 헤더·레이트리밋·감사로그 적용(Step 8)"
+      },
+      "usability": {
+        "doc": "사용적합성(Usability) 자료",
+        "note": "사용성 테스트 필요"
+      },
+      "labeling": {
+        "doc": "라벨링·표시 자료",
+        "note": "비진단·선별 고지문 전 화면 적용"
+      }
+    },
+    "prepStatus": {
+      "ready": "완료",
+      "partial": "일부",
+      "todo": "필요"
+    },
+    "pilotTitle": "임상 검증 · 파일럿 단계",
+    "pilotPhase": {
+      "internal": {
+        "phase": "내부 검증",
+        "goal": "알고리즘 재현성·E2E 사용자 여정·보안 점검"
+      },
+      "facility": {
+        "phase": "시설/검진센터 파일럿",
+        "goal": "실사용 데이터로 위험계층화 유용성·사용성 평가"
+      },
+      "clinical": {
+        "phase": "임상적 평가",
+        "goal": "표준검사 대비 성능·안전성 근거 수집"
+      },
+      "submission": {
+        "phase": "SaMD 인허가 신청",
+        "goal": "기술문서·임상평가 패키지 제출(식약처)"
+      }
+    },
+    "pilotStatus": {
+      "done": "완료",
+      "active": "진행",
+      "todo": "예정"
+    },
+    "modelNote": "모델 버전 {n}종 추적 중 · 변경관리 SOP로 배포 게이트 적용(가정).",
+    "disclaimer": "※ 현재 서비스는 건강관리(웰니스) 트랙으로 운영하며, 위험계층화·등급 산출은 의료기기(SaMD) 인허가를 전제로 한 후보 출력입니다. 출시 범위·시점은 규제 검토·사전상담 결과에 따릅니다."
+  },
+  "secEvent": {
+    "login_failed": "로그인 실패",
+    "login_blocked": "레이트리밋 차단",
+    "view_phi": "환자정보 열람",
+    "clinician_verify": "의료진 승인심사"
+  },
+  "system": {
+    "mlUrlMissing": "ML_SERVICE_URL 미설정",
+    "overall": {
+      "healthy": "정상",
+      "degraded": "성능저하(ML 폴백)",
+      "unhealthy": "장애"
+    },
+    "overallNote": "서비스 종합 상태 · DB는 핵심 의존성, ML 장애 시 룰 엔진으로 자동 폴백",
+    "depDb": "care/secure 스키마 · 핵심 의존성",
+    "depMl": "ML 추론 서비스 (LightGBM)",
+    "depMlNote": "port 8800 · 장애 시 폴백 동작",
+    "secMetrics": "보안 지표 (최근 24시간)",
+    "phiViews": "PHI 열람",
+    "cumulative": "누적: {list}",
+    "noEvents": "이벤트 없음",
+    "recentSec": "최근 인증 보안 이벤트",
+    "noRecentSec": "최근 인증 보안 이벤트가 없습니다.",
+    "runtime": "런타임 정보",
+    "env": "환경",
+    "appVersion": "앱 버전",
+    "healthEndpoint": "헬스 엔드포인트",
+    "note": "※ 보안 헤더(CSP·HSTS·X-Frame-Options 등)·레이트리밋·구조화 로깅·감사로그가 적용됩니다. 운영에선 외부 로그 수집·APM·알림 연동으로 확장합니다."
+  },
+  "alertCategory": {
+    "result": "결과",
+    "risk": "위험",
+    "recheck": "재측정",
+    "care": "케어",
+    "info": "안내"
+  },
+  "alerts": {
+    "markAllRead": "모두 읽음",
+    "empty": "아직 알림이 없어요.",
+    "note": "※ 푸시·SMS·카카오 등 외부 채널은 발송 어댑터로 확장됩니다(제공자 키 필요)."
+  },
+  "consent": {
+    "sensitive_health": {
+      "label": "[필수] 민감정보(건강정보) 수집·이용 및 서비스 이용약관",
+      "desc": "소변검사 측정값·위험분석 등 건강정보를 서비스 제공 목적으로 처리합니다."
+    },
+    "research": {
+      "label": "[선택] 연구·통계 활용(비식별)",
+      "desc": "비식별 처리 후 알고리즘 개선·연구에 활용합니다."
+    },
+    "marketing": {
+      "label": "[선택] 마케팅 정보 수신",
+      "desc": "건강 팁·서비스 소식을 이메일 등으로 받아봅니다."
+    },
+    "clinician_terms": {
+      "label": "[필수] 의료진 이용약관 및 면허 정보 제공 동의",
+      "desc": "면허 종류·번호·소속 정보를 자격 확인(승인) 목적으로 처리합니다."
+    },
+    "phi_handling": {
+      "label": "[필수] 환자 건강정보(PHI) 취급·보호 서약",
+      "desc": "진료·관리 목적 범위 내에서만 환자 정보를 열람하며, 모든 열람은 감사 기록됨에 동의합니다."
+    }
+  },
+  "me": {
+    "title": "마이페이지",
+    "profile": "프로필",
+    "name": "이름",
+    "role": "역할",
+    "consent": "동의 관리",
+    "agreed": "동의함",
+    "agreedWithdraw": "동의함 · 철회",
+    "notAgreedGrant": "동의 안 함 · 동의",
+    "consentNote": "※ 동의 변경은 이력으로 기록됩니다. 민감정보(필수) 철회는 고객센터를 통해 처리됩니다.",
+    "devices": "등록 기기",
+    "noDevices": "등록된 기기가 없어요. 측정 화면에서 측정기를 연결할 수 있어요."
+  },
+  "onboarding": {
+    "welcome": "환영합니다",
+    "greet": "시작해요",
+    "greetNamed": "{name} 님, 시작해요",
+    "lead": "측정으로 건강 관리를 시작하는 방법을 간단히 안내해 드릴게요.",
+    "toDashboard": "대시보드로",
+    "step": {
+      "measure": {
+        "title": "측정",
+        "desc": "측정기와 연결하거나 데모로 소변 11종을 측정해요."
+      },
+      "read": {
+        "title": "결과 읽기",
+        "desc": "초록(양호)·노랑(관찰)·주황(주의)·빨강(높음) 색과 해설을 함께 봐요."
+      },
+      "safety": {
+        "title": "안전 안내",
+        "desc": "선별 정보예요. 의료 진단을 대신하지 않으며, 우려되면 의료진과 상담하세요."
+      }
+    }
+  },
+  "switchPage": {
+    "eyebrow": "슈퍼계정 로그인됨",
+    "title": "어느 계정으로 들어갈까요?",
+    "lead": "선택한 계정으로 전환해 화면을 확인합니다. 언제든 다시 전환할 수 있어요.",
+    "select": "선택",
+    "sub": {
+      "b2c": "측정·결과·케어",
+      "clinician": "환자 모니터링·임상 리포트"
+    }
+  },
+  "auth": {
+    "toHome": "홈으로",
+    "login": "로그인",
+    "signup": "회원가입",
+    "loggingIn": "로그인 중…",
+    "signingUp": "가입 중…",
+    "email": "이메일",
+    "password": "비밀번호",
+    "name": "이름",
+    "namePlaceholder": "홍길동",
+    "passwordPlaceholder": "8자 이상",
+    "choose": "선택하세요",
+    "loginPanelTitle": "소변검사로 시작하는<br></br>만성질환 조기관리",
+    "loginPanelLead": "측정·분석·이해·행동의 케어 폐루프를 경험하세요.",
+    "loginLead": "계정에 로그인하여 건강 관리를 이어가세요.",
+    "noAccount": "아직 계정이 없으신가요?",
+    "haveAccount": "이미 계정이 있으신가요?",
+    "clinicianSignupShort": "의료진 가입",
+    "demoAccounts": "데모 계정 (비밀번호 demo1234)",
+    "demo": {
+      "super": "슈퍼계정 (계정 선택)",
+      "doctor": "의료진",
+      "user": "사용자 · 최은섭"
+    },
+    "signupPanelTitle": "건강 관리의<br></br>첫걸음을 함께",
+    "signupPanelLead": "간단한 가입으로 측정·분석·맞춤 케어를 시작하세요.",
+    "signupLead": "계정을 만들고 건강 관리를 시작하세요.",
+    "areYouClinician": "의료진이신가요?",
+    "clinicianSignup": "의료진 가입 신청",
+    "clinPanelTitle": "의료진 포털<br></br>가입 신청",
+    "clinPanelLead": "환자 모니터링·임상 리포트·만성질환 관리를 위한 의료진 전용 계정입니다.",
+    "clinPanelNote": "환자 건강정보(PHI) 보호를 위해 면허 확인 후 관리자 승인 절차를 거칩니다.",
+    "toGeneralSignup": "일반 회원가입",
+    "clinLead": "면허 확인 후 관리자 승인이 완료되면 포털을 이용할 수 있습니다.",
+    "clinSubmitted": "신청이 접수되었습니다",
+    "clinSubmittedNote": "관리자가 면허 정보를 확인한 뒤 승인하면 등록하신 이메일 계정으로 로그인할 수 있어요. 승인 전에는 로그인이 제한됩니다.",
+    "toLoginScreen": "로그인 화면으로",
+    "licenseNo": "면허(자격) 번호",
+    "licenseNoPlaceholder": "예: 제12345호",
+    "organization": "소속 의료기관",
+    "organizationPlaceholder": "OO병원 / OO의원",
+    "department": "진료과 (선택)",
+    "departmentPlaceholder": "내과, 신장내과 등",
+    "submitting": "신청 중…",
+    "submitApplication": "가입 신청",
+    "licenseTypeLabel": "면허 종류"
+  },
+  "landing": {
+    "nav": {
+      "features": "기능",
+      "how": "작동 방식",
+      "clinician": "의료진",
+      "contact": "문의"
+    },
+    "getStarted": "시작하기",
+    "eyebrow": "요화학 11종 · 개인화 AI",
+    "heroTitle": "소변검사 한 번으로,<br></br>만성질환을 <em>미리</em> 살핍니다",
+    "heroLead": "요화학분석기 측정값을 개인화 AI로 분석해 신장·당뇨·고혈압 위험을 조기에 탐지하고, 이해하기 쉬운 설명과 맞춤 케어로 연결합니다.",
+    "startFree": "무료로 시작하기",
+    "tryMeasure": "측정 체험하기",
+    "tryMeasureShort": "측정 체험",
+    "heroDisclaimer": "선별 정보 제공 서비스이며 의료 진단을 대신하지 않습니다.",
+    "sampleScreen": "예시 화면",
+    "sampleResult": "측정 결과 예시",
+    "kidneyIndex": "신장 위험 지수 · KDIGO A2",
+    "sampleComment": "단백 수치가 평소보다 조금 높아요. 며칠 뒤 재측정해 추세를 확인해 보세요.",
+    "featuresEyebrow": "측정 · 분석 · 이해 · 행동",
+    "featuresTitle": "끊김 없는 케어 폐루프",
+    "featuresLead": "특허기술(P1~P5)을 실제 제품 경험으로 옮겼습니다.",
+    "feature": {
+      "analysis": {
+        "tag": "분석",
+        "title": "개인화 위험분석",
+        "desc": "요화학 11종을 개인 기준선과 비교해 신장·당뇨·요로감염 위험을 조기에 살핍니다."
+      },
+      "explain": {
+        "tag": "설명",
+        "title": "설명가능 리포트",
+        "desc": "왜 그런 결과인지 기여 항목과 쉬운 언어·의료진 근거를 함께 제공합니다."
+      },
+      "loop": {
+        "tag": "케어",
+        "title": "케어 폐루프",
+        "desc": "등급별 행동지침·재측정·진료의뢰까지 측정에서 행동으로 이어집니다."
+      },
+      "device": {
+        "tag": "연동",
+        "title": "측정기 연동",
+        "desc": "요화학 측정기와 직접 연결해 수기 입력 없이 측정·분석합니다."
+      }
+    },
+    "howTitle": "측정에서 행동까지, 네 단계",
+    "step": {
+      "measure": {
+        "title": "측정",
+        "desc": "측정기와 연결해 소변 11종을 측정합니다."
+      },
+      "analyze": {
+        "title": "분석",
+        "desc": "보정과 개인화 AI로 위험을 계층화합니다."
+      },
+      "understand": {
+        "title": "이해",
+        "desc": "쉬운 해설과 근거로 결과를 이해합니다."
+      },
+      "act": {
+        "title": "행동",
+        "desc": "맞춤 케어와 콘텐츠로 관리를 실천합니다."
+      }
+    },
+    "forClinicians": "의료진을 위한",
+    "clinicianTitle": "근거 중심 의료진 포털",
+    "clinicianLead": "환자 위험순 모니터링, 표준등급, 기여 근거, 만관제 행정 지원까지. 임상 판단을 돕는 정량 리포트를 제공합니다.",
+    "clinicianCta": "의료진 화면 미리보기",
+    "samplePatients": "환자 목록 예시",
+    "byRisk": "위험순",
+    "sampleNote": "예시 화면 · 위험계층화는 진단을 대체하지 않습니다.",
+    "ctaEyebrow": "지금 시작하세요",
+    "ctaTitle": "측정 한 번으로 시작하는<br></br>만성질환 조기관리",
+    "trust": {
+      "company": "에스디씨웰케어(주)",
+      "encryption": "건강정보 암호화·분리 보관",
+      "advisory": "의료진 자문 콘텐츠",
+      "standards": "의료 표준 기반 설계"
+    },
+    "footerCompany": "에스디씨웰케어 주식회사<br></br>요화학분석기 기반 만성질환 관리 플랫폼",
+    "footer": {
+      "product": "제품",
+      "partner": "파트너",
+      "account": "계정"
+    },
+    "footerDisclaimer": "본 서비스는 건강관리를 돕는 선별 정보를 제공하며 의료 진단을 대신하지 않습니다. 위험계층화·등급 산출은 의료기기(SaMD) 인허가를 전제로 합니다.",
+    "demoPatient": {
+      "p1": "김○○",
+      "p2": "이○○",
+      "p3": "박○○"
+    }
+  },
+  "measure": {
+    "title": "소변검사 측정",
+    "lead": "요화학 측정기와 연결해 11종을 측정합니다.",
+    "connectTitle": "검사기 연결 (BLE)",
+    "scanConnect": "기기 검색 & 연결",
+    "startMeasure": "측정 시작",
+    "bleNote": "YOCHECK / PhotoMT / OptoSta 기기. Chrome·Edge에서만 동작(Web Bluetooth).",
+    "demoTitle": "데모 측정 (스트립 없이)",
+    "runDemo": "데모 측정 실행",
+    "demoNote": "측정기 응답 패킷을 합성해 동일 파싱·분석 엔진으로 결과를 표시합니다.",
+    "analyzer": "검사기",
+    "demoAnalyzer": "데모 검사기",
+    "unnamedDevice": "(이름없음)",
+    "measureFailed": "측정 처리 실패",
+    "status": {
+      "idle": "대기중",
+      "unsupported": "미지원 브라우저",
+      "scanning": "기기 검색중…",
+      "connecting": "연결중…",
+      "connected": "연결됨",
+      "disconnected": "연결 끊김",
+      "connectFailed": "연결 실패",
+      "measuring": "측정중…",
+      "sendFailed": "전송 실패",
+      "stripError": "스트립 오류",
+      "analyzing": "분석중…",
+      "done": "측정 완료",
+      "analyzeFailed": "분석 실패"
+    },
+    "scenario": {
+      "normal": "정상 (모든 항목 정상)",
+      "uti": "요로감염 의심 (백혈구·아질산염)",
+      "diabetes": "당뇨 의심 (포도당·케톤)",
+      "kidney": "신장 의심 (단백뇨·잠혈)"
+    },
+    "log": {
+      "noBluetooth": "Web Bluetooth 미지원 — Chrome/Edge 필요",
+      "selectedDevice": "선택 기기: {name}",
+      "subscribed": "연결·Notify 구독 완료 — 측정 시작 가능",
+      "connectFailed": "연결 실패: {message}",
+      "txCommand": "TX → %TS (측정 명령)",
+      "awaitingResponse": "명령 전송 — 응답 대기중…",
+      "sendFailed": "측정 전송 실패: {message}",
+      "stripError": "기기 ERR — 스트립 없음. 삽입 후 재측정",
+      "received": "수신 완료 — 결과 분석",
+      "demoRun": "데모 측정 ({scenario})",
+      "analyzed": "분석 완료 — 결과 화면으로 이동",
+      "analyzeFailed": "분석 실패: {message}"
+    }
+  },
+  "chart": {
+    "noData": "추세 데이터가 아직 없어요.",
+    "trendOf": "{name} 추세",
+    "current": "현재"
+  },
+  "contentTab": {
+    "all": "전체",
+    "result_explain": "결과 해설",
+    "disease_edu": "질환 정보",
+    "quiz": "퀴즈",
+    "lifestyle": "생활관리",
+    "risk_action": "행동지침",
+    "motivation": "동기부여",
+    "safety": "안전·고지",
+    "caregiver": "보호자"
+  },
+  "contentFormat": {
+    "card": "카드",
+    "article": "아티클",
+    "quiz": "퀴즈",
+    "checklist": "체크리스트",
+    "step_guide": "단계 가이드"
+  },
+  "contentsPage": {
+    "forYou": "내 결과 맞춤",
+    "empty": "이 분류에 게시된 콘텐츠가 없어요.",
+    "note": "모든 콘텐츠는 의료검수·규제검수를 거쳐 게시됩니다. 본 정보는 건강관리를 돕는 선별 정보이며 의료 진단을 대신하지 않습니다.",
+    "source": "출처: {source}",
+    "detailNote": "본 콘텐츠는 의료검수·규제검수를 거쳐 게시된 건강관리 선별 정보예요. 의료 진단을 대신하지 않으며, 우려되면 의료진과 상담해 보시길 권해요."
+  },
+  "contentView": {
+    "doneToday": "오늘 완료 <b>{done}/{total}</b>",
+    "checklistNote": "※ 미션 완료·포인트 적립은 게이미피케이션(Step 7)에서 계정에 저장됩니다.",
+    "quizResult": "결과",
+    "quizScore": "{correct} / {total} 정답"
+  },
+  "phr": {
+    "parsing": "파일 {n}개 분석 중…",
+    "badJson": "JSON 파일이 아니거나 형식이 올바르지 않아요.",
+    "uploadFailed": "업로드 실패 (HTTP {status}). 서버 로그를 확인하세요.",
+    "addedToExisting": "기존에 {n}건 추가",
+    "linkedTotal": "{n}건 연동",
+    "skippedFiles": "(오류 파일 {n}개 제외)",
+    "applied": "건강검진 데이터 반영 — {addNote} · 검진 {checkups}회",
+    "processing": "처리 중…",
+    "ctaCompact": "건강검진 추가/갱신",
+    "cta": "건강검진(나의건강기록) 연동하기",
+    "note": "※ 나의건강기록에서 내려받은 JSON 파일(phr_…json)을 올리면 요화학 결과와 합쳐 종합 보고서가 만들어져요. <b>여러 파일을 한 번에</b> 선택할 수 있고, 다시 올리면 기존 기록에 <b>누적</b>돼요."
+  },
+  "stub": {
+    "planned": "{step} 예정",
+    "elements": "이 화면에 들어갈 요소",
+    "note": "계획서 9.1 화면 목록 기준 골격입니다. 기능은 {step}에서 채워집니다."
+  },
+  "errors": {
+    "title": "일시적인 문제가 발생했어요",
+    "lead": "잠시 후 다시 시도해 주세요. 문제가 계속되면 관리자에게 문의해 주세요.",
+    "code": "오류 코드: {digest}",
+    "retry": "다시 시도",
+    "toDashboard": "대시보드로",
+    "toHome": "홈으로",
+    "notFoundTitle": "페이지를 찾을 수 없어요",
+    "notFoundLead": "주소가 바뀌었거나 삭제된 페이지일 수 있어요."
+  },
+  "diseaseFull": {
+    "kidney": "만성신장질환",
+    "diabetes": "당뇨",
+    "hypertension": "고혈압",
+    "uti": "요로감염",
+    "liver": "간담도"
+  },
+  "feature": {
+    "protein_dev": "요단백",
+    "blood_dev": "잠혈",
+    "leukocyte_dev": "백혈구",
+    "protein_personal_dev": "개인 기준선 대비 단백 상승",
+    "protein_persistence": "단백뇨 지속",
+    "nephritis_rule": "단백+잠혈(사구체신염 시사)",
+    "phr_egfr": "검진 eGFR 저하",
+    "phr_egfr_trend": "검진 eGFR 하락 추세",
+    "phr_kidney_watch": "검진 신장 주의소견",
+    "phr_htn": "고혈압(신손상 위험)",
+    "phr_dm": "당뇨(당뇨병성 신증 위험)",
+    "glucose_urine": "요당",
+    "ketone_urine": "케톤",
+    "dka_rule": "요당+케톤(DKA 시사)",
+    "phr_fasting_glucose": "검진 공복혈당",
+    "phr_glucose_trend": "검진 공복혈당 상승 추세",
+    "phr_dm_flag": "당뇨 진단/복약",
+    "phr_overweight": "과체중(BMI≥25)",
+    "protein_marker": "요단백(신손상 지표)",
+    "phr_htn_flag": "고혈압 진단/복약",
+    "leukocyte": "백혈구",
+    "nitrite": "아질산염",
+    "blood": "잠혈",
+    "uti_rule": "백혈구+아질산염(세균성 UTI 시사)",
+    "bilirubin": "빌리루빈",
+    "urobilinogen": "유로빌리노겐"
+  },
+  "safety": {
+    "screening": "본 정보는 건강관리를 돕기 위한 선별 정보이며, 의료적 진단이 아닙니다.",
+    "recheck": "한 번의 결과보다 여러 번의 추세가 중요합니다. 재측정을 권장합니다.",
+    "consult": "증상이 지속되거나 우려되면 의료진과 상담하세요.",
+    "emergency": "위험 신호가 뚜렷하게 나타났어요. 의료진과 상담해 보시길 권합니다.",
+    "notDx": "이 결과만으로 질환을 진단하지 않습니다.",
+    "privacy": "건강정보는 분리·보호되며, 본인 동의 범위에서만 활용됩니다.",
+    "vitc": "비타민C 섭취는 일부 항목(잠혈·요당)의 반응을 낮출 수 있어 보정에 반영했습니다."
+  },
+  "explain": {
+    "tone": {
+      "low": "현재 두드러진 위험 신호는 보이지 않아요.",
+      "moderate": "평소보다 살펴볼 신호가 있어요. 며칠 뒤 재측정해 추세를 확인해 보세요.",
+      "high": "주의가 필요한 수준이에요. 가까운 시일에 재측정하고 의료진과 상의해 보시길 권해요.",
+      "very_high": "위험 신호가 뚜렷하게 나타났어요. 의료진과 상담해 보시길 권해요."
+    },
+    "userLow": "{disease}: {tone}",
+    "userSignals": "{disease} 관련 신호({labels})가 확인됐어요. {tone}",
+    "clinician": "{disease} 위험 {score} ({grade}). 주요 기여: {contrib}. 선별 분석 결과로 진단·처방을 대체하지 않음.",
+    "clinicianStd": "{disease} 위험 {score} ({grade}) · 표준등급 {standard}. 주요 기여: {contrib}. 선별 분석 결과로 진단·처방을 대체하지 않음.",
+    "ifImproved": "{label}이(가) 개선되면"
+  },
+  "rec": {
+    "kidney": {
+      "hydration": "충분한 수분 섭취",
+      "less_salt": "짠 음식 줄이기",
+      "bp_glucose": "혈압·혈당 관리",
+      "kidney_eval": "단백뇨 지속 시 신기능 평가 상담"
+    },
+    "diabetes": {
+      "fasting_glucose": "공복 혈당 확인",
+      "less_carb": "정제 탄수화물·단 음료 줄이기",
+      "walk_after_meal": "식후 가벼운 활동",
+      "glucose_test": "반복 시 혈당 검사 상담"
+    },
+    "hypertension": {
+      "low_salt_weight": "저염식·체중 관리",
+      "bp_log": "규칙적 혈압 기록",
+      "consult_uncontrolled": "혈압이 잘 조절되지 않으면 상담"
+    },
+    "uti": {
+      "hydration": "충분한 수분 섭취",
+      "no_holding": "배뇨를 오래 참지 않기",
+      "consult_symptoms": "배뇨통·빈뇨 등 증상 시 의료진 상담"
+    },
+    "liver": {
+      "avoid_alcohol": "과음 피하기",
+      "liver_test": "지속 시 간기능 혈액검사 상담"
+    }
+  },
+  "medClass": {
+    "diabetes": "당뇨",
+    "hypertension": "고혈압",
+    "dyslipidemia": "이상지질혈증",
+    "gastro": "위장질환"
+  },
+  "notify": {
+    "resultReady": {
+      "title": "검사 결과가 준비됐어요",
+      "body": "이번 측정 결과와 맞춤 케어를 확인해 보세요."
+    },
+    "risk": {
+      "title": "{disease} 결과를 확인해 주세요",
+      "body": "{disease} 관련 신호가 평소보다 높게 나왔어요. 결과를 자세히 확인하고, 필요하면 의료진과 상담해 보시길 권해요."
+    },
+    "referral": {
+      "title": "진료의뢰 요약이 준비됐어요",
+      "body": "의료진과 상담 시 참고할 수 있는 요약 리포트를 만들었어요. 케어 화면에서 확인할 수 있어요."
+    },
+    "feedback": {
+      "title": "재측정 결과가 등록됐어요",
+      "body": "알려주신 결과는 분석 정확도 개선(재학습)에 반영돼요. 감사합니다."
+    }
+  },
+  "authError": {
+    "rateLimited": "로그인 시도가 많습니다. {minutes}분 후 다시 시도해 주세요.",
+    "badCredentials": "이메일 또는 비밀번호가 올바르지 않습니다.",
+    "pendingApproval": "가입 신청이 관리자 승인 대기 중입니다. 승인 후 로그인할 수 있어요.",
+    "rejected": "가입 신청이 반려되었습니다. 관리자에게 문의해 주세요.",
+    "suspended": "이용이 제한된 계정입니다. 관리자에게 문의해 주세요.",
+    "requiredFields": "이름·이메일·비밀번호를 모두 입력하세요.",
+    "passwordTooShort": "비밀번호는 8자 이상이어야 합니다.",
+    "consentRequired": "필수 동의 항목에 동의해야 가입할 수 있습니다.",
+    "emailTaken": "이미 가입된 이메일입니다.",
+    "licenseTypeRequired": "면허 종류를 선택하세요.",
+    "licenseNoRequired": "면허(자격) 번호를 입력하세요.",
+    "organizationRequired": "소속 의료기관을 입력하세요.",
+    "clinicianConsentRequired": "필수 동의·서약 항목에 동의해야 신청할 수 있습니다.",
+    "emailTakenClinician": "이미 가입(신청)된 이메일입니다.",
+    "noReasonGiven": "사유 미기재"
+  },
+  "apiError": {
+    "loginRequired": "로그인이 필요합니다.",
+    "loginRequiredMeasure": "로그인이 필요합니다. 측정은 본인 계정으로만 저장됩니다.",
+    "badJsonBody": "JSON 본문을 파싱할 수 없습니다.",
+    "phrInvalid": "유효한 FHIR PHR 데이터를 찾지 못했습니다. 나의건강기록에서 내려받은 JSON 파일을 올려주세요.",
+    "phrOwnerMismatch": "업로드한 건강기록의 주인은 ‘{owner}’인데 로그인 계정은 ‘{account}’입니다. 본인 명의의 나의건강기록만 연동할 수 있습니다.",
+    "phrEmpty": "검진·복약·진단 정보를 찾지 못했습니다. 올바른 나의건강기록 파일인지 확인해주세요.",
+    "phrInternal": "PHR 처리 중 오류가 발생했습니다. 서버 로그를 확인하세요. (dev 서버 실행 중이라면 prisma 변경 반영을 위해 재시작이 필요할 수 있어요.)",
+    "measurementInvalid": "측정값 검증 실패",
+    "measuredAtFuture": "측정 시각은 미래일 수 없습니다.",
+    "analysisInternal": "분석 처리 중 오류가 발생했습니다.",
+    "assessmentNotFound": "위험평가를 찾을 수 없습니다."
+  }
+}

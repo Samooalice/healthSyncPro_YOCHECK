@@ -11,7 +11,13 @@
     "db:pull": "prisma db pull",
     "db:generate": "prisma generate",
     "db:seed": "node scripts/seed.mjs",
-    "smoke": "tsx --env-file=.env.local scripts/e2e-smoke.mts"
+    "smoke": "tsx --env-file=.env.local scripts/e2e-smoke.mts",
+    "i18n:scan": "python scripts/i18n/i18n_scan.py",
+    "i18n:coverage": "python scripts/i18n/i18n_coverage.py",
+    "i18n:icu": "node scripts/i18n-icu-check.mjs",
+    "i18n:check": "npm run i18n:coverage && npm run i18n:icu && npm run i18n:content",
+    "i18n:content": "node scripts/i18n-content-check.mjs",
+    "db:seed-i18n": "node scripts/seed-content-i18n.mjs"
   },
   "dependencies": {
     "@prisma/adapter-pg": "^7.8.0",
@@ -20,6 +26,7 @@
     "js-yaml": "^4.2.0",
     "lucide-react": "^1.17.0",
     "next": "16.2.9",
+    "next-intl": "^4.14.1",
     "pg": "^8.21.0",
     "react": "19.2.4",
     "react-dom": "19.2.4",

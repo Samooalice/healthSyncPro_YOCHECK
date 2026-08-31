@@ -4,6 +4,7 @@
 // 여러 파일(검진/진료/투약/예방접종 분리본) 또는 통합 JSON 모두 선택 가능. 기존 PHR에 누적 병합.
 import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 
 interface Props {
   /** 현재 보고 있는 측정 id — 업로드 후 이 측정을 PHR 결합으로 재분석한다. */
@@ -13,6 +14,7 @@ interface Props {
 }
 
 export default function PhrUpload({ measurementId, compact = false }: Props) {
+  const t = useTranslations("phr");
   const router = useRouter();
   const fileRef = useRef<HTMLInputElement>(null);
   const [status, setStatus] = useState<"idle" | "busy" | "err">("idle");
@@ -22,7 +24,7 @@ export default function PhrUpload({ measurementId, compact = false }: Props) {
     const files = Array.from(e.target.files ?? []);
     if (files.length === 0) return;
     setStatus("busy");
-    setMsg(`파일 ${files.length}개 분석 중…`);
+    setMsg(t("parsing", { n: files.length }));
     try {
       // 각 파일을 JSON 으로 파싱 → datasets 배열로 전송(서버에서 추출·병합·중복제거)
       const datasets: unknown[] = [];
@@ -34,7 +36,7 @@ export default function PhrUpload({ measurementId, compact = false }: Props) {
           bad.push(f.name);
         }
       }
-      if (datasets.length === 0) throw new Error("JSON 파일이 아니거나 형식이 올바르지 않아요.");
+      if (datasets.length === 0) throw new Error(t("badJson"));
 
       const res = await fetch("/api/v1/phr", {
         method: "POST",
@@ -43,11 +45,13 @@ export default function PhrUpload({ measurementId, compact = false }: Props) {
       });
       const text = await res.text();
       const data = text ? JSON.parse(text) : {};
-      if (!res.ok) throw new Error(data?.detail ?? `업로드 실패 (HTTP ${res.status}). 서버 로그를 확인하세요.`);
+      if (!res.ok) throw new Error(data?.detail ?? t("uploadFailed", { status: res.status }));
 
-      const addNote = data.is_merge ? `기존에 ${data.resource_added}건 추가` : `${data.resource_total}건 연동`;
-      const badNote = bad.length ? ` (오류 파일 ${bad.length}개 제외)` : "";
-      setMsg(`건강검진 데이터 반영 — ${addNote} · 검진 ${data.checkups}회${badNote}`);
+      const addNote = data.is_merge
+        ? t("addedToExisting", { n: data.resource_added })
+        : t("linkedTotal", { n: data.resource_total });
+      const badNote = bad.length ? " " + t("skippedFiles", { n: bad.length }) : "";
+      setMsg(t("applied", { addNote, checkups: data.checkups }) + badNote);
       if (data.assessment_id) router.push(`/result/${data.assessment_id}`);
       else router.refresh();
     } catch (err) {
@@ -73,14 +77,14 @@ export default function PhrUpload({ measurementId, compact = false }: Props) {
             : "w-full rounded-xl bg-[#1a8f84] py-2.5 text-sm font-semibold text-white transition hover:bg-[#157a70] disabled:opacity-50"
         }
       >
-        {busy ? "처리 중…" : compact ? "건강검진 추가/갱신" : "건강검진(나의건강기록) 연동하기"}
+        {busy ? t("processing") : compact ? t("ctaCompact") : t("cta")}
       </button>
       {msg && (
         <p className={`mt-2 text-xs ${status === "err" ? "text-risk-red" : "text-gray-500"}`}>{msg}</p>
       )}
       {!compact && status !== "err" && (
         <p className="mt-1 text-[11px] leading-relaxed text-gray-400">
-          ※ 나의건강기록에서 내려받은 JSON 파일(phr_…json)을 올리면 요화학 결과와 합쳐 종합 보고서가 만들어져요. <b>여러 파일을 한 번에</b> 선택할 수 있고, 다시 올리면 기존 기록에 <b>누적</b>돼요.
+          {t.rich("note", { b: (c) => <b>{c}</b> })}
         </p>
       )}
     </div>

@@ -1,0 +1,1316 @@
+{
+  "meta": {
+    "title": "SDC WellCare · 慢性病管理平台",
+    "description": "以尿液化學分析儀為基礎的慢性病管理整合平台 — 檢測、分析、理解、行動"
+  },
+  "nav": {
+    "dashboard": "儀表板",
+    "measure": "檢測",
+    "contents": "內容",
+    "care": "關懷",
+    "missions": "任務",
+    "patients": "病人清單",
+    "admin": "管理者",
+    "switchAccount": "切換帳號",
+    "alerts": "通知",
+    "logout": "登出",
+    "login": "登入",
+    "signup": "註冊"
+  },
+  "common": {
+    "save": "儲存",
+    "cancel": "取消",
+    "close": "關閉",
+    "confirm": "確認",
+    "back": "返回",
+    "next": "下一步",
+    "submit": "送出",
+    "loading": "載入中…",
+    "empty": "沒有可顯示的內容。",
+    "none": "無",
+    "all": "全部",
+    "search": "搜尋",
+    "print": "列印",
+    "dash": "-",
+    "riskOf": "{disease}風險 {score}",
+    "standardGrade": "KDIGO型 {grade}",
+    "recommended": "為你推薦的內容",
+    "noData": "沒有資料",
+    "printPdf": "列印 / PDF"
+  },
+  "analyte": {
+    "protein": "尿蛋白",
+    "glucose": "尿糖",
+    "blood": "潛血",
+    "leukocyte": "白血球",
+    "ketone": "酮體",
+    "nitrite": "亞硝酸鹽",
+    "bilirubin": "膽紅素",
+    "urobilinogen": "尿膽素原",
+    "ph": "酸鹼度(pH)",
+    "specific_gravity": "比重",
+    "vitamin_c": "維生素C"
+  },
+  "analyteValue": {
+    "negative": "陰性",
+    "trace": "微量",
+    "p1": "1+",
+    "p2": "2+",
+    "p3": "3+",
+    "p4": "4+"
+  },
+  "status": {
+    "normal": "正常",
+    "caution": "臨界",
+    "abnormal": "異常",
+    "info": "參考",
+    "inRange": "正常範圍內"
+  },
+  "grade": {
+    "low": "良好",
+    "moderate": "需觀察",
+    "high": "注意",
+    "very_high": "偏高"
+  },
+  "care": {
+    "lifestyle": "生活管理任務",
+    "recheck": "建議複測",
+    "referral": "就醫參考摘要",
+    "emergency": "建議諮詢醫護人員"
+  },
+  "disease": {
+    "kidney": "腎臟",
+    "diabetes": "糖尿病",
+    "hypertension": "高血壓",
+    "uti": "泌尿道感染",
+    "liver": "肝膽"
+  },
+  "diseaseFull": {
+    "kidney": "慢性腎臟病",
+    "diabetes": "糖尿病",
+    "hypertension": "高血壓",
+    "uti": "泌尿道感染",
+    "liver": "肝膽"
+  },
+  "clinical": {
+    "significance": {
+      "protein": "腎絲球、腎小管損傷的指標。持續性蛋白尿與慢性腎臟病進展及心血管風險相關(建議定量檢測白蛋白尿)。",
+      "glucose": "血糖超過腎糖閾值(約180mg/dL)時出現。提示疑似糖尿病或血糖控制不佳(需檢查空腹血糖與糖化血色素)。",
+      "blood": "血尿 — 需鑑別泌尿道結石、感染、腎絲球腎炎、腫瘤等。持續時可考慮影像學與尿液細胞學檢查。",
+      "leukocyte": "膿尿 — 提示泌尿道感染。需結合亞硝酸鹽與症狀綜合判斷。",
+      "nitrite": "提示革蘭氏陰性菌(腸道細菌)感染。合併白血球時,泌尿道感染的可能性提高。",
+      "ketone": "酮尿 — 糖尿病酮酸中毒、飢餓或低碳水化合物飲食。合併高血糖時需留意。",
+      "bilirubin": "肝膽疾病(阻塞性黃疸、肝細胞損傷)的線索。需與肝功能檢查合併評估。",
+      "urobilinogen": "上升時可能提示溶血或肝細胞疾病。需與膽紅素一併判讀。",
+      "specific_gravity": "反映腎臟濃縮功能與體內水分狀態。可提示脫水或尿崩症等。",
+      "ph": "酸鹼狀態、結石種類與泌尿道感染的線索。持續鹼性尿提示產尿素酶細菌感染。",
+      "vitamin_c": "試紙干擾因素 — 濃度高時潛血與尿糖可能出現偽陰性。判讀結果時需留意。"
+    },
+    "guideline": {
+      "kidney": {
+        "reference": "KDIGO 2024 慢性腎臟病指引 — 依 eGFR 與白蛋白尿(ACR)的風險分層(綠/黃/橙/紅)",
+        "staging": "尿蛋白半定量屬於篩檢階段。確診與分期需要血清肌酸酐(eGFR)與 ACR 定量。",
+        "followup": "建議:血清肌酸酐與 eGFR、尿液白蛋白/肌酸酐比值(uACR),必要時轉診腎臟科。"
+      },
+      "diabetes": {
+        "reference": "大韓糖尿病學會 / ADA — 空腹血糖與糖化血色素的診斷標準(尿糖為輔助指標)",
+        "staging": "尿糖陽性提示可能有高血糖,但並非診斷標準。需以空腹血糖與糖化血色素確認。",
+        "followup": "建議:空腹血糖與糖化血色素、糖尿病併發症(腎臟、眼底)篩檢。"
+      },
+      "hypertension": {
+        "reference": "大韓高血壓學會 — 診間/居家血壓分類、標的器官損傷評估",
+        "staging": "蛋白尿可作為高血壓標的器官(腎臟)損傷的指標。需結合血壓測量值綜合判斷。",
+        "followup": "建議:重複測量血壓、尿液白蛋白,以及心電圖、血脂等危險因子評估。"
+      },
+      "uti": {
+        "reference": "泌尿道感染診療指引 — 綜合膿尿、亞硝酸鹽與症狀,並鑑別無症狀菌尿",
+        "staging": "白血球與亞硝酸鹽陽性並伴隨排尿症狀時,提示泌尿道感染。無症狀者可能不需治療。",
+        "followup": "建議:伴隨症狀時進行尿液培養與抗生素敏感性試驗;反覆發作者評估病因。"
+      },
+      "liver": {
+        "reference": "肝膽評估 — 膽紅素與尿膽素原的型態結合肝功能檢查",
+        "staging": "尿液膽紅素/尿膽素原屬輔助線索。需鑑別型態(阻塞性或肝細胞性)。",
+        "followup": "建議:肝功能檢查(AST/ALT/ALP/總膽紅素),必要時安排影像檢查。"
+      }
+    }
+  },
+  "driver": {
+    "source": {
+      "urine": "尿液檢查",
+      "phr": "健康檢查",
+      "pattern": "組合型態"
+    },
+    "urine": {
+      "label": "尿{name}",
+      "high": "尿液檢查顯示{name}為{value}(正常:{normal})。",
+      "normal": "尿液檢查的{name}為{value},在正常範圍內。"
+    },
+    "yesNo": {
+      "present": "有",
+      "absent": "無",
+      "confirmed": "健康檢查紀錄中確認有{label}。",
+      "none": "沒有{label}。"
+    },
+    "applies": {
+      "yes": "符合",
+      "no": "不符合"
+    },
+    "bool": {
+      "yes": "是",
+      "no": "否"
+    },
+    "count": {
+      "items": "{n}項",
+      "times": "{n}次"
+    },
+    "label": {
+      "phr_glucose": "健檢空腹血糖",
+      "phr_egfr": "腎功能(eGFR)",
+      "phr_bmi": "身體質量指數(BMI)",
+      "phr_diabetes": "糖尿病診斷或用藥",
+      "phr_hypertension": "高血壓診斷或用藥",
+      "phr_dyslipidemia": "血脂異常紀錄",
+      "phr_kidney_watch": "腎臟相關需留意所見",
+      "phr_overweight": "過重",
+      "pos_burden": "陽性檢查項目數",
+      "uti_flag": "白血球與亞硝酸鹽同時陽性",
+      "dka_flag": "尿糖與酮體同時陽性",
+      "nephritis_flag": "蛋白與潛血同時陽性",
+      "protein_consec_pos": "蛋白尿連續陽性"
+    },
+    "normal": {
+      "phr_glucose": "低於100",
+      "phr_egfr": "90以上",
+      "phr_bmi": "18.5～24.9"
+    },
+    "missing": {
+      "phr_glucose": "沒有空腹血糖紀錄。",
+      "phr_egfr": "沒有 eGFR 紀錄。",
+      "phr_bmi": "沒有 BMI 紀錄。"
+    },
+    "sentence": {
+      "phr_glucose": "你的健檢空腹血糖為{value} mg/dL(正常:低於100)。",
+      "phr_glucose_high": "你的健檢空腹血糖為{value} mg/dL(正常:低於100)。偏高一些。",
+      "phr_egfr": "你的腎臟過濾功能(eGFR)為{value}(正常:90以上)。",
+      "phr_egfr_low": "你的腎臟過濾功能(eGFR)為{value}(正常:90以上)。略為偏低。",
+      "phr_bmi": "你的身體質量指數(BMI)為{value}(正常:18.5～24.9)。",
+      "phr_bmi_high": "你的身體質量指數(BMI)為{value}(正常:18.5～24.9)。屬於過重範圍。",
+      "phr_overweight": "你的體重在正常範圍內。",
+      "phr_overweight_high": "你的體重略為偏高。",
+      "pos_burden": "尿液檢查中有{n}項呈陽性。",
+      "uti_flag": "出現了提示泌尿道感染的組合(白血球+亞硝酸鹽)。",
+      "dka_flag": "出現了提示血糖控制異常的組合(尿糖+酮體)。",
+      "nephritis_flag": "出現了提示腎臟發炎的組合(蛋白+潛血)。",
+      "protein_consec_pos": "蛋白尿已連續{n}次呈陽性。這是持續存在的訊號。"
+    }
+  },
+  "feature": {
+    "protein_dev": "尿蛋白",
+    "blood_dev": "潛血",
+    "leukocyte_dev": "白血球",
+    "protein_personal_dev": "相對個人基線的蛋白上升",
+    "protein_persistence": "蛋白尿持續",
+    "nephritis_rule": "蛋白+潛血(提示腎絲球腎炎)",
+    "phr_egfr": "健檢 eGFR 下降",
+    "phr_egfr_trend": "健檢 eGFR 下降趨勢",
+    "phr_kidney_watch": "健檢腎臟需留意所見",
+    "phr_htn": "高血壓(腎損傷風險)",
+    "phr_dm": "糖尿病(糖尿病腎病變風險)",
+    "glucose_urine": "尿糖",
+    "ketone_urine": "酮體",
+    "dka_rule": "尿糖+酮體(提示DKA)",
+    "phr_fasting_glucose": "健檢空腹血糖",
+    "phr_glucose_trend": "健檢空腹血糖上升趨勢",
+    "phr_dm_flag": "糖尿病診斷/用藥",
+    "phr_overweight": "過重(BMI≥25)",
+    "protein_marker": "尿蛋白(腎損傷指標)",
+    "phr_htn_flag": "高血壓診斷/用藥",
+    "leukocyte": "白血球",
+    "nitrite": "亞硝酸鹽",
+    "blood": "潛血",
+    "uti_rule": "白血球+亞硝酸鹽(提示細菌性泌尿道感染)",
+    "bilirubin": "膽紅素",
+    "urobilinogen": "尿膽素原"
+  },
+  "safety": {
+    "screening": "本資訊是為協助健康管理而提供的篩檢資訊,並非醫學診斷。",
+    "recheck": "多次檢測的趨勢比單次結果更重要。建議複測。",
+    "consult": "若症狀持續或有疑慮,請諮詢醫護人員。",
+    "emergency": "出現了較明顯的風險訊號。建議諮詢醫護人員。",
+    "notDx": "僅憑此結果並不能診斷疾病。",
+    "privacy": "健康資訊會分離保存並受到保護,僅在你同意的範圍內使用。",
+    "vitc": "攝取維生素C可能降低部分項目(潛血、尿糖)的反應,已在校正時納入考量。"
+  },
+  "explain": {
+    "tone": {
+      "low": "目前未見明顯的風險訊號。",
+      "moderate": "與平時相比出現值得留意的訊號。可於幾天後複測,觀察趨勢。",
+      "high": "已達到需要注意的程度。建議近期複測,並諮詢醫護人員。",
+      "very_high": "出現了較明顯的風險訊號。建議諮詢醫護人員。"
+    },
+    "userLow": "{disease}:{tone}",
+    "userSignals": "發現了與{disease}相關的訊號({labels})。{tone}",
+    "clinician": "{disease}風險 {score}({grade})。主要貢獻:{contrib}。這是篩檢分析結果,不能取代診斷或處方。",
+    "clinicianStd": "{disease}風險 {score}({grade}) · 標準分級 {standard}。主要貢獻:{contrib}。這是篩檢分析結果,不能取代診斷或處方。",
+    "ifImproved": "若{label}改善"
+  },
+  "rec": {
+    "kidney": {
+      "hydration": "補充足夠水分",
+      "less_salt": "減少重鹹食物",
+      "bp_glucose": "管理血壓與血糖",
+      "kidney_eval": "蛋白尿持續時,諮詢腎功能評估"
+    },
+    "diabetes": {
+      "fasting_glucose": "查看空腹血糖",
+      "less_carb": "減少精緻澱粉與含糖飲料",
+      "walk_after_meal": "飯後適度活動",
+      "glucose_test": "反覆出現時,諮詢血糖檢查"
+    },
+    "hypertension": {
+      "low_salt_weight": "低鹽飲食與體重管理",
+      "bp_log": "規律記錄血壓",
+      "consult_uncontrolled": "血壓控制不理想時尋求諮詢"
+    },
+    "uti": {
+      "hydration": "補充足夠水分",
+      "no_holding": "不要長時間憋尿",
+      "consult_symptoms": "出現排尿疼痛、頻尿等症狀時諮詢醫護人員"
+    },
+    "liver": {
+      "avoid_alcohol": "避免過量飲酒",
+      "liver_test": "持續時諮詢肝功能血液檢查"
+    }
+  },
+  "medClass": {
+    "diabetes": "糖尿病",
+    "hypertension": "高血壓",
+    "dyslipidemia": "血脂異常",
+    "gastro": "腸胃疾病"
+  },
+  "phrFlag": {
+    "diabetes": "糖尿病",
+    "hypertension": "高血壓",
+    "dyslipidemia": "血脂異常",
+    "kidney_watch": "腎臟需留意",
+    "overweight": "過重"
+  },
+  "phrMetric": {
+    "glucose": "空腹血糖",
+    "egfr": "eGFR",
+    "bmi": "BMI",
+    "chol": "總膽固醇",
+    "bp": "血壓",
+    "ldl": "低密度脂蛋白膽固醇",
+    "tg": "三酸甘油酯",
+    "creatinine": "肌酸酐",
+    "hb": "血紅素",
+    "weight": "體重",
+    "waist": "腰圍",
+    "sbp": "收縮壓",
+    "dbp": "舒張壓",
+    "hdl": "高密度脂蛋白膽固醇",
+    "urine_protein": "尿蛋白",
+    "height": "身高"
+  },
+  "trendDir": {
+    "up": "上升",
+    "down": "下降",
+    "flat": "持平"
+  },
+  "dashboard": {
+    "titleNamed": "{name} 的健康儀表板",
+    "titleMine": "我的健康儀表板",
+    "subtitle": "一頁掌握檢測結果與專屬關懷。",
+    "newMeasurement": "+ 新檢測",
+    "emptyTitle": "還沒有檢測紀錄。",
+    "startFirst": "開始第一次檢測",
+    "urgentNote": "有需要注意的結果。請查看結果並考慮複測。",
+    "recentResult": "最近結果",
+    "viewDetail": "查看結果詳情 →",
+    "todayMissions": "今日任務",
+    "viewAllMissions": "查看全部任務 →",
+    "myActivity": "我的活動",
+    "points": "點數",
+    "streakDays": "連續天數",
+    "badges": "徽章",
+    "measureCount": "檢測{n}次"
+  },
+  "missions": {
+    "title": "任務 · 徽章",
+    "subtitle": "持續檢測與生活中的小實踐,會變成健康習慣。",
+    "points": "點數",
+    "pointsSub": "活動累積",
+    "streak": "連續檢測",
+    "streakSub": "連續紀錄",
+    "days": "{n}天",
+    "badgesEarned": "已獲徽章",
+    "badgesSub": "收集",
+    "today": "今日任務",
+    "doneCount": "完成 {done}/{total}",
+    "perMission": "每項任務 +{p}P",
+    "goal": "健康目標",
+    "completed": "已完成",
+    "markDone": "標記完成",
+    "resetNote": "※ 任務每天零時重置,並與生活管理內容連動。",
+    "trendTitle": "風險改善趨勢",
+    "trendEmpty": "開始檢測後,風險的變化會繪製在這裡。",
+    "riskScore": "代表風險分數",
+    "trendNeedMore": "隨著檢測累積,我們會為你比較變化。",
+    "trendImproved": "最近的風險分數比最初更低了。趨勢很好!",
+    "trendFlat": "風險分數尚未穩定。可透過任務與複測來管理。",
+    "trendNote": "※ 風險分數越接近0越低。這是結合尿液檢查與健康檢查得出的數值。",
+    "badgeCollection": "徽章收藏",
+    "disclaimer": "點數與徽章是為協助養成健康習慣而設的活動獎勵,並不保證醫學效果。與健康生活實踐補助等外部獎勵的銜接仍在政策評估階段。檢測與生活管理請自主進行。"
+  },
+  "mission": {
+    "common": {
+      "water": {
+        "label": "喝1.5L水",
+        "tip": "少量多次飲水有助於腎臟與泌尿道健康。"
+      },
+      "walk": {
+        "label": "輕快步行20分鐘",
+        "tip": "飯後輕度步行有助於血糖與血壓管理。"
+      },
+      "salt": {
+        "label": "減少重鹹食物",
+        "tip": "試著減少湯品與加工食品中的鈉。"
+      }
+    },
+    "kidney": {
+      "water": {
+        "label": "喝1.5L水",
+        "tip": "水分有助於腎臟排出代謝廢物。"
+      },
+      "salt": {
+        "label": "減少湯品與重鹹食物",
+        "tip": "限制鈉攝取有助於蛋白尿與血壓管理。"
+      },
+      "protein_care": {
+        "label": "檢視過量的蛋白補充品",
+        "tip": "可能增加腎臟負擔,請確認適當份量。"
+      }
+    },
+    "diabetes": {
+      "sugar": {
+        "label": "以水取代含糖飲料",
+        "tip": "減少糖分攝取可讓血糖波動更平緩。"
+      },
+      "walk": {
+        "label": "飯後步行20分鐘",
+        "tip": "飯後活動可降低血糖高峰。"
+      },
+      "carb_care": {
+        "label": "減少精緻澱粉",
+        "tip": "以全穀類取代白米與麵粉試試看。"
+      }
+    },
+    "hypertension": {
+      "salt": {
+        "label": "實行低鹽飲食",
+        "tip": "減少鈉攝取對血壓管理有直接幫助。"
+      },
+      "walk": {
+        "label": "有氧運動20分鐘",
+        "tip": "規律的有氧運動有助於降低血壓。"
+      },
+      "bp_check": {
+        "label": "記錄居家血壓",
+        "tip": "在相同時段量測,觀察趨勢。"
+      }
+    },
+    "uti": {
+      "water": {
+        "label": "喝足夠的水",
+        "tip": "補充水分有助於排出細菌。"
+      },
+      "hold_less": {
+        "label": "不要憋尿",
+        "tip": "規律排尿有益於泌尿道健康。"
+      },
+      "hygiene": {
+        "label": "檢視衛生習慣",
+        "tip": "基本的衛生管理可減少復發。"
+      }
+    }
+  },
+  "badge": {
+    "first_measure": {
+      "label": "第一步",
+      "desc": "完成了第一次檢測"
+    },
+    "streak_3": {
+      "label": "連續3天",
+      "desc": "連續3天檢測"
+    },
+    "streak_7": {
+      "label": "完成一週",
+      "desc": "連續7天檢測"
+    },
+    "streak_30": {
+      "label": "一個月的習慣",
+      "desc": "連續30天檢測"
+    },
+    "mission_master": {
+      "label": "任務達人",
+      "desc": "累計完成10次任務"
+    },
+    "risk_improved": {
+      "label": "改善的開始",
+      "desc": "風險比之前降低了"
+    }
+  },
+  "goal": {
+    "kidney": "維持尿蛋白陰性",
+    "diabetes": "維持尿糖陰性與血糖穩定",
+    "hypertension": "維持血壓與蛋白尿穩定",
+    "uti": "讓白血球與亞硝酸鹽回到陰性",
+    "liver": "維持膽紅素正常"
+  },
+  "result": {
+    "title": "健康管理綜合報告",
+    "byDisease": "各疾病風險",
+    "urinalysis": "尿液化學檢查(11項)",
+    "colItem": "項目",
+    "colValue": "檢測值",
+    "colNormal": "正常範圍",
+    "colJudgment": "判定",
+    "currentUrine": "目前尿<b>{name}</b>:<v>{value}</v>",
+    "normalInline": "正常 {normal}",
+    "trendNote": "※ 本圖僅呈現<b>尿{name}</b>這一項(正常為綠色)。{disease}風險({score})是結合尿液檢查與健康檢查得出的數值,因此即使該項正常,其他因素仍可能使風險升高。",
+    "phrTitle": "健康檢查資料(My HealthWay)",
+    "phrEmpty": "還沒有健康檢查(PHR)資料。連結「我的健康紀錄」後,會與尿液化學結果合併產生<b>綜合健康報告</b>。",
+    "meds": "用藥:{list}",
+    "diagnoses": "診斷:{list}",
+    "historyTitle": "尿液化學檢測歷史",
+    "historyNote": "最近{n}次檢測中各項目的變化。顏色代表判定(<g>綠色正常</g>·<o>橙色異常</o>·<s>灰色參考</s>),最右側粗體的數值是本次檢測。",
+    "phrTrendTitle": "健康檢查趨勢",
+    "checkupCount": "健檢{n}次",
+    "phrTrendNote": "健康檢查數值隨時間的變化。即使目前數值正常,若出現<b>惡化趨勢</b>(例如 eGFR 下降、空腹血糖上升),也值得提早關注。",
+    "phrTrendDisclaimer": "※ 健檢趨勢僅供參考,並非診斷。eGFR 下降、空腹血糖上升等惡化趨勢,建議下次就醫時與醫護人員一起確認。",
+    "whyTitle": "為什麼是這個結果?",
+    "engineLgbm": "AI分析(LightGBM)",
+    "engineDefault": "分析引擎",
+    "whyNote": "以下因素影響了這次的風險判定。<b>橙色</b>是提高風險的因素。",
+    "impact": "影響 {level}",
+    "impactLevel": {
+      "high": "高",
+      "mid": "中",
+      "low": "低"
+    },
+    "whyDisclaimer": "※ 風險是結合尿液檢查與健康檢查(PHR)分析的結果。即使某一尿液項目正常,健檢紀錄仍可能使風險評估偏高。",
+    "careTitle": "建議的行動",
+    "dueBy": "期限 {date}",
+    "disclaimer": "本報告是結合尿液化學檢查與健康檢查(PHR)的篩檢資訊,並非醫學診斷。若症狀持續或有疑慮,請諮詢醫護人員。",
+    "samdNote": "風險分層與分級的計算,是以醫療器材(SaMD)許可為前提的功能。(模型 {model})"
+  },
+  "patient": {
+    "noName": "(無姓名)",
+    "male": "男",
+    "female": "女",
+    "sex": "性別",
+    "age": "年齡",
+    "years": "{n}歲",
+    "times": "{n}次",
+    "period": "觀察期間",
+    "measureCount": "檢測次數",
+    "toReport": "臨床報告",
+    "noAssessment": "沒有評估資料。",
+    "riskTitle": "風險評估(SaMD輸出)· 多疾病",
+    "model": "模型 {version}",
+    "colDisease": "疾病",
+    "colScore": "風險分數",
+    "colGrade": "分級",
+    "colStandard": "標準分級",
+    "colSignificance": "臨床意義",
+    "abnormalCount": "異常所見 {n}項",
+    "mainAnalyteNote": "與代表疾病({disease})相關的指標",
+    "proteinNote": "腎功能(蛋白尿)指標",
+    "quantTitle": "尿液化學定量判讀(11項)",
+    "shapTitle": "風險貢獻因素(SHAP)",
+    "guidelineTitle": "指引參考",
+    "staging": "分期判讀",
+    "followup": "建議追蹤",
+    "phrTitle": "My HealthWay(國家健檢 · 用藥)",
+    "phrCounts": "健檢{checkups}次 · 用藥{meds}種",
+    "medClasses": "用藥分類:{list}",
+    "diagnoses": "診斷/所見:{list}",
+    "carePlanTitle": "關懷計畫 · 慢性病管理摘要",
+    "noCareAction": "沒有關懷行動",
+    "emrNote": "指引參考與慢性病管理行政表單的自動產生,將於 EMR 介接(Step 6+)時補齊。",
+    "disclaimer": "本摘要為篩檢分析結果,不能取代臨床診斷與處方。風險分層與分級的計算以醫療器材(SaMD)許可為前提。最終判斷以醫護人員的臨床評估為準。"
+  },
+  "report": {
+    "backToPatient": "病人儀表板",
+    "title": "臨床分析報告",
+    "subtitle": "尿液化學 + My HealthWay 結合分析",
+    "subject": "對象",
+    "pseudoId": "化名ID",
+    "multiRisk": "多疾病風險評估",
+    "samdCandidate": "SaMD候選輸出 · 模型 {version}",
+    "colStandardKdigo": "標準分級(KDIGO型)",
+    "evidenceTitle": "依據 — 主要貢獻因素",
+    "contribution": "貢獻 {value}",
+    "abnormalTitle": "異常所見摘要",
+    "allNormal": "尿液化學11項全部在正常範圍內。",
+    "proteinTrend": "尿蛋白趨勢",
+    "chronicFlags": "慢性病標記:{list}",
+    "emrNote": "指引引用與慢性病管理行政表單的自動產生,將隨 EMR 介接而擴充。",
+    "disclaimer": "本報告是結合尿液化學檢查與 My HealthWay(PHR)資料的篩檢分析結果,不能取代臨床診斷與處方。風險分層與分級的計算以醫療器材(SaMD)許可為前提。最終判斷以醫護人員的臨床評估為準。"
+  },
+  "portal": {
+    "title": "醫護人員入口",
+    "subtitle": "一頁掌握管理族群現況與風險優先順序 · 以化名為基礎",
+    "persons": "{n}人",
+    "kpiPatients": "管理病人",
+    "kpiPatientsSub": "已有評估",
+    "kpiHighRisk": "高風險",
+    "kpiHighRiskSub": "偏高+注意",
+    "kpiRecent": "近7天檢測",
+    "kpiRecentSub": "新增",
+    "kpiTotal": "累計檢測",
+    "kpiTotalSub": "全部檢查",
+    "gradeDist": "風險分級分布",
+    "diseaseDist": "代表風險疾病分布",
+    "colPatient": "病人",
+    "colTopDisease": "代表風險疾病",
+    "colLastAssessed": "最近評估",
+    "report": "報告",
+    "noMatch": "沒有符合條件的病人。",
+    "disclaimer": "※ 風險分層與分級為 SaMD 候選輸出。它不能取代臨床診斷與處方,最終判斷以醫護人員的臨床評估為準。"
+  },
+  "careStatus": {
+    "assigned": "待辦",
+    "in_progress": "進行中",
+    "done": "已完成",
+    "expired": "已逾期"
+  },
+  "careDesc": {
+    "lifestyle": "透過生活習慣任務來管理風險。",
+    "recheck": "為確認趨勢,建議複測。",
+    "referral": "準備一份便於就醫參考的摘要報告。",
+    "emergency": "在此階段建議諮詢醫護人員。"
+  },
+  "carePage": {
+    "empty": "還沒有關懷行動。",
+    "goMeasure": "去檢測",
+    "dueAt": "期限:{date}",
+    "referralTitle": "就醫參考摘要",
+    "createSummary": "產生摘要",
+    "referralEmpty": "可以產生一份在諮詢醫護人員時參考的摘要報告。",
+    "created": "已產生",
+    "feedbackTitle": "告訴我們複測結果",
+    "feedbackNote": "你提供的複測結果會用於提升分析準確度(再訓練)。",
+    "outcome": {
+      "improved": "變好了",
+      "stable": "差不多",
+      "worsened": "變差了"
+    },
+    "pdfNote": "※ 就醫參考報告的 PDF 與 EMR 介接,將在外部整合(Step 6+)時擴充。"
+  },
+  "chart": {
+    "noData": "還沒有趨勢資料。",
+    "trendOf": "{name}趨勢",
+    "current": "目前"
+  },
+  "contentTab": {
+    "all": "全部",
+    "result_explain": "結果解讀",
+    "disease_edu": "疾病資訊",
+    "quiz": "小測驗",
+    "lifestyle": "生活管理",
+    "risk_action": "行動指引",
+    "motivation": "動力",
+    "safety": "安全提醒",
+    "caregiver": "照顧者"
+  },
+  "contentFormat": {
+    "card": "卡片",
+    "article": "文章",
+    "quiz": "小測驗",
+    "checklist": "檢核清單",
+    "step_guide": "步驟指南"
+  },
+  "contentsPage": {
+    "forYou": "符合你的結果",
+    "empty": "此分類下沒有已發布的內容。",
+    "note": "所有內容皆經醫學審查與法規審查後發布。本資訊用於協助健康管理,不能取代醫學診斷。",
+    "source": "來源:{source}",
+    "detailNote": "本內容是經醫學審查與法規審查後發布的健康管理篩檢資訊。它不能取代醫學診斷,若有疑慮,建議諮詢醫護人員。"
+  },
+  "contentView": {
+    "doneToday": "今日完成 <b>{done}/{total}</b>",
+    "checklistNote": "※ 任務完成與點數累積,將於遊戲化(Step 7)中儲存至帳號。",
+    "quizResult": "結果",
+    "quizScore": "答對 {correct} / {total}"
+  },
+  "phr": {
+    "parsing": "正在解析{n}個檔案…",
+    "badJson": "這不是 JSON 檔案,或格式不正確。",
+    "uploadFailed": "上傳失敗(HTTP {status})。請查看伺服器記錄檔。",
+    "addedToExisting": "在既有資料上新增{n}筆",
+    "linkedTotal": "連結{n}筆",
+    "skippedFiles": "(已排除{n}個錯誤檔案)",
+    "applied": "已套用健康檢查資料 — {addNote} · 健檢{checkups}次",
+    "processing": "處理中…",
+    "ctaCompact": "新增/更新健檢",
+    "cta": "連結健康檢查(我的健康紀錄)",
+    "note": "※ 上傳從「我的健康紀錄」下載的 JSON 檔案(phr_…json),即可與尿液化學結果合併產生綜合報告。可以<b>一次選取多個檔案</b>,再次上傳會在既有紀錄上<b>累加</b>。"
+  },
+  "stub": {
+    "planned": "{step} 規劃中",
+    "elements": "此頁面將包含的元素",
+    "note": "這是依據計畫書9.1頁面清單的架構。功能將於{step}補齊。"
+  },
+  "errors": {
+    "title": "發生了暫時性的問題",
+    "lead": "請稍後再試。若問題持續,請聯絡管理者。",
+    "code": "錯誤代碼:{digest}",
+    "retry": "重試",
+    "toDashboard": "前往儀表板",
+    "toHome": "回到首頁",
+    "notFoundTitle": "找不到此頁面",
+    "notFoundLead": "網址可能已變更,或頁面已被刪除。"
+  },
+  "notify": {
+    "resultReady": {
+      "title": "檢查結果已就緒",
+      "body": "來看看這次的檢測結果與專屬關懷吧。"
+    },
+    "risk": {
+      "title": "請查看{disease}的結果",
+      "body": "與{disease}相關的訊號比平時偏高。請仔細查看結果,必要時諮詢醫護人員。"
+    },
+    "referral": {
+      "title": "就醫參考摘要已產生",
+      "body": "已產生可在諮詢醫護人員時參考的摘要報告。可在關懷頁面查看。"
+    },
+    "feedback": {
+      "title": "已登錄你的複測結果",
+      "body": "你提供的結果將用於提升分析準確度(再訓練)。謝謝。"
+    }
+  },
+  "admin": {
+    "title": "管理者控制台",
+    "subtitle": "一頁管理服務營運現況與法規、品質指標。",
+    "system": "系統",
+    "statUsers": "使用者",
+    "statUsersSub": "共 {n}",
+    "statClinicians": "使用中的醫護人員",
+    "statPending": "待審核 {n}",
+    "statApproved": "審核完成",
+    "statRecent7": "近7天 {n}",
+    "statAssessments": "風險評估",
+    "statSamd": "SaMD {n}",
+    "statPublishedTotal": "已發布/全部",
+    "statAudit": "稽核紀錄",
+    "statRules": "規則 {n}",
+    "diseaseDist": "各疾病評估分布",
+    "contentFlow": "內容流程",
+    "areas": "管理區域",
+    "manage": "管理",
+    "view": "檢視",
+    "waiting": "{n} 待處理",
+    "recentActivity": "最近活動",
+    "noRecords": "沒有紀錄",
+    "area": {
+      "clinicians": "醫護人員審核",
+      "users": "使用者 · 裝置",
+      "contents": "內容 · CMS",
+      "curation": "推薦規則",
+      "regulatory": "法規軌道",
+      "audit": "稽核紀錄",
+      "system": "系統狀態",
+      "portal": "醫護人員入口"
+    },
+    "areaCliniciansPending": "有{n}筆註冊申請待審核",
+    "areaCliniciansDesc": "醫護人員資格查核與審核管理",
+    "areaUsersDesc": "帳號、裝置與檢測現況",
+    "areaContentsDesc": "內容撰寫、審查與發布流程",
+    "areaCurationDesc": "個人化規則與模擬器",
+    "areaRegulatoryDesc": "SaMD/健康促進分軌、標示與準備度",
+    "areaAuditDesc": "PHI 存取、內容發布等不可竄改的紀錄",
+    "areaSystemDesc": "相依服務健康度、資安事件與可觀測性",
+    "areaPortalDesc": "病人監測與臨床報告"
+  },
+  "contentStatus": {
+    "draft": "草稿",
+    "medical_review": "醫學審查",
+    "ra_review": "法規審查",
+    "ready": "待發布",
+    "published": "已發布",
+    "unpublished": "已下架"
+  },
+  "auditAction": {
+    "view_phi": "檢視病人資訊",
+    "view_admin": "存取管理控制台",
+    "content_publish": "發布內容",
+    "content_unpublish": "下架內容",
+    "clinician_signup": "醫護人員註冊申請",
+    "clinician_verify": "醫護人員審核",
+    "login": "登入",
+    "login_failed": "登入失敗",
+    "login_blocked": "登入被阻擋(流量限制)",
+    "account_switch": "切換帳號"
+  },
+  "audit": {
+    "subtitle": "PHI 存取、內容發布與管理行為的紀錄(最近200筆)",
+    "console": "控制台",
+    "colTime": "時間",
+    "colActor": "操作者",
+    "colAction": "行為",
+    "colTarget": "對象",
+    "empty": "沒有紀錄。",
+    "note": "※ 稽核紀錄以僅新增(append-only)方式運作,正式環境將套用防竄改與保存期限政策。"
+  },
+  "curation": {
+    "title": "推薦規則",
+    "subtitle": "依優先順序(數字越小越先)將符合條件的已發布內容顯示在個人化動態中。",
+    "firstTime": "首次檢測",
+    "condDisease": "疾病 {value}",
+    "condGrade": "分級 {value}",
+    "condTrend": "趨勢 {value}",
+    "condStreak": "連續檢測 {value}",
+    "condAny": "(全部)",
+    "colPriority": "優先",
+    "colCondition": "條件",
+    "colContent": "顯示內容",
+    "colStatus": "狀態",
+    "live": "顯示中",
+    "notLive": "未發布",
+    "note": "※ 規則的圖形化編輯器與衝突模擬器將於後續擴充。指向未發布內容的規則,即使符合條件也不會顯示。"
+  },
+  "accountType": {
+    "b2c": "使用者",
+    "facility": "機構",
+    "clinician": "醫護人員",
+    "admin": "管理者"
+  },
+  "adminUsers": {
+    "subtitle": "帳號、裝置與檢測現況 · 以化名為基礎",
+    "colUser": "使用者",
+    "colType": "類型",
+    "colEmail": "電子郵件",
+    "colDevice": "裝置",
+    "active": "啟用",
+    "empty": "沒有此類型的使用者。",
+    "note": "※ 真實姓名與聯絡方式加密儲存於 secure 結構描述,控制台以化名與彙總為主顯示。帳號停用、撤回同意等變更作業會記入稽核紀錄。"
+  },
+  "license": {
+    "doctor": "醫師",
+    "nurse": "護理師",
+    "medtech": "醫事檢驗師"
+  },
+  "clinicianStatus": {
+    "pending": "待審核",
+    "active": "已核准",
+    "rejected": "已退回"
+  },
+  "adminClinicians": {
+    "subtitle": "查核執業資格並核准後,即可登入入口 · 待審核 {n}筆",
+    "licenseType": "資格類型",
+    "licenseNo": "執業證號",
+    "organization": "所屬機構",
+    "department": "科別",
+    "rejectReasonShown": "退回理由:{reason}",
+    "rejectReasonPlaceholder": "退回理由(選填)",
+    "approve": "核准",
+    "reject": "退回",
+    "empty": "沒有醫護人員的註冊申請。",
+    "note": "※ 執業證號會遮蔽顯示,核准/退回會記入稽核紀錄。正式環境將介接執業資格真實性查驗(外部驗證)流程。"
+  },
+  "contentCategory": {
+    "result_explain": "結果解讀",
+    "disease_edu": "疾病資訊",
+    "lifestyle": "生活管理",
+    "risk_action": "行動指引",
+    "motivation": "動力",
+    "safety": "安全",
+    "clinician": "醫護人員",
+    "caregiver": "照顧者"
+  },
+  "reviewState": {
+    "approved": "核准",
+    "rejected": "退回",
+    "waiting": "待審"
+  },
+  "contentAction": {
+    "submit": "送出審查",
+    "med_approve": "醫學核准",
+    "med_reject": "退回",
+    "ra_approve": "法規核准",
+    "ra_reject": "退回",
+    "publish": "發布",
+    "unpublish": "下架",
+    "republish": "重新發布"
+  },
+  "cms": {
+    "title": "內容管理(CMS)",
+    "subtitle": "審查流程:草稿 → 醫學審查 → 法規審查 → 待發布 → 發布 · 待審查 {n}筆",
+    "colContent": "內容",
+    "colCategory": "分類",
+    "colActions": "操作",
+    "note": "※ 未通過醫學審查的內容不會發布,個人化動態中僅顯示已發布的內容。"
+  },
+  "regulatory": {
+    "title": "法規軌道 · 試辦準備",
+    "subtitle": "SaMD(醫療器材候選)· 健康促進分軌 · 許可準備度",
+    "intendedUseTitle": "預期用途(Intended Use)",
+    "intendedUseLabel": {
+      "purpose": "使用目的",
+      "users": "使用對象",
+      "environment": "使用環境",
+      "notIntended": "非適用範圍"
+    },
+    "intendedUse": {
+      "purpose": "結合尿液化學檢查與個人健康紀錄(PHR),對慢性病風險進行篩檢與分層,並協助使用者理解結果、管理生活型態,並銜接醫護人員諮詢。",
+      "users": "一般使用者(健康管理)· 醫護人員(監測輔助)· 機構/健檢中心。",
+      "environment": "居家、健檢中心、醫療機構等具備網路連線的環境。",
+      "notIntended": "不取代確診、處方或緊急醫療判斷;最終臨床判斷由醫護人員作出。"
+    },
+    "kpiTotal": "全部風險評估",
+    "kpiSamd": "SaMD候選輸出",
+    "kpiWellness": "健康促進輸出",
+    "kpiPublished": "已發布內容",
+    "featureTitle": "依功能的分軌(SaMD候選辨識)",
+    "colFeature": "功能",
+    "colTrack": "軌道",
+    "colLikelihood": "SaMD可能性",
+    "colBasis": "依據(假設)",
+    "track": {
+      "samd": "醫療器材候選",
+      "wellness": "健康促進",
+      "review": "需評估"
+    },
+    "feature": {
+      "risk_strat": {
+        "label": "風險分層(各疾病風險分數與分級)",
+        "likelihood": "高",
+        "basis": "產生並提供疾病風險資訊"
+      },
+      "standard_grade": {
+        "label": "標準風險分級計算(KDIGO型)",
+        "likelihood": "高",
+        "basis": "對應到臨床分類體系"
+      },
+      "explain_report": {
+        "label": "說明報告(風險依據、SHAP)",
+        "likelihood": "中",
+        "basis": "從屬於風險分層"
+      },
+      "measure_collect": {
+        "label": "檢測蒐集與品質校正",
+        "likelihood": "低～中",
+        "basis": "屬資料處理性質"
+      },
+      "lifestyle_content": {
+        "label": "生活管理與衛教內容",
+        "likelihood": "低",
+        "basis": "一般健康資訊"
+      },
+      "gamification": {
+        "label": "遊戲化與任務",
+        "likelihood": "低",
+        "basis": "動機誘因"
+      }
+    },
+    "featureNote": "※ 此分類為假設,實際 SaMD 適用性與分級需經韓國食藥處事前諮詢確定。軌道透過 <code>is_samd_output</code> 旗標分離並記錄。",
+    "prepTitle": "許可準備文件",
+    "prepStarted": "已啟動 {done}/{total}",
+    "prepDoc": {
+      "intended_use": {
+        "doc": "預期用途說明(Intended Use)",
+        "note": "本模組已定義摘要 — 仍需正式文件化"
+      },
+      "srs": {
+        "doc": "軟體需求規格書",
+        "note": "與詳細執行計畫銜接"
+      },
+      "risk_mgmt": {
+        "doc": "風險管理檔案(危害分析與緩解)",
+        "note": "需依 ISO 14971 格式撰寫"
+      },
+      "lifecycle": {
+        "doc": "軟體生命週期文件",
+        "note": "IEC 62304 開發與驗證流程"
+      },
+      "vnv": {
+        "doc": "驗證與確效(V&V)紀錄",
+        "note": "與端對端冒煙測試及測試策略銜接"
+      },
+      "clinical_eval": {
+        "doc": "臨床評估資料",
+        "note": "文獻與自有資料(試辦)"
+      },
+      "cybersecurity": {
+        "doc": "資安文件",
+        "note": "已套用安全標頭、流量限制與稽核紀錄(Step 8)"
+      },
+      "usability": {
+        "doc": "使用性(Usability)資料",
+        "note": "需進行使用性測試"
+      },
+      "labeling": {
+        "doc": "標示與說明資料",
+        "note": "非診斷、篩檢提示已套用於全部畫面"
+      }
+    },
+    "prepStatus": {
+      "ready": "完成",
+      "partial": "部分",
+      "todo": "待辦"
+    },
+    "pilotTitle": "臨床驗證 · 試辦階段",
+    "pilotPhase": {
+      "internal": {
+        "phase": "內部驗證",
+        "goal": "演算法可重現性、端對端使用者旅程、資安檢查"
+      },
+      "facility": {
+        "phase": "機構/健檢中心試辦",
+        "goal": "以實際資料評估風險分層的有用性與使用性"
+      },
+      "clinical": {
+        "phase": "臨床評估",
+        "goal": "蒐集與標準檢查相比的效能與安全性證據"
+      },
+      "submission": {
+        "phase": "SaMD 許可申請",
+        "goal": "提交技術文件與臨床評估資料包(韓國食藥處)"
+      }
+    },
+    "pilotStatus": {
+      "done": "完成",
+      "active": "進行中",
+      "todo": "規劃中"
+    },
+    "modelNote": "正在追蹤{n}個模型版本 · 以變更管理 SOP 對部署把關(假設)。",
+    "disclaimer": "※ 本服務目前以健康管理(wellness)軌道營運,風險分層與分級的計算屬於以醫療器材(SaMD)許可為前提的候選輸出。上線範圍與時程取決於法規審查與事前諮詢結果。"
+  },
+  "secEvent": {
+    "login_failed": "登入失敗",
+    "login_blocked": "流量限制阻擋",
+    "view_phi": "檢視病人資訊",
+    "clinician_verify": "醫護人員審核"
+  },
+  "system": {
+    "mlUrlMissing": "尚未設定 ML_SERVICE_URL",
+    "overall": {
+      "healthy": "正常",
+      "degraded": "效能降級(ML 備援)",
+      "unhealthy": "異常"
+    },
+    "overallNote": "服務綜合狀態 · 資料庫為核心相依,ML 異常時自動改用規則引擎",
+    "depDb": "care/secure 結構描述 · 核心相依",
+    "depMl": "ML 推論服務(LightGBM)",
+    "depMlNote": "連接埠 8800 · 異常時改為備援運作",
+    "secMetrics": "資安指標(最近24小時)",
+    "phiViews": "PHI 存取",
+    "cumulative": "累計:{list}",
+    "noEvents": "沒有事件",
+    "recentSec": "最近的認證資安事件",
+    "noRecentSec": "沒有最近的認證資安事件。",
+    "runtime": "執行環境資訊",
+    "env": "環境",
+    "appVersion": "應用程式版本",
+    "healthEndpoint": "健康檢查端點",
+    "note": "※ 已套用安全標頭(CSP、HSTS、X-Frame-Options 等)、流量限制、結構化記錄與稽核紀錄。正式環境將擴充外部記錄蒐集、APM 與告警介接。"
+  },
+  "alertCategory": {
+    "result": "結果",
+    "risk": "風險",
+    "recheck": "複測",
+    "care": "關懷",
+    "info": "提醒"
+  },
+  "alerts": {
+    "markAllRead": "全部標示為已讀",
+    "empty": "還沒有通知。",
+    "note": "※ 推播、簡訊、KakaoTalk 等外部管道透過發送轉接器擴充(需要服務商金鑰)。"
+  },
+  "consent": {
+    "sensitive_health": {
+      "label": "[必填] 敏感資訊(健康資訊)的蒐集與利用及服務條款",
+      "desc": "尿液檢查數值、風險分析等健康資訊,將以提供服務為目的進行處理。"
+    },
+    "research": {
+      "label": "[選填] 用於研究與統計(去識別化)",
+      "desc": "經去識別化處理後,用於演算法改進與研究。"
+    },
+    "marketing": {
+      "label": "[選填] 接收行銷資訊",
+      "desc": "透過電子郵件等管道接收健康小提醒與服務消息。"
+    },
+    "clinician_terms": {
+      "label": "[必填] 醫護人員服務條款及提供執業資訊的同意",
+      "desc": "資格類型、證號與所屬機構資訊,將以資格查核(核准)為目的進行處理。"
+    },
+    "phi_handling": {
+      "label": "[必填] 病人健康資訊(PHI)處理與保護承諾",
+      "desc": "本人僅在診療與管理目的範圍內查閱病人資訊,並同意所有查閱皆會被稽核記錄。"
+    }
+  },
+  "me": {
+    "title": "我的頁面",
+    "profile": "個人資料",
+    "name": "姓名",
+    "role": "角色",
+    "consent": "同意管理",
+    "agreed": "已同意",
+    "agreedWithdraw": "已同意 · 撤回",
+    "notAgreedGrant": "未同意 · 同意",
+    "consentNote": "※ 同意的變更會記入歷程。敏感資訊(必填)的撤回請透過客服處理。",
+    "devices": "已註冊裝置",
+    "noDevices": "還沒有註冊裝置。可在檢測頁面連接檢測儀。"
+  },
+  "onboarding": {
+    "welcome": "歡迎",
+    "greet": "開始吧",
+    "greetNamed": "{name},開始吧",
+    "lead": "簡單說明如何從一次檢測開始健康管理。",
+    "toDashboard": "前往儀表板",
+    "step": {
+      "measure": {
+        "title": "檢測",
+        "desc": "連接檢測儀,或使用示範,檢測11項尿液指標。"
+      },
+      "read": {
+        "title": "讀懂結果",
+        "desc": "結合顏色 — 綠色(良好)、黃色(需觀察)、橙色(注意)、紅色(偏高) — 與解讀一起查看。"
+      },
+      "safety": {
+        "title": "安全提醒",
+        "desc": "這是篩檢資訊。它不能取代醫學診斷,若有疑慮請諮詢醫護人員。"
+      }
+    }
+  },
+  "switchPage": {
+    "eyebrow": "已以超級帳號登入",
+    "title": "要以哪個帳號進入?",
+    "lead": "切換到所選帳號以檢視對應畫面。隨時可以再次切換。",
+    "select": "選擇",
+    "sub": {
+      "b2c": "檢測 · 結果 · 關懷",
+      "clinician": "病人監測 · 臨床報告"
+    }
+  },
+  "auth": {
+    "toHome": "回到首頁",
+    "login": "登入",
+    "signup": "註冊",
+    "loggingIn": "登入中…",
+    "signingUp": "註冊中…",
+    "email": "電子郵件",
+    "password": "密碼",
+    "name": "姓名",
+    "namePlaceholder": "王小明",
+    "passwordPlaceholder": "8個字元以上",
+    "choose": "請選擇",
+    "loginPanelTitle": "從一次尿液檢查開始的<br></br>慢性病早期管理",
+    "loginPanelLead": "體驗檢測、分析、理解、行動的關懷閉環。",
+    "loginLead": "登入帳號,繼續你的健康管理。",
+    "noAccount": "還沒有帳號嗎?",
+    "haveAccount": "已經有帳號了嗎?",
+    "clinicianSignupShort": "醫護人員註冊",
+    "demoAccounts": "示範帳號(密碼 demo1234)",
+    "demo": {
+      "super": "超級帳號(選擇帳號)",
+      "doctor": "醫護人員",
+      "user": "使用者 · Choi Eun-seop"
+    },
+    "signupPanelTitle": "一起踏出<br></br>健康管理的第一步",
+    "signupPanelLead": "簡單註冊,即可開始檢測、分析與專屬關懷。",
+    "signupLead": "建立帳號,開始你的健康管理。",
+    "areYouClinician": "你是醫護人員嗎?",
+    "clinicianSignup": "醫護人員註冊申請",
+    "clinPanelTitle": "醫護人員入口<br></br>註冊申請",
+    "clinPanelLead": "提供病人監測、臨床報告與慢性病管理的醫護人員專用帳號。",
+    "clinPanelNote": "為保護病人健康資訊(PHI),將在查核執業資格後由管理者核准。",
+    "toGeneralSignup": "一般註冊",
+    "clinLead": "查核執業資格並經管理者核准後,即可使用入口。",
+    "clinSubmitted": "已收到你的申請",
+    "clinSubmittedNote": "管理者查核執業資訊並核准後,你可以用註冊的電子郵件登入。核准前登入會受到限制。",
+    "toLoginScreen": "前往登入畫面",
+    "licenseTypeLabel": "資格類型",
+    "licenseNo": "執業(資格)證號",
+    "licenseNoPlaceholder": "例:第12345號",
+    "organization": "所屬醫療機構",
+    "organizationPlaceholder": "○○醫院 / ○○診所",
+    "department": "科別(選填)",
+    "departmentPlaceholder": "內科、腎臟科等",
+    "submitting": "送出中…",
+    "submitApplication": "送出申請"
+  },
+  "landing": {
+    "nav": {
+      "features": "功能",
+      "how": "運作方式",
+      "clinician": "給醫護人員",
+      "contact": "聯絡我們"
+    },
+    "getStarted": "開始使用",
+    "eyebrow": "尿液化學11項 · 個人化AI",
+    "heroTitle": "一次尿液檢查,<br></br><em>提前</em>看見慢性病",
+    "heroLead": "以個人化AI分析尿液化學分析儀的檢測值,及早發現腎臟、糖尿病與高血壓風險,並銜接易懂的解讀與專屬關懷。",
+    "startFree": "免費開始",
+    "tryMeasure": "體驗檢測",
+    "tryMeasureShort": "體驗檢測",
+    "heroDisclaimer": "本服務提供篩檢資訊,不能取代醫學診斷。",
+    "sampleScreen": "範例畫面",
+    "sampleResult": "檢測結果範例",
+    "kidneyIndex": "腎臟風險指數 · KDIGO A2",
+    "sampleComment": "蛋白數值比平時略高。可於幾天後複測,觀察趨勢。",
+    "featuresEyebrow": "檢測 · 分析 · 理解 · 行動",
+    "featuresTitle": "不中斷的關懷閉環",
+    "featuresLead": "把專利技術(P1～P5)落實到真實的產品體驗中。",
+    "feature": {
+      "analysis": {
+        "tag": "分析",
+        "title": "個人化風險分析",
+        "desc": "將尿液化學11項與個人基線比較,及早發現腎臟、糖尿病與泌尿道感染風險。"
+      },
+      "explain": {
+        "tag": "說明",
+        "title": "可解釋的報告",
+        "desc": "說明為何得出該結果,同時提供淺白語言與給醫護人員的依據。"
+      },
+      "loop": {
+        "tag": "關懷",
+        "title": "關懷閉環",
+        "desc": "從分級行動指引、複測到就醫參考,從檢測一路延伸到行動。"
+      },
+      "device": {
+        "tag": "介接",
+        "title": "檢測儀介接",
+        "desc": "直接連接尿液化學檢測儀,不需手動輸入即可檢測與分析。"
+      }
+    },
+    "howTitle": "從檢測到行動的四個步驟",
+    "step": {
+      "measure": {
+        "title": "檢測",
+        "desc": "連接檢測儀,檢測11項尿液指標。"
+      },
+      "analyze": {
+        "title": "分析",
+        "desc": "透過校正與個人化AI對風險進行分層。"
+      },
+      "understand": {
+        "title": "理解",
+        "desc": "以淺白解讀與依據協助你讀懂結果。"
+      },
+      "act": {
+        "title": "行動",
+        "desc": "以專屬關懷與內容把理解落實到行動。"
+      }
+    },
+    "forClinicians": "給醫護人員",
+    "clinicianTitle": "以證據為核心的醫護人員入口",
+    "clinicianLead": "依風險排序的病人監測、標準分級、貢獻依據,以及慢性病管理行政支援。提供支持臨床判斷的量化報告。",
+    "clinicianCta": "預覽醫護人員畫面",
+    "samplePatients": "病人清單範例",
+    "byRisk": "依風險排序",
+    "demoPatient": {
+      "p1": "金先生",
+      "p2": "李先生",
+      "p3": "朴先生"
+    },
+    "sampleNote": "範例畫面 · 風險分層不能取代診斷。",
+    "ctaEyebrow": "現在就開始",
+    "ctaTitle": "從一次檢測開始的<br></br>慢性病早期管理",
+    "trust": {
+      "company": "SDC WellCare 股份有限公司",
+      "encryption": "健康資訊加密與分離保存",
+      "advisory": "醫護人員審閱的內容",
+      "standards": "以醫療標準為基礎的設計"
+    },
+    "footerCompany": "SDC WellCare 股份有限公司<br></br>以尿液化學分析儀為基礎的慢性病管理平台",
+    "footer": {
+      "product": "產品",
+      "partner": "合作夥伴",
+      "account": "帳號"
+    },
+    "footerDisclaimer": "本服務提供協助健康管理的篩檢資訊,不能取代醫學診斷。風險分層與分級的計算以醫療器材(SaMD)許可為前提。"
+  },
+  "measure": {
+    "title": "尿液檢查檢測",
+    "lead": "連接尿液化學檢測儀,檢測11個項目。",
+    "connectTitle": "檢測儀連線(BLE)",
+    "scanConnect": "搜尋並連線裝置",
+    "startMeasure": "開始檢測",
+    "bleNote": "YOCHECK / PhotoMT / OptoSta 裝置。僅在 Chrome 與 Edge 中可用(Web Bluetooth)。",
+    "demoTitle": "示範檢測(不需試紙)",
+    "runDemo": "執行示範檢測",
+    "demoNote": "合成檢測儀的回應封包,經由相同的解析與分析引擎顯示結果。",
+    "analyzer": "檢測儀",
+    "demoAnalyzer": "示範檢測儀",
+    "unnamedDevice": "(無名稱)",
+    "measureFailed": "檢測處理失敗",
+    "status": {
+      "idle": "待命中",
+      "unsupported": "瀏覽器不支援",
+      "scanning": "正在搜尋裝置…",
+      "connecting": "連線中…",
+      "connected": "已連線",
+      "disconnected": "連線已中斷",
+      "connectFailed": "連線失敗",
+      "measuring": "檢測中…",
+      "sendFailed": "傳送失敗",
+      "stripError": "試紙錯誤",
+      "analyzing": "分析中…",
+      "done": "檢測完成",
+      "analyzeFailed": "分析失敗"
+    },
+    "scenario": {
+      "normal": "正常(所有項目正常)",
+      "uti": "疑似泌尿道感染(白血球、亞硝酸鹽)",
+      "diabetes": "疑似糖尿病(葡萄糖、酮體)",
+      "kidney": "疑似腎臟問題(蛋白尿、潛血)"
+    },
+    "log": {
+      "noBluetooth": "不支援 Web Bluetooth — 需要 Chrome/Edge",
+      "selectedDevice": "已選裝置:{name}",
+      "subscribed": "連線與 Notify 訂閱完成 — 可以開始檢測",
+      "connectFailed": "連線失敗:{message}",
+      "txCommand": "TX → %TS(檢測指令)",
+      "awaitingResponse": "指令已送出 — 等待回應…",
+      "sendFailed": "檢測指令傳送失敗:{message}",
+      "stripError": "裝置 ERR — 沒有試紙。放入後重新檢測",
+      "received": "接收完成 — 正在分析結果",
+      "demoRun": "示範檢測({scenario})",
+      "analyzed": "分析完成 — 前往結果畫面",
+      "analyzeFailed": "分析失敗:{message}"
+    }
+  },
+  "authError": {
+    "rateLimited": "登入嘗試次數過多。請於{minutes}分鐘後再試。",
+    "badCredentials": "電子郵件或密碼不正確。",
+    "pendingApproval": "註冊申請正在等待管理者核准。核准後即可登入。",
+    "rejected": "註冊申請已被退回。請聯絡管理者。",
+    "suspended": "此帳號已被限制使用。請聯絡管理者。",
+    "requiredFields": "請填寫姓名、電子郵件與密碼。",
+    "passwordTooShort": "密碼需為8個字元以上。",
+    "consentRequired": "需同意必填的同意項目才能註冊。",
+    "emailTaken": "此電子郵件已被註冊。",
+    "licenseTypeRequired": "請選擇資格類型。",
+    "licenseNoRequired": "請輸入執業(資格)證號。",
+    "organizationRequired": "請輸入所屬醫療機構。",
+    "clinicianConsentRequired": "需同意必填的同意與承諾項目才能送出申請。",
+    "emailTakenClinician": "此電子郵件已註冊(或已送出申請)。",
+    "noReasonGiven": "未填寫理由"
+  },
+  "apiError": {
+    "loginRequired": "需要登入。",
+    "loginRequiredMeasure": "需要登入。檢測結果僅會儲存到你本人的帳號。",
+    "badJsonBody": "無法解析 JSON 內容。",
+    "phrInvalid": "找不到有效的 FHIR PHR 資料。請上傳從「我的健康紀錄」下載的 JSON 檔案。",
+    "phrOwnerMismatch": "上傳的健康紀錄屬於‘{owner}’,而目前登入的帳號為‘{account}’。僅能連結本人名下的健康紀錄。",
+    "phrEmpty": "找不到健檢、用藥或診斷資訊。請確認是否為正確的「我的健康紀錄」檔案。",
+    "phrInternal": "處理 PHR 時發生錯誤。請查看伺服器記錄檔。(若 dev 伺服器正在執行,可能需要重新啟動才能套用 Prisma 變更。)",
+    "measurementInvalid": "檢測值驗證失敗",
+    "measuredAtFuture": "檢測時間不可為未來時間。",
+    "analysisInternal": "分析處理過程中發生錯誤。",
+    "assessmentNotFound": "找不到風險評估。"
+  }
+}

@@ -2,6 +2,10 @@
 // 외부 의존 없는 순수 로직. publicData(FHIR 리소스 배열) → 구조화 요약 + 만성질환 플래그.
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
+// i18n:skip-start — 아래 한국어는 화면 문구가 아니라 **마이헬스데이터(FHIR) 원천 데이터의
+// 코드 문자열**이다. 정부 PHR 내보내기가 Observation.display 등을 한국어로 싣기 때문에
+// 매칭 키로 그대로 두어야 하며, 번역하면 파싱이 깨진다.
+
 // 검진 Observation display → 표준 메트릭 키
 const METRIC_MAP: Record<string, string> = {
   "체질량지수": "bmi",
@@ -27,12 +31,14 @@ const OPINION_MAP: Record<string, string> = {
   "종합소견_생활습관관리": "lifestyle",
   "기타": "etc",
 };
+// 복약 분류 코드 → 성분명 후보(원천 데이터 매칭용). 분류 표시 문구는 medClass.* 카탈로그.
 const MED_CLASS: Record<string, string[]> = {
-  "당뇨": ["메트포르민", "메트포민", "시타글립틴", "자누메트", "다파글리플로진", "엔블로멧", "글리메피리드", "이나보글리플로진", "트루다파", "답플로", "디파글루"],
-  "고혈압": ["암로디핀", "올메사르탄", "로사르탄", "발사르탄", "텔미사르탄", "세비카", "히드로클로로티아지드", "카르베딜롤", "라미프릴"],
-  "이상지질혈증": ["로수바스타틴", "아토르바스타틴", "심바스타틴", "스타틴", "로베틴", "로스틴", "로베스타", "에제티미브"],
-  "위장질환": ["라베프라졸", "테고프라잔", "자스타프라잔", "모사프리드", "레바미피드", "라푸티딘", "판토프라졸", "에소메프라졸", "알긴산"],
+  diabetes: ["메트포르민", "메트포민", "시타글립틴", "자누메트", "다파글리플로진", "엔블로멧", "글리메피리드", "이나보글리플로진", "트루다파", "답플로", "디파글루"],
+  hypertension: ["암로디핀", "올메사르탄", "로사르탄", "발사르탄", "텔미사르탄", "세비카", "히드로클로로티아지드", "카르베딜롤", "라미프릴"],
+  dyslipidemia: ["로수바스타틴", "아토르바스타틴", "심바스타틴", "스타틴", "로베틴", "로스틴", "로베스타", "에제티미브"],
+  gastro: ["라베프라졸", "테고프라잔", "자스타프라잔", "모사프리드", "레바미피드", "라푸티딘", "판토프라졸", "에소메프라졸", "알긴산"],
 };
+// i18n:skip-end
 
 function num(s: any): number | null {
   if (s == null) return null;
@@ -103,7 +109,8 @@ function classifyMed(text: string): string {
 
 export interface PhrTrend {
   key: string;
-  label: string;
+  /** 표시 문구는 phrMetric.<key> 카탈로그. 구 레코드 호환용으로만 남긴다. */
+  label?: string;
   unit: string;
   normal?: [number, number];
   points: { date: string; value: number }[];
@@ -115,18 +122,18 @@ export interface PhrTrend {
   n: number;
 }
 
-// 추세를 추출할 검진 항목(라벨·단위·정상범위)
-const TREND_METRICS: { key: string; label: string; unit: string; normal?: [number, number] }[] = [
-  { key: "glucose", label: "공복혈당", unit: "mg/dL", normal: [70, 100] },
-  { key: "egfr", label: "eGFR", unit: "", normal: [90, 120] },
-  { key: "bmi", label: "BMI", unit: "", normal: [18.5, 25] },
-  { key: "chol", label: "총콜레스테롤", unit: "", normal: [0, 200] },
-  { key: "ldl", label: "LDL콜레스테롤", unit: "", normal: [0, 130] },
-  { key: "tg", label: "중성지방", unit: "", normal: [0, 150] },
-  { key: "creatinine", label: "크레아티닌", unit: "", normal: [0.5, 1.2] },
-  { key: "hb", label: "혈색소", unit: "", normal: [12, 17] },
-  { key: "weight", label: "체중", unit: "kg" },
-  { key: "waist", label: "허리둘레", unit: "cm" },
+// 추세를 추출할 검진 항목(단위·정상범위). 라벨은 phrMetric.<key> 카탈로그.
+const TREND_METRICS: { key: string; unit: string; normal?: [number, number] }[] = [
+  { key: "glucose", unit: "mg/dL", normal: [70, 100] },
+  { key: "egfr", unit: "", normal: [90, 120] },
+  { key: "bmi", unit: "", normal: [18.5, 25] },
+  { key: "chol", unit: "", normal: [0, 200] },
+  { key: "ldl", unit: "", normal: [0, 130] },
+  { key: "tg", unit: "", normal: [0, 150] },
+  { key: "creatinine", unit: "", normal: [0.5, 1.2] },
+  { key: "hb", unit: "", normal: [12, 17] },
+  { key: "weight", unit: "kg" },
+  { key: "waist", unit: "cm" },
 ];
 
 function yearFrac(date: string): number {
@@ -261,7 +268,9 @@ export function parsePhr(publicData: any[]): PhrSummary {
   const diagnoses: string[] = [];
   for (const c of checkups) {
     const d = c.opinions.disease ?? "";
+    // i18n:skip-start — PHR 원천 데이터의 정형 문구(값 자체)로, 번역 대상이 아니다.
     if (d && d !== "해당사항없음" && d !== "정상입니다." && !diagnoses.includes(d)) diagnoses.push(d);
+    // i18n:skip-end
   }
 
   const claims_count = res.filter((r: any) => r.resourceType === "ExplanationOfBenefit").length;
@@ -286,10 +295,12 @@ function deriveFlags(latest: Checkup, medClasses: string[], diagnoses: string[])
   const upNote = (up && typeof up === "object" ? (up as Metric).raw : "") || "";
 
   return {
-    diabetes: medClasses.includes("당뇨") || dzText.includes("당뇨") || (glucose != null && glucose >= 100),
-    hypertension: medClasses.includes("고혈압") || dzText.includes("고혈압"),
-    dyslipidemia: medClasses.includes("이상지질혈증"),
+    // i18n:skip-start — dzText/upNote 는 PHR 원천 소견 텍스트라 한국어 키워드로 매칭한다.
+    diabetes: medClasses.includes("diabetes") || dzText.includes("당뇨") || (glucose != null && glucose >= 100),
+    hypertension: medClasses.includes("hypertension") || dzText.includes("고혈압"),
+    dyslipidemia: medClasses.includes("dyslipidemia"),
     kidney_watch: (egfr != null && egfr < 90) || (upNote !== "" && upNote !== "정상"),
+    // i18n:skip-end
     overweight: bmi != null && bmi >= 25,
     glucose, egfr, bmi, urine_protein_note: upNote,
   };

@@ -20,7 +20,9 @@ export async function GET() {
   const [db, ml] = await Promise.all([
     check(async () => { await prisma.$queryRaw`SELECT 1`; }),
     check(async () => {
+      // i18n:skip-start — 기계용 헬스 응답의 내부 오류 문자열(사용자 노출 아님)
       if (!mlUrl) throw new Error("ML_SERVICE_URL 미설정");
+      // i18n:skip-end
       const ctrl = new AbortController();
       const t = setTimeout(() => ctrl.abort(), 2000);
       try {

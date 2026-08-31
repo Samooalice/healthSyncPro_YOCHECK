@@ -4,6 +4,7 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { prisma } from "@/lib/db";
 import { getCurrentUser } from "@/lib/auth/session";
+import { notifySimple } from "@/lib/care/notify";
 
 async function me() {
   const u = await getCurrentUser();
@@ -26,14 +27,7 @@ export async function createReferral(formData: FormData): Promise<void> {
   const ref = await prisma.referral.create({
     data: { user_id: u.id, assessment_id: assessmentId, status: "created" },
   });
-  await prisma.notification.create({
-    data: {
-      user_id: u.id, template_id: "NT_REFERRAL", channel: "inapp", category: "care",
-      title: "진료의뢰 요약이 준비됐어요",
-      body: "의료진과 상담 시 참고할 수 있는 요약 리포트를 만들었어요. 케어 화면에서 확인할 수 있어요.",
-      ref_type: "referral", ref_id: ref.id,
-    },
-  });
+  await notifySimple(u.id, "NT_REFERRAL", "care", { type: "referral", id: ref.id });
   revalidatePath("/care");
 }
 
@@ -45,13 +39,6 @@ export async function registerFeedback(formData: FormData): Promise<void> {
   await prisma.feedback_label.create({
     data: { user_id: u.id, assessment_id: assessmentId, label_type: "recheck_result", label_value: { outcome } },
   });
-  await prisma.notification.create({
-    data: {
-      user_id: u.id, template_id: "NT_FEEDBACK", channel: "inapp", category: "info",
-      title: "재측정 결과가 등록됐어요",
-      body: "알려주신 결과는 분석 정확도 개선(재학습)에 반영돼요. 감사합니다.",
-      ref_type: "assessment", ref_id: assessmentId,
-    },
-  });
+  await notifySimple(u.id, "NT_FEEDBACK", "info", { type: "assessment", id: assessmentId });
   revalidatePath("/care");
 }

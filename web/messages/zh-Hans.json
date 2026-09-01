@@ -230,7 +230,16 @@
     "blood": "潜血",
     "uti_rule": "白细胞+亚硝酸盐(提示细菌性尿路感染)",
     "bilirubin": "胆红素",
-    "urobilinogen": "尿胆原"
+    "urobilinogen": "尿胆原",
+    "glucose": "尿糖",
+    "ph": "酸碱度(pH)",
+    "phr_bmi": "体检BMI",
+    "phr_glucose": "体检空腹血糖",
+    "pos_burden": "阳性项目数",
+    "protein": "尿蛋白",
+    "protein_trend_slope": "尿蛋白趋势",
+    "specific_gravity": "比重",
+    "vitamin_c": "维生素C"
   },
   "safety": {
     "screening": "本信息是为协助健康管理而提供的筛查信息,并非医学诊断。",
@@ -1312,5 +1321,20 @@
     "measuredAtFuture": "检测时间不能是未来时间。",
     "analysisInternal": "分析处理过程中发生错误。",
     "assessmentNotFound": "未找到风险评估。"
+  },
+  "phrOpinion": {
+    "htn_dm_controlled": "高血压/糖尿病控制良好。请持续管理。",
+    "periodic_bp_glucose": "需要定期测量血压、运动并采取低盐饮食。需要控制体重并运动。需要定期检查血糖并运动。",
+    "proteinuria_followup": "需要对蛋白尿进行随访观察。请通过饮食疗法和运动控制体重。",
+    "risky_drinking_strength": "处于危险饮酒状态。需要减少饮酒或戒酒。每周至少2天进行覆盖全身各部位的力量训练。",
+    "highrisk_drinking_activity": "处于高危饮酒状态。需要减少饮酒或戒酒。身体活动量不足。请让运动成为日常习惯。",
+    "strength_training_weekly": "每周至少2天进行覆盖全身各部位的力量训练。"
+  },
+  "bpCategory": {
+    "normal": "正常",
+    "elevated": "血压偏高",
+    "prehypertension": "高血压前期",
+    "hypertension": "高血压",
+    "existing_condition": "有疾病者"
   }
 }

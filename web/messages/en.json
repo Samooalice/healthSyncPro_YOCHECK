@@ -230,7 +230,16 @@
     "blood": "Occult blood",
     "uti_rule": "Leukocytes + nitrite (suggests bacterial UTI)",
     "bilirubin": "Bilirubin",
-    "urobilinogen": "Urobilinogen"
+    "urobilinogen": "Urobilinogen",
+    "glucose": "Urine glucose",
+    "ph": "Acidity (pH)",
+    "phr_bmi": "Checkup BMI",
+    "phr_glucose": "Checkup fasting glucose",
+    "pos_burden": "Number of positive items",
+    "protein": "Urine protein",
+    "protein_trend_slope": "Urine protein trend",
+    "specific_gravity": "Specific gravity",
+    "vitamin_c": "Vitamin C"
   },
   "safety": {
     "screening": "This information is screening information intended to support health management, and it is not a medical diagnosis.",
@@ -1312,5 +1321,20 @@
     "measuredAtFuture": "The measurement time cannot be in the future.",
     "analysisInternal": "An error occurred during analysis processing.",
     "assessmentNotFound": "The risk assessment could not be found."
+  },
+  "phrOpinion": {
+    "htn_dm_controlled": "Your hypertension / diabetes is well controlled. Please continue managing it.",
+    "periodic_bp_glucose": "Regular blood pressure measurement, exercise and a low-salt diet are needed. Weight control and exercise are needed. Regular blood glucose testing and exercise are needed.",
+    "proteinuria_followup": "Follow-up observation of proteinuria is needed. Please follow a diet and exercise plan for weight control.",
+    "risky_drinking_strength": "You are in a risky drinking state. Cutting down or stopping alcohol is needed. Perform strength training covering all parts of the body at least 2 days a week.",
+    "highrisk_drinking_activity": "You are in a high-risk drinking state. Cutting down or stopping alcohol is needed. Your physical activity level is insufficient. Please make exercise part of your daily life.",
+    "strength_training_weekly": "Perform strength training covering all parts of the body at least 2 days a week."
+  },
+  "bpCategory": {
+    "normal": "Normal",
+    "elevated": "Elevated",
+    "prehypertension": "Prehypertension",
+    "hypertension": "Hypertension",
+    "existing_condition": "Existing condition"
   }
 }

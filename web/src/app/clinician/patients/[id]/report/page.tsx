@@ -7,13 +7,14 @@ import { requireRole } from "@/lib/auth/guard";
 import { audit } from "@/lib/audit";
 import TrendChart, { type TrendPoint } from "@/components/TrendChart";
 import PrintButton from "@/components/PrintButton";
-import { GRADE_TOKEN, gradeLabel, careLabel, diseaseLabel } from "@/lib/ui/labels";
+import { GRADE_TOKEN, gradeLabel, careLabel, diseaseLabel, featureLabel } from "@/lib/ui/labels";
 import { ANALYTE_META, analyteName, formatAnalyte, analyteStatus, normalText, STATUS_COLOR, statusLabel } from "@/lib/ui/analyte";
 import { analyteSignificance, diseaseGuideline } from "@/lib/ui/clinical";
 import { localizeExplanation } from "@/lib/ui/explanation";
+import { medClassList } from "@/lib/ui/phr";
+import { opinionList } from "@/lib/ui/phrOpinion";
 import { fmtDate } from "@/i18n/format";
 import type { Locale } from "@/i18n/config";
-import type { Translate } from "@/i18n/t";
 import type { Analyte } from "@/config/algoParams";
 
 export const dynamic = "force-dynamic";
@@ -22,17 +23,6 @@ const ANALYTES: Analyte[] = ["protein", "blood", "leukocyte", "glucose", "ketone
 const PHR_FLAG_KEYS = ["diabetes", "hypertension", "dyslipidemia", "kidney_watch", "overweight"] as const;
 
 interface ShapItem { analyte: string; feature: string; contribution: number }
-
-/** 복약 분류 코드 목록 → 현재 언어 문자열. 구 레코드(한국어 원문)는 그대로 통과시킨다. */
-function medClassList(t: Translate, list: unknown): string {
-  if (!Array.isArray(list)) return "";
-  return list
-    .map((c) => {
-      const s = t(`medClass.${c}`);
-      return s === `medClass.${c}` ? String(c) : s;
-    })
-    .join(", ");
-}
 
 function decodeName(buf: Uint8Array | null, fallback: string): string {
   if (!buf) return fallback;
@@ -149,7 +139,7 @@ export default async function ClinicalReport({ params }: { params: Promise<{ id:
               <ul className="space-y-1 text-sm text-gray-700">
                 {shap.slice(0, 5).map((s) => (
                   <li key={s.feature} className="flex justify-between border-b border-gray-50 py-0.5">
-                    <span>{analyteName(t, s.analyte)} <span className="text-xs text-gray-400">{s.feature}</span></span>
+                    <span>{featureLabel(t, s.analyte, s.feature)} <span className="text-xs text-gray-400">{s.analyte}</span></span>
                     <span className="num text-gray-500">{t("report.contribution", { value: s.contribution.toFixed(2) })}</span>
                   </li>
                 ))}
@@ -230,7 +220,7 @@ export default async function ClinicalReport({ params }: { params: Promise<{ id:
                 ))}
               </div>
               {phrS?.med_classes?.length > 0 && <p className="mt-1 text-xs text-gray-600">{t("patient.medClasses", { list: medClassList(t, phrS.med_classes) })}</p>}
-              {phrS?.diagnoses?.length > 0 && <p className="text-xs text-gray-600">{t("patient.diagnoses", { list: phrS.diagnoses.join(" · ") })}</p>}
+              {phrS?.diagnoses?.length > 0 && <p className="text-xs text-gray-600">{t("patient.diagnoses", { list: opinionList(t, phrS.diagnoses) })}</p>}
               {phrF && (
                 <p className="text-xs text-gray-600">
                   {t("report.chronicFlags", {

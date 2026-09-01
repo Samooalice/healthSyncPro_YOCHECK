@@ -230,7 +230,16 @@
     "blood": "Hồng cầu ẩn",
     "uti_rule": "Bạch cầu + nitrit (gợi ý nhiễm khuẩn tiết niệu do vi khuẩn)",
     "bilirubin": "Bilirubin",
-    "urobilinogen": "Urobilinogen"
+    "urobilinogen": "Urobilinogen",
+    "glucose": "Glucose niệu",
+    "ph": "Độ pH",
+    "phr_bmi": "BMI khi khám",
+    "phr_glucose": "Đường huyết đói khi khám",
+    "pos_burden": "Số mục dương tính",
+    "protein": "Protein niệu",
+    "protein_trend_slope": "Xu hướng protein niệu",
+    "specific_gravity": "Tỷ trọng",
+    "vitamin_c": "Vitamin C"
   },
   "safety": {
     "screening": "Thông tin này là thông tin sàng lọc nhằm hỗ trợ quản lý sức khỏe, không phải chẩn đoán y khoa.",
@@ -1312,5 +1321,20 @@
     "measuredAtFuture": "Thời điểm đo không thể ở tương lai.",
     "analysisInternal": "Đã xảy ra lỗi trong quá trình phân tích.",
     "assessmentNotFound": "Không tìm thấy đánh giá nguy cơ."
+  },
+  "phrOpinion": {
+    "htn_dm_controlled": "Tăng huyết áp / đái tháo đường của bạn đang được kiểm soát tốt. Hãy tiếp tục quản lý.",
+    "periodic_bp_glucose": "Cần đo huyết áp định kỳ, vận động và ăn nhạt. Cần kiểm soát cân nặng và vận động. Cần xét nghiệm đường huyết định kỳ và vận động.",
+    "proteinuria_followup": "Cần theo dõi protein niệu. Hãy thực hiện chế độ ăn và vận động để kiểm soát cân nặng.",
+    "risky_drinking_strength": "Bạn đang ở mức uống rượu nguy hại. Cần giảm hoặc ngừng uống rượu. Hãy tập luyện sức mạnh cho tất cả các nhóm cơ ít nhất 2 ngày mỗi tuần.",
+    "highrisk_drinking_activity": "Bạn đang ở mức uống rượu nguy cơ cao. Cần giảm hoặc ngừng uống rượu. Mức độ vận động của bạn chưa đủ. Hãy đưa vận động vào sinh hoạt hằng ngày.",
+    "strength_training_weekly": "Hãy tập luyện sức mạnh cho tất cả các nhóm cơ ít nhất 2 ngày mỗi tuần."
+  },
+  "bpCategory": {
+    "normal": "Bình thường",
+    "elevated": "Huyết áp cần lưu ý",
+    "prehypertension": "Tiền tăng huyết áp",
+    "hypertension": "Tăng huyết áp",
+    "existing_condition": "Người có bệnh nền"
   }
 }

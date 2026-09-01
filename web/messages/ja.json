@@ -230,7 +230,16 @@
     "blood": "潜血",
     "uti_rule": "白血球+亜硝酸塩(細菌性UTIを示唆)",
     "bilirubin": "ビリルビン",
-    "urobilinogen": "ウロビリノーゲン"
+    "urobilinogen": "ウロビリノーゲン",
+    "glucose": "尿糖",
+    "ph": "酸度(pH)",
+    "phr_bmi": "健診BMI",
+    "phr_glucose": "健診の空腹時血糖",
+    "pos_burden": "陽性項目数",
+    "protein": "尿タンパク",
+    "protein_trend_slope": "尿タンパクの推移",
+    "specific_gravity": "比重",
+    "vitamin_c": "ビタミンC"
   },
   "safety": {
     "screening": "本情報は健康管理を助けるためのスクリーニング情報であり、医学的診断ではありません。",
@@ -1312,5 +1321,20 @@
     "measuredAtFuture": "測定時刻を未来にすることはできません。",
     "analysisInternal": "分析処理中にエラーが発生しました。",
     "assessmentNotFound": "リスク評価が見つかりませんでした。"
+  },
+  "phrOpinion": {
+    "htn_dm_controlled": "高血圧・糖尿病は良好にコントロールされています。継続して管理してください。",
+    "periodic_bp_glucose": "定期的な血圧測定、運動、減塩食が必要です。体重管理と運動が必要です。定期的な血糖検査と運動が必要です。",
+    "proteinuria_followup": "タンパク尿の経過観察が必要です。体重管理のための食事療法と運動を行ってください。",
+    "risky_drinking_strength": "危険な飲酒状態です。節酒または禁酒が必要です。週に2日以上、身体の各部位をすべて含む筋力トレーニングを行ってください。",
+    "highrisk_drinking_activity": "高リスクの飲酒状態です。節酒または禁酒が必要です。身体活動量が不足しています。運動を生活習慣にしてください。",
+    "strength_training_weekly": "週に2日以上、身体の各部位をすべて含む筋力トレーニングを行ってください。"
+  },
+  "bpCategory": {
+    "normal": "正常",
+    "elevated": "注意血圧",
+    "prehypertension": "高血圧前段階",
+    "hypertension": "高血圧",
+    "existing_condition": "有病者"
   }
 }

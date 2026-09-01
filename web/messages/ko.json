@@ -1207,7 +1207,16 @@
     "blood": "잠혈",
     "uti_rule": "백혈구+아질산염(세균성 UTI 시사)",
     "bilirubin": "빌리루빈",
-    "urobilinogen": "유로빌리노겐"
+    "urobilinogen": "유로빌리노겐",
+    "glucose": "요당",
+    "ph": "산도(pH)",
+    "phr_bmi": "검진 BMI",
+    "phr_glucose": "검진 공복혈당",
+    "pos_burden": "양성 항목 수",
+    "protein": "요단백",
+    "protein_trend_slope": "단백 추세",
+    "specific_gravity": "비중",
+    "vitamin_c": "비타민C"
   },
   "safety": {
     "screening": "본 정보는 건강관리를 돕기 위한 선별 정보이며, 의료적 진단이 아닙니다.",
@@ -1312,5 +1321,20 @@
     "measuredAtFuture": "측정 시각은 미래일 수 없습니다.",
     "analysisInternal": "분석 처리 중 오류가 발생했습니다.",
     "assessmentNotFound": "위험평가를 찾을 수 없습니다."
+  },
+  "phrOpinion": {
+    "htn_dm_controlled": "고혈압 / 당뇨병이 잘 조절되고 있습니다. 지속적으로 관리하십시오.",
+    "periodic_bp_glucose": "주기적인 혈압측정, 운동, 저염식이 필요합니다. 체중조절 및 운동이 필요합니다. 주기적인 혈당검사 및 운동이 필요합니다.",
+    "proteinuria_followup": "단백뇨 추적관찰이 필요합니다. 체중조절을 위한 식이요법 및 운동을 하십시오.",
+    "risky_drinking_strength": "위험음주상태입니다. 절주 또는 금주가 필요합니다. 일주일에 2일 이상 신체 각 부위를 모두 포함하여 근력 운동을 수행하십시오.",
+    "highrisk_drinking_activity": "고위험 음주 상태입니다. 절주 또는 금주가 필요합니다. 신체활동량이 부족합니다. 운동을 생활화하십시오.",
+    "strength_training_weekly": "일주일에 2일 이상 신체 각 부위를 모두 포함하여 근력 운동을 수행하십시오."
+  },
+  "bpCategory": {
+    "normal": "정상",
+    "elevated": "주의혈압",
+    "prehypertension": "고혈압 전단계",
+    "hypertension": "고혈압",
+    "existing_condition": "유질환자"
   }
 }

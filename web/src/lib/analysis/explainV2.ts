@@ -9,6 +9,7 @@
 // text_user/text_clinician 컬럼에 함께 남긴다.
 import { ALGO_PARAMS } from "@/config/algoParams";
 import { scoreToGrade, type DiseaseResult, type Grade } from "./engine";
+import { featureLabel } from "@/lib/ui/labels";
 import type { Translate } from "@/i18n/t";
 
 const EXP = ALGO_PARAMS.explanation;
@@ -88,12 +89,6 @@ export function buildExplanationSpec(r: DiseaseResult, opts?: { vitcDisturbance?
   };
 }
 
-/** 피처 라벨 — 카탈로그에 없으면 ML 서비스가 준 라벨, 그것도 없으면 키를 그대로. */
-export function featureLabel(t: Translate, key: string, fallback?: string): string {
-  const s = t(`feature.${key}`);
-  return s === `feature.${key}` ? fallback ?? key : s;
-}
-
 /** 질환 정식 명칭 (diseaseFull.*) — 없으면 짧은 명칭(disease.*)으로 폴백. */
 export function diseaseFullLabel(t: Translate, disease: string): string {
   const full = t(`diseaseFull.${disease}`);
@@ -114,8 +109,10 @@ export function renderExplanation(t: Translate, spec: ExplanationSpec): Explanat
   const userLabels = spec.userTop.map((c) => featureLabel(t, c.key, c.label)).join(", ");
   const tone = t(`explain.tone.${spec.grade}`);
 
+  // 기여 요인이 하나도 없으면 "신호(…)가 확인됐어요" 문장이 빈 괄호로 남는다.
+  // 등급과 무관하게 요인 목록이 비었으면 요인 없는 문장을 쓴다.
   const text_user =
-    spec.grade === "low"
+    spec.grade === "low" || spec.userTop.length === 0
       ? t("explain.userLow", { disease, tone })
       : t("explain.userSignals", { disease, labels: userLabels, tone });
 

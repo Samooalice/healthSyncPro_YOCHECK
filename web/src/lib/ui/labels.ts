@@ -27,3 +27,9 @@ export function diseaseLabel(t: Translate, key: string | null | undefined): stri
   const s = t(`disease.${key}`);
   return s === `disease.${key}` ? key : s;
 }
+
+/** 위험 기여 피처 라벨 — feature.*. 카탈로그에 없으면 ML 이 준 라벨, 그것도 없으면 키. */
+export function featureLabel(t: Translate, key: string, fallback?: string): string {
+  const s = t(`feature.${key}`);
+  return s === `feature.${key}` ? fallback ?? key : s;
+}

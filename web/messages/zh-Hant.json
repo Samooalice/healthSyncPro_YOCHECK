@@ -230,7 +230,16 @@
     "blood": "潛血",
     "uti_rule": "白血球+亞硝酸鹽(提示細菌性泌尿道感染)",
     "bilirubin": "膽紅素",
-    "urobilinogen": "尿膽素原"
+    "urobilinogen": "尿膽素原",
+    "glucose": "尿糖",
+    "ph": "酸鹼度(pH)",
+    "phr_bmi": "健檢BMI",
+    "phr_glucose": "健檢空腹血糖",
+    "pos_burden": "陽性項目數",
+    "protein": "尿蛋白",
+    "protein_trend_slope": "尿蛋白趨勢",
+    "specific_gravity": "比重",
+    "vitamin_c": "維生素C"
   },
   "safety": {
     "screening": "本資訊是為協助健康管理而提供的篩檢資訊,並非醫學診斷。",
@@ -1312,5 +1321,20 @@
     "measuredAtFuture": "檢測時間不可為未來時間。",
     "analysisInternal": "分析處理過程中發生錯誤。",
     "assessmentNotFound": "找不到風險評估。"
+  },
+  "phrOpinion": {
+    "htn_dm_controlled": "高血壓/糖尿病控制良好。請持續管理。",
+    "periodic_bp_glucose": "需要定期量測血壓、運動並採取低鹽飲食。需要控制體重並運動。需要定期檢查血糖並運動。",
+    "proteinuria_followup": "需要對蛋白尿進行追蹤觀察。請透過飲食療法與運動控制體重。",
+    "risky_drinking_strength": "處於危險飲酒狀態。需要節制飲酒或戒酒。每週至少2天進行涵蓋全身各部位的重量訓練。",
+    "highrisk_drinking_activity": "處於高危險飲酒狀態。需要節制飲酒或戒酒。身體活動量不足。請讓運動成為日常習慣。",
+    "strength_training_weekly": "每週至少2天進行涵蓋全身各部位的重量訓練。"
+  },
+  "bpCategory": {
+    "normal": "正常",
+    "elevated": "血壓偏高",
+    "prehypertension": "高血壓前期",
+    "hypertension": "高血壓",
+    "existing_condition": "有疾病者"
   }
 }

@@ -10,9 +10,10 @@ import { GRADE_TOKEN, gradeLabel, careLabel, diseaseLabel } from "@/lib/ui/label
 import { ANALYTE_META, analyteName, formatAnalyte, analyteStatus, normalText, STATUS_COLOR, statusLabel } from "@/lib/ui/analyte";
 import { describeDriver, sourceLabel } from "@/lib/ui/driver";
 import { localizeExplanation } from "@/lib/ui/explanation";
+import { bpText as fmtBpText, medClassList, phrMetricLabel } from "@/lib/ui/phr";
+import { opinionList } from "@/lib/ui/phrOpinion";
 import { fmtDate, fmtDateTime, fmtTinyDate } from "@/i18n/format";
 import type { Locale } from "@/i18n/config";
-import type { Translate } from "@/i18n/t";
 import type { Analyte } from "@/config/algoParams";
 
 export const dynamic = "force-dynamic";
@@ -28,23 +29,6 @@ const DISEASE_TREND: Record<string, Analyte> = {
 const PHR_FLAG_KEYS = ["diabetes", "hypertension", "dyslipidemia", "kidney_watch", "overweight"] as const;
 
 interface ShapItem { analyte: string; feature: string; contribution: number; value?: number }
-
-/** 검진 항목 라벨 — phrMetric.<key>, 없으면 구 레코드의 label, 그것도 없으면 키. */
-function phrMetricLabel(t: Translate, key: string, fallback?: string): string {
-  const s = t(`phrMetric.${key}`);
-  return s === `phrMetric.${key}` ? fallback ?? key : s;
-}
-
-/** 복약 분류 코드 목록 → 현재 언어 문자열. 구 레코드(한국어 원문)는 그대로 통과시킨다. */
-function medClassList(t: Translate, list: unknown): string {
-  if (!Array.isArray(list)) return "";
-  return list
-    .map((c) => {
-      const s = t(`medClass.${c}`);
-      return s === `medClass.${c}` ? String(c) : s;
-    })
-    .join(", ");
-}
 
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -235,10 +219,10 @@ export default async function ResultDetail({ params }: { params: Promise<{ id: s
                       <span><span className="num font-medium text-gray-800">{v == null ? "-" : `${v}${u ? " " + u : ""}`}</span> <span className="text-[10px] text-gray-300">{t("result.normalInline", { normal: ref })}</span></span>
                     </div>
                   ))}
-                  {bpText && <div className="col-span-2 flex justify-between py-0.5 text-sm"><span className="text-gray-500">{t("phrMetric.bp")}</span><span className="num font-medium text-gray-800">{bpText}</span></div>}
+                  {bpText && <div className="col-span-2 flex justify-between py-0.5 text-sm"><span className="text-gray-500">{t("phrMetric.bp")}</span><span className="num font-medium text-gray-800">{fmtBpText(t, bpText)}</span></div>}
                 </div>
                 {phrSummary?.med_classes?.length > 0 && <p className="mt-2 text-xs text-gray-500">{t("result.meds", { list: medClassList(t, phrSummary.med_classes) })}</p>}
-                {phrSummary?.diagnoses?.length > 0 && <p className="mt-1 text-xs text-gray-500">{t("result.diagnoses", { list: phrSummary.diagnoses.join(" · ") })}</p>}
+                {phrSummary?.diagnoses?.length > 0 && <p className="mt-1 text-xs text-gray-500">{t("result.diagnoses", { list: opinionList(t, phrSummary.diagnoses) })}</p>}
               </>
             )}
           </section>

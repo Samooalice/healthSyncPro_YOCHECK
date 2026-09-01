@@ -7,13 +7,14 @@ import { prisma } from "@/lib/db";
 import { requireRole } from "@/lib/auth/guard";
 import { audit } from "@/lib/audit";
 import TrendChart, { type TrendPoint } from "@/components/TrendChart";
-import { GRADE_TOKEN, gradeLabel, careLabel, diseaseLabel } from "@/lib/ui/labels";
+import { GRADE_TOKEN, gradeLabel, careLabel, diseaseLabel, featureLabel } from "@/lib/ui/labels";
 import { ANALYTE_META, analyteName, formatAnalyte, analyteStatus, normalText, STATUS_COLOR, statusLabel } from "@/lib/ui/analyte";
 import { analyteSignificance, diseaseGuideline } from "@/lib/ui/clinical";
 import { localizeExplanation } from "@/lib/ui/explanation";
+import { medClassList } from "@/lib/ui/phr";
+import { opinionList } from "@/lib/ui/phrOpinion";
 import { fmtDate } from "@/i18n/format";
 import type { Locale } from "@/i18n/config";
-import type { Translate } from "@/i18n/t";
 import type { Analyte } from "@/config/algoParams";
 
 export const dynamic = "force-dynamic";
@@ -28,17 +29,6 @@ const DISEASE_TREND: Record<string, Analyte> = {
 const PHR_FLAG_KEYS = ["diabetes", "hypertension", "dyslipidemia", "kidney_watch", "overweight"] as const;
 
 interface ShapItem { analyte: string; feature: string; contribution: number }
-
-/** 복약 분류 코드 목록 → 현재 언어 문자열. 구 레코드(한국어 원문)는 그대로 통과시킨다. */
-function medClassList(t: Translate, list: unknown): string {
-  if (!Array.isArray(list)) return "";
-  return list
-    .map((c) => {
-      const s = t(`medClass.${c}`);
-      return s === `medClass.${c}` ? String(c) : s;
-    })
-    .join(", ");
-}
 
 
 function decodeName(buf: Uint8Array | null, fallback: string): string {
@@ -231,7 +221,7 @@ export default async function PatientDetail({ params }: { params: Promise<{ id: 
               <div className="space-y-2">
                 {shapTop.map((s) => (
                   <div key={s.feature} className="flex items-center gap-2 text-sm">
-                    <span className="w-28 shrink-0 text-gray-600">{analyteName(t, s.analyte)} <span className="text-xs text-gray-400">{s.feature}</span></span>
+                    <span className="w-28 shrink-0 text-gray-600">{featureLabel(t, s.analyte, s.feature)} <span className="text-xs text-gray-400">{s.analyte}</span></span>
                     <div className="h-3 flex-1 rounded bg-gray-100"><div className="h-3 rounded" style={{ width: `${Math.min(100, s.contribution * 200)}%`, background: g.color }} /></div>
                     <span className="num w-12 text-right text-gray-500">{s.contribution.toFixed(2)}</span>
                   </div>
@@ -273,7 +263,7 @@ export default async function PatientDetail({ params }: { params: Promise<{ id: 
                 ))}
               </div>
               {phrSummary?.med_classes?.length > 0 && <p className="mt-2 text-xs text-gray-500">{t("patient.medClasses", { list: medClassList(t, phrSummary.med_classes) })}</p>}
-              {phrSummary?.diagnoses?.length > 0 && <p className="mt-1 text-xs text-gray-500">{t("patient.diagnoses", { list: phrSummary.diagnoses.join(" · ") })}</p>}
+              {phrSummary?.diagnoses?.length > 0 && <p className="mt-1 text-xs text-gray-500">{t("patient.diagnoses", { list: opinionList(t, phrSummary.diagnoses) })}</p>}
             </section>
           )}
 

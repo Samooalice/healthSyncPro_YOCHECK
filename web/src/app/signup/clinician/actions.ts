@@ -1,5 +1,7 @@
 "use server";
 
+import { getTranslations } from "next-intl/server";
+
 import crypto from "node:crypto";
 import { prisma } from "@/lib/db";
 import { hashPassword } from "@/lib/auth/hash";
@@ -25,11 +27,12 @@ export async function signupClinician(
   const organization = String(formData.get("organization") ?? "").trim();
   const department = String(formData.get("department") ?? "").trim();
 
-  if (!name || !email || !pw) return { error: "이름·이메일·비밀번호를 모두 입력하세요." };
-  if (pw.length < 8) return { error: "비밀번호는 8자 이상이어야 합니다." };
-  if (!LICENSE_TYPES.includes(licenseType)) return { error: "면허 종류를 선택하세요." };
-  if (!licenseNo) return { error: "면허(자격) 번호를 입력하세요." };
-  if (!organization) return { error: "소속 의료기관을 입력하세요." };
+  const t = await getTranslations("authError");
+  if (!name || !email || !pw) return { error: t("requiredFields") };
+  if (pw.length < 8) return { error: t("passwordTooShort") };
+  if (!LICENSE_TYPES.includes(licenseType)) return { error: t("licenseTypeRequired") };
+  if (!licenseNo) return { error: t("licenseNoRequired") };
+  if (!organization) return { error: t("organizationRequired") };
 
   const consents = CLINICIAN_CONSENT_DEFS.map((d) => ({
     type: d.type,
@@ -37,11 +40,11 @@ export async function signupClinician(
     granted: formData.get(`consent_${d.type}`) === "on",
   }));
   if (!consents.filter((c) => c.required).every((c) => c.granted)) {
-    return { error: "필수 동의·서약 항목에 동의해야 신청할 수 있습니다." };
+    return { error: t("clinicianConsentRequired") };
   }
 
   const exists = await prisma.user_account.findFirst({ where: { email } });
-  if (exists) return { error: "이미 가입(신청)된 이메일입니다." };
+  if (exists) return { error: t("emailTakenClinician") };
 
   const pseudo = "clin-" + crypto.randomBytes(6).toString("hex");
   const account = await prisma.$transaction(async (tx) => {

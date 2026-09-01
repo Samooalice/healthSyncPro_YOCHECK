@@ -1,6 +1,8 @@
 // 콘텐츠 개인화 큐레이션 — care.content_curation_rule 규칙을 컨텍스트에 매칭.
 // 참고: 세부개발데이터 7.3 / D.7 큐레이션 규칙 인스턴스
 import { prisma } from "@/lib/db";
+import { contentTranslations } from "./i18n";
+import { DEFAULT_LOCALE, type Locale } from "@/i18n/config";
 
 export interface CurationContext {
   disease?: string;
@@ -59,8 +61,11 @@ function ruleMatches(cond: Record<string, unknown>, ctx: CurationContext): boole
   return true;
 }
 
-/** 컨텍스트에 맞는 게시된 콘텐츠를 우선순위(낮을수록 우선)로 반환. */
-export async function curateFeed(ctx: CurationContext, limit = 10): Promise<CuratedItem[]> {
+/**
+ * 컨텍스트에 맞는 게시된 콘텐츠를 우선순위(낮을수록 우선)로 반환.
+ * locale 을 주면 care.content_i18n 의 번역으로 제목·본문을 바꿔 돌려준다(없으면 ko).
+ */
+export async function curateFeed(ctx: CurationContext, limit = 10, locale: Locale = DEFAULT_LOCALE): Promise<CuratedItem[]> {
   const rules = await prisma.content_curation_rule.findMany({
     where: { active: true },
     include: { content: true },
@@ -85,5 +90,11 @@ export async function curateFeed(ctx: CurationContext, limit = 10): Promise<Cura
     });
     if (items.length >= limit) break;
   }
-  return items;
+
+  const tr = await contentTranslations(locale, items.map((i) => i.content_id));
+  if (tr.size === 0) return items;
+  return items.map((i) => {
+    const t = tr.get(i.content_id);
+    return t ? { ...i, title: t.title || i.title, body: t.body ?? i.body } : i;
+  });
 }

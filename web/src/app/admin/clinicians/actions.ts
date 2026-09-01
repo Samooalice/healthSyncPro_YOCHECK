@@ -1,5 +1,7 @@
 "use server";
 
+import { getTranslations } from "next-intl/server";
+
 import { revalidatePath } from "next/cache";
 import { prisma } from "@/lib/db";
 import { requireRole } from "@/lib/auth/guard";
@@ -21,7 +23,8 @@ export async function approveClinician(formData: FormData): Promise<void> {
 export async function rejectClinician(formData: FormData): Promise<void> {
   const me = await requireRole(["admin"]);
   const id = String(formData.get("id") ?? "");
-  const reason = String(formData.get("reason") ?? "").trim() || "사유 미기재";
+  const t = await getTranslations("authError");
+  const reason = String(formData.get("reason") ?? "").trim() || t("noReasonGiven");
   if (!id) return;
   await prisma.$transaction([
     prisma.user_account.update({ where: { id }, data: { status: "rejected" } }),

@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import createNextIntlPlugin from "next-intl/plugin";
 
 // 전역 보안 헤더 (보안 13장). 인라인 스타일/HMR을 깨지 않도록 default-src는 두지 않고,
 // 클릭재킹·MIME스니핑·레퍼러 유출·object/base 주입 등 안전한 강화만 적용.
@@ -19,4 +20,7 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextConfig;
+// 다국어(next-intl) — 요청 설정은 src/i18n/request.ts
+const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
+
+export default withNextIntl(nextConfig);

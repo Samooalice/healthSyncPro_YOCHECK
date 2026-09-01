@@ -6,7 +6,9 @@ import { correctMeasurement, type RawValues } from "./correction";
 import { updateBaseline, deviationSd, detectChange, type Baseline } from "./baseline";
 import { computeFeatures, analyzeAll, type DiseaseResult, type PersonalSignals } from "./engine";
 import { mlPredict, buildFeatures } from "./mlClient";
-import { explainDisease } from "./explainV2";
+import { buildExplanationSpec, renderExplanation } from "./explainV2";
+import { translatorFor } from "@/i18n/translator";
+import { DEFAULT_LOCALE } from "@/i18n/config";
 import { notifyAnalysis } from "@/lib/care/notify";
 import { awardMeasurement } from "@/lib/gamification/engine";
 import type { PhrFlags } from "@/lib/phr/ingest";
@@ -34,6 +36,7 @@ export interface RunResult {
   risk_grade: string;
   risk_score: number;
   standard_grade: string | null;
+  /** label 은 기준어(ko) 표기다 — 화면에서는 disease 키로 다시 번역한다. */
   diseases: { disease: string; label: string; risk_grade: string; risk_score: number; assessment_id: string }[];
 }
 
@@ -152,7 +155,7 @@ async function analyzeAndPersist({ userId, measurementId, raw, corrected, person
   if (ml && ml.results.length) {
     modelVersion = ml.model_version;
     results = ml.results.map((r) => ({
-      disease: r.disease, label: r.label, risk_score: r.risk_score, risk_grade: r.risk_grade,
+      disease: r.disease, risk_score: r.risk_score, risk_grade: r.risk_grade,
       standard_grade: r.standard_grade,
       contributions: r.shap_top.map((s) => ({ feature: s.feature_key, label: s.feature, contribution: s.shap, value: s.value })),
       is_samd_output: true,
@@ -162,10 +165,13 @@ async function analyzeAndPersist({ userId, measurementId, raw, corrected, person
   }
 
   // 질환별 평가·설명 저장
+  // 설명은 언어 중립 스펙으로 저장하고, 감사·API 하위호환을 위해 기준어(ko) 문장도 함께 남긴다.
+  const tKo = await translatorFor(DEFAULT_LOCALE);
   const stored: RunResult["diseases"] = [];
   let topId = "", topDisease = results[0], topGrade = -1, topScore = -1;
   for (const r of results) {
-    const exp = explainDisease(r, { vitcDisturbance: features.vitc_disturbance });
+    const spec = buildExplanationSpec(r, { vitcDisturbance: features.vitc_disturbance });
+    const exp = renderExplanation(tKo, spec);
     const a = await prisma.risk_assessment.create({
       data: {
         user_id: userId, measurement_id: measurementId, disease: r.disease,
@@ -177,10 +183,11 @@ async function analyzeAndPersist({ userId, measurementId, raw, corrected, person
       data: {
         assessment_id: a.id, shap_values: exp.shap_top as object,
         text_user: exp.text_user, text_clinician: exp.text_clinician,
-        counterfactual: { items: exp.counterfactual, recommendations: exp.recommendations } as object,
+        // spec 이 있으면 화면은 현재 언어로 다시 그린다(구 레코드는 text_* 로 폴백).
+        counterfactual: { items: exp.counterfactual, recommendations: exp.recommendations, spec } as object,
       },
     });
-    stored.push({ disease: r.disease, label: r.label, risk_grade: r.risk_grade, risk_score: r.risk_score, assessment_id: a.id });
+    stored.push({ disease: r.disease, label: tKo(`diseaseFull.${r.disease}`), risk_grade: r.risk_grade, risk_score: r.risk_score, assessment_id: a.id });
     const sev = SEVERITY[r.risk_grade];
     if (sev > topGrade || (sev === topGrade && r.risk_score > topScore)) { topGrade = sev; topScore = r.risk_score; topId = a.id; topDisease = r; }
   }

@@ -74,10 +74,10 @@ export function computeFeatures(raw: RawValues, history: RawValues[]): Features 
 const glucoseSev = (g: number | null) => (g == null ? 0 : g >= 126 ? 1 : g >= 100 ? 0.55 : 0);
 const egfrSev = (e: number | null) => (e == null ? 0 : e < 45 ? 1 : e < 60 ? 0.7 : e < 90 ? 0.35 : 0);
 
-export interface Contribution { feature: string; label: string; contribution: number; value?: number }
+/** 기여 요인. feature 는 카탈로그 키(feature.*), label 은 ML 서비스가 준 폴백 표기다. */
+export interface Contribution { feature: string; label?: string; contribution: number; value?: number }
 export interface DiseaseResult {
   disease: string;
-  label: string;
   risk_score: number;
   risk_grade: Grade;
   standard_grade: string | null;
@@ -85,22 +85,21 @@ export interface DiseaseResult {
   is_samd_output: boolean;
 }
 
-const DISEASE_LABEL: Record<string, string> = {
-  kidney: "만성신장질환", diabetes: "당뇨", hypertension: "고혈압", uti: "요로감염", liver: "간담도",
-};
+// 질환·피처 라벨은 messages/*.json (diseaseFull.* / feature.*) 에 있다.
+// 엔진은 키만 다루고, 표시 문구는 화면·설명 렌더링 단계에서 붙인다.
 
-function pack(disease: string, parts: [string, string, number][], boosts: [string, string, number][], extra?: { standard?: string }): DiseaseResult {
+function pack(disease: string, parts: [string, number][], boosts: [string, number][], extra?: { standard?: string }): DiseaseResult {
   const contributions: Contribution[] = [];
   let score = 0;
-  for (const [feature, label, c] of [...parts, ...boosts]) {
+  for (const [feature, c] of [...parts, ...boosts]) {
     if (c <= 0) continue;
     score += c;
-    contributions.push({ feature, label, contribution: Number(c.toFixed(3)) });
+    contributions.push({ feature, contribution: Number(c.toFixed(3)) });
   }
   score = clamp01(score);
   contributions.sort((a, b) => b.contribution - a.contribution);
   return {
-    disease, label: DISEASE_LABEL[disease] ?? disease,
+    disease,
     risk_score: Number(score.toFixed(4)), risk_grade: scoreToGrade(score),
     standard_grade: extra?.standard ?? null, contributions, is_samd_output: true,
   };
@@ -128,64 +127,64 @@ export function analyzeAll(corrected: RawValues, raw: RawValues, f: Features, ph
     const personalProteinDev = devSd > CD.k ? clamp01((devSd - CD.k) / 4) * (DW.kidney?.protein_dev ?? 0.45) * 0.5 : 0;
     // 지속성: P1 detectChange 결과 우선, 없으면 시계열 연속양성으로 대체
     const persistent = personal?.proteinPersistent ?? (f.protein_consec_pos >= 2);
-    const parts: [string, string, number][] = [
-      ["protein_dev", "요단백", c("protein") * 0.3],
-      ["blood_dev", "잠혈", c("blood") * 0.15],
-      ["leukocyte_dev", "백혈구", c("leukocyte") * 0.05],
+    const parts: [string, number][] = [
+      ["protein_dev", c("protein") * 0.3],
+      ["blood_dev", c("blood") * 0.15],
+      ["leukocyte_dev", c("leukocyte") * 0.05],
     ];
-    const boosts: [string, string, number][] = [
-      ["protein_personal_dev", "개인 기준선 대비 단백 상승", personalProteinDev],
-      ["protein_persistence", "단백뇨 지속", persistent ? 0.12 : 0],
-      ["nephritis_rule", "단백+잠혈(사구체신염 시사)", f.nephritis_flag ? 0.1 : 0],
-      ["phr_egfr", "검진 eGFR 저하", egfrSev(phr?.egfr ?? null) * 0.2],
-      ["phr_egfr_trend", "검진 eGFR 하락 추세", (phr?.egfr_slope ?? 0) < -3 ? clamp01(-(phr?.egfr_slope ?? 0) / 15) * 0.12 : 0],
-      ["phr_kidney_watch", "검진 신장 주의소견", phr?.kidney_watch ? 0.1 : 0],
-      ["phr_htn", "고혈압(신손상 위험)", phr?.hypertension ? 0.08 : 0],
-      ["phr_dm", "당뇨(당뇨병성 신증 위험)", phr?.diabetes ? 0.08 : 0],
+    const boosts: [string, number][] = [
+      ["protein_personal_dev", personalProteinDev],
+      ["protein_persistence", persistent ? 0.12 : 0],
+      ["nephritis_rule", f.nephritis_flag ? 0.1 : 0],
+      ["phr_egfr", egfrSev(phr?.egfr ?? null) * 0.2],
+      ["phr_egfr_trend", (phr?.egfr_slope ?? 0) < -3 ? clamp01(-(phr?.egfr_slope ?? 0) / 15) * 0.12 : 0],
+      ["phr_kidney_watch", phr?.kidney_watch ? 0.1 : 0],
+      ["phr_htn", phr?.hypertension ? 0.08 : 0],
+      ["phr_dm", phr?.diabetes ? 0.08 : 0],
     ];
     const proteinRaw = Math.round(Number(raw.protein ?? 0));
-    const scoreTmp = clamp01([...parts, ...boosts].reduce((s, x) => s + Math.max(0, x[2]), 0));
+    const scoreTmp = clamp01([...parts, ...boosts].reduce((s, x) => s + Math.max(0, x[1]), 0));
     const zone = (["green", "yellow", "orange", "red"] as const)[Math.min(Math.floor(scoreTmp * 4), 3)];
     out.push(pack("kidney", parts, boosts, { standard: `${KDIGO_A[proteinRaw] ?? "A1"}/${zone}` }));
   }
 
   // M-DM (당뇨)
   {
-    const parts: [string, string, number][] = [
-      ["glucose_urine", "요당", c("glucose") * 0.35],
-      ["ketone_urine", "케톤", c("ketone") * 0.1],
+    const parts: [string, number][] = [
+      ["glucose_urine", c("glucose") * 0.35],
+      ["ketone_urine", c("ketone") * 0.1],
     ];
-    const boosts: [string, string, number][] = [
-      ["dka_rule", "요당+케톤(DKA 시사)", f.dka_flag ? 0.15 : 0],
-      ["phr_fasting_glucose", "검진 공복혈당", glucoseSev(phr?.glucose ?? null) * 0.3],
-      ["phr_glucose_trend", "검진 공복혈당 상승 추세", (phr?.glucose_slope ?? 0) > 2 ? clamp01((phr?.glucose_slope ?? 0) / 15) * 0.1 : 0],
-      ["phr_dm_flag", "당뇨 진단/복약", phr?.diabetes ? 0.25 : 0],
-      ["phr_overweight", "과체중(BMI≥25)", phr?.overweight ? 0.05 : 0],
+    const boosts: [string, number][] = [
+      ["dka_rule", f.dka_flag ? 0.15 : 0],
+      ["phr_fasting_glucose", glucoseSev(phr?.glucose ?? null) * 0.3],
+      ["phr_glucose_trend", (phr?.glucose_slope ?? 0) > 2 ? clamp01((phr?.glucose_slope ?? 0) / 15) * 0.1 : 0],
+      ["phr_dm_flag", phr?.diabetes ? 0.25 : 0],
+      ["phr_overweight", phr?.overweight ? 0.05 : 0],
     ];
     out.push(pack("diabetes", parts, boosts));
   }
 
   // M-HTN (고혈압) — 소변 단독 약함, PHR 주도
   {
-    const parts: [string, string, number][] = [
-      ["protein_marker", "요단백(신손상 지표)", c("protein") * 0.2],
+    const parts: [string, number][] = [
+      ["protein_marker", c("protein") * 0.2],
     ];
-    const boosts: [string, string, number][] = [
-      ["phr_htn_flag", "고혈압 진단/복약", phr?.hypertension ? 0.55 : 0],
-      ["phr_overweight", "과체중", phr?.overweight ? 0.1 : 0],
+    const boosts: [string, number][] = [
+      ["phr_htn_flag", phr?.hypertension ? 0.55 : 0],
+      ["phr_overweight", phr?.overweight ? 0.1 : 0],
     ];
     out.push(pack("hypertension", parts, boosts));
   }
 
   // M-UTI (요로감염) — 요화학 주도
   {
-    const parts: [string, string, number][] = [
-      ["leukocyte", "백혈구", c("leukocyte") * 0.4],
-      ["nitrite", "아질산염", c("nitrite") * 0.3],
-      ["blood", "잠혈", c("blood") * 0.12],
+    const parts: [string, number][] = [
+      ["leukocyte", c("leukocyte") * 0.4],
+      ["nitrite", c("nitrite") * 0.3],
+      ["blood", c("blood") * 0.12],
     ];
-    const boosts: [string, string, number][] = [
-      ["uti_rule", "백혈구+아질산염(세균성 UTI 시사)", f.uti_flag ? 0.15 : 0],
+    const boosts: [string, number][] = [
+      ["uti_rule", f.uti_flag ? 0.15 : 0],
     ];
     out.push(pack("uti", parts, boosts));
   }
@@ -194,9 +193,9 @@ export function analyzeAll(corrected: RawValues, raw: RawValues, f: Features, ph
   {
     const uro = Number(corrected.urobilinogen ?? 0.2);
     const uroSev = uro > 1.0 ? clamp01((uro - 1.0) / 3) : 0;
-    const parts: [string, string, number][] = [
-      ["bilirubin", "빌리루빈", c("bilirubin") * 0.4],
-      ["urobilinogen", "유로빌리노겐", uroSev * 0.3],
+    const parts: [string, number][] = [
+      ["bilirubin", c("bilirubin") * 0.4],
+      ["urobilinogen", uroSev * 0.3],
     ];
     out.push(pack("liver", parts, []));
   }

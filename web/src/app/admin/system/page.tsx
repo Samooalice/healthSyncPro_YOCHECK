@@ -1,8 +1,11 @@
 // 관리자 — 시스템 상태/관측성 (8장). 의존성 헬스·보안 이벤트·버전 정보.
 import Link from "next/link";
+import { getLocale, getTranslations } from "next-intl/server";
 import { prisma } from "@/lib/db";
 import { requireRole } from "@/lib/auth/guard";
 import { audit } from "@/lib/audit";
+import { fmtShortDateTime } from "@/i18n/format";
+import type { Locale } from "@/i18n/config";
 
 export const dynamic = "force-dynamic";
 
@@ -12,23 +15,25 @@ async function check(fn: () => Promise<void>): Promise<{ status: "up" | "down"; 
   catch (e) { return { status: "down", ms: Math.round(performance.now() - start), error: (e as Error).message }; }
 }
 
-const SEC_KO: Record<string, string> = {
-  login_failed: "로그인 실패", login_blocked: "레이트리밋 차단", view_phi: "환자정보 열람", clinician_verify: "의료진 승인심사",
-};
+// 보안 이벤트 코드 — 표시 문구는 secEvent.* 카탈로그
+const SEC_CODES = ["login_failed", "login_blocked", "view_phi", "clinician_verify"];
 
 export default async function SystemPage() {
   const me = await requireRole(["admin"]);
   await audit(me.id, "view_admin", "system");
+  const t = await getTranslations();
+  const locale = (await getLocale()) as Locale;
+  const secLabel = (code: string) => (SEC_CODES.includes(code) ? t(`secEvent.${code}`) : code);
 
   const mlUrl = process.env.ML_SERVICE_URL;
   const dayAgo = new Date(Date.now() - 86400_000);
   const [db, ml, secEvents, loginFail24, loginBlock24, phi24, recentSec] = await Promise.all([
     check(async () => { await prisma.$queryRaw`SELECT 1`; }),
     check(async () => {
-      if (!mlUrl) throw new Error("ML_SERVICE_URL 미설정");
-      const ctrl = new AbortController(); const t = setTimeout(() => ctrl.abort(), 2000);
+      if (!mlUrl) throw new Error(t("system.mlUrlMissing"));
+      const ctrl = new AbortController(); const timer = setTimeout(() => ctrl.abort(), 2000);
       try { const r = await fetch(`${mlUrl}/health`, { signal: ctrl.signal }); if (!r.ok) throw new Error(`HTTP ${r.status}`); }
-      finally { clearTimeout(t); }
+      finally { clearTimeout(timer); }
     }),
     prisma.audit_log.groupBy({ by: ["action"], _count: { _all: true }, where: { action: { in: ["login_failed", "login_blocked", "view_phi", "clinician_verify"] } } }),
     prisma.audit_log.count({ where: { action: "login_failed", occurred_at: { gte: dayAgo } } }),
@@ -38,10 +43,10 @@ export default async function SystemPage() {
   ]);
 
   const overall = db.status !== "up" ? "unhealthy" : ml.status === "up" ? "healthy" : "degraded";
-  const overallStyle: Record<string, { label: string; color: string; bg: string }> = {
-    healthy: { label: "정상", color: "#127a6e", bg: "#E1F3EF" },
-    degraded: { label: "성능저하(ML 폴백)", color: "#a6541b", bg: "#FCEBDD" },
-    unhealthy: { label: "장애", color: "#b42318", bg: "#FEE4E2" },
+  const overallStyle: Record<string, { color: string; bg: string }> = {
+    healthy: { color: "#127a6e", bg: "#E1F3EF" },
+    degraded: { color: "#a6541b", bg: "#FCEBDD" },
+    unhealthy: { color: "#b42318", bg: "#FEE4E2" },
   };
   const os = overallStyle[overall];
   const secMap: Record<string, number> = {};
@@ -67,66 +72,66 @@ export default async function SystemPage() {
     <main className="mx-auto max-w-4xl px-6 py-7 font-sans">
       <header className="mb-5 flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-[#2E5A88]">시스템 상태</h1>
-          <p className="text-sm text-gray-500">의존성 헬스·보안 이벤트·관측성</p>
+          <h1 className="text-2xl font-bold text-[#2E5A88]">{t("admin.area.system")}</h1>
+          <p className="text-sm text-gray-500">{t("admin.areaSystemDesc")}</p>
         </div>
-        <Link href="/admin" className="text-sm text-gray-400">← 콘솔</Link>
+        <Link href="/admin" className="text-sm text-gray-400">← {t("audit.console")}</Link>
       </header>
 
       {/* 종합 상태 */}
       <section className="mb-5 flex items-center gap-3 rounded-2xl border border-gray-200 bg-white p-5">
-        <span className="rounded-full px-3 py-1 text-sm font-bold" style={{ color: os.color, background: os.bg }}>● {os.label}</span>
-        <span className="text-sm text-gray-600">서비스 종합 상태 · DB는 핵심 의존성, ML 장애 시 룰 엔진으로 자동 폴백</span>
+        <span className="rounded-full px-3 py-1 text-sm font-bold" style={{ color: os.color, background: os.bg }}>● {t(`system.overall.${overall}`)}</span>
+        <span className="text-sm text-gray-600">{t("system.overallNote")}</span>
       </section>
 
       {/* 의존성 */}
       <section className="mb-5 grid gap-3 sm:grid-cols-2">
-        <Dep name="PostgreSQL (Supabase)" c={db} note="care/secure 스키마 · 핵심 의존성" />
-        <Dep name="ML 추론 서비스 (LightGBM)" c={ml} note="port 8800 · 장애 시 폴백 동작" />
+        <Dep name="PostgreSQL (Supabase)" c={db} note={t("system.depDb")} />
+        <Dep name={t("system.depMl")} c={ml} note={t("system.depMlNote")} />
       </section>
 
       {/* 보안 지표 (최근 24h) */}
       <section className="mb-5 rounded-2xl border border-gray-200 bg-white p-5">
-        <h2 className="mb-3 text-sm font-semibold text-gray-700">보안 지표 (최근 24시간)</h2>
+        <h2 className="mb-3 text-sm font-semibold text-gray-700">{t("system.secMetrics")}</h2>
         <div className="grid grid-cols-3 gap-3 text-center">
-          {[["로그인 실패", loginFail24, "#C79100"], ["레이트리밋 차단", loginBlock24, "#b42318"], ["PHI 열람", phi24, "#2E5A88"]].map(([l, v, c]) => (
-            <div key={l as string} className="rounded-xl border border-gray-100 p-3">
-              <div className="num text-2xl font-bold" style={{ color: c as string }}>{v as number}</div>
-              <div className="text-xs text-gray-500">{l as string}</div>
+          {([[t("secEvent.login_failed"), loginFail24, "#C79100"], [t("secEvent.login_blocked"), loginBlock24, "#b42318"], [t("system.phiViews"), phi24, "#2E5A88"]] as [string, number, string][]).map(([l, v, c]) => (
+            <div key={l} className="rounded-xl border border-gray-100 p-3">
+              <div className="num text-2xl font-bold" style={{ color: c }}>{v}</div>
+              <div className="text-xs text-gray-500">{l}</div>
             </div>
           ))}
         </div>
-        <p className="mt-3 text-xs text-gray-400">누적: {Object.entries(secMap).map(([k, v]) => `${SEC_KO[k] ?? k} ${v}`).join(" · ") || "이벤트 없음"}</p>
+        <p className="mt-3 text-xs text-gray-400">{t("system.cumulative", { list: Object.entries(secMap).map(([k, v]) => `${secLabel(k)} ${v}`).join(" · ") || t("system.noEvents") })}</p>
       </section>
 
       {/* 최근 보안 이벤트 */}
       <section className="mb-5 rounded-2xl border border-gray-200 bg-white p-5">
         <div className="mb-2 flex items-center justify-between">
-          <h2 className="text-sm font-semibold text-gray-700">최근 인증 보안 이벤트</h2>
-          <Link href="/admin/audit" className="text-xs text-gray-400">감사로그 →</Link>
+          <h2 className="text-sm font-semibold text-gray-700">{t("system.recentSec")}</h2>
+          <Link href="/admin/audit" className="text-xs text-gray-400">{t("admin.statAudit")} →</Link>
         </div>
         <div className="space-y-1.5">
           {recentSec.map((e) => (
             <div key={String(e.id)} className="flex items-center justify-between rounded-lg border border-gray-100 px-3 py-2 text-xs">
-              <span className="font-medium" style={{ color: e.action === "login_blocked" ? "#b42318" : "#C79100" }}>{SEC_KO[e.action] ?? e.action}</span>
+              <span className="font-medium" style={{ color: e.action === "login_blocked" ? "#b42318" : "#C79100" }}>{secLabel(e.action)}</span>
               <span className="font-mono text-gray-500">{e.target ?? "—"}</span>
-              <span className="text-gray-400">{new Date(e.occurred_at).toLocaleString("ko-KR", { hour12: false, month: "numeric", day: "numeric", hour: "2-digit", minute: "2-digit" })}</span>
+              <span className="text-gray-400">{fmtShortDateTime(locale, e.occurred_at)}</span>
             </div>
           ))}
-          {recentSec.length === 0 && <p className="text-xs text-gray-400">최근 인증 보안 이벤트가 없습니다.</p>}
+          {recentSec.length === 0 && <p className="text-xs text-gray-400">{t("system.noRecentSec")}</p>}
         </div>
       </section>
 
       {/* 버전·런타임 */}
       <section className="rounded-2xl border border-gray-200 bg-white p-5">
-        <h2 className="mb-3 text-sm font-semibold text-gray-700">런타임 정보</h2>
+        <h2 className="mb-3 text-sm font-semibold text-gray-700">{t("system.runtime")}</h2>
         <div className="grid grid-cols-2 gap-x-6 gap-y-1 text-sm sm:grid-cols-4">
-          {[["환경", process.env.NODE_ENV ?? "—"], ["Node", process.version], ["앱 버전", process.env.npm_package_version ?? "0.1.0"], ["헬스 엔드포인트", "/api/health"]].map(([l, v]) => (
+          {([[t("system.env"), process.env.NODE_ENV ?? "—"], ["Node", process.version], [t("system.appVersion"), process.env.npm_package_version ?? "0.1.0"], [t("system.healthEndpoint"), "/api/health"]] as [string, string][]).map(([l, v]) => (
             <div key={l}><div className="text-[11px] text-gray-400">{l}</div><div className="num text-gray-700">{v}</div></div>
           ))}
         </div>
         <p className="mt-3 text-xs leading-relaxed text-gray-400">
-          ※ 보안 헤더(CSP·HSTS·X-Frame-Options 등)·레이트리밋·구조화 로깅·감사로그가 적용됩니다. 운영에선 외부 로그 수집·APM·알림 연동으로 확장합니다.
+          {t("system.note")}
         </p>
       </section>
     </main>

@@ -2,11 +2,13 @@
 
 import { useState } from "react";
 import { Check, X } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 interface Option { t: string; correct: boolean }
 interface Question { q: string; options: Option[]; explain: string }
 
 export default function QuizView({ questions }: { questions: Question[] }) {
+  const t = useTranslations("contentView");
   const [picked, setPicked] = useState<Record<number, number>>({});
   const answered = Object.keys(picked).length;
   const correct = questions.filter((qq, i) => picked[i] != null && qq.options[picked[i]]?.correct).length;
@@ -16,8 +18,8 @@ export default function QuizView({ questions }: { questions: Question[] }) {
     <div>
       {done && (
         <div className="mb-4 rounded-2xl bg-[#eef5fb] p-4 text-center">
-          <div className="text-sm text-gray-600">결과</div>
-          <div className="num text-2xl font-bold text-[#2E5A88]">{correct} / {questions.length} 정답</div>
+          <div className="text-sm text-gray-600">{t("quizResult")}</div>
+          <div className="num text-2xl font-bold text-[#2E5A88]">{t("quizScore", { correct, total: questions.length })}</div>
         </div>
       )}
       <div className="space-y-5">

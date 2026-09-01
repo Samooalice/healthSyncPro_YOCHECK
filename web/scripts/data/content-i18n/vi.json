@@ -1,0 +1,327 @@
+{
+  "C-ONB-01": {
+    "title": "Cách đọc kết quả xét nghiệm",
+    "body": "Kết quả được hiển thị bằng màu sắc và mức độ. Xanh là tốt, vàng là cần theo dõi, cam là cần chú ý, đỏ là nguy cơ thuộc nhóm cao. Xu hướng quan trọng hơn một kết quả đơn lẻ. Dịch vụ này cung cấp thông tin sàng lọc hỗ trợ quản lý sức khỏe và không thay thế chẩn đoán y khoa."
+  },
+  "C-RX-PRO": {
+    "title": "Giải thích kết quả protein niệu",
+    "body": "Protein là chất được thận lọc. Chỉ số có thể tăng nhất thời sau khi vận động, khi sốt hoặc khi mất nước tạm thời. Hãy uống đủ nước và đo lại sau vài ngày để xem xu hướng. Một kết quả đơn lẻ không dùng để kết luận bệnh."
+  },
+  "C-RX-GLU": {
+    "title": "Giải thích kết quả glucose niệu",
+    "body": "Ngay sau bữa ăn, glucose có thể xuất hiện nhất thời. Nếu lặp lại, bạn nên xem lại việc quản lý đường huyết. Hãy thử đo lại khi đói, và nếu vẫn lặp lại thì nên làm xét nghiệm đường huyết. Chỉ xét nghiệm nước tiểu không dùng để chẩn đoán đái tháo đường."
+  },
+  "C-RX-BLD": {
+    "title": "Giải thích kết quả hồng cầu ẩn",
+    "body": "Chỉ số có thể xuất hiện do các yếu tố nhất thời như vận động mạnh hoặc kỳ kinh nguyệt. Vitamin C có thể ảnh hưởng đến kết quả nên đã được tính đến khi hiệu chỉnh. Nếu lặp lại, bạn nên xem xét sức khỏe thận và đường tiết niệu."
+  },
+  "C-RX-LEU": {
+    "title": "Giải thích kết quả bạch cầu",
+    "body": "Đây có thể là dấu hiệu liên quan đến viêm hoặc nhiễm khuẩn đường tiết niệu. Đặc biệt khi xuất hiện cùng nitrit thì cần xem xét chung. Hãy uống đủ nước, và nếu có triệu chứng như tiểu buốt hay tiểu nhiều lần, hãy trao đổi với nhân viên y tế."
+  },
+  "C-RX-KET": {
+    "title": "Giải thích kết quả ceton",
+    "body": "Ceton có thể xuất hiện khi bạn nhịn ăn lâu hoặc khi uống ít nước và ăn ít tinh bột. Nếu bạn có đái tháo đường, nên xem xét đồng thời tình trạng quản lý đường huyết."
+  },
+  "C-RX-NIT": {
+    "title": "Giải thích kết quả nitrit",
+    "body": "Đây là chất do một số vi khuẩn tạo ra và có thể liên quan đến nhiễm khuẩn đường tiết niệu. Xem cùng phản ứng bạch cầu sẽ chính xác hơn. Nếu có triệu chứng, bạn nên trao đổi với nhân viên y tế."
+  },
+  "C-RX-PH": {
+    "title": "Giải thích kết quả độ pH",
+    "body": "Độ pH của nước tiểu lên xuống một cách tự nhiên theo thói quen ăn uống và tình trạng nước của cơ thể. Bình thường vào khoảng 4,5–8,0. Xu hướng quan trọng hơn một giá trị đơn lẻ, và nếu liên tục lệch về một phía thì có thể là manh mối của sỏi hoặc nhiễm khuẩn, nên cần theo dõi xu hướng."
+  },
+  "C-RX-SG": {
+    "title": "Giải thích kết quả tỷ trọng",
+    "body": "Tỷ trọng cho biết nước tiểu cô đặc đến mức nào. Uống ít nước thì tăng, uống nhiều thì giảm. Bình thường vào khoảng 1,005–1,030. Chỉ số này cũng ảnh hưởng đến việc diễn giải các mục khác, nên cần xem cùng tình trạng nước của cơ thể."
+  },
+  "C-RX-URO": {
+    "title": "Giải thích kết quả urobilinogen",
+    "body": "Urobilinogen là chất liên quan đến gan và đường mật. Phát hiện ở mức rất nhẹ có thể là bình thường. Nếu tăng cùng bilirubin, bạn nên xem xét sức khỏe gan. Một kết quả đơn lẻ không dùng để kết luận."
+  },
+  "C-RX-BIL": {
+    "title": "Giải thích kết quả bilirubin",
+    "body": "Nếu phát hiện bilirubin trong nước tiểu, đó có thể là dấu hiệu về gan hoặc đường mật. Bình thường hầu như không xuất hiện. Nếu lặp lại, bạn nên trao đổi với nhân viên y tế về xét nghiệm máu chức năng gan."
+  },
+  "C-RX-VITC": {
+    "title": "Về ảnh hưởng của vitamin C",
+    "body": "Nếu bạn dùng nhiều vitamin C, phản ứng hồng cầu ẩn và glucose niệu trên que thử có thể thấp hơn thực tế (âm tính giả). Vì vậy ảnh hưởng này đã được tính đến khi hiệu chỉnh trong quá trình phân tích. Tránh dùng vitamin C liều cao vào ngày trước khi xét nghiệm sẽ cho kết quả chính xác hơn."
+  },
+  "C-EDU-KID": {
+    "title": "Hiểu về bệnh thận mạn",
+    "body": "Thận là cơ quan lọc chất cặn bã và nước dư thừa để thải ra theo nước tiểu. Giai đoạn đầu hầu như không có triệu chứng, nên việc theo dõi các dấu hiệu sớm như protein và hồng cầu ẩn qua xét nghiệm nước tiểu rất hữu ích. Uống đủ nước, giảm đồ ăn mặn, quản lý huyết áp và đường huyết, đo định kỳ đều tốt. Nếu protein niệu lặp lại, hãy trao đổi với nhân viên y tế.",
+    "payload": {
+      "kind": "article",
+      "source": "Hướng dẫn lâm sàng từ các tổ chức uy tín như Hội Thận học Hàn Quốc (sẽ xác nhận khi thẩm định)",
+      "sections": [
+        { "h": "Định nghĩa", "t": "Thận là cơ quan lọc chất cặn bã và nước dư thừa để thải ra theo nước tiểu. Tình trạng chức năng lọc này suy giảm dần được gọi là bệnh thận mạn." },
+        { "h": "Vì sao quan trọng", "t": "Giai đoạn đầu hầu như không có triệu chứng nên rất dễ bỏ qua. Vì vậy việc thường xuyên theo dõi các dấu hiệu sớm như protein và hồng cầu ẩn qua xét nghiệm nước tiểu sẽ hữu ích." },
+        { "h": "Liên quan đến xét nghiệm nước tiểu", "t": "Protein niệu và hồng cầu ẩn có thể là những dấu hiệu sớm mà thận gửi đi. Xu hướng qua nhiều lần quan trọng hơn một kết quả đơn lẻ." },
+        { "h": "Quản lý trong sinh hoạt", "t": "Uống đủ nước, giảm đồ ăn mặn, quản lý huyết áp và đường huyết, đo định kỳ đều hữu ích. Duy trì cân nặng phù hợp và không hút thuốc cũng tốt." },
+        { "h": "Khi nào nên trao đổi với nhân viên y tế", "t": "Nếu protein niệu lặp lại, hoặc phù và nước tiểu có bọt kéo dài, bạn nên trao đổi với nhân viên y tế." }
+      ]
+    }
+  },
+  "C-EDU-DM": {
+    "title": "Đái tháo đường và xét nghiệm nước tiểu",
+    "body": "Đái tháo đường là tình trạng đường huyết duy trì cao hơn bình thường. Khi đường huyết cao, đường có thể tràn ra nước tiểu. Nếu glucose niệu và ceton lặp lại, đó là dịp để rà soát việc quản lý đường huyết. Ăn uống điều độ, lượng tinh bột phù hợp và vận động đều đặn đều hữu ích. Chỉ xét nghiệm nước tiểu không dùng để chẩn đoán đái tháo đường.",
+    "payload": {
+      "kind": "article",
+      "source": "Hướng dẫn lâm sàng như của Hội Đái tháo đường Hàn Quốc (sẽ xác nhận khi thẩm định)",
+      "sections": [
+        { "h": "Định nghĩa", "t": "Đái tháo đường là tình trạng glucose trong máu (đường huyết) duy trì cao hơn bình thường. Khi đường huyết cao, đường có thể tràn ra nước tiểu." },
+        { "h": "Vì sao quan trọng", "t": "Bệnh tiến triển từ từ và triệu chứng ban đầu có thể không rõ ràng. Khi glucose và ceton lặp lại trong nước tiểu, đó là dịp để rà soát việc quản lý đường huyết." },
+        { "h": "Liên quan đến xét nghiệm nước tiểu", "t": "Glucose niệu có thể xuất hiện khi đường huyết cao. Nó cũng xuất hiện nhất thời ngay sau bữa ăn, nên đo lúc đói và theo dõi xu hướng là quan trọng. Chỉ xét nghiệm nước tiểu không dùng để chẩn đoán đái tháo đường." },
+        { "h": "Quản lý trong sinh hoạt", "t": "Ăn uống điều độ với lượng tinh bột phù hợp, vận động thể chất đều đặn và duy trì cân nặng phù hợp đều hữu ích." },
+        { "h": "Khi nào nên trao đổi với nhân viên y tế", "t": "Nếu glucose niệu lặp lại, hoặc kèm theo khát nước, tiểu nhiều, thay đổi cân nặng, hãy trao đổi để làm xét nghiệm đường huyết." }
+      ]
+    }
+  },
+  "C-EDU-HTN": {
+    "title": "Tăng huyết áp và sức khỏe thận",
+    "body": "Tăng huyết áp và thận ảnh hưởng qua lại lẫn nhau. Huyết áp cao kéo dài có thể ảnh hưởng đến chức năng lọc của thận, và dấu hiệu đó đôi khi xuất hiện dưới dạng protein trong nước tiểu. Ăn nhạt, vận động đều đặn, cân nặng phù hợp, hạn chế rượu bia và không hút thuốc đều hỗ trợ quản lý huyết áp.",
+    "payload": {
+      "kind": "article",
+      "source": "Hướng dẫn lâm sàng về tăng huyết áp và thận (sẽ xác nhận khi thẩm định)",
+      "sections": [
+        { "h": "Định nghĩa", "t": "Tăng huyết áp là tình trạng áp lực lên thành mạch duy trì ở mức cao. Thận đóng vai trò quan trọng trong việc điều hòa huyết áp." },
+        { "h": "Vì sao quan trọng", "t": "Huyết áp cao kéo dài có thể ảnh hưởng đến chức năng lọc của thận, và dấu hiệu đó đôi khi xuất hiện dưới dạng protein trong nước tiểu." },
+        { "h": "Liên quan đến xét nghiệm nước tiểu", "t": "Protein niệu có thể là dấu hiệu sớm của gánh nặng lên thận. Nếu bạn đang quản lý tăng huyết áp, việc theo dõi xu hướng protein trong nước tiểu sẽ hữu ích." },
+        { "h": "Quản lý trong sinh hoạt", "t": "Ăn nhạt, vận động đều đặn, cân nặng phù hợp, hạn chế rượu bia và không hút thuốc đều hỗ trợ quản lý huyết áp. Thói quen ghi lại huyết áp định kỳ cũng tốt." },
+        { "h": "Khi nào nên trao đổi với nhân viên y tế", "t": "Nếu protein niệu lặp lại, hoặc huyết áp không được kiểm soát tốt, hãy trao đổi với nhân viên y tế." }
+      ]
+    }
+  },
+  "C-EDU-UTI": {
+    "title": "Tìm hiểu về nhiễm khuẩn đường tiết niệu",
+    "body": "Nhiễm khuẩn đường tiết niệu là tình trạng vi khuẩn xâm nhập vào đường tiểu và gây viêm. Phản ứng bạch cầu và nitrit có thể là dấu hiệu sớm. Uống đủ nước, không nhịn tiểu lâu và giữ vệ sinh đều hữu ích. Nếu có tiểu buốt, tiểu nhiều lần hoặc sốt, hãy trao đổi với nhân viên y tế.",
+    "payload": {
+      "kind": "article",
+      "source": "Hướng dẫn lâm sàng về nhiễm khuẩn đường tiết niệu (sẽ xác nhận khi thẩm định)",
+      "sections": [
+        { "h": "Định nghĩa", "t": "Nhiễm khuẩn đường tiết niệu là tình trạng vi khuẩn xâm nhập vào đường dẫn nước tiểu (niệu đạo, bàng quang…) và gây viêm." },
+        { "h": "Vì sao quan trọng", "t": "Đây là bệnh thường gặp nhưng gây triệu chứng khó chịu, và nếu bỏ mặc có thể lan lên trên. Phản ứng bạch cầu và nitrit là dấu hiệu sớm." },
+        { "h": "Liên quan đến xét nghiệm nước tiểu", "t": "Bạch cầu có thể gợi ý tình trạng viêm, còn nitrit có thể gợi ý hoạt động của một số vi khuẩn. Khi cả hai cùng xuất hiện, khả năng này càng đáng xem xét kỹ." },
+        { "h": "Quản lý trong sinh hoạt", "t": "Uống đủ nước, không nhịn tiểu lâu và giữ vệ sinh đều hữu ích." },
+        { "h": "Khi nào nên trao đổi với nhân viên y tế", "t": "Nếu có tiểu buốt, tiểu nhiều lần, cảm giác tiểu không hết hoặc sốt, hãy trao đổi với nhân viên y tế." }
+      ]
+    }
+  },
+  "C-LIFE-KID": {
+    "title": "Thói quen sinh hoạt cho sức khỏe thận",
+    "body": "Nhiệm vụ hôm nay: uống 1,5 L nước · giảm nước canh và đồ ăn mặn · đi bộ nhẹ 20 phút · ghi lại huyết áp. Những thói quen nhỏ bảo vệ sức khỏe thận của bạn.",
+    "payload": {
+      "kind": "checklist",
+      "intro": "Những thói quen nhỏ bảo vệ sức khỏe thận. Hãy bắt đầu từ điều bạn có thể làm hôm nay.",
+      "missions": [
+        { "id": "M-KID-1", "text": "Uống 1,5 L nước", "points": 5, "repeat": "hằng ngày" },
+        { "id": "M-KID-2", "text": "Giảm nước canh và đồ ăn mặn", "points": 5, "repeat": "hằng ngày" },
+        { "id": "M-KID-3", "text": "Đi bộ nhẹ 20 phút", "points": 5, "repeat": "hằng ngày" },
+        { "id": "M-KID-4", "text": "Ghi lại huyết áp", "points": 10, "repeat": "3 lần/tuần" },
+        { "id": "M-KID-5", "text": "Đo nước tiểu định kỳ", "points": 10, "repeat": "2 lần/tuần" }
+      ]
+    }
+  },
+  "C-LIFE-HYD": {
+    "title": "Nhiệm vụ bù nước",
+    "body": "Một ly nước sau khi thức dậy · uống nước trong mỗi bữa ăn · giảm đồ uống có caffeine · đạt mục tiêu lượng nước trong ngày. Nước tiểu màu vàng nhạt là dấu hiệu bạn đã uống đủ nước.",
+    "payload": {
+      "kind": "checklist",
+      "intro": "Nước rất cần thiết để thận làm việc. Hôm nay chúng ta cùng uống đủ nhé?",
+      "missions": [
+        { "id": "M-HYD-1", "text": "Một ly nước sau khi thức dậy", "points": 3, "repeat": "hằng ngày" },
+        { "id": "M-HYD-2", "text": "Uống nước trong mỗi bữa ăn", "points": 3, "repeat": "hằng ngày" },
+        { "id": "M-HYD-3", "text": "Giảm đồ uống có caffeine", "points": 5, "repeat": "hằng ngày" },
+        { "id": "M-HYD-4", "text": "Đạt mục tiêu lượng nước trong ngày", "points": 10, "repeat": "hằng ngày" }
+      ]
+    }
+  },
+  "C-LIFE-DM": {
+    "title": "Thói quen thân thiện với đường huyết",
+    "body": "Giữ giờ ăn đều đặn · giảm tinh bột tinh chế và đồ uống ngọt · vận động nhẹ 10 phút sau bữa ăn · ghi lại đường huyết. Vận động nhẹ sau khi ăn giúp ích cho việc quản lý đường huyết.",
+    "payload": {
+      "kind": "checklist",
+      "intro": "Hãy cùng xây dựng những thói quen giữ đường huyết ổn định.",
+      "missions": [
+        { "id": "M-DM-1", "text": "Giữ giờ ăn đều đặn", "points": 5, "repeat": "hằng ngày" },
+        { "id": "M-DM-2", "text": "Giảm tinh bột tinh chế và đồ uống ngọt", "points": 5, "repeat": "hằng ngày" },
+        { "id": "M-DM-3", "text": "Vận động nhẹ 10 phút sau bữa ăn", "points": 5, "repeat": "hằng ngày" },
+        { "id": "M-DM-4", "text": "Ghi lại đường huyết", "points": 10, "repeat": "3 lần/tuần" }
+      ]
+    }
+  },
+  "C-ACT-LOW": {
+    "title": "Hướng dẫn hành động — mức Tốt",
+    "body": "Bạn đang quản lý rất tốt. ① Hãy duy trì thói quen sinh hoạt như hiện tại. ② Đo định kỳ để tiếp tục theo dõi xu hướng. ③ Thêm thói quen tốt bằng nhiệm vụ hôm nay. Ngay cả với kết quả tốt, việc ghi chép đều đặn vẫn là sức mạnh lớn nhất."
+  },
+  "C-ACT-MOD": {
+    "title": "Hướng dẫn hành động — mức Cần theo dõi",
+    "body": "① Hãy uống đủ nước. ② Đo lại sau 3 ngày. ③ Chúng ta cùng xem xu hướng. Đừng hoảng hốt hay tự chẩn đoán vì một kết quả đơn lẻ. Nên đo lại trong vòng 14 ngày."
+  },
+  "C-ACT-HI": {
+    "title": "Hướng dẫn hành động — mức Cần chú ý",
+    "body": "① Hãy đo lại sớm (nên trong vòng 3 ngày). ② Bạn nên trao đổi kết quả với nhân viên y tế. ③ Nếu cần, chúng tôi sẽ tạo bản tóm tắt để bạn mang đi khám. Đừng bỏ mặc triệu chứng hay tự ý điều chỉnh thuốc."
+  },
+  "C-ACT-VHI": {
+    "title": "Hướng dẫn hành động — mức Cao",
+    "body": "Dấu hiệu nguy cơ đã rõ. ① Hãy xem kỹ kết quả. ② Bạn nên trao đổi với nhân viên y tế. ③ Chúng tôi sẽ chuẩn bị bản tóm tắt hữu ích cho buổi khám. Hướng dẫn này không phải là chẩn đoán."
+  },
+  "C-SAFE-01": {
+    "title": "Về giới hạn của xét nghiệm sàng lọc",
+    "body": "Thông tin này là thông tin sàng lọc nhằm hỗ trợ quản lý sức khỏe, không phải chẩn đoán y khoa. Xu hướng qua nhiều lần quan trọng hơn một kết quả đơn lẻ. Nếu triệu chứng kéo dài hoặc bạn lo lắng, bạn nên trao đổi với nhân viên y tế."
+  },
+  "C-MOT-IMP": {
+    "title": "Nguy cơ đã giảm!",
+    "body": "Việc quản lý đều đặn đã thể hiện qua kết quả. Bạn đang làm rất tốt. Chúng ta cùng giữ đà này nhé?"
+  },
+  "C-MOT-STREAK": {
+    "title": "Chúc mừng chuỗi ngày đo liên tiếp",
+    "body": "Những thói quen nhỏ tích lại tạo nên sức khỏe lớn. Chúc mừng bạn đã kiên trì!"
+  },
+  "C-MOT-FIRST": {
+    "title": "Chúc mừng lần đo đầu tiên",
+    "body": "Bạn đã bước bước đầu tiên trong quản lý sức khỏe! Lần đo đầu tiên là điểm khởi đầu để hiểu tình trạng cơ thể mình. Khi xu hướng tích lũy, chúng tôi có thể đưa ra hướng dẫn chính xác hơn."
+  },
+  "C-MOT-BADGE": {
+    "title": "Nhận huy hiệu mới!",
+    "body": "Việc đo đều đặn và thực hiện nhiệm vụ đã mang lại cho bạn một huy hiệu mới. Những thành quả nhỏ tích lại thành thói quen sức khỏe. Chúng ta thử chinh phục huy hiệu tiếp theo nhé?"
+  },
+  "C-MOT-GOAL": {
+    "title": "Đặt mục tiêu sức khỏe",
+    "body": "Đặt mục tiêu sức khỏe của riêng bạn (ví dụ: giữ protein niệu âm tính) sẽ giúp động lực mạnh hơn. Nhiệm vụ hôm nay là bước nhỏ hướng tới mục tiêu đó."
+  },
+  "C-CARE-01": {
+    "title": "Tóm tắt thông báo cho người chăm sóc",
+    "body": "Chúng tôi tóm tắt kết quả đo gần đây của người thân để bạn nắm được. Sẽ rất hữu ích nếu bạn cùng thực hiện các hành động được hướng dẫn theo từng mức. Dịch vụ này cung cấp thông tin sàng lọc và không thay thế chẩn đoán."
+  },
+  "C-CARE-GUIDE": {
+    "title": "Hướng dẫn chăm sóc dành cho người chăm sóc",
+    "body": "Khi hỗ trợ người thân đo, hãy giúp họ đo đều đặn vào cùng khung giờ. Tùy theo mức kết quả: ① với mức Tốt hoặc Cần theo dõi, hãy cùng chú ý đến quản lý lối sống và việc đo lại; ② với mức Cần chú ý hoặc Cao, hãy khuyến khích trao đổi với nhân viên y tế và cùng chuẩn bị bản tóm tắt cần cho buổi khám. Người chăm sóc không thay người bệnh quyết định chẩn đoán hay điều trị; quyết định cuối cùng được đưa ra cùng nhân viên y tế."
+  },
+  "C-EDU-KID-Q": {
+    "title": "Câu đố về sức khỏe thận",
+    "body": "Câu đố về sức khỏe thận — kiểm tra hiểu biết của bạn với 3 câu hỏi trắc nghiệm.",
+    "payload": {
+      "kind": "quiz",
+      "questions": [
+        {
+          "q": "Vai trò chính của thận là gì?",
+          "options": [
+            { "t": "Lọc chất cặn bã và nước để thải ra theo nước tiểu", "correct": true },
+            { "t": "Vận chuyển oxy đi khắp cơ thể", "correct": false },
+            { "t": "Tiêu hóa thức ăn", "correct": false }
+          ],
+          "explain": "Thận là cơ quan lọc, giúp loại bỏ chất cặn bã và nước dư thừa."
+        },
+        {
+          "q": "Đặc điểm nào đúng với giai đoạn đầu của bệnh thận mạn?",
+          "options": [
+            { "t": "Cơn đau rất dữ dội", "correct": false },
+            { "t": "Hầu như không có triệu chứng nên rất dễ bỏ qua", "correct": true },
+            { "t": "Luôn kèm theo sốt", "correct": false }
+          ],
+          "explain": "Giai đoạn đầu hầu như không có triệu chứng, vì vậy đo định kỳ rất quan trọng."
+        },
+        {
+          "q": "Mục nào trong xét nghiệm nước tiểu được xem là dấu hiệu về thận?",
+          "options": [
+            { "t": "Protein và hồng cầu ẩn", "correct": true },
+            { "t": "Vitamin C", "correct": false },
+            { "t": "Chỉ độ pH", "correct": false }
+          ],
+          "explain": "Protein niệu và hồng cầu ẩn có thể là dấu hiệu sớm từ thận."
+        }
+      ]
+    }
+  },
+  "C-EDU-DM-Q": {
+    "title": "Câu đố về đái tháo đường và nước tiểu",
+    "body": "Câu đố về đái tháo đường và nước tiểu — kiểm tra hiểu biết của bạn với 3 câu hỏi trắc nghiệm.",
+    "payload": {
+      "kind": "quiz",
+      "questions": [
+        {
+          "q": "Khi nào glucose có thể xuất hiện trong nước tiểu?",
+          "options": [
+            { "t": "Khi đường huyết cao, hoặc nhất thời ngay sau bữa ăn", "correct": true },
+            { "t": "Chỉ khi uống nhiều nước", "correct": false },
+            { "t": "Chỉ khi vận động", "correct": false }
+          ],
+          "explain": "Khi đường huyết cao, đường có thể tràn ra nước tiểu."
+        },
+        {
+          "q": "Ceton xuất hiện trong nước tiểu trong tình huống nào?",
+          "options": [
+            { "t": "Khi nhịn ăn lâu hoặc ăn ít tinh bột", "correct": true },
+            { "t": "Khi ngủ nhiều", "correct": false },
+            { "t": "Khi uống nhiều nước", "correct": false }
+          ],
+          "explain": "Ceton xuất hiện khi cơ thể dùng chất béo thay cho đường làm năng lượng."
+        },
+        {
+          "q": "Xét nghiệm nước tiểu có thể chẩn đoán xác định đái tháo đường không?",
+          "options": [
+            { "t": "Có, có thể xác định ngay", "correct": false },
+            { "t": "Không, đây là dấu hiệu sàng lọc và cần xét nghiệm đường huyết", "correct": true },
+            { "t": "Có ceton là đã xác định được", "correct": false }
+          ],
+          "explain": "Xét nghiệm nước tiểu là công cụ sàng lọc; chẩn đoán được thực hiện bằng xét nghiệm đường huyết và các xét nghiệm khác."
+        }
+      ]
+    }
+  },
+  "C-EDU-HTN-Q": {
+    "title": "Câu đố về tăng huyết áp và thận",
+    "body": "Câu đố về tăng huyết áp và thận — kiểm tra hiểu biết của bạn với 2 câu hỏi trắc nghiệm.",
+    "payload": {
+      "kind": "quiz",
+      "questions": [
+        {
+          "q": "Điều nào đúng về mối quan hệ giữa tăng huyết áp và thận?",
+          "options": [
+            { "t": "Hai bên không liên quan đến nhau", "correct": false },
+            { "t": "Hai bên ảnh hưởng qua lại lẫn nhau", "correct": true },
+            { "t": "Chỉ có thận ảnh hưởng đến huyết áp", "correct": false }
+          ],
+          "explain": "Thận tham gia điều hòa huyết áp, và huyết áp cao tạo gánh nặng cho thận."
+        },
+        {
+          "q": "Khi quản lý tăng huyết áp, nên theo dõi thêm mục nào trong nước tiểu?",
+          "options": [
+            { "t": "Protein", "correct": true },
+            { "t": "Vitamin C", "correct": false },
+            { "t": "Ceton", "correct": false }
+          ],
+          "explain": "Protein niệu có thể là dấu hiệu sớm của gánh nặng lên thận."
+        }
+      ]
+    }
+  },
+  "C-EDU-UTI-Q": {
+    "title": "Câu đố về nhiễm khuẩn đường tiết niệu",
+    "body": "Câu đố về nhiễm khuẩn đường tiết niệu — kiểm tra hiểu biết của bạn với 2 câu hỏi trắc nghiệm.",
+    "payload": {
+      "kind": "quiz",
+      "questions": [
+        {
+          "q": "Mục nào trong nước tiểu có thể liên quan đến nhiễm khuẩn đường tiết niệu?",
+          "options": [
+            { "t": "Bạch cầu và nitrit", "correct": true },
+            { "t": "Tỷ trọng và độ pH", "correct": false },
+            { "t": "Bilirubin", "correct": false }
+          ],
+          "explain": "Bạch cầu có thể gợi ý tình trạng viêm, còn nitrit có thể gợi ý hoạt động của một số vi khuẩn."
+        },
+        {
+          "q": "Thói quen nào giúp phòng ngừa nhiễm khuẩn đường tiết niệu?",
+          "options": [
+            { "t": "Nhịn tiểu lâu", "correct": false },
+            { "t": "Uống đủ nước và không nhịn tiểu", "correct": true },
+            { "t": "Uống ít nước", "correct": false }
+          ],
+          "explain": "Uống đủ nước và đi tiểu đều đặn đều hữu ích."
+        }
+      ]
+    }
+  }
+}

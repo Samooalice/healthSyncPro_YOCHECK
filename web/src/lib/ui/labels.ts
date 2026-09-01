@@ -1,36 +1,29 @@
-// 화면 공용 라벨·토큰 (세부개발데이터 A.4 색상토큰 / A.1 항목)
-export const GRADE_TOKEN: Record<string, { label: string; color: string; bg: string }> = {
-  low: { label: "양호", color: "#2E9E5B", bg: "#E8F6EE" },
-  moderate: { label: "관찰 필요", color: "#E8B500", bg: "#FBF4D9" },
-  high: { label: "주의", color: "#E8730C", bg: "#FCEBDD" },
-  very_high: { label: "높음", color: "#D32F2F", bg: "#FBE3E3" },
+// 화면 공용 토큰 (세부개발데이터 A.4 색상토큰 / A.1 항목)
+// 라벨 문구는 messages/*.json 의 grade / analyte / care / disease 네임스페이스로 이관했다.
+// 여기에는 언어와 무관한 색상 토큰만 남는다.
+import type { Translate } from "@/i18n/t";
+
+export const GRADE_TOKEN: Record<string, { color: string; bg: string }> = {
+  low: { color: "#2E9E5B", bg: "#E8F6EE" },
+  moderate: { color: "#E8B500", bg: "#FBF4D9" },
+  high: { color: "#E8730C", bg: "#FCEBDD" },
+  very_high: { color: "#D32F2F", bg: "#FBE3E3" },
 };
 
-export const ANALYTE_KO: Record<string, string> = {
-  glucose: "요당",
-  protein: "요단백",
-  ph: "산도",
-  specific_gravity: "비중",
-  ketone: "케톤",
-  blood: "잠혈",
-  leukocyte: "백혈구",
-  nitrite: "아질산염",
-  urobilinogen: "유로빌리노겐",
-  bilirubin: "빌리루빈",
-  vitamin_c: "비타민C",
-};
+/** 위험등급 라벨 — 양호/관찰 필요/주의/높음. 진단 표현이 아닌 관리 등급이다. */
+export function gradeLabel(t: Translate, grade: string | null | undefined): string {
+  return grade && grade in GRADE_TOKEN ? t(`grade.${grade}`) : t("grade.low");
+}
 
-export const CARE_KO: Record<string, string> = {
-  lifestyle: "생활관리 미션",
-  recheck: "재측정 권장",
-  referral: "진료의뢰 리포트",
-  emergency: "의료진 상담 권장",
-};
+/** 케어 액션 유형 라벨. 카탈로그에 없으면 원 코드값을 그대로 보여준다. */
+export function careLabel(t: Translate, key: string): string {
+  const s = t(`care.${key}`);
+  return s === `care.${key}` ? key : s;
+}
 
-export const DISEASE_KO: Record<string, string> = {
-  kidney: "신장",
-  diabetes: "당뇨",
-  hypertension: "고혈압",
-  uti: "요로감염",
-  liver: "간담도",
-};
+/** 질환군 라벨. */
+export function diseaseLabel(t: Translate, key: string | null | undefined): string {
+  if (!key) return "-";
+  const s = t(`disease.${key}`);
+  return s === `disease.${key}` ? key : s;
+}

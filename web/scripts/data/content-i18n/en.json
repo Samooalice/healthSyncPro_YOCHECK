@@ -1,0 +1,327 @@
+{
+  "C-ONB-01": {
+    "title": "How to read your test result",
+    "body": "Results are shown with colors and grades. Green means good, yellow means watch, orange means caution, and red means the risk is on the high side. The trend matters more than a single result. This service provides screening information to support health management and does not replace a medical diagnosis."
+  },
+  "C-RX-PRO": {
+    "title": "Urine protein explained",
+    "body": "Protein is a substance the kidneys filter. It can rise briefly after exercise, with a fever, or with temporary dehydration. Drink enough water and measure again in a few days to check the trend. A single result is not used to judge a condition."
+  },
+  "C-RX-GLU": {
+    "title": "Urine glucose explained",
+    "body": "Glucose can appear temporarily right after a meal. If it keeps appearing, it is worth looking at your blood glucose management. Try measuring again while fasting, and if it recurs, a blood glucose test is recommended. Urinalysis alone does not diagnose diabetes."
+  },
+  "C-RX-BLD": {
+    "title": "Occult blood explained",
+    "body": "It can appear from temporary causes such as intense exercise or menstruation. Vitamin C can affect the result, so it has been accounted for in the correction. If it recurs, it is worth looking at your kidney and urinary tract health."
+  },
+  "C-RX-LEU": {
+    "title": "Leukocytes explained",
+    "body": "This can be a signal related to inflammation or infection in the urinary tract. It is especially worth reviewing together with nitrite. Drink plenty of water, and if you have symptoms such as pain when urinating or frequent urination, talk with a healthcare professional."
+  },
+  "C-RX-KET": {
+    "title": "Ketones explained",
+    "body": "Ketones can appear after a long fast or when fluid and carbohydrate intake is low. If you have diabetes, it is worth reviewing your blood glucose management at the same time."
+  },
+  "C-RX-NIT": {
+    "title": "Nitrite explained",
+    "body": "Nitrite is produced by some bacteria and can be related to urinary tract infection. Reading it together with the leukocyte response gives a clearer picture. If you have symptoms, talking with a healthcare professional is recommended."
+  },
+  "C-RX-PH": {
+    "title": "Acidity (pH) explained",
+    "body": "The acidity of urine naturally rises and falls with your diet and hydration. The normal range is roughly 4.5 to 8.0. The trend matters more than a single value, and a persistent shift in one direction can be a clue to stones or infection, so it is worth watching the trend."
+  },
+  "C-RX-SG": {
+    "title": "Specific gravity explained",
+    "body": "Specific gravity shows how concentrated your urine is. It rises when you drink little and falls when you drink a lot. The normal range is roughly 1.005 to 1.030. It also affects how other items are interpreted, so hydration is reviewed alongside it."
+  },
+  "C-RX-URO": {
+    "title": "Urobilinogen explained",
+    "body": "Urobilinogen is related to the liver and bile ducts. A slight amount can be normal. If it is high together with bilirubin, it is worth looking at your liver health. A single result is not used to judge a condition."
+  },
+  "C-RX-BIL": {
+    "title": "Bilirubin explained",
+    "body": "Bilirubin detected in urine can be a liver or bile duct signal. Normally it is rarely present. If it recurs, discussing a liver function blood test with a healthcare professional is recommended."
+  },
+  "C-RX-VITC": {
+    "title": "About vitamin C interference",
+    "body": "If you take a lot of vitamin C, the strip response for occult blood and urine glucose can read lower than reality (a false negative). That is why this effect is accounted for in the correction during analysis. Avoiding high-dose vitamin C the day before testing makes results more accurate."
+  },
+  "C-EDU-KID": {
+    "title": "Understanding chronic kidney disease",
+    "body": "The kidneys filter waste products and excess fluid and send them out as urine. Early on there are almost no symptoms, so it helps to watch for early signals such as protein and occult blood through urinalysis. Enough fluids, less salty food, blood pressure and glucose management, and regular measurement all help. If proteinuria recurs, talk with a healthcare professional.",
+    "payload": {
+      "kind": "article",
+      "source": "Clinical guidelines from authoritative bodies such as the Korean Society of Nephrology (to be confirmed at review)",
+      "sections": [
+        { "h": "Definition", "t": "The kidneys filter waste products and excess fluid and send them out as urine. A state in which this filtering function gradually declines is called chronic kidney disease." },
+        { "h": "Why it matters", "t": "Early on there are almost no symptoms, so it is easy to miss. That is why regularly watching early signals such as protein and occult blood through urinalysis helps." },
+        { "h": "Relation to urinalysis", "t": "Proteinuria and occult blood can be early signals the kidneys send. A trend across several results matters more than a single one." },
+        { "h": "Managing it day to day", "t": "Drinking enough water, cutting back on salty food, managing blood pressure and glucose, and measuring regularly all help. Keeping a healthy weight and not smoking are also good." },
+        { "h": "When to talk with a clinician", "t": "If proteinuria recurs, or swelling or foamy urine persists, talking with a healthcare professional is recommended." }
+      ]
+    }
+  },
+  "C-EDU-DM": {
+    "title": "Diabetes and urinalysis",
+    "body": "Diabetes is a state in which blood glucose stays higher than normal. When blood glucose is high, glucose can spill over into the urine. If urine glucose and ketones keep appearing, it is a good reason to review your glucose management. Regular meals, appropriate carbohydrates and steady activity all help. Urinalysis alone does not diagnose diabetes.",
+    "payload": {
+      "kind": "article",
+      "source": "Clinical guidelines such as those of the Korean Diabetes Association (to be confirmed at review)",
+      "sections": [
+        { "h": "Definition", "t": "Diabetes is a state in which glucose in the blood stays higher than normal. When blood glucose is high, glucose can spill over into the urine." },
+        { "h": "Why it matters", "t": "It progresses slowly and early symptoms may not be obvious. When glucose or ketones keep appearing in urine, it becomes a reason to review your glucose management." },
+        { "h": "Relation to urinalysis", "t": "Urine glucose can appear when blood glucose is high. It can also appear temporarily right after a meal, so fasting measurement and checking the trend matter. Urinalysis alone does not diagnose diabetes." },
+        { "h": "Managing it day to day", "t": "Regular meals with appropriate carbohydrates, steady physical activity and keeping a healthy weight all help." },
+        { "h": "When to talk with a clinician", "t": "If urine glucose recurs, or you also have thirst, frequent urination or weight changes, talk with a clinician about a blood glucose test." }
+      ]
+    }
+  },
+  "C-EDU-HTN": {
+    "title": "Hypertension and kidney health",
+    "body": "Hypertension and the kidneys influence each other. Blood pressure that stays high for a long time can affect kidney filtration, and that signal sometimes shows up as protein in the urine. A low-salt diet, regular exercise, a healthy weight, drinking less and not smoking all help with blood pressure.",
+    "payload": {
+      "kind": "article",
+      "source": "Clinical guidelines on hypertension and the kidneys (to be confirmed at review)",
+      "sections": [
+        { "h": "Definition", "t": "Hypertension is a state in which the pressure on the blood vessels stays high. The kidneys play an important role in regulating blood pressure." },
+        { "h": "Why it matters", "t": "Blood pressure that stays high for a long time can affect kidney filtration, and that signal sometimes shows up as protein in the urine." },
+        { "h": "Relation to urinalysis", "t": "Proteinuria can be an early signal of the strain on the kidneys. If you are managing hypertension, watching the protein trend in urine alongside it helps." },
+        { "h": "Managing it day to day", "t": "A low-salt diet, regular exercise, a healthy weight, drinking less and not smoking all help with blood pressure. Making a habit of logging your blood pressure is also good." },
+        { "h": "When to talk with a clinician", "t": "If proteinuria recurs, or your blood pressure is not well controlled, talk with a healthcare professional." }
+      ]
+    }
+  },
+  "C-EDU-UTI": {
+    "title": "Getting to know urinary tract infection",
+    "body": "A urinary tract infection is a state in which bacteria enter the urinary tract and cause inflammation. Leukocyte and nitrite responses can be early signals. Enough fluids, not holding urine for long and keeping clean all help. If you have pain when urinating, frequent urination or a fever, talk with a healthcare professional.",
+    "payload": {
+      "kind": "article",
+      "source": "Clinical guidelines on urinary tract infection (to be confirmed at review)",
+      "sections": [
+        { "h": "Definition", "t": "A urinary tract infection is a state in which bacteria enter the passage urine travels through (urethra, bladder and so on) and cause inflammation." },
+        { "h": "Why it matters", "t": "It is common but causes uncomfortable symptoms, and left alone it can spread upward. Leukocyte and nitrite responses are early signals." },
+        { "h": "Relation to urinalysis", "t": "Leukocytes can suggest inflammation and nitrite can suggest the activity of some bacteria. When both appear together, the possibility is worth looking at more closely." },
+        { "h": "Managing it day to day", "t": "Drinking enough water, not holding urine for long and keeping clean all help." },
+        { "h": "When to talk with a clinician", "t": "If you have pain when urinating, frequent urination, a feeling of incomplete emptying or a fever, talk with a healthcare professional." }
+      ]
+    }
+  },
+  "C-LIFE-KID": {
+    "title": "Daily habits for kidney health",
+    "body": "Today's missions: drink 1.5 L of water · cut back on soup broth and salty food · take a light 20-minute walk · log your blood pressure. Small habits protect your kidney health.",
+    "payload": {
+      "kind": "checklist",
+      "intro": "Small habits protect your kidney health. Start with what you can do today.",
+      "missions": [
+        { "id": "M-KID-1", "text": "Drink 1.5 L of water", "points": 5, "repeat": "daily" },
+        { "id": "M-KID-2", "text": "Cut back on soup broth and salty food", "points": 5, "repeat": "daily" },
+        { "id": "M-KID-3", "text": "Take a light 20-minute walk", "points": 5, "repeat": "daily" },
+        { "id": "M-KID-4", "text": "Log your blood pressure", "points": 10, "repeat": "3x a week" },
+        { "id": "M-KID-5", "text": "Regular urine measurement", "points": 10, "repeat": "2x a week" }
+      ]
+    }
+  },
+  "C-LIFE-HYD": {
+    "title": "Hydration mission",
+    "body": "A glass of water after waking · water with every meal · fewer caffeinated drinks · reach your daily fluid goal. Pale yellow urine is a sign that you are well hydrated.",
+    "payload": {
+      "kind": "checklist",
+      "intro": "Fluids are essential for the kidneys to do their work. Shall we drink enough today?",
+      "missions": [
+        { "id": "M-HYD-1", "text": "A glass of water after waking", "points": 3, "repeat": "daily" },
+        { "id": "M-HYD-2", "text": "Water with every meal", "points": 3, "repeat": "daily" },
+        { "id": "M-HYD-3", "text": "Fewer caffeinated drinks", "points": 5, "repeat": "daily" },
+        { "id": "M-HYD-4", "text": "Reach your daily fluid goal", "points": 10, "repeat": "daily" }
+      ]
+    }
+  },
+  "C-LIFE-DM": {
+    "title": "Glucose-friendly daily habits",
+    "body": "Keep regular mealtimes · cut back on refined carbohydrates and sweet drinks · 10 minutes of light activity after meals · log your blood glucose. Light movement after eating helps with glucose management.",
+    "payload": {
+      "kind": "checklist",
+      "intro": "Let us build habits that keep your blood glucose steady.",
+      "missions": [
+        { "id": "M-DM-1", "text": "Keep regular mealtimes", "points": 5, "repeat": "daily" },
+        { "id": "M-DM-2", "text": "Cut back on refined carbohydrates and sweet drinks", "points": 5, "repeat": "daily" },
+        { "id": "M-DM-3", "text": "10 minutes of light activity after meals", "points": 5, "repeat": "daily" },
+        { "id": "M-DM-4", "text": "Log your blood glucose", "points": 10, "repeat": "3x a week" }
+      ]
+    }
+  },
+  "C-ACT-LOW": {
+    "title": "Action guide — Good",
+    "body": "You are managing things well. ① Keep up your usual habits. ② Measure regularly so the trend continues. ③ Add good habits with today's missions. Even for a good result, steady records are the greatest strength."
+  },
+  "C-ACT-MOD": {
+    "title": "Action guide — Watch",
+    "body": "① Drink enough water. ② Measure again in 3 days. ③ Let us check the trend together. Do not be alarmed by a single result or self-diagnose. Re-measuring within 14 days is recommended."
+  },
+  "C-ACT-HI": {
+    "title": "Action guide — Caution",
+    "body": "① Measure again soon (within 3 days is recommended). ② Discussing the result with a healthcare professional is recommended. ③ If needed, we will prepare a referral summary for you. Do not leave symptoms unattended or adjust medication on your own."
+  },
+  "C-ACT-VHI": {
+    "title": "Action guide — High",
+    "body": "The risk signals are clear. ① Review the result in detail. ② Talking with a healthcare professional is recommended. ③ We will prepare a summary report to help at your appointment. This guidance is not a diagnosis."
+  },
+  "C-SAFE-01": {
+    "title": "About the limits of screening",
+    "body": "This information is screening information intended to support health management, and it is not a medical diagnosis. A trend across several results matters more than a single one. If symptoms persist or you are concerned, talking with a healthcare professional is recommended."
+  },
+  "C-MOT-IMP": {
+    "title": "Your risk went down!",
+    "body": "Steady management is showing in your results. You are doing really well. Shall we keep this going?"
+  },
+  "C-MOT-STREAK": {
+    "title": "Congratulations on your streak",
+    "body": "Small habits add up to big health. Congratulations on keeping it going!"
+  },
+  "C-MOT-FIRST": {
+    "title": "Congratulations on your first measurement",
+    "body": "You have taken the first step in managing your health! A first measurement is the starting point for getting to know your body. As trends build up, we can give you more accurate guidance."
+  },
+  "C-MOT-BADGE": {
+    "title": "New badge earned!",
+    "body": "Steady measurement and completed missions earned you a new badge. Small achievements add up to health habits. Shall we go for the next badge?"
+  },
+  "C-MOT-GOAL": {
+    "title": "Setting a health goal",
+    "body": "Setting your own health goal (for example, keeping urine protein negative) makes motivation stronger. Today's missions are small steps toward that goal."
+  },
+  "C-CARE-01": {
+    "title": "Caregiver notification summary",
+    "body": "We summarize your family member's recent measurement result for you. It helps if you follow the suggested actions for each grade together. This service provides screening information and does not replace a diagnosis."
+  },
+  "C-CARE-GUIDE": {
+    "title": "Care guidance for caregivers",
+    "body": "When helping a family member measure, help them do it regularly at the same time of day. Depending on the result grade: ① for Good or Watch, look after lifestyle management and re-measurement together, and ② for Caution or High, suggest talking with a healthcare professional and help prepare the summary needed for the appointment. A caregiver does not decide diagnosis or treatment on someone else's behalf; the final judgment is made together with a healthcare professional."
+  },
+  "C-EDU-KID-Q": {
+    "title": "Kidney health quiz",
+    "body": "Kidney health quiz — check your understanding with 3 multiple-choice questions.",
+    "payload": {
+      "kind": "quiz",
+      "questions": [
+        {
+          "q": "What is the main role of the kidneys?",
+          "options": [
+            { "t": "Filtering waste products and fluid and sending them out as urine", "correct": true },
+            { "t": "Carrying oxygen around the body", "correct": false },
+            { "t": "Digesting food", "correct": false }
+          ],
+          "explain": "The kidneys are filtering organs that remove waste products and excess fluid."
+        },
+        {
+          "q": "Which is true of early chronic kidney disease?",
+          "options": [
+            { "t": "The pain is very severe", "correct": false },
+            { "t": "There are almost no symptoms, so it is easy to miss", "correct": true },
+            { "t": "It always comes with a fever", "correct": false }
+          ],
+          "explain": "Early on there are almost no symptoms, which is why regular measurement matters."
+        },
+        {
+          "q": "Which urinalysis items are watched as kidney signals?",
+          "options": [
+            { "t": "Protein and occult blood", "correct": true },
+            { "t": "Vitamin C", "correct": false },
+            { "t": "pH only", "correct": false }
+          ],
+          "explain": "Proteinuria and occult blood can be early signals from the kidneys."
+        }
+      ]
+    }
+  },
+  "C-EDU-DM-Q": {
+    "title": "Diabetes and urine quiz",
+    "body": "Diabetes and urine quiz — check your understanding with 3 multiple-choice questions.",
+    "payload": {
+      "kind": "quiz",
+      "questions": [
+        {
+          "q": "When can glucose appear in urine?",
+          "options": [
+            { "t": "When blood glucose is high, or temporarily right after a meal", "correct": true },
+            { "t": "Only when you drink a lot of water", "correct": false },
+            { "t": "Only when you exercise", "correct": false }
+          ],
+          "explain": "When blood glucose is high, glucose can spill over into the urine."
+        },
+        {
+          "q": "In which situation do ketones appear in urine?",
+          "options": [
+            { "t": "After a long fast or when carbohydrate intake is low", "correct": true },
+            { "t": "After sleeping a lot", "correct": false },
+            { "t": "After drinking a lot of water", "correct": false }
+          ],
+          "explain": "Ketones appear when the body uses fat instead of glucose for energy."
+        },
+        {
+          "q": "Can urinalysis confirm a diagnosis of diabetes?",
+          "options": [
+            { "t": "Yes, it can confirm it right away", "correct": false },
+            { "t": "No, it is a screening signal and a blood glucose test is needed", "correct": true },
+            { "t": "It is confirmed if ketones are present", "correct": false }
+          ],
+          "explain": "Urinalysis is a screening tool; diagnosis is made with tests such as blood glucose."
+        }
+      ]
+    }
+  },
+  "C-EDU-HTN-Q": {
+    "title": "Hypertension and kidney quiz",
+    "body": "Hypertension and kidney quiz — check your understanding with 2 multiple-choice questions.",
+    "payload": {
+      "kind": "quiz",
+      "questions": [
+        {
+          "q": "Which is true of the relationship between hypertension and the kidneys?",
+          "options": [
+            { "t": "They are unrelated", "correct": false },
+            { "t": "They influence each other", "correct": true },
+            { "t": "Only the kidneys affect blood pressure", "correct": false }
+          ],
+          "explain": "The kidneys help regulate blood pressure, and high blood pressure puts strain on the kidneys."
+        },
+        {
+          "q": "Which urine item is worth watching alongside hypertension management?",
+          "options": [
+            { "t": "Protein", "correct": true },
+            { "t": "Vitamin C", "correct": false },
+            { "t": "Ketones", "correct": false }
+          ],
+          "explain": "Proteinuria can be an early signal of the strain on the kidneys."
+        }
+      ]
+    }
+  },
+  "C-EDU-UTI-Q": {
+    "title": "Urinary tract infection quiz",
+    "body": "Urinary tract infection quiz — check your understanding with 2 multiple-choice questions.",
+    "payload": {
+      "kind": "quiz",
+      "questions": [
+        {
+          "q": "Which urine items can be related to a urinary tract infection?",
+          "options": [
+            { "t": "Leukocytes and nitrite", "correct": true },
+            { "t": "Specific gravity and pH", "correct": false },
+            { "t": "Bilirubin", "correct": false }
+          ],
+          "explain": "Leukocytes can suggest inflammation and nitrite can suggest the activity of some bacteria."
+        },
+        {
+          "q": "Which habit helps prevent urinary tract infection?",
+          "options": [
+            { "t": "Holding urine for a long time", "correct": false },
+            { "t": "Drinking enough water and not holding urine", "correct": true },
+            { "t": "Drinking little water", "correct": false }
+          ],
+          "explain": "Fluid intake and regular voiding both help."
+        }
+      ]
+    }
+  }
+}

@@ -4,6 +4,7 @@ import { NextResponse } from "next/server";
 import { z } from "zod";
 import { runAnalysis } from "@/lib/analysis/pipeline";
 import { getCurrentUser } from "@/lib/auth/session";
+import { getTranslations } from "next-intl/server";
 
 const ValuesSchema = z.object({
   glucose: z.number().min(0).max(4).optional(),
@@ -26,27 +27,28 @@ const BodySchema = z.object({
 });
 
 export async function POST(req: Request) {
+  const t = await getTranslations("apiError");
   let json: unknown;
   try {
     json = await req.json();
   } catch {
-    return problem(400, "validation_error", "JSON 본문을 파싱할 수 없습니다.");
+    return problem(400, "validation_error", t("badJsonBody"));
   }
 
   const parsed = BodySchema.safeParse(json);
   if (!parsed.success) {
-    return problem(422, "measurement_invalid", "측정값 검증 실패", parsed.error.flatten());
+    return problem(422, "measurement_invalid", t("measurementInvalid"), parsed.error.flatten());
   }
 
   const { values, measured_at, source } = parsed.data;
   const measuredAt = measured_at ? new Date(measured_at) : new Date();
   if (measuredAt.getTime() > Date.now() + 60_000) {
-    return problem(422, "measurement_invalid", "측정 시각은 미래일 수 없습니다.");
+    return problem(422, "measurement_invalid", t("measuredAtFuture"));
   }
 
   const me = await getCurrentUser();
   if (!me) {
-    return problem(401, "unauthorized", "로그인이 필요합니다. 측정은 본인 계정으로만 저장됩니다.");
+    return problem(401, "unauthorized", t("loginRequiredMeasure"));
   }
 
   try {
@@ -54,7 +56,7 @@ export async function POST(req: Request) {
     return NextResponse.json({ status: "completed", ...result }, { status: 201 });
   } catch (e) {
     console.error("[measurements] analysis failed:", e);
-    return problem(500, "internal_error", "분석 처리 중 오류가 발생했습니다.");
+    return problem(500, "internal_error", t("analysisInternal"));
   }
 }
 

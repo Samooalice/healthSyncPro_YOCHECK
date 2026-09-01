@@ -7,16 +7,18 @@ import { prisma } from "@/lib/db";
 import { getCurrentUser } from "@/lib/auth/session";
 import { parsePhr, extractPublicData, dedupeResources, phrOwnerName } from "@/lib/phr/ingest";
 import { reanalyzeMeasurement } from "@/lib/analysis/pipeline";
+import { getTranslations } from "next-intl/server";
 
 export async function POST(req: Request) {
+  const t = await getTranslations("apiError");
   const me = await getCurrentUser();
-  if (!me) return problem(401, "unauthorized", "로그인이 필요합니다.");
+  if (!me) return problem(401, "unauthorized", t("loginRequired"));
 
   let json: unknown;
   try {
     json = await req.json();
   } catch {
-    return problem(400, "validation_error", "JSON 본문을 파싱할 수 없습니다.");
+    return problem(400, "validation_error", t("badJsonBody"));
   }
   const body = (json ?? {}) as Record<string, unknown>;
 
@@ -31,7 +33,7 @@ export async function POST(req: Request) {
   const incoming: unknown[] = [];
   for (const d of datasets) incoming.push(...extractPublicData(d));
   if (incoming.length === 0) {
-    return problem(422, "phr_invalid", "유효한 FHIR PHR 데이터를 찾지 못했습니다. 나의건강기록에서 내려받은 JSON 파일을 올려주세요.");
+    return problem(422, "phr_invalid", t("phrInvalid"));
   }
 
   // 명의 확인 — 업로드 PHR의 주인(Patient.name)과 로그인 계정 이름이 둘 다 있고 다르면 거부
@@ -39,7 +41,7 @@ export async function POST(req: Request) {
   const ownerName = phrOwnerName(incoming);
   if (norm(ownerName) && norm(me.display_name) && norm(ownerName) !== norm(me.display_name)) {
     return problem(409, "phr_name_mismatch",
-      `업로드한 건강기록의 주인은 '${ownerName}'인데 로그인 계정은 '${me.display_name}'입니다. 본인 명의의 나의건강기록만 연동할 수 있습니다.`);
+      t("phrOwnerMismatch", { owner: ownerName, account: me.display_name ?? "" }));
   }
 
   // 누적 병합 — 기존 raw + 신규 → 중복 제거(덮어쓰기 아님)
@@ -52,7 +54,7 @@ export async function POST(req: Request) {
   // 재파싱(통합본 기준)
   const summary = parsePhr(combined);
   if (summary.checkups.length === 0 && summary.medications.length === 0 && summary.diagnoses.length === 0) {
-    return problem(422, "phr_empty", "검진·복약·진단 정보를 찾지 못했습니다. 올바른 나의건강기록 파일인지 확인해주세요.");
+    return problem(422, "phr_empty", t("phrEmpty"));
   }
 
   const reportDate = summary.checkups[0]?.date ? new Date(summary.checkups[0].date) : null;
@@ -96,7 +98,7 @@ export async function POST(req: Request) {
   }, { status: 201 });
   } catch (e) {
     console.error("[phr] upload failed:", e);
-    return problem(500, "internal_error", "PHR 처리 중 오류가 발생했습니다. 서버 로그를 확인하세요. (dev 서버 실행 중이라면 prisma 변경 반영을 위해 재시작이 필요할 수 있어요.)");
+    return problem(500, "internal_error", t("phrInternal"));
   }
 }
 

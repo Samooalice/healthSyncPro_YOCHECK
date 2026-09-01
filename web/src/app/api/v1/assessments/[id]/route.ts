@@ -3,6 +3,7 @@ import { NextResponse } from "next/server";
 import { prisma } from "@/lib/db";
 import { curateFeed, type CurationContext } from "@/lib/content/curate";
 import type { Analyte } from "@/config/algoParams";
+import { getTranslations } from "next-intl/server";
 
 const ANALYTES: Analyte[] = [
   "glucose", "protein", "ph", "specific_gravity", "ketone",
@@ -10,12 +11,13 @@ const ANALYTES: Analyte[] = [
 ];
 
 export async function GET(_req: Request, ctx: { params: Promise<{ id: string }> }) {
+  const t = await getTranslations("apiError");
   const { id } = await ctx.params;
 
   const assessment = await prisma.risk_assessment.findUnique({ where: { id } });
   if (!assessment) {
     return NextResponse.json(
-      { type: "https://errors.sdcwellcare/not_found", title: "not_found", status: 404, detail: "위험평가를 찾을 수 없습니다." },
+      { type: "https://errors.sdcwellcare/not_found", title: "not_found", status: 404, detail: t("assessmentNotFound") },
       { status: 404, headers: { "content-type": "application/problem+json" } },
     );
   }

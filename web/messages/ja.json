@@ -1,0 +1,1316 @@
+{
+  "meta": {
+    "title": "SDC WellCare · 慢性疾患管理プラットフォーム",
+    "description": "尿化学分析装置を基盤とした慢性疾患管理統合プラットフォーム — 測定・分析・理解・行動"
+  },
+  "nav": {
+    "dashboard": "ダッシュボード",
+    "measure": "測定",
+    "contents": "コンテンツ",
+    "care": "ケア",
+    "missions": "ミッション",
+    "patients": "患者一覧",
+    "admin": "管理者",
+    "switchAccount": "アカウント切り替え",
+    "alerts": "お知らせ",
+    "logout": "ログアウト",
+    "login": "ログイン",
+    "signup": "会員登録"
+  },
+  "common": {
+    "save": "保存",
+    "cancel": "キャンセル",
+    "close": "閉じる",
+    "confirm": "確認",
+    "back": "戻る",
+    "next": "次へ",
+    "submit": "送信",
+    "loading": "読み込み中…",
+    "empty": "表示する内容がありません。",
+    "none": "なし",
+    "all": "すべて",
+    "search": "検索",
+    "print": "印刷",
+    "dash": "-",
+    "riskOf": "{disease}リスク {score}",
+    "standardGrade": "KDIGO型 {grade}",
+    "recommended": "おすすめコンテンツ",
+    "noData": "データなし",
+    "printPdf": "印刷 / PDF"
+  },
+  "analyte": {
+    "protein": "尿タンパク",
+    "glucose": "尿糖",
+    "blood": "潜血",
+    "leukocyte": "白血球",
+    "ketone": "ケトン体",
+    "nitrite": "亜硝酸塩",
+    "bilirubin": "ビリルビン",
+    "urobilinogen": "ウロビリノーゲン",
+    "ph": "酸度(pH)",
+    "specific_gravity": "比重",
+    "vitamin_c": "ビタミンC"
+  },
+  "analyteValue": {
+    "negative": "陰性",
+    "trace": "微量",
+    "p1": "1+",
+    "p2": "2+",
+    "p3": "3+",
+    "p4": "4+"
+  },
+  "status": {
+    "normal": "正常",
+    "caution": "境界",
+    "abnormal": "異常",
+    "info": "参考",
+    "inRange": "正常範囲"
+  },
+  "grade": {
+    "low": "良好",
+    "moderate": "要観察",
+    "high": "注意",
+    "very_high": "高い"
+  },
+  "care": {
+    "lifestyle": "生活管理ミッション",
+    "recheck": "再測定のおすすめ",
+    "referral": "受診時参考レポート",
+    "emergency": "医療者への相談をおすすめ"
+  },
+  "disease": {
+    "kidney": "腎臓",
+    "diabetes": "糖尿病",
+    "hypertension": "高血圧",
+    "uti": "尿路感染症",
+    "liver": "肝胆道"
+  },
+  "diseaseFull": {
+    "kidney": "慢性腎臓病",
+    "diabetes": "糖尿病",
+    "hypertension": "高血圧",
+    "uti": "尿路感染症",
+    "liver": "肝胆道"
+  },
+  "clinical": {
+    "significance": {
+      "protein": "糸球体・尿細管障害の指標。持続的なタンパク尿はCKDの進行や心血管リスクと関連します(アルブミン尿の定量を推奨)。",
+      "glucose": "血糖が腎閾値(約180mg/dL)を超えると出現。糖尿病の疑いや血糖コントロール不良を示唆します(空腹時血糖・HbA1cを確認)。",
+      "blood": "血尿 — 尿路結石・感染・糸球体腎炎・腫瘍などの鑑別が必要です。持続する場合は画像検査や尿細胞診を検討します。",
+      "leukocyte": "膿尿 — 尿路感染症を示唆します。亜硝酸塩や症状と合わせて総合的に判断します。",
+      "nitrite": "グラム陰性菌(腸内細菌)感染を示唆します。白血球を伴う場合、尿路感染症の可能性が高まります。",
+      "ketone": "ケトン尿 — 糖尿病性ケトアシドーシス・飢餓・低炭水化物食など。高血糖を伴う場合は注意が必要です。",
+      "bilirubin": "肝胆道疾患(閉塞性黄疸・肝細胞障害)の手がかり。肝機能検査と連携します。",
+      "urobilinogen": "上昇時は溶血や肝細胞疾患の可能性。ビリルビンと合わせて解釈します。",
+      "specific_gravity": "腎の濃縮能・水分状態を反映。脱水や尿崩症などの手がかりになります。",
+      "ph": "酸塩基状態・結石の種類・尿路感染の手がかり。持続的なアルカリ尿は尿素分解菌の感染を示唆します。",
+      "vitamin_c": "試験紙の干渉要因 — 高濃度では潜血・尿糖が偽陰性になることがあります。結果の解釈時に注意してください。"
+    },
+    "guideline": {
+      "kidney": {
+        "reference": "KDIGO 2024 CKDガイドライン — eGFR・アルブミン尿(ACR)に基づくリスク層別(緑/黄/橙/赤)",
+        "staging": "尿タンパク半定量はスクリーニング段階です。確定診断・病期分類には血清クレアチニン(eGFR)とACRの定量が必要です。",
+        "followup": "推奨: 血清クレアチニン・eGFR、尿アルブミン/クレアチニン比(uACR)、必要に応じて腎臓内科への紹介。"
+      },
+      "diabetes": {
+        "reference": "大韓糖尿病学会・ADA — 空腹時血糖/HbA1cの診断基準(尿糖は補助指標)",
+        "staging": "尿糖陽性は高血糖の可能性を示唆しますが診断基準ではありません。空腹時血糖・HbA1cで確認します。",
+        "followup": "推奨: 空腹時血糖・HbA1c、糖尿病合併症(腎・眼底)のスクリーニング。"
+      },
+      "hypertension": {
+        "reference": "大韓高血圧学会 — 診察室/家庭血圧の分類、標的臓器障害の評価",
+        "staging": "タンパク尿は高血圧性の標的臓器(腎)障害の指標として用います。血圧測定値と合わせて評価します。",
+        "followup": "推奨: 血圧の反復測定、尿アルブミン、心電図・脂質などの危険因子評価。"
+      },
+      "uti": {
+        "reference": "尿路感染症診療指針 — 膿尿・亜硝酸塩・症状の総合評価、無症候性細菌尿の鑑別",
+        "staging": "白血球・亜硝酸塩陽性に排尿症状を伴う場合、UTIの可能性があります。無症候例は治療対象でないことがあります。",
+        "followup": "推奨: 症状を伴う場合は尿培養・薬剤感受性検査、反復例は原因評価。"
+      },
+      "liver": {
+        "reference": "肝胆道評価 — ビリルビン・ウロビリノーゲンのパターン + 肝機能検査",
+        "staging": "尿ビリルビン/ウロビリノーゲンは補助的な手がかりです。パターン(閉塞性か肝細胞性か)の鑑別が必要です。",
+        "followup": "推奨: 肝機能検査(AST/ALT/ALP/総ビリルビン)、必要に応じて画像検査。"
+      }
+    }
+  },
+  "driver": {
+    "source": {
+      "urine": "尿検査",
+      "phr": "健康診断",
+      "pattern": "パターン"
+    },
+    "urine": {
+      "label": "尿{name}",
+      "high": "尿検査で{name}が{value}と出ました(正常: {normal})。",
+      "normal": "尿検査の{name}は{value}で、正常範囲です。"
+    },
+    "yesNo": {
+      "present": "あり",
+      "absent": "なし",
+      "confirmed": "健康診断の記録に{label}が確認されました。",
+      "none": "{label}はありません。"
+    },
+    "applies": {
+      "yes": "該当",
+      "no": "非該当"
+    },
+    "bool": {
+      "yes": "はい",
+      "no": "いいえ"
+    },
+    "count": {
+      "items": "{n}項目",
+      "times": "{n}回"
+    },
+    "label": {
+      "phr_glucose": "健診の空腹時血糖",
+      "phr_egfr": "腎機能(eGFR)",
+      "phr_bmi": "体格指数(BMI)",
+      "phr_diabetes": "糖尿病の診断・服薬",
+      "phr_hypertension": "高血圧の診断・服薬",
+      "phr_dyslipidemia": "脂質異常症の記録",
+      "phr_kidney_watch": "腎臓に関する要注意所見",
+      "phr_overweight": "過体重",
+      "pos_burden": "陽性となった検査項目数",
+      "uti_flag": "白血球・亜硝酸塩の同時陽性",
+      "dka_flag": "尿糖・ケトン体の同時陽性",
+      "nephritis_flag": "タンパク・潜血の同時陽性",
+      "protein_consec_pos": "タンパク尿の連続陽性"
+    },
+    "normal": {
+      "phr_glucose": "100未満",
+      "phr_egfr": "90以上",
+      "phr_bmi": "18.5〜24.9"
+    },
+    "missing": {
+      "phr_glucose": "空腹時血糖の記録がありません。",
+      "phr_egfr": "eGFRの記録がありません。",
+      "phr_bmi": "BMIの記録がありません。"
+    },
+    "sentence": {
+      "phr_glucose": "健診の空腹時血糖は{value} mg/dLです(正常: 100未満)。",
+      "phr_glucose_high": "健診の空腹時血糖は{value} mg/dLです(正常: 100未満)。やや高めです。",
+      "phr_egfr": "腎のろ過機能(eGFR)は{value}です(正常: 90以上)。",
+      "phr_egfr_low": "腎のろ過機能(eGFR)は{value}です(正常: 90以上)。やや低めです。",
+      "phr_bmi": "体格指数(BMI)は{value}です(正常: 18.5〜24.9)。",
+      "phr_bmi_high": "体格指数(BMI)は{value}です(正常: 18.5〜24.9)。過体重の範囲です。",
+      "phr_overweight": "体重は正常範囲です。",
+      "phr_overweight_high": "体重がやや高めです。",
+      "pos_burden": "尿検査で{n}項目が陽性となりました。",
+      "uti_flag": "尿路感染症を示唆する組み合わせ(白血球+亜硝酸塩)が一緒に出ました。",
+      "dka_flag": "血糖コントロールの異常を示唆する組み合わせ(尿糖+ケトン体)が出ました。",
+      "nephritis_flag": "腎の炎症を示唆する組み合わせ(タンパク+潜血)が出ました。",
+      "protein_consec_pos": "タンパク尿が{n}回連続で出ています。持続しているサインです。"
+    }
+  },
+  "feature": {
+    "protein_dev": "尿タンパク",
+    "blood_dev": "潜血",
+    "leukocyte_dev": "白血球",
+    "protein_personal_dev": "個人基準線に対するタンパク上昇",
+    "protein_persistence": "タンパク尿の持続",
+    "nephritis_rule": "タンパク+潜血(糸球体腎炎を示唆)",
+    "phr_egfr": "健診eGFRの低下",
+    "phr_egfr_trend": "健診eGFRの低下傾向",
+    "phr_kidney_watch": "健診の腎要注意所見",
+    "phr_htn": "高血圧(腎障害リスク)",
+    "phr_dm": "糖尿病(糖尿病性腎症リスク)",
+    "glucose_urine": "尿糖",
+    "ketone_urine": "ケトン体",
+    "dka_rule": "尿糖+ケトン体(DKAを示唆)",
+    "phr_fasting_glucose": "健診の空腹時血糖",
+    "phr_glucose_trend": "健診の空腹時血糖の上昇傾向",
+    "phr_dm_flag": "糖尿病の診断/服薬",
+    "phr_overweight": "過体重(BMI≥25)",
+    "protein_marker": "尿タンパク(腎障害の指標)",
+    "phr_htn_flag": "高血圧の診断/服薬",
+    "leukocyte": "白血球",
+    "nitrite": "亜硝酸塩",
+    "blood": "潜血",
+    "uti_rule": "白血球+亜硝酸塩(細菌性UTIを示唆)",
+    "bilirubin": "ビリルビン",
+    "urobilinogen": "ウロビリノーゲン"
+  },
+  "safety": {
+    "screening": "本情報は健康管理を助けるためのスクリーニング情報であり、医学的診断ではありません。",
+    "recheck": "一度の結果より複数回の推移が重要です。再測定をおすすめします。",
+    "consult": "症状が続く場合やご心配な場合は、医療者にご相談ください。",
+    "emergency": "リスクのサインがはっきり出ています。医療者への相談をおすすめします。",
+    "notDx": "この結果だけで疾患を診断するものではありません。",
+    "privacy": "健康情報は分離・保護され、ご本人の同意の範囲内でのみ活用されます。",
+    "vitc": "ビタミンCの摂取は一部項目(潜血・尿糖)の反応を下げることがあるため、補正に反映しました。"
+  },
+  "explain": {
+    "tone": {
+      "low": "現在、目立ったリスクのサインは見られません。",
+      "moderate": "普段より気をつけたいサインがあります。数日後に再測定して推移を確認してみてください。",
+      "high": "注意が必要な水準です。近いうちに再測定し、医療者に相談してみることをおすすめします。",
+      "very_high": "リスクのサインがはっきり出ています。医療者への相談をおすすめします。"
+    },
+    "userLow": "{disease}: {tone}",
+    "userSignals": "{disease}に関するサイン({labels})が確認されました。{tone}",
+    "clinician": "{disease}リスク {score} ({grade})。主な寄与: {contrib}。スクリーニング分析の結果であり、診断・処方に代わるものではありません。",
+    "clinicianStd": "{disease}リスク {score} ({grade}) · 標準等級 {standard}。主な寄与: {contrib}。スクリーニング分析の結果であり、診断・処方に代わるものではありません。",
+    "ifImproved": "{label}が改善すれば"
+  },
+  "rec": {
+    "kidney": {
+      "hydration": "十分な水分をとる",
+      "less_salt": "塩辛い食べ物を控える",
+      "bp_glucose": "血圧・血糖の管理",
+      "kidney_eval": "タンパク尿が続く場合は腎機能評価を相談"
+    },
+    "diabetes": {
+      "fasting_glucose": "空腹時血糖を確認する",
+      "less_carb": "精製炭水化物・甘い飲み物を控える",
+      "walk_after_meal": "食後の軽い活動",
+      "glucose_test": "繰り返す場合は血糖検査を相談"
+    },
+    "hypertension": {
+      "low_salt_weight": "減塩食・体重管理",
+      "bp_log": "血圧を規則的に記録",
+      "consult_uncontrolled": "血圧がうまく調整できない場合は相談"
+    },
+    "uti": {
+      "hydration": "十分な水分をとる",
+      "no_holding": "排尿を我慢しすぎない",
+      "consult_symptoms": "排尿痛・頻尿などの症状がある場合は医療者に相談"
+    },
+    "liver": {
+      "avoid_alcohol": "過度の飲酒を避ける",
+      "liver_test": "続く場合は肝機能の血液検査を相談"
+    }
+  },
+  "medClass": {
+    "diabetes": "糖尿病",
+    "hypertension": "高血圧",
+    "dyslipidemia": "脂質異常症",
+    "gastro": "胃腸疾患"
+  },
+  "phrFlag": {
+    "diabetes": "糖尿病",
+    "hypertension": "高血圧",
+    "dyslipidemia": "脂質異常症",
+    "kidney_watch": "腎要注意",
+    "overweight": "過体重"
+  },
+  "phrMetric": {
+    "glucose": "空腹時血糖",
+    "egfr": "eGFR",
+    "bmi": "BMI",
+    "chol": "総コレステロール",
+    "bp": "血圧",
+    "ldl": "LDLコレステロール",
+    "tg": "中性脂肪",
+    "creatinine": "クレアチニン",
+    "hb": "ヘモグロビン",
+    "weight": "体重",
+    "waist": "腹囲",
+    "sbp": "収縮期血圧",
+    "dbp": "拡張期血圧",
+    "hdl": "HDLコレステロール",
+    "urine_protein": "尿タンパク",
+    "height": "身長"
+  },
+  "trendDir": {
+    "up": "上昇",
+    "down": "下降",
+    "flat": "横ばい"
+  },
+  "dashboard": {
+    "titleNamed": "{name}さんの健康ダッシュボード",
+    "titleMine": "わたしの健康ダッシュボード",
+    "subtitle": "測定結果とおすすめのケアをひと目で確認できます。",
+    "newMeasurement": "+ 新しい測定",
+    "emptyTitle": "まだ測定記録がありません。",
+    "startFirst": "はじめての測定をはじめる",
+    "urgentNote": "注意が必要な結果があります。結果を確認し、再測定をおすすめします。",
+    "recentResult": "最近の結果",
+    "viewDetail": "結果の詳細を見る →",
+    "todayMissions": "今日のミッション",
+    "viewAllMissions": "ミッションをすべて見る →",
+    "myActivity": "わたしの活動",
+    "points": "ポイント",
+    "streakDays": "連続日数",
+    "badges": "バッジ",
+    "measureCount": "測定{n}回"
+  },
+  "missions": {
+    "title": "ミッション · バッジ",
+    "subtitle": "こつこつ測ることと小さな生活の実践が、健康習慣になります。",
+    "points": "ポイント",
+    "pointsSub": "活動で獲得",
+    "streak": "連続測定",
+    "streakSub": "ストリーク",
+    "days": "{n}日",
+    "badgesEarned": "獲得バッジ",
+    "badgesSub": "コレクション",
+    "today": "今日のミッション",
+    "doneCount": "{done}/{total} 完了",
+    "perMission": "1ミッションあたり +{p}P",
+    "goal": "健康目標",
+    "completed": "完了済み",
+    "markDone": "完了にする",
+    "resetNote": "※ ミッションは毎日0時にリセットされます。生活管理コンテンツと連動します。",
+    "trendTitle": "リスク改善の推移",
+    "trendEmpty": "測定をはじめると、リスクの変化がここに描かれます。",
+    "riskScore": "代表リスクスコア",
+    "trendNeedMore": "測定が積み重なると、変化を比較してお知らせします。",
+    "trendImproved": "最近のリスクスコアが最初より下がりました。良い流れです!",
+    "trendFlat": "リスクスコアはまだ安定していません。ミッションと再測定で管理してみましょう。",
+    "trendNote": "※ リスクスコアは0に近いほど低い値です。尿検査と健康診断を合わせて見た値です。",
+    "badgeCollection": "バッジコレクション",
+    "disclaimer": "ポイント・バッジは健康習慣づくりを助けるための活動報酬であり、医学的効果を保証するものではありません。健康生活実践支援金など外部報酬との連携は政策検討段階です。測定・生活管理は自主的に進めてください。"
+  },
+  "mission": {
+    "common": {
+      "water": {
+        "label": "水を1.5L飲む",
+        "tip": "少しずつこまめに飲むと、腎臓・尿路の健康に役立ちます。"
+      },
+      "walk": {
+        "label": "軽く20分歩く",
+        "tip": "食後の軽い歩行は血糖・血圧の管理に良いです。"
+      },
+      "salt": {
+        "label": "塩辛い食べ物を減らす",
+        "tip": "汁物や加工食品のナトリウムを減らしてみましょう。"
+      }
+    },
+    "kidney": {
+      "water": {
+        "label": "水を1.5L飲む",
+        "tip": "水分は腎臓の老廃物の排出を助けます。"
+      },
+      "salt": {
+        "label": "汁物・塩辛い食べ物を減らす",
+        "tip": "ナトリウム制限はタンパク尿・血圧の管理に役立ちます。"
+      },
+      "protein_care": {
+        "label": "過度なタンパク補助食品を見直す",
+        "tip": "腎臓の負担になることがあるため、適量を確認しましょう。"
+      }
+    },
+    "diabetes": {
+      "sugar": {
+        "label": "甘い飲み物の代わりに水を飲む",
+        "tip": "糖の摂取を減らすと血糖の変動がゆるやかになります。"
+      },
+      "walk": {
+        "label": "食後に20分歩く",
+        "tip": "食後の活動は血糖スパイクを抑えます。"
+      },
+      "carb_care": {
+        "label": "精製炭水化物を減らす",
+        "tip": "白米・小麦粉の代わりに全粒穀物を選んでみましょう。"
+      }
+    },
+    "hypertension": {
+      "salt": {
+        "label": "減塩の食事を実践する",
+        "tip": "ナトリウムを減らすことは血圧管理に直接役立ちます。"
+      },
+      "walk": {
+        "label": "有酸素運動20分",
+        "tip": "規則的な有酸素運動は血圧を下げるのに良いです。"
+      },
+      "bp_check": {
+        "label": "家庭血圧を記録する",
+        "tip": "同じ時間帯に測って推移を見てみましょう。"
+      }
+    },
+    "uti": {
+      "water": {
+        "label": "水を十分に飲む",
+        "tip": "水分摂取は細菌の排出を助けます。"
+      },
+      "hold_less": {
+        "label": "排尿を我慢しない",
+        "tip": "規則的な排尿は尿路の健康に良いです。"
+      },
+      "hygiene": {
+        "label": "衛生習慣を見直す",
+        "tip": "基本的な衛生管理で再発を減らせます。"
+      }
+    }
+  },
+  "badge": {
+    "first_measure": {
+      "label": "はじめの一歩",
+      "desc": "はじめての測定を完了しました"
+    },
+    "streak_3": {
+      "label": "3日連続",
+      "desc": "3日連続で測定"
+    },
+    "streak_7": {
+      "label": "1週間完走",
+      "desc": "7日連続で測定"
+    },
+    "streak_30": {
+      "label": "1か月の習慣",
+      "desc": "30日連続で測定"
+    },
+    "mission_master": {
+      "label": "ミッションマスター",
+      "desc": "ミッションを累計10回完了"
+    },
+    "risk_improved": {
+      "label": "改善のはじまり",
+      "desc": "リスクが以前より下がりました"
+    }
+  },
+  "goal": {
+    "kidney": "尿タンパク陰性を保つ",
+    "diabetes": "尿糖陰性・血糖の安定を保つ",
+    "hypertension": "血圧・タンパク尿の安定を保つ",
+    "uti": "白血球・亜硝酸塩を陰性に戻す",
+    "liver": "ビリルビンを正常に保つ"
+  },
+  "result": {
+    "title": "統合健康管理レポート",
+    "byDisease": "疾患別リスク",
+    "urinalysis": "尿化学検査 (11項目)",
+    "colItem": "項目",
+    "colValue": "測定値",
+    "colNormal": "正常範囲",
+    "colJudgment": "判定",
+    "currentUrine": "現在の尿<b>{name}</b>: <v>{value}</v>",
+    "normalInline": "正常 {normal}",
+    "trendNote": "※ このグラフは<b>尿{name}</b>という1項目だけのものです(正常なら緑)。{disease}リスク({score})は尿検査と健康診断を合わせて見た値なので、この項目が正常でも他の要因でリスクが高くなることがあります。",
+    "phrTitle": "健康診断データ (マイヘルスデータ)",
+    "phrEmpty": "まだ健康診断(PHR)データがありません。「私の健康記録」を連携すると、尿化学の結果と合わせて<b>総合健康レポート</b>が作成されます。",
+    "meds": "服薬: {list}",
+    "diagnoses": "診断: {list}",
+    "historyTitle": "尿化学測定の履歴",
+    "historyNote": "直近{n}回の測定における項目別の変化です。色は判定(<g>緑は正常</g>·<o>橙は異常</o>·<s>灰色は参考</s>)を表し、いちばん右の太字が今回の測定です。",
+    "phrTrendTitle": "健康診断の推移",
+    "checkupCount": "健診{n}回",
+    "phrTrendNote": "健康診断の数値の時間による変化です。現在の値が正常でも、<b>悪化の傾向</b>(例: eGFRの低下・空腹時血糖の上昇)があれば、早めに見ておく価値があります。",
+    "phrTrendDisclaimer": "※ 健診の推移は参考であり診断ではありません。eGFRの低下・空腹時血糖の上昇など悪化の傾向は、次の受診時に医療者と一緒に確認してください。",
+    "whyTitle": "なぜこの結果になったの?",
+    "engineLgbm": "AI分析(LightGBM)",
+    "engineDefault": "分析エンジン",
+    "whyNote": "以下の要因が今回のリスク判定に影響しました。<b>オレンジ</b>はリスクを高めた要因です。",
+    "impact": "影響 {level}",
+    "impactLevel": {
+      "high": "大",
+      "mid": "中",
+      "low": "小"
+    },
+    "whyDisclaimer": "※ リスクは尿検査と健康診断(PHR)を合わせて分析した結果です。尿の1項目が正常でも、健診の記録によってリスクが高く評価されることがあります。",
+    "careTitle": "おすすめの行動",
+    "dueBy": "期限 {date}",
+    "disclaimer": "本レポートは尿化学検査と健康診断(PHR)を組み合わせたスクリーニング情報であり、医学的診断ではありません。症状が続く場合やご心配な場合は医療者にご相談ください。",
+    "samdNote": "リスク層別化・等級の算出は医療機器(SaMD)の承認を前提とする機能です。(モデル {model})"
+  },
+  "patient": {
+    "noName": "(氏名なし)",
+    "male": "男",
+    "female": "女",
+    "sex": "性別",
+    "age": "年齢",
+    "years": "{n}歳",
+    "times": "{n}回",
+    "period": "観察期間",
+    "measureCount": "測定回数",
+    "toReport": "臨床レポート",
+    "noAssessment": "評価データがありません。",
+    "riskTitle": "リスク評価 (SaMD出力) · 多疾患",
+    "model": "モデル {version}",
+    "colDisease": "疾患",
+    "colScore": "リスクスコア",
+    "colGrade": "等級",
+    "colStandard": "標準等級",
+    "colSignificance": "臨床的意義",
+    "abnormalCount": "異常所見 {n}件",
+    "mainAnalyteNote": "代表疾患({disease})に関連する指標",
+    "proteinNote": "腎機能(タンパク尿)の指標",
+    "quantTitle": "尿化学の定量解釈 (11項目)",
+    "shapTitle": "リスク寄与要因 (SHAP)",
+    "guidelineTitle": "ガイドライン参考",
+    "staging": "病期の解釈",
+    "followup": "推奨フォローアップ",
+    "phrTitle": "マイヘルスデータ (国民健診・服薬)",
+    "phrCounts": "健診{checkups}件 · 服薬{meds}種",
+    "medClasses": "服薬分類: {list}",
+    "diagnoses": "診断/所見: {list}",
+    "carePlanTitle": "ケアプラン · 慢性疾患管理の要約",
+    "noCareAction": "ケアアクションなし",
+    "emrNote": "参考ガイドライン・慢性疾患管理の行政フォーム自動生成は、EMR連携(Step 6+)で対応します。",
+    "disclaimer": "本要約はスクリーニング分析の結果であり、臨床的な診断・処方に代わるものではありません。リスク層別化・等級の算出は医療機器(SaMD)の承認を前提とします。最終判断は医療者の臨床的評価によります。"
+  },
+  "report": {
+    "backToPatient": "患者ダッシュボード",
+    "title": "臨床分析レポート",
+    "subtitle": "尿化学 + マイヘルスデータ 結合分析",
+    "subject": "対象",
+    "pseudoId": "仮名ID",
+    "multiRisk": "多疾患リスク評価",
+    "samdCandidate": "SaMD候補出力 · モデル {version}",
+    "colStandardKdigo": "標準等級(KDIGO型)",
+    "evidenceTitle": "根拠 — 主な寄与要因",
+    "contribution": "寄与 {value}",
+    "abnormalTitle": "異常所見の要約",
+    "allNormal": "尿化学11項目はすべて正常範囲です。",
+    "proteinTrend": "尿タンパクの推移",
+    "chronicFlags": "慢性疾患フラグ: {list}",
+    "emrNote": "参考ガイドラインの引用・慢性疾患管理の行政フォーム自動生成は、EMR連携時に拡張されます。",
+    "disclaimer": "本レポートは尿化学検査とマイヘルスデータ(PHR)を組み合わせたスクリーニング分析の結果であり、臨床的な診断・処方に代わるものではありません。リスク層別化・等級の算出は医療機器(SaMD)の承認を前提とします。最終判断は医療者の臨床的評価によります。"
+  },
+  "portal": {
+    "title": "医療者ポータル",
+    "subtitle": "管理コホートの状況とリスクの優先順位をひと目で確認できます · 仮名ベース",
+    "persons": "{n}名",
+    "kpiPatients": "管理患者",
+    "kpiPatientsSub": "評価あり",
+    "kpiHighRisk": "高リスク",
+    "kpiHighRiskSub": "高い+注意",
+    "kpiRecent": "直近7日の測定",
+    "kpiRecentSub": "新規流入",
+    "kpiTotal": "累計測定",
+    "kpiTotalSub": "全検査",
+    "gradeDist": "リスク等級の分布",
+    "diseaseDist": "代表リスク疾患の分布",
+    "colPatient": "患者",
+    "colTopDisease": "代表リスク疾患",
+    "colLastAssessed": "最新評価",
+    "report": "レポート",
+    "noMatch": "条件に合う患者がいません。",
+    "disclaimer": "※ リスク層別化・等級はSaMD候補出力です。臨床的な診断・処方に代わるものではなく、最終判断は医療者の臨床的評価によります。"
+  },
+  "careStatus": {
+    "assigned": "予定",
+    "in_progress": "進行中",
+    "done": "完了",
+    "expired": "期限切れ"
+  },
+  "careDesc": {
+    "lifestyle": "生活習慣ミッションでリスクを管理します。",
+    "recheck": "推移を確認するため、再測定をおすすめします。",
+    "referral": "受診の参考になる要約レポートを準備します。",
+    "emergency": "医療者に相談してみることをおすすめする段階です。"
+  },
+  "carePage": {
+    "empty": "まだケアアクションがありません。",
+    "goMeasure": "測定しに行く",
+    "dueAt": "期限: {date}",
+    "referralTitle": "受診時参考の要約",
+    "createSummary": "要約を作成",
+    "referralEmpty": "医療者への相談時に参考にできる要約レポートを作成できます。",
+    "created": "作成済み",
+    "feedbackTitle": "再測定の結果を教えてください",
+    "feedbackNote": "再測定の結果を教えていただくと、分析精度の改善(再学習)に反映されます。",
+    "outcome": {
+      "improved": "良くなりました",
+      "stable": "変わりません",
+      "worsened": "悪くなりました"
+    },
+    "pdfNote": "※ 受診参考レポートのPDF・EMR連携は、外部連携(Step 6+)で拡張されます。"
+  },
+  "chart": {
+    "noData": "推移データがまだありません。",
+    "trendOf": "{name}の推移",
+    "current": "現在"
+  },
+  "contentTab": {
+    "all": "すべて",
+    "result_explain": "結果の解説",
+    "disease_edu": "疾患の情報",
+    "quiz": "クイズ",
+    "lifestyle": "生活管理",
+    "risk_action": "行動指針",
+    "motivation": "モチベーション",
+    "safety": "安全のお知らせ",
+    "caregiver": "介護者"
+  },
+  "contentFormat": {
+    "card": "カード",
+    "article": "記事",
+    "quiz": "クイズ",
+    "checklist": "チェックリスト",
+    "step_guide": "ステップガイド"
+  },
+  "contentsPage": {
+    "forYou": "あなたの結果に合わせて",
+    "empty": "この分類に公開されたコンテンツはありません。",
+    "note": "すべてのコンテンツは医学的レビューと規制レビューを経て公開されます。本情報は健康管理を助けるスクリーニング情報であり、医学的診断に代わるものではありません。",
+    "source": "出典: {source}",
+    "detailNote": "本コンテンツは医学的レビューと規制レビューを経て公開された、健康管理のためのスクリーニング情報です。医学的診断に代わるものではなく、ご心配な場合は医療者への相談をおすすめします。"
+  },
+  "contentView": {
+    "doneToday": "今日の完了 <b>{done}/{total}</b>",
+    "checklistNote": "※ ミッション完了・ポイント付与は、ゲーミフィケーション(Step 7)でアカウントに保存されます。",
+    "quizResult": "結果",
+    "quizScore": "{correct} / {total} 正解"
+  },
+  "phr": {
+    "parsing": "ファイル{n}件を解析中…",
+    "badJson": "JSONファイルではないか、形式が正しくありません。",
+    "uploadFailed": "アップロードに失敗しました (HTTP {status})。サーバーログをご確認ください。",
+    "addedToExisting": "既存に{n}件を追加",
+    "linkedTotal": "{n}件を連携",
+    "skippedFiles": "(エラーのファイル{n}件を除外)",
+    "applied": "健康診断データを反映 — {addNote} · 健診{checkups}回",
+    "processing": "処理中…",
+    "ctaCompact": "健診の追加/更新",
+    "cta": "健康診断(私の健康記録)を連携する",
+    "note": "※ 「私の健康記録」からダウンロードしたJSONファイル(phr_…json)をアップロードすると、尿化学の結果と合わせて総合レポートが作成されます。<b>複数ファイルを一度に</b>選べ、再度アップロードすると既存の記録に<b>累積</b>されます。"
+  },
+  "stub": {
+    "planned": "{step} 予定",
+    "elements": "この画面に入る要素",
+    "note": "計画書9.1の画面一覧に基づく骨格です。機能は{step}で実装します。"
+  },
+  "errors": {
+    "title": "一時的な問題が発生しました",
+    "lead": "しばらくしてからもう一度お試しください。問題が続く場合は管理者にお問い合わせください。",
+    "code": "エラーコード: {digest}",
+    "retry": "再試行",
+    "toDashboard": "ダッシュボードへ",
+    "toHome": "ホームへ",
+    "notFoundTitle": "ページが見つかりません",
+    "notFoundLead": "アドレスが変わったか、削除されたページの可能性があります。"
+  },
+  "notify": {
+    "resultReady": {
+      "title": "検査結果の準備ができました",
+      "body": "今回の測定結果とおすすめのケアをご確認ください。"
+    },
+    "risk": {
+      "title": "{disease}の結果をご確認ください",
+      "body": "{disease}に関するサインが普段より高く出ました。結果を詳しくご確認いただき、必要に応じて医療者にご相談ください。"
+    },
+    "referral": {
+      "title": "受診時参考の要約ができました",
+      "body": "医療者への相談時に参考にできる要約レポートを作成しました。ケア画面で確認できます。"
+    },
+    "feedback": {
+      "title": "再測定の結果を登録しました",
+      "body": "お知らせいただいた結果は、分析精度の改善(再学習)に反映されます。ありがとうございます。"
+    }
+  },
+  "admin": {
+    "title": "管理者コンソール",
+    "subtitle": "サービス運営状況と規制・品質の指標をひと目で管理できます。",
+    "system": "システム",
+    "statUsers": "利用者",
+    "statUsersSub": "全体 {n}",
+    "statClinicians": "有効な医療者",
+    "statPending": "承認待ち {n}",
+    "statApproved": "承認完了",
+    "statRecent7": "直近7日 {n}",
+    "statAssessments": "リスク評価",
+    "statSamd": "SaMD {n}",
+    "statPublishedTotal": "公開/全体",
+    "statAudit": "監査ログ",
+    "statRules": "ルール {n}",
+    "diseaseDist": "疾患別の評価分布",
+    "contentFlow": "コンテンツのワークフロー",
+    "areas": "管理領域",
+    "manage": "管理",
+    "view": "表示",
+    "waiting": "{n} 待ち",
+    "recentActivity": "最近の活動",
+    "noRecords": "記録なし",
+    "area": {
+      "clinicians": "医療者の承認",
+      "users": "ユーザー · デバイス",
+      "contents": "コンテンツ · CMS",
+      "curation": "キュレーションルール",
+      "regulatory": "規制トラック",
+      "audit": "監査ログ",
+      "system": "システム状態",
+      "portal": "医療者ポータル"
+    },
+    "areaCliniciansPending": "登録申請 {n}件が承認待ち",
+    "areaCliniciansDesc": "医療者の資格確認・承認の管理",
+    "areaUsersDesc": "アカウント・機器・測定の状況",
+    "areaContentsDesc": "コンテンツの作成・レビュー・公開ワークフロー",
+    "areaCurationDesc": "パーソナライズのルール・シミュレーター",
+    "areaRegulatoryDesc": "SaMD/ウェルネスの分離・表示・準備状況",
+    "areaAuditDesc": "PHIアクセス・コンテンツ公開などの不変記録",
+    "areaSystemDesc": "依存サービスの健全性・セキュリティイベント・可観測性",
+    "areaPortalDesc": "患者モニタリング・臨床レポート"
+  },
+  "contentStatus": {
+    "draft": "下書き",
+    "medical_review": "医学レビュー",
+    "ra_review": "規制レビュー",
+    "ready": "公開待ち",
+    "published": "公開中",
+    "unpublished": "公開停止"
+  },
+  "auditAction": {
+    "view_phi": "患者情報の閲覧",
+    "view_admin": "管理コンソールへのアクセス",
+    "content_publish": "コンテンツの公開",
+    "content_unpublish": "コンテンツの公開停止",
+    "clinician_signup": "医療者の登録申請",
+    "clinician_verify": "医療者の承認審査",
+    "login": "ログイン",
+    "login_failed": "ログイン失敗",
+    "login_blocked": "ログイン遮断(レート制限)",
+    "account_switch": "アカウント切り替え"
+  },
+  "audit": {
+    "subtitle": "PHIアクセス・コンテンツ公開・管理行為の記録 (直近200件)",
+    "console": "コンソール",
+    "colTime": "時刻",
+    "colActor": "実行者",
+    "colAction": "行為",
+    "colTarget": "対象",
+    "empty": "記録がありません。",
+    "note": "※ 監査ログは追記専用(append-only)で運用し、本番では改ざん防止・保存期間ポリシーを適用します。"
+  },
+  "curation": {
+    "title": "キュレーションルール",
+    "subtitle": "優先度(小さいほど先)の順に、条件に合う公開コンテンツをパーソナライズフィードに表示します。",
+    "firstTime": "はじめての測定",
+    "condDisease": "疾患 {value}",
+    "condGrade": "等級 {value}",
+    "condTrend": "推移 {value}",
+    "condStreak": "連続測定 {value}",
+    "condAny": "(すべて)",
+    "colPriority": "優先",
+    "colCondition": "条件",
+    "colContent": "表示コンテンツ",
+    "colStatus": "状態",
+    "live": "公開中",
+    "notLive": "未公開",
+    "note": "※ ルールのGUI編集機能・競合シミュレーターは今後の拡張予定です。未公開コンテンツを指すルールは、条件に合っても表示されません。"
+  },
+  "accountType": {
+    "b2c": "利用者",
+    "facility": "施設",
+    "clinician": "医療者",
+    "admin": "管理者"
+  },
+  "adminUsers": {
+    "subtitle": "アカウント・機器・測定の状況 · 仮名ベース",
+    "colUser": "ユーザー",
+    "colType": "種別",
+    "colEmail": "メール",
+    "colDevice": "機器",
+    "active": "有効",
+    "empty": "この種別のユーザーはいません。",
+    "note": "※ 実名・連絡先はsecureスキーマに暗号化して保存され、コンソールでは仮名・集計を中心に表示します。アカウント停止・同意撤回などの変更作業は監査ログに記録されます。"
+  },
+  "license": {
+    "doctor": "医師",
+    "nurse": "看護師",
+    "medtech": "臨床検査技師"
+  },
+  "clinicianStatus": {
+    "pending": "承認待ち",
+    "active": "承認済み",
+    "rejected": "却下"
+  },
+  "adminClinicians": {
+    "subtitle": "免許を確認して承認すると、ポータルへのログインが有効になります · 承認待ち {n}件",
+    "licenseType": "免許の種類",
+    "licenseNo": "免許番号",
+    "organization": "所属",
+    "department": "診療科",
+    "rejectReasonShown": "却下の理由: {reason}",
+    "rejectReasonPlaceholder": "却下の理由(任意)",
+    "approve": "承認",
+    "reject": "却下",
+    "empty": "医療者の登録申請はありません。",
+    "note": "※ 免許番号はマスキング表示され、承認/却下は監査ログに記録されます。本番では免許の真正性確認(外部検証)の手続きを連携します。"
+  },
+  "contentCategory": {
+    "result_explain": "結果の解説",
+    "disease_edu": "疾患の情報",
+    "lifestyle": "生活管理",
+    "risk_action": "行動指針",
+    "motivation": "モチベーション",
+    "safety": "安全",
+    "clinician": "医療者",
+    "caregiver": "介護者"
+  },
+  "reviewState": {
+    "approved": "承認",
+    "rejected": "却下",
+    "waiting": "待機"
+  },
+  "contentAction": {
+    "submit": "レビューに提出",
+    "med_approve": "医学承認",
+    "med_reject": "却下",
+    "ra_approve": "規制承認",
+    "ra_reject": "却下",
+    "publish": "公開",
+    "unpublish": "公開停止",
+    "republish": "再公開"
+  },
+  "cms": {
+    "title": "コンテンツ管理 (CMS)",
+    "subtitle": "レビューの流れ: 下書き → 医学レビュー → 規制レビュー → 公開待ち → 公開 · レビュー待ち {n}件",
+    "colContent": "コンテンツ",
+    "colCategory": "分類",
+    "colActions": "操作",
+    "note": "※ 医学レビューを通過していないコンテンツは公開されず、パーソナライズフィードには公開中のコンテンツのみが表示されます。"
+  },
+  "regulatory": {
+    "title": "規制トラック · パイロット準備",
+    "subtitle": "SaMD(医療機器候補) · ウェルネスの分離 · 承認準備状況",
+    "intendedUseTitle": "意図する使用 (Intended Use)",
+    "intendedUseLabel": {
+      "purpose": "使用目的",
+      "users": "使用対象",
+      "environment": "使用環境",
+      "notIntended": "使用対象外"
+    },
+    "intendedUse": {
+      "purpose": "尿化学(尿)検査と個人健康記録(PHR)を組み合わせて慢性疾患リスクをスクリーニング・層別化し、利用者の理解・生活管理・医療者への相談連携を支援する。",
+      "users": "一般利用者(健康管理)・医療者(モニタリング補助)・施設/健診センター。",
+      "environment": "家庭・健診センター・医療機関などのインターネット接続環境。",
+      "notIntended": "確定診断・処方・救急医療の判断に代わるものではなく、最終的な臨床判断は医療者にある。"
+    },
+    "kpiTotal": "全リスク評価",
+    "kpiSamd": "SaMD候補出力",
+    "kpiWellness": "ウェルネス出力",
+    "kpiPublished": "公開コンテンツ",
+    "featureTitle": "機能別トラック分類 (SaMD候補の識別)",
+    "colFeature": "機能",
+    "colTrack": "トラック",
+    "colLikelihood": "SaMDの可能性",
+    "colBasis": "根拠(仮定)",
+    "track": {
+      "samd": "医療機器候補",
+      "wellness": "ウェルネス",
+      "review": "要検討"
+    },
+    "feature": {
+      "risk_strat": {
+        "label": "リスク層別化(疾患別リスクスコア・等級)",
+        "likelihood": "高い",
+        "basis": "疾患リスク情報を算出・提供"
+      },
+      "standard_grade": {
+        "label": "標準リスク等級の算出(KDIGO型)",
+        "likelihood": "高い",
+        "basis": "臨床分類体系へのマッピング"
+      },
+      "explain_report": {
+        "label": "説明レポート(リスク根拠・SHAP)",
+        "likelihood": "中",
+        "basis": "リスク層別化に従属"
+      },
+      "measure_collect": {
+        "label": "測定の収集・品質補正",
+        "likelihood": "低〜中",
+        "basis": "データ処理の性格"
+      },
+      "lifestyle_content": {
+        "label": "生活管理・教育コンテンツ",
+        "likelihood": "低い",
+        "basis": "一般的な健康情報"
+      },
+      "gamification": {
+        "label": "ゲーミフィケーション・ミッション",
+        "likelihood": "低い",
+        "basis": "動機づけ"
+      }
+    },
+    "featureNote": "※ この分類は仮定であり、実際のSaMD該当性・等級は食薬処の事前相談で確定します。トラックは<code>is_samd_output</code>フラグで分離・記録されます。",
+    "prepTitle": "承認準備の文書",
+    "prepStarted": "{done}/{total} 着手",
+    "prepDoc": {
+      "intended_use": {
+        "doc": "意図する使用の仕様書(Intended Use)",
+        "note": "本モジュールに要約を定義 — 正式な文書化が必要"
+      },
+      "srs": {
+        "doc": "ソフトウェア要求仕様書",
+        "note": "詳細実行計画と連携"
+      },
+      "risk_mgmt": {
+        "doc": "リスクマネジメントファイル(危害分析・低減)",
+        "note": "ISO 14971形式での作成が必要"
+      },
+      "lifecycle": {
+        "doc": "ソフトウェアライフサイクル文書",
+        "note": "IEC 62304の開発・検証プロセス"
+      },
+      "vnv": {
+        "doc": "検証・妥当性確認(V&V)の記録",
+        "note": "E2Eスモークテスト・テスト戦略と連携"
+      },
+      "clinical_eval": {
+        "doc": "臨床評価資料",
+        "note": "文献・自社データ(パイロット)"
+      },
+      "cybersecurity": {
+        "doc": "サイバーセキュリティ文書",
+        "note": "セキュリティヘッダー・レート制限・監査ログを適用(Step 8)"
+      },
+      "usability": {
+        "doc": "ユーザビリティ(使用性)資料",
+        "note": "ユーザビリティテストが必要"
+      },
+      "labeling": {
+        "doc": "ラベリング・表示資料",
+        "note": "非診断・スクリーニングの告知文を全画面に適用"
+      }
+    },
+    "prepStatus": {
+      "ready": "完了",
+      "partial": "一部",
+      "todo": "必要"
+    },
+    "pilotTitle": "臨床検証 · パイロット段階",
+    "pilotPhase": {
+      "internal": {
+        "phase": "内部検証",
+        "goal": "アルゴリズムの再現性・E2Eのユーザー体験・セキュリティ点検"
+      },
+      "facility": {
+        "phase": "施設/健診センターのパイロット",
+        "goal": "実使用データでリスク層別化の有用性・使用性を評価"
+      },
+      "clinical": {
+        "phase": "臨床的評価",
+        "goal": "標準検査と比較した性能・安全性の根拠を収集"
+      },
+      "submission": {
+        "phase": "SaMDの承認申請",
+        "goal": "技術文書・臨床評価パッケージの提出(食薬処)"
+      }
+    },
+    "pilotStatus": {
+      "done": "完了",
+      "active": "進行中",
+      "todo": "予定"
+    },
+    "modelNote": "モデルバージョン{n}種を追跡中 · 変更管理SOPでデプロイをゲート(仮定)。",
+    "disclaimer": "※ 現在のサービスは健康管理(ウェルネス)トラックで運用しており、リスク層別化・等級の算出は医療機器(SaMD)の承認を前提とする候補出力です。提供範囲・時期は規制レビュー・事前相談の結果によります。"
+  },
+  "secEvent": {
+    "login_failed": "ログイン失敗",
+    "login_blocked": "レート制限による遮断",
+    "view_phi": "患者情報の閲覧",
+    "clinician_verify": "医療者の承認審査"
+  },
+  "system": {
+    "mlUrlMissing": "ML_SERVICE_URL が未設定です",
+    "overall": {
+      "healthy": "正常",
+      "degraded": "性能低下(MLフォールバック)",
+      "unhealthy": "障害"
+    },
+    "overallNote": "サービスの総合状態 · DBは中核の依存先で、ML障害時はルールエンジンへ自動フォールバックします",
+    "depDb": "care/secure スキーマ · 中核の依存先",
+    "depMl": "ML推論サービス (LightGBM)",
+    "depMlNote": "port 8800 · 障害時はフォールバック動作",
+    "secMetrics": "セキュリティ指標 (直近24時間)",
+    "phiViews": "PHI閲覧",
+    "cumulative": "累計: {list}",
+    "noEvents": "イベントなし",
+    "recentSec": "最近の認証セキュリティイベント",
+    "noRecentSec": "最近の認証セキュリティイベントはありません。",
+    "runtime": "ランタイム情報",
+    "env": "環境",
+    "appVersion": "アプリのバージョン",
+    "healthEndpoint": "ヘルスエンドポイント",
+    "note": "※ セキュリティヘッダー(CSP・HSTS・X-Frame-Optionsなど)・レート制限・構造化ログ・監査ログを適用しています。本番では外部ログ収集・APM・アラート連携へ拡張します。"
+  },
+  "alertCategory": {
+    "result": "結果",
+    "risk": "リスク",
+    "recheck": "再測定",
+    "care": "ケア",
+    "info": "お知らせ"
+  },
+  "alerts": {
+    "markAllRead": "すべて既読にする",
+    "empty": "まだお知らせはありません。",
+    "note": "※ プッシュ・SMS・カカオトークなど外部チャネルは、配信アダプターで拡張します(プロバイダーキーが必要です)。"
+  },
+  "consent": {
+    "sensitive_health": {
+      "label": "[必須] 機微情報(健康情報)の収集・利用およびサービス利用規約",
+      "desc": "尿検査の測定値・リスク分析などの健康情報を、サービス提供の目的で処理します。"
+    },
+    "research": {
+      "label": "[任意] 研究・統計への活用(非識別化)",
+      "desc": "非識別化処理のうえ、アルゴリズムの改善・研究に活用します。"
+    },
+    "marketing": {
+      "label": "[任意] マーケティング情報の受信",
+      "desc": "健康のヒントやサービスのお知らせをメールなどで受け取ります。"
+    },
+    "clinician_terms": {
+      "label": "[必須] 医療者向け利用規約および免許情報の提供への同意",
+      "desc": "免許の種類・番号・所属の情報を、資格確認(承認)の目的で処理します。"
+    },
+    "phi_handling": {
+      "label": "[必須] 患者健康情報(PHI)の取り扱い・保護の誓約",
+      "desc": "診療・管理の目的の範囲内でのみ患者情報を閲覧し、すべての閲覧が監査記録されることに同意します。"
+    }
+  },
+  "me": {
+    "title": "マイページ",
+    "profile": "プロフィール",
+    "name": "氏名",
+    "role": "役割",
+    "consent": "同意の管理",
+    "agreed": "同意済み",
+    "agreedWithdraw": "同意済み · 撤回",
+    "notAgreedGrant": "未同意 · 同意する",
+    "consentNote": "※ 同意の変更は履歴として記録されます。機微情報(必須)の撤回はカスタマーサポートで対応します。",
+    "devices": "登録機器",
+    "noDevices": "登録された機器がありません。測定画面から測定器を接続できます。"
+  },
+  "onboarding": {
+    "welcome": "ようこそ",
+    "greet": "はじめましょう",
+    "greetNamed": "{name}さん、はじめましょう",
+    "lead": "測定から健康管理をはじめる方法を、かんたんにご案内します。",
+    "toDashboard": "ダッシュボードへ",
+    "step": {
+      "measure": {
+        "title": "測定",
+        "desc": "測定器と接続するか、デモで尿11項目を測定します。"
+      },
+      "read": {
+        "title": "結果を読む",
+        "desc": "緑(良好)・黄(要観察)・橙(注意)・赤(高い)の色と解説を合わせて見ます。"
+      },
+      "safety": {
+        "title": "安全のご案内",
+        "desc": "スクリーニング情報です。医学的診断に代わるものではなく、ご心配な場合は医療者にご相談ください。"
+      }
+    }
+  },
+  "switchPage": {
+    "eyebrow": "スーパーアカウントでログイン中",
+    "title": "どのアカウントで入りますか?",
+    "lead": "選んだアカウントに切り替えて画面を確認します。いつでも切り替え直せます。",
+    "select": "選択",
+    "sub": {
+      "b2c": "測定・結果・ケア",
+      "clinician": "患者モニタリング・臨床レポート"
+    }
+  },
+  "auth": {
+    "toHome": "ホームへ",
+    "login": "ログイン",
+    "signup": "会員登録",
+    "loggingIn": "ログイン中…",
+    "signingUp": "登録中…",
+    "email": "メールアドレス",
+    "password": "パスワード",
+    "name": "氏名",
+    "namePlaceholder": "山田 太郎",
+    "passwordPlaceholder": "8文字以上",
+    "choose": "選択してください",
+    "loginPanelTitle": "尿検査からはじめる<br></br>慢性疾患の早期管理",
+    "loginPanelLead": "測定・分析・理解・行動というケアの閉ループを体験してください。",
+    "loginLead": "アカウントにログインして健康管理を続けましょう。",
+    "noAccount": "まだアカウントがありませんか?",
+    "haveAccount": "すでにアカウントをお持ちですか?",
+    "clinicianSignupShort": "医療者の登録",
+    "demoAccounts": "デモアカウント (パスワード demo1234)",
+    "demo": {
+      "super": "スーパーアカウント (アカウント選択)",
+      "doctor": "医療者",
+      "user": "利用者 · チェ・ウンソプ"
+    },
+    "signupPanelTitle": "健康管理の<br></br>第一歩をご一緒に",
+    "signupPanelLead": "かんたんな登録で、測定・分析・おすすめのケアをはじめられます。",
+    "signupLead": "アカウントを作って健康管理をはじめましょう。",
+    "areYouClinician": "医療者の方ですか?",
+    "clinicianSignup": "医療者の登録申請",
+    "clinPanelTitle": "医療者ポータル<br></br>登録申請",
+    "clinPanelLead": "患者モニタリング・臨床レポート・慢性疾患管理のための、医療者専用アカウントです。",
+    "clinPanelNote": "患者健康情報(PHI)の保護のため、免許の確認後に管理者の承認手続きを行います。",
+    "toGeneralSignup": "一般の会員登録",
+    "clinLead": "免許の確認後、管理者の承認が完了するとポータルをご利用いただけます。",
+    "clinSubmitted": "申請を受け付けました",
+    "clinSubmittedNote": "管理者が免許情報を確認して承認すると、ご登録のメールアカウントでログインできます。承認前はログインが制限されます。",
+    "toLoginScreen": "ログイン画面へ",
+    "licenseTypeLabel": "免許の種類",
+    "licenseNo": "免許(資格)番号",
+    "licenseNoPlaceholder": "例: 第12345号",
+    "organization": "所属医療機関",
+    "organizationPlaceholder": "○○病院 / ○○医院",
+    "department": "診療科 (任意)",
+    "departmentPlaceholder": "内科、腎臓内科 など",
+    "submitting": "申請中…",
+    "submitApplication": "登録申請"
+  },
+  "landing": {
+    "nav": {
+      "features": "機能",
+      "how": "しくみ",
+      "clinician": "医療者向け",
+      "contact": "お問い合わせ"
+    },
+    "getStarted": "はじめる",
+    "eyebrow": "尿化学11項目 · パーソナライズAI",
+    "heroTitle": "尿検査ひとつで、<br></br>慢性疾患を<em>先まわり</em>して見る",
+    "heroLead": "尿化学分析装置の測定値をパーソナライズAIで分析し、腎臓・糖尿病・高血圧のリスクを早めに見つけて、わかりやすい説明とおすすめのケアにつなげます。",
+    "startFree": "無料ではじめる",
+    "tryMeasure": "測定を体験する",
+    "tryMeasureShort": "測定を体験",
+    "heroDisclaimer": "スクリーニング情報を提供するサービスであり、医学的診断に代わるものではありません。",
+    "sampleScreen": "サンプル画面",
+    "sampleResult": "測定結果のサンプル",
+    "kidneyIndex": "腎リスク指数 · KDIGO A2",
+    "sampleComment": "タンパクの数値が普段より少し高めです。数日後に再測定して推移を確認してみてください。",
+    "featuresEyebrow": "測定 · 分析 · 理解 · 行動",
+    "featuresTitle": "途切れないケアの閉ループ",
+    "featuresLead": "特許技術(P1〜P5)を、実際のプロダクト体験に落とし込みました。",
+    "feature": {
+      "analysis": {
+        "tag": "分析",
+        "title": "パーソナライズされたリスク分析",
+        "desc": "尿化学11項目を個人の基準線と比べ、腎臓・糖尿病・尿路感染のリスクを早めに見ます。"
+      },
+      "explain": {
+        "tag": "説明",
+        "title": "説明できるレポート",
+        "desc": "なぜその結果なのか、寄与した項目をやさしい言葉と医療者向けの根拠の両方で示します。"
+      },
+      "loop": {
+        "tag": "ケア",
+        "title": "ケアの閉ループ",
+        "desc": "等級ごとの行動指針・再測定・受診参考まで、測定から行動へつながります。"
+      },
+      "device": {
+        "tag": "連携",
+        "title": "測定器との連携",
+        "desc": "尿化学測定器と直接つないで、手入力なしで測定・分析します。"
+      }
+    },
+    "howTitle": "測定から行動まで、4つのステップ",
+    "step": {
+      "measure": {
+        "title": "測定",
+        "desc": "測定器とつないで尿11項目を測定します。"
+      },
+      "analyze": {
+        "title": "分析",
+        "desc": "補正とパーソナライズAIでリスクを層別化します。"
+      },
+      "understand": {
+        "title": "理解",
+        "desc": "やさしい解説と根拠で結果を理解します。"
+      },
+      "act": {
+        "title": "行動",
+        "desc": "おすすめのケアとコンテンツで実践します。"
+      }
+    },
+    "forClinicians": "医療者のための",
+    "clinicianTitle": "根拠中心の医療者ポータル",
+    "clinicianLead": "リスク順の患者モニタリング、標準等級、寄与根拠、慢性疾患管理の事務支援まで。臨床判断を助ける定量レポートを提供します。",
+    "clinicianCta": "医療者画面をプレビュー",
+    "samplePatients": "患者一覧のサンプル",
+    "byRisk": "リスク順",
+    "demoPatient": {
+      "p1": "キム様",
+      "p2": "イ様",
+      "p3": "パク様"
+    },
+    "sampleNote": "サンプル画面 · リスク層別化は診断に代わるものではありません。",
+    "ctaEyebrow": "いま、はじめましょう",
+    "ctaTitle": "一度の測定からはじまる<br></br>慢性疾患の早期管理",
+    "trust": {
+      "company": "エスディシーウェルケア株式会社",
+      "encryption": "健康情報の暗号化・分離保管",
+      "advisory": "医療者監修のコンテンツ",
+      "standards": "医療標準に基づく設計"
+    },
+    "footerCompany": "エスディシーウェルケア株式会社<br></br>尿化学分析装置を基盤とした慢性疾患管理プラットフォーム",
+    "footer": {
+      "product": "プロダクト",
+      "partner": "パートナー",
+      "account": "アカウント"
+    },
+    "footerDisclaimer": "本サービスは健康管理を助けるスクリーニング情報を提供するもので、医学的診断に代わるものではありません。リスク層別化・等級の算出は医療機器(SaMD)の承認を前提とします。"
+  },
+  "measure": {
+    "title": "尿検査の測定",
+    "lead": "尿化学測定器と接続して11項目を測定します。",
+    "connectTitle": "測定器の接続 (BLE)",
+    "scanConnect": "機器を検索 & 接続",
+    "startMeasure": "測定を開始",
+    "bleNote": "YOCHECK / PhotoMT / OptoSta 機器。Chrome・Edgeでのみ動作します(Web Bluetooth)。",
+    "demoTitle": "デモ測定 (試験紙なし)",
+    "runDemo": "デモ測定を実行",
+    "demoNote": "測定器の応答パケットを合成し、同じ解析・分析エンジンで結果を表示します。",
+    "analyzer": "測定器",
+    "demoAnalyzer": "デモ測定器",
+    "unnamedDevice": "(名称なし)",
+    "measureFailed": "測定処理に失敗しました",
+    "status": {
+      "idle": "待機中",
+      "unsupported": "非対応ブラウザ",
+      "scanning": "機器を検索中…",
+      "connecting": "接続中…",
+      "connected": "接続済み",
+      "disconnected": "接続が切れました",
+      "connectFailed": "接続に失敗",
+      "measuring": "測定中…",
+      "sendFailed": "送信に失敗",
+      "stripError": "試験紙エラー",
+      "analyzing": "分析中…",
+      "done": "測定完了",
+      "analyzeFailed": "分析に失敗"
+    },
+    "scenario": {
+      "normal": "正常 (すべての項目が正常)",
+      "uti": "尿路感染症の疑い (白血球・亜硝酸塩)",
+      "diabetes": "糖尿病の疑い (ブドウ糖・ケトン体)",
+      "kidney": "腎臓の疑い (タンパク尿・潜血)"
+    },
+    "log": {
+      "noBluetooth": "Web Bluetooth に非対応です — Chrome/Edge が必要です",
+      "selectedDevice": "選択した機器: {name}",
+      "subscribed": "接続・Notify購読が完了 — 測定を開始できます",
+      "connectFailed": "接続に失敗: {message}",
+      "txCommand": "TX → %TS (測定コマンド)",
+      "awaitingResponse": "コマンド送信 — 応答を待機中…",
+      "sendFailed": "測定コマンドの送信に失敗: {message}",
+      "stripError": "機器ERR — 試験紙がありません。挿入して再測定してください",
+      "received": "受信完了 — 結果を分析します",
+      "demoRun": "デモ測定 ({scenario})",
+      "analyzed": "分析完了 — 結果画面へ移動します",
+      "analyzeFailed": "分析に失敗: {message}"
+    }
+  },
+  "authError": {
+    "rateLimited": "ログインの試行が多すぎます。{minutes}分後に再度お試しください。",
+    "badCredentials": "メールアドレスまたはパスワードが正しくありません。",
+    "pendingApproval": "登録申請が管理者の承認待ちです。承認後にログインできます。",
+    "rejected": "登録申請が却下されました。管理者にお問い合わせください。",
+    "suspended": "利用が制限されているアカウントです。管理者にお問い合わせください。",
+    "requiredFields": "氏名・メールアドレス・パスワードをすべて入力してください。",
+    "passwordTooShort": "パスワードは8文字以上である必要があります。",
+    "consentRequired": "必須の同意項目に同意すると登録できます。",
+    "emailTaken": "すでに登録されているメールアドレスです。",
+    "licenseTypeRequired": "免許の種類を選択してください。",
+    "licenseNoRequired": "免許(資格)番号を入力してください。",
+    "organizationRequired": "所属医療機関を入力してください。",
+    "clinicianConsentRequired": "必須の同意・誓約項目に同意すると申請できます。",
+    "emailTakenClinician": "すでに登録(申請)されているメールアドレスです。",
+    "noReasonGiven": "理由の記載なし"
+  },
+  "apiError": {
+    "loginRequired": "ログインが必要です。",
+    "loginRequiredMeasure": "ログインが必要です。測定はご本人のアカウントにのみ保存されます。",
+    "badJsonBody": "JSON本文を解析できませんでした。",
+    "phrInvalid": "有効なFHIR PHRデータが見つかりませんでした。「私の健康記録」からダウンロードしたJSONファイルをアップロードしてください。",
+    "phrOwnerMismatch": "アップロードした健康記録の名義は‘{owner}’ですが、ログイン中のアカウントは‘{account}’です。ご本人名義の健康記録のみ連携できます。",
+    "phrEmpty": "健診・服薬・診断の情報が見つかりませんでした。正しい「私の健康記録」ファイルかご確認ください。",
+    "phrInternal": "PHRの処理中にエラーが発生しました。サーバーログをご確認ください。(devサーバー実行中の場合、Prismaの変更反映のため再起動が必要なことがあります。)",
+    "measurementInvalid": "測定値の検証に失敗しました",
+    "measuredAtFuture": "測定時刻を未来にすることはできません。",
+    "analysisInternal": "分析処理中にエラーが発生しました。",
+    "assessmentNotFound": "リスク評価が見つかりませんでした。"
+  }
+}

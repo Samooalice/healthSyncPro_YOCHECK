@@ -1,0 +1,1316 @@
+{
+  "meta": {
+    "title": "SDC WellCare · 慢性病管理平台",
+    "description": "基于尿液化学分析仪的慢性病管理一体化平台 — 检测、分析、理解、行动"
+  },
+  "nav": {
+    "dashboard": "仪表盘",
+    "measure": "检测",
+    "contents": "内容",
+    "care": "关怀",
+    "missions": "任务",
+    "patients": "患者列表",
+    "admin": "管理员",
+    "switchAccount": "切换账号",
+    "alerts": "通知",
+    "logout": "退出登录",
+    "login": "登录",
+    "signup": "注册"
+  },
+  "common": {
+    "save": "保存",
+    "cancel": "取消",
+    "close": "关闭",
+    "confirm": "确认",
+    "back": "返回",
+    "next": "下一步",
+    "submit": "提交",
+    "loading": "加载中…",
+    "empty": "没有可显示的内容。",
+    "none": "无",
+    "all": "全部",
+    "search": "搜索",
+    "print": "打印",
+    "dash": "-",
+    "riskOf": "{disease}风险 {score}",
+    "standardGrade": "KDIGO型 {grade}",
+    "recommended": "为你推荐的内容",
+    "noData": "暂无数据",
+    "printPdf": "打印 / PDF"
+  },
+  "analyte": {
+    "protein": "尿蛋白",
+    "glucose": "尿糖",
+    "blood": "潜血",
+    "leukocyte": "白细胞",
+    "ketone": "酮体",
+    "nitrite": "亚硝酸盐",
+    "bilirubin": "胆红素",
+    "urobilinogen": "尿胆原",
+    "ph": "酸碱度(pH)",
+    "specific_gravity": "比重",
+    "vitamin_c": "维生素C"
+  },
+  "analyteValue": {
+    "negative": "阴性",
+    "trace": "微量",
+    "p1": "1+",
+    "p2": "2+",
+    "p3": "3+",
+    "p4": "4+"
+  },
+  "status": {
+    "normal": "正常",
+    "caution": "临界",
+    "abnormal": "异常",
+    "info": "参考",
+    "inRange": "正常范围内"
+  },
+  "grade": {
+    "low": "良好",
+    "moderate": "需观察",
+    "high": "注意",
+    "very_high": "偏高"
+  },
+  "care": {
+    "lifestyle": "生活管理任务",
+    "recheck": "建议复测",
+    "referral": "就诊参考摘要",
+    "emergency": "建议咨询医护人员"
+  },
+  "disease": {
+    "kidney": "肾脏",
+    "diabetes": "糖尿病",
+    "hypertension": "高血压",
+    "uti": "尿路感染",
+    "liver": "肝胆"
+  },
+  "diseaseFull": {
+    "kidney": "慢性肾脏病",
+    "diabetes": "糖尿病",
+    "hypertension": "高血压",
+    "uti": "尿路感染",
+    "liver": "肝胆"
+  },
+  "clinical": {
+    "significance": {
+      "protein": "肾小球、肾小管损伤的指标。持续性蛋白尿与慢性肾脏病进展及心血管风险相关(建议定量检测白蛋白尿)。",
+      "glucose": "血糖超过肾糖阈(约180mg/dL)时出现。提示疑似糖尿病或血糖控制不佳(需查空腹血糖与糖化血红蛋白)。",
+      "blood": "血尿 — 需鉴别尿路结石、感染、肾小球肾炎、肿瘤等。持续存在时可考虑影像学与尿脱落细胞检查。",
+      "leukocyte": "脓尿 — 提示尿路感染。需结合亚硝酸盐与症状综合判断。",
+      "nitrite": "提示革兰阴性菌(肠道细菌)感染。合并白细胞时尿路感染可能性升高。",
+      "ketone": "酮尿 — 糖尿病酮症酸中毒、饥饿或低碳水饮食。合并高血糖时需注意。",
+      "bilirubin": "肝胆疾病(梗阻性黄疸、肝细胞损伤)的线索。需与肝功能检查联合评估。",
+      "urobilinogen": "升高时可能提示溶血或肝细胞疾病。需与胆红素一并解读。",
+      "specific_gravity": "反映肾脏浓缩功能与水合状态。可提示脱水或尿崩症等。",
+      "ph": "酸碱状态、结石类型与尿路感染的线索。持续碱性尿提示产脲酶细菌感染。",
+      "vitamin_c": "试纸干扰因素 — 高浓度时潜血与尿糖可能出现假阴性。解读结果时需注意。"
+    },
+    "guideline": {
+      "kidney": {
+        "reference": "KDIGO 2024 慢性肾脏病指南 — 基于eGFR与白蛋白尿(ACR)的风险分层(绿/黄/橙/红)",
+        "staging": "尿蛋白半定量属于筛查阶段。确诊与分期需要血清肌酐(eGFR)与ACR定量。",
+        "followup": "建议:血清肌酐与eGFR、尿白蛋白/肌酐比值(uACR),必要时转诊肾内科。"
+      },
+      "diabetes": {
+        "reference": "大韩糖尿病学会 / ADA — 空腹血糖与糖化血红蛋白诊断标准(尿糖为辅助指标)",
+        "staging": "尿糖阳性提示可能存在高血糖,但不是诊断标准。需以空腹血糖与糖化血红蛋白确认。",
+        "followup": "建议:空腹血糖与糖化血红蛋白、糖尿病并发症(肾脏、眼底)筛查。"
+      },
+      "hypertension": {
+        "reference": "大韩高血压学会 — 诊室/家庭血压分类、靶器官损害评估",
+        "staging": "蛋白尿用作高血压靶器官(肾脏)损害的指标。需结合血压测量值综合判断。",
+        "followup": "建议:重复测量血压、尿白蛋白,以及心电图、血脂等危险因素评估。"
+      },
+      "uti": {
+        "reference": "尿路感染诊疗指南 — 综合脓尿、亚硝酸盐与症状,鉴别无症状菌尿",
+        "staging": "白细胞与亚硝酸盐阳性并伴排尿症状时,提示尿路感染。无症状者可能无需治疗。",
+        "followup": "建议:伴症状时行尿培养与药敏试验;反复发作者评估病因。"
+      },
+      "liver": {
+        "reference": "肝胆评估 — 胆红素与尿胆原的模式结合肝功能检查",
+        "staging": "尿胆红素/尿胆原属辅助线索。需鉴别模式(梗阻性或肝细胞性)。",
+        "followup": "建议:肝功能检查(AST/ALT/ALP/总胆红素),必要时影像学检查。"
+      }
+    }
+  },
+  "driver": {
+    "source": {
+      "urine": "尿液检查",
+      "phr": "健康体检",
+      "pattern": "组合模式"
+    },
+    "urine": {
+      "label": "尿{name}",
+      "high": "尿液检查显示{name}为{value}(正常:{normal})。",
+      "normal": "尿液检查的{name}为{value},在正常范围内。"
+    },
+    "yesNo": {
+      "present": "有",
+      "absent": "无",
+      "confirmed": "健康体检记录中确认有{label}。",
+      "none": "没有{label}。"
+    },
+    "applies": {
+      "yes": "符合",
+      "no": "不符合"
+    },
+    "bool": {
+      "yes": "是",
+      "no": "否"
+    },
+    "count": {
+      "items": "{n}项",
+      "times": "{n}次"
+    },
+    "label": {
+      "phr_glucose": "体检空腹血糖",
+      "phr_egfr": "肾功能(eGFR)",
+      "phr_bmi": "体质指数(BMI)",
+      "phr_diabetes": "糖尿病诊断或用药",
+      "phr_hypertension": "高血压诊断或用药",
+      "phr_dyslipidemia": "血脂异常记录",
+      "phr_kidney_watch": "肾脏相关需注意所见",
+      "phr_overweight": "超重",
+      "pos_burden": "阳性检查项目数",
+      "uti_flag": "白细胞与亚硝酸盐同时阳性",
+      "dka_flag": "尿糖与酮体同时阳性",
+      "nephritis_flag": "蛋白与潜血同时阳性",
+      "protein_consec_pos": "蛋白尿连续阳性"
+    },
+    "normal": {
+      "phr_glucose": "低于100",
+      "phr_egfr": "90以上",
+      "phr_bmi": "18.5～24.9"
+    },
+    "missing": {
+      "phr_glucose": "没有空腹血糖记录。",
+      "phr_egfr": "没有eGFR记录。",
+      "phr_bmi": "没有BMI记录。"
+    },
+    "sentence": {
+      "phr_glucose": "你的体检空腹血糖为{value} mg/dL(正常:低于100)。",
+      "phr_glucose_high": "你的体检空腹血糖为{value} mg/dL(正常:低于100)。偏高一些。",
+      "phr_egfr": "你的肾脏滤过功能(eGFR)为{value}(正常:90以上)。",
+      "phr_egfr_low": "你的肾脏滤过功能(eGFR)为{value}(正常:90以上)。略偏低。",
+      "phr_bmi": "你的体质指数(BMI)为{value}(正常:18.5～24.9)。",
+      "phr_bmi_high": "你的体质指数(BMI)为{value}(正常:18.5～24.9)。属于超重范围。",
+      "phr_overweight": "你的体重在正常范围内。",
+      "phr_overweight_high": "你的体重略偏高。",
+      "pos_burden": "尿液检查中有{n}项呈阳性。",
+      "uti_flag": "出现了提示尿路感染的组合(白细胞+亚硝酸盐)。",
+      "dka_flag": "出现了提示血糖控制异常的组合(尿糖+酮体)。",
+      "nephritis_flag": "出现了提示肾脏炎症的组合(蛋白+潜血)。",
+      "protein_consec_pos": "蛋白尿已连续{n}次呈阳性。这是持续存在的信号。"
+    }
+  },
+  "feature": {
+    "protein_dev": "尿蛋白",
+    "blood_dev": "潜血",
+    "leukocyte_dev": "白细胞",
+    "protein_personal_dev": "相对个人基线的蛋白升高",
+    "protein_persistence": "蛋白尿持续",
+    "nephritis_rule": "蛋白+潜血(提示肾小球肾炎)",
+    "phr_egfr": "体检eGFR下降",
+    "phr_egfr_trend": "体检eGFR下降趋势",
+    "phr_kidney_watch": "体检肾脏需注意所见",
+    "phr_htn": "高血压(肾损伤风险)",
+    "phr_dm": "糖尿病(糖尿病肾病风险)",
+    "glucose_urine": "尿糖",
+    "ketone_urine": "酮体",
+    "dka_rule": "尿糖+酮体(提示DKA)",
+    "phr_fasting_glucose": "体检空腹血糖",
+    "phr_glucose_trend": "体检空腹血糖上升趋势",
+    "phr_dm_flag": "糖尿病诊断/用药",
+    "phr_overweight": "超重(BMI≥25)",
+    "protein_marker": "尿蛋白(肾损伤指标)",
+    "phr_htn_flag": "高血压诊断/用药",
+    "leukocyte": "白细胞",
+    "nitrite": "亚硝酸盐",
+    "blood": "潜血",
+    "uti_rule": "白细胞+亚硝酸盐(提示细菌性尿路感染)",
+    "bilirubin": "胆红素",
+    "urobilinogen": "尿胆原"
+  },
+  "safety": {
+    "screening": "本信息是为协助健康管理而提供的筛查信息,并非医学诊断。",
+    "recheck": "多次检测的趋势比一次结果更重要。建议复测。",
+    "consult": "若症状持续或有顾虑,请咨询医护人员。",
+    "emergency": "出现了较明显的风险信号。建议咨询医护人员。",
+    "notDx": "仅凭该结果不能诊断疾病。",
+    "privacy": "健康信息会分离保存并受到保护,仅在你同意的范围内使用。",
+    "vitc": "摄入维生素C可能降低部分项目(潜血、尿糖)的反应,已在校正中考虑。"
+  },
+  "explain": {
+    "tone": {
+      "low": "目前未见明显的风险信号。",
+      "moderate": "与平时相比出现了值得留意的信号。可在几天后复测,观察趋势。",
+      "high": "已达到需要注意的水平。建议尽快复测,并咨询医护人员。",
+      "very_high": "出现了较明显的风险信号。建议咨询医护人员。"
+    },
+    "userLow": "{disease}:{tone}",
+    "userSignals": "发现了与{disease}相关的信号({labels})。{tone}",
+    "clinician": "{disease}风险 {score}({grade})。主要贡献:{contrib}。这是筛查分析结果,不能替代诊断或处方。",
+    "clinicianStd": "{disease}风险 {score}({grade}) · 标准分级 {standard}。主要贡献:{contrib}。这是筛查分析结果,不能替代诊断或处方。",
+    "ifImproved": "若{label}改善"
+  },
+  "rec": {
+    "kidney": {
+      "hydration": "补充足够水分",
+      "less_salt": "减少咸味食物",
+      "bp_glucose": "管理血压与血糖",
+      "kidney_eval": "蛋白尿持续时,咨询肾功能评估"
+    },
+    "diabetes": {
+      "fasting_glucose": "查看空腹血糖",
+      "less_carb": "减少精制碳水与含糖饮料",
+      "walk_after_meal": "餐后适度活动",
+      "glucose_test": "反复出现时,咨询血糖检查"
+    },
+    "hypertension": {
+      "low_salt_weight": "低盐饮食与体重管理",
+      "bp_log": "规律记录血压",
+      "consult_uncontrolled": "血压控制不理想时寻求咨询"
+    },
+    "uti": {
+      "hydration": "补充足够水分",
+      "no_holding": "不要长时间憋尿",
+      "consult_symptoms": "出现尿痛、尿频等症状时咨询医护人员"
+    },
+    "liver": {
+      "avoid_alcohol": "避免过量饮酒",
+      "liver_test": "持续时咨询肝功能血液检查"
+    }
+  },
+  "medClass": {
+    "diabetes": "糖尿病",
+    "hypertension": "高血压",
+    "dyslipidemia": "血脂异常",
+    "gastro": "消化系统疾病"
+  },
+  "phrFlag": {
+    "diabetes": "糖尿病",
+    "hypertension": "高血压",
+    "dyslipidemia": "血脂异常",
+    "kidney_watch": "肾脏需注意",
+    "overweight": "超重"
+  },
+  "phrMetric": {
+    "glucose": "空腹血糖",
+    "egfr": "eGFR",
+    "bmi": "BMI",
+    "chol": "总胆固醇",
+    "bp": "血压",
+    "ldl": "低密度脂蛋白胆固醇",
+    "tg": "甘油三酯",
+    "creatinine": "肌酐",
+    "hb": "血红蛋白",
+    "weight": "体重",
+    "waist": "腰围",
+    "sbp": "收缩压",
+    "dbp": "舒张压",
+    "hdl": "高密度脂蛋白胆固醇",
+    "urine_protein": "尿蛋白",
+    "height": "身高"
+  },
+  "trendDir": {
+    "up": "上升",
+    "down": "下降",
+    "flat": "持平"
+  },
+  "dashboard": {
+    "titleNamed": "{name} 的健康仪表盘",
+    "titleMine": "我的健康仪表盘",
+    "subtitle": "一屏查看检测结果与专属关怀。",
+    "newMeasurement": "+ 新检测",
+    "emptyTitle": "还没有检测记录。",
+    "startFirst": "开始第一次检测",
+    "urgentNote": "有需要注意的结果。请查看结果并考虑复测。",
+    "recentResult": "最近结果",
+    "viewDetail": "查看结果详情 →",
+    "todayMissions": "今日任务",
+    "viewAllMissions": "查看全部任务 →",
+    "myActivity": "我的活动",
+    "points": "积分",
+    "streakDays": "连续天数",
+    "badges": "徽章",
+    "measureCount": "检测{n}次"
+  },
+  "missions": {
+    "title": "任务 · 徽章",
+    "subtitle": "坚持检测与生活中的小实践,会变成健康习惯。",
+    "points": "积分",
+    "pointsSub": "活动累积",
+    "streak": "连续检测",
+    "streakSub": "连续记录",
+    "days": "{n}天",
+    "badgesEarned": "已获徽章",
+    "badgesSub": "收集",
+    "today": "今日任务",
+    "doneCount": "完成 {done}/{total}",
+    "perMission": "每个任务 +{p}P",
+    "goal": "健康目标",
+    "completed": "已完成",
+    "markDone": "标记完成",
+    "resetNote": "※ 任务每天零点重置,并与生活管理内容联动。",
+    "trendTitle": "风险改善趋势",
+    "trendEmpty": "开始检测后,风险的变化会绘制在这里。",
+    "riskScore": "代表风险分数",
+    "trendNeedMore": "随着检测积累,我们会为你比较变化。",
+    "trendImproved": "最近的风险分数比最初更低了。趋势很好!",
+    "trendFlat": "风险分数尚未稳定。可通过任务与复测来管理。",
+    "trendNote": "※ 风险分数越接近0越低。这是结合尿液检查与健康体检得出的数值。",
+    "badgeCollection": "徽章收藏",
+    "disclaimer": "积分与徽章是为帮助养成健康习惯而设的活动奖励,不保证医学效果。与健康生活实践补助等外部奖励的衔接仍处于政策研究阶段。检测与生活管理请自主进行。"
+  },
+  "mission": {
+    "common": {
+      "water": {
+        "label": "喝1.5L水",
+        "tip": "少量多次饮水有助于肾脏与尿路健康。"
+      },
+      "walk": {
+        "label": "轻快步行20分钟",
+        "tip": "餐后轻度步行有助于血糖与血压管理。"
+      },
+      "salt": {
+        "label": "减少咸味食物",
+        "tip": "试着减少汤类与加工食品中的钠。"
+      }
+    },
+    "kidney": {
+      "water": {
+        "label": "喝1.5L水",
+        "tip": "水分有助于肾脏排出代谢废物。"
+      },
+      "salt": {
+        "label": "减少汤类与咸味食物",
+        "tip": "限制钠摄入有助于蛋白尿与血压管理。"
+      },
+      "protein_care": {
+        "label": "检视过量的蛋白补充剂",
+        "tip": "可能加重肾脏负担,请确认适量。"
+      }
+    },
+    "diabetes": {
+      "sugar": {
+        "label": "用水代替含糖饮料",
+        "tip": "减少糖摄入可让血糖波动更平缓。"
+      },
+      "walk": {
+        "label": "餐后步行20分钟",
+        "tip": "餐后活动可降低血糖峰值。"
+      },
+      "carb_care": {
+        "label": "减少精制碳水",
+        "tip": "用全谷物代替白米与面粉试试看。"
+      }
+    },
+    "hypertension": {
+      "salt": {
+        "label": "实行低盐饮食",
+        "tip": "减少钠摄入对血压管理有直接帮助。"
+      },
+      "walk": {
+        "label": "有氧运动20分钟",
+        "tip": "规律的有氧运动有助于降低血压。"
+      },
+      "bp_check": {
+        "label": "记录家庭血压",
+        "tip": "在同一时间段测量,观察趋势。"
+      }
+    },
+    "uti": {
+      "water": {
+        "label": "喝足够的水",
+        "tip": "补充水分有助于排出细菌。"
+      },
+      "hold_less": {
+        "label": "不要憋尿",
+        "tip": "规律排尿有益于尿路健康。"
+      },
+      "hygiene": {
+        "label": "检视卫生习惯",
+        "tip": "基本的卫生管理可减少复发。"
+      }
+    }
+  },
+  "badge": {
+    "first_measure": {
+      "label": "第一步",
+      "desc": "完成了第一次检测"
+    },
+    "streak_3": {
+      "label": "连续3天",
+      "desc": "连续3天检测"
+    },
+    "streak_7": {
+      "label": "完成一周",
+      "desc": "连续7天检测"
+    },
+    "streak_30": {
+      "label": "一个月的习惯",
+      "desc": "连续30天检测"
+    },
+    "mission_master": {
+      "label": "任务达人",
+      "desc": "累计完成10次任务"
+    },
+    "risk_improved": {
+      "label": "改善的开始",
+      "desc": "风险比之前降低了"
+    }
+  },
+  "goal": {
+    "kidney": "保持尿蛋白阴性",
+    "diabetes": "保持尿糖阴性与血糖稳定",
+    "hypertension": "保持血压与蛋白尿稳定",
+    "uti": "让白细胞与亚硝酸盐恢复阴性",
+    "liver": "保持胆红素正常"
+  },
+  "result": {
+    "title": "健康管理综合报告",
+    "byDisease": "各疾病风险",
+    "urinalysis": "尿液化学检查(11项)",
+    "colItem": "项目",
+    "colValue": "检测值",
+    "colNormal": "正常范围",
+    "colJudgment": "判定",
+    "currentUrine": "当前尿<b>{name}</b>:<v>{value}</v>",
+    "normalInline": "正常 {normal}",
+    "trendNote": "※ 本图仅呈现<b>尿{name}</b>这一项(正常为绿色)。{disease}风险({score})是结合尿液检查与健康体检得出的数值,因此即使该项正常,其他因素仍可能使风险升高。",
+    "phrTitle": "健康体检数据(My HealthWay)",
+    "phrEmpty": "还没有健康体检(PHR)数据。关联“我的健康记录”后,会与尿液化学结果合并生成<b>综合健康报告</b>。",
+    "meds": "用药:{list}",
+    "diagnoses": "诊断:{list}",
+    "historyTitle": "尿液化学检测历史",
+    "historyNote": "最近{n}次检测中各项目的变化。颜色表示判定(<g>绿色正常</g>·<o>橙色异常</o>·<s>灰色参考</s>),最右侧加粗的数值是本次检测。",
+    "phrTrendTitle": "健康体检趋势",
+    "checkupCount": "体检{n}次",
+    "phrTrendNote": "健康体检数值随时间的变化。即使当前值正常,若出现<b>恶化趋势</b>(例如eGFR下降、空腹血糖上升),也值得提前关注。",
+    "phrTrendDisclaimer": "※ 体检趋势仅供参考,并非诊断。eGFR下降、空腹血糖上升等恶化趋势,建议下次就诊时与医护人员一同确认。",
+    "whyTitle": "为什么是这个结果?",
+    "engineLgbm": "AI分析(LightGBM)",
+    "engineDefault": "分析引擎",
+    "whyNote": "以下因素影响了本次风险判定。<b>橙色</b>为提高风险的因素。",
+    "impact": "影响 {level}",
+    "impactLevel": {
+      "high": "高",
+      "mid": "中",
+      "low": "低"
+    },
+    "whyDisclaimer": "※ 风险是结合尿液检查与健康体检(PHR)分析的结果。即使某一尿液项目正常,体检记录也可能使风险评估偏高。",
+    "careTitle": "建议的行动",
+    "dueBy": "期限 {date}",
+    "disclaimer": "本报告是结合尿液化学检查与健康体检(PHR)的筛查信息,并非医学诊断。若症状持续或有顾虑,请咨询医护人员。",
+    "samdNote": "风险分层与分级的计算,是以医疗器械(SaMD)许可为前提的功能。(模型 {model})"
+  },
+  "patient": {
+    "noName": "(无姓名)",
+    "male": "男",
+    "female": "女",
+    "sex": "性别",
+    "age": "年龄",
+    "years": "{n}岁",
+    "times": "{n}次",
+    "period": "观察期间",
+    "measureCount": "检测次数",
+    "toReport": "临床报告",
+    "noAssessment": "没有评估数据。",
+    "riskTitle": "风险评估(SaMD输出)· 多疾病",
+    "model": "模型 {version}",
+    "colDisease": "疾病",
+    "colScore": "风险分数",
+    "colGrade": "分级",
+    "colStandard": "标准分级",
+    "colSignificance": "临床意义",
+    "abnormalCount": "异常所见 {n}项",
+    "mainAnalyteNote": "与代表疾病({disease})相关的指标",
+    "proteinNote": "肾功能(蛋白尿)指标",
+    "quantTitle": "尿液化学定量解读(11项)",
+    "shapTitle": "风险贡献因素(SHAP)",
+    "guidelineTitle": "指南参考",
+    "staging": "分期解读",
+    "followup": "建议随访",
+    "phrTitle": "My HealthWay(国家体检 · 用药)",
+    "phrCounts": "体检{checkups}次 · 用药{meds}种",
+    "medClasses": "用药分类:{list}",
+    "diagnoses": "诊断/所见:{list}",
+    "carePlanTitle": "关怀计划 · 慢病管理摘要",
+    "noCareAction": "无关怀行动",
+    "emrNote": "指南参考与慢病管理行政表单的自动生成,将在EMR对接(Step 6+)中补齐。",
+    "disclaimer": "本摘要为筛查分析结果,不能替代临床诊断与处方。风险分层与分级的计算以医疗器械(SaMD)许可为前提。最终判断以医护人员的临床评估为准。"
+  },
+  "report": {
+    "backToPatient": "患者仪表盘",
+    "title": "临床分析报告",
+    "subtitle": "尿液化学 + My HealthWay 联合分析",
+    "subject": "对象",
+    "pseudoId": "化名ID",
+    "multiRisk": "多疾病风险评估",
+    "samdCandidate": "SaMD候选输出 · 模型 {version}",
+    "colStandardKdigo": "标准分级(KDIGO型)",
+    "evidenceTitle": "依据 — 主要贡献因素",
+    "contribution": "贡献 {value}",
+    "abnormalTitle": "异常所见摘要",
+    "allNormal": "尿液化学11项全部在正常范围内。",
+    "proteinTrend": "尿蛋白趋势",
+    "chronicFlags": "慢性病标记:{list}",
+    "emrNote": "指南引用与慢病管理行政表单的自动生成,将随EMR对接而扩展。",
+    "disclaimer": "本报告是结合尿液化学检查与My HealthWay(PHR)数据的筛查分析结果,不能替代临床诊断与处方。风险分层与分级的计算以医疗器械(SaMD)许可为前提。最终判断以医护人员的临床评估为准。"
+  },
+  "portal": {
+    "title": "医护人员门户",
+    "subtitle": "一屏掌握管理队列现状与风险优先级 · 基于化名",
+    "persons": "{n}人",
+    "kpiPatients": "管理患者",
+    "kpiPatientsSub": "已有评估",
+    "kpiHighRisk": "高风险",
+    "kpiHighRiskSub": "偏高+注意",
+    "kpiRecent": "最近7天检测",
+    "kpiRecentSub": "新增",
+    "kpiTotal": "累计检测",
+    "kpiTotalSub": "全部检查",
+    "gradeDist": "风险分级分布",
+    "diseaseDist": "代表风险疾病分布",
+    "colPatient": "患者",
+    "colTopDisease": "代表风险疾病",
+    "colLastAssessed": "最近评估",
+    "report": "报告",
+    "noMatch": "没有符合条件的患者。",
+    "disclaimer": "※ 风险分层与分级为SaMD候选输出。它不能替代临床诊断与处方,最终判断以医护人员的临床评估为准。"
+  },
+  "careStatus": {
+    "assigned": "待办",
+    "in_progress": "进行中",
+    "done": "已完成",
+    "expired": "已过期"
+  },
+  "careDesc": {
+    "lifestyle": "通过生活习惯任务来管理风险。",
+    "recheck": "为确认趋势,建议复测。",
+    "referral": "准备一份便于就诊参考的摘要报告。",
+    "emergency": "在此阶段建议咨询医护人员。"
+  },
+  "carePage": {
+    "empty": "还没有关怀行动。",
+    "goMeasure": "去检测",
+    "dueAt": "期限:{date}",
+    "referralTitle": "就诊参考摘要",
+    "createSummary": "生成摘要",
+    "referralEmpty": "可以生成一份在咨询医护人员时参考的摘要报告。",
+    "created": "已生成",
+    "feedbackTitle": "告诉我们复测结果",
+    "feedbackNote": "你提供的复测结果会用于提升分析准确度(再训练)。",
+    "outcome": {
+      "improved": "变好了",
+      "stable": "差不多",
+      "worsened": "变差了"
+    },
+    "pdfNote": "※ 就诊参考报告的PDF与EMR对接,将在外部集成(Step 6+)中扩展。"
+  },
+  "chart": {
+    "noData": "还没有趋势数据。",
+    "trendOf": "{name}趋势",
+    "current": "当前"
+  },
+  "contentTab": {
+    "all": "全部",
+    "result_explain": "结果解读",
+    "disease_edu": "疾病信息",
+    "quiz": "小测验",
+    "lifestyle": "生活管理",
+    "risk_action": "行动指南",
+    "motivation": "动力",
+    "safety": "安全提示",
+    "caregiver": "照护者"
+  },
+  "contentFormat": {
+    "card": "卡片",
+    "article": "文章",
+    "quiz": "小测验",
+    "checklist": "清单",
+    "step_guide": "步骤指南"
+  },
+  "contentsPage": {
+    "forYou": "匹配你的结果",
+    "empty": "该分类下没有已发布的内容。",
+    "note": "所有内容均经医学审核与法规审核后发布。本信息用于协助健康管理,不能替代医学诊断。",
+    "source": "来源:{source}",
+    "detailNote": "本内容是经医学审核与法规审核后发布的健康管理筛查信息。它不能替代医学诊断,若有顾虑,建议咨询医护人员。"
+  },
+  "contentView": {
+    "doneToday": "今日完成 <b>{done}/{total}</b>",
+    "checklistNote": "※ 任务完成与积分累积,将在游戏化(Step 7)中保存到账号。",
+    "quizResult": "结果",
+    "quizScore": "答对 {correct} / {total}"
+  },
+  "phr": {
+    "parsing": "正在解析{n}个文件…",
+    "badJson": "这不是JSON文件,或格式不正确。",
+    "uploadFailed": "上传失败(HTTP {status})。请查看服务器日志。",
+    "addedToExisting": "在已有数据上新增{n}条",
+    "linkedTotal": "关联{n}条",
+    "skippedFiles": "(已排除{n}个出错文件)",
+    "applied": "已应用健康体检数据 — {addNote} · 体检{checkups}次",
+    "processing": "处理中…",
+    "ctaCompact": "添加/更新体检",
+    "cta": "关联健康体检(我的健康记录)",
+    "note": "※ 上传从“我的健康记录”下载的JSON文件(phr_…json),即可与尿液化学结果合并生成综合报告。可以<b>一次选择多个文件</b>,再次上传会在已有记录上<b>累加</b>。"
+  },
+  "stub": {
+    "planned": "{step} 计划中",
+    "elements": "此页面将包含的要素",
+    "note": "这是依据方案9.1页面清单的骨架。功能将在{step}中补齐。"
+  },
+  "errors": {
+    "title": "出现了暂时性的问题",
+    "lead": "请稍后再试。若问题持续,请联系管理员。",
+    "code": "错误代码:{digest}",
+    "retry": "重试",
+    "toDashboard": "前往仪表盘",
+    "toHome": "返回首页",
+    "notFoundTitle": "找不到该页面",
+    "notFoundLead": "地址可能已更改,或页面已被删除。"
+  },
+  "notify": {
+    "resultReady": {
+      "title": "检查结果已就绪",
+      "body": "来看看本次检测结果与专属关怀吧。"
+    },
+    "risk": {
+      "title": "请查看{disease}的结果",
+      "body": "与{disease}相关的信号比平时偏高。请仔细查看结果,必要时咨询医护人员。"
+    },
+    "referral": {
+      "title": "就诊参考摘要已生成",
+      "body": "已生成可在咨询医护人员时参考的摘要报告。可在关怀页面查看。"
+    },
+    "feedback": {
+      "title": "已登记你的复测结果",
+      "body": "你提供的结果将用于提升分析准确度(再训练)。谢谢。"
+    }
+  },
+  "admin": {
+    "title": "管理员控制台",
+    "subtitle": "一屏管理服务运营现状与法规、质量指标。",
+    "system": "系统",
+    "statUsers": "用户",
+    "statUsersSub": "共 {n}",
+    "statClinicians": "在用医护人员",
+    "statPending": "待审批 {n}",
+    "statApproved": "审批完成",
+    "statRecent7": "近7天 {n}",
+    "statAssessments": "风险评估",
+    "statSamd": "SaMD {n}",
+    "statPublishedTotal": "已发布/全部",
+    "statAudit": "审计日志",
+    "statRules": "规则 {n}",
+    "diseaseDist": "各疾病评估分布",
+    "contentFlow": "内容工作流",
+    "areas": "管理区域",
+    "manage": "管理",
+    "view": "查看",
+    "waiting": "{n} 待处理",
+    "recentActivity": "最近活动",
+    "noRecords": "无记录",
+    "area": {
+      "clinicians": "医护人员审批",
+      "users": "用户 · 设备",
+      "contents": "内容 · CMS",
+      "curation": "推荐规则",
+      "regulatory": "法规轨道",
+      "audit": "审计日志",
+      "system": "系统状态",
+      "portal": "医护人员门户"
+    },
+    "areaCliniciansPending": "有{n}条注册申请待审批",
+    "areaCliniciansDesc": "医护人员资质核验与审批管理",
+    "areaUsersDesc": "账号、设备与检测现状",
+    "areaContentsDesc": "内容撰写、审核与发布工作流",
+    "areaCurationDesc": "个性化规则与模拟器",
+    "areaRegulatoryDesc": "SaMD/健康管理分轨、标识与准备度",
+    "areaAuditDesc": "PHI访问、内容发布等不可篡改记录",
+    "areaSystemDesc": "依赖健康度、安全事件与可观测性",
+    "areaPortalDesc": "患者监测与临床报告"
+  },
+  "contentStatus": {
+    "draft": "草稿",
+    "medical_review": "医学审核",
+    "ra_review": "法规审核",
+    "ready": "待发布",
+    "published": "已发布",
+    "unpublished": "已下架"
+  },
+  "auditAction": {
+    "view_phi": "查看患者信息",
+    "view_admin": "访问管理控制台",
+    "content_publish": "发布内容",
+    "content_unpublish": "下架内容",
+    "clinician_signup": "医护人员注册申请",
+    "clinician_verify": "医护人员审批",
+    "login": "登录",
+    "login_failed": "登录失败",
+    "login_blocked": "登录被拦截(限流)",
+    "account_switch": "切换账号"
+  },
+  "audit": {
+    "subtitle": "PHI访问、内容发布与管理行为的记录(最近200条)",
+    "console": "控制台",
+    "colTime": "时间",
+    "colActor": "操作者",
+    "colAction": "行为",
+    "colTarget": "对象",
+    "empty": "没有记录。",
+    "note": "※ 审计日志以仅追加(append-only)方式运行,生产环境将应用防篡改与保留期策略。"
+  },
+  "curation": {
+    "title": "推荐规则",
+    "subtitle": "按优先级(数值越小越先)将符合条件的已发布内容展示在个性化信息流中。",
+    "firstTime": "首次检测",
+    "condDisease": "疾病 {value}",
+    "condGrade": "分级 {value}",
+    "condTrend": "趋势 {value}",
+    "condStreak": "连续检测 {value}",
+    "condAny": "(全部)",
+    "colPriority": "优先级",
+    "colCondition": "条件",
+    "colContent": "展示内容",
+    "colStatus": "状态",
+    "live": "展示中",
+    "notLive": "未发布",
+    "note": "※ 规则的图形化编辑器与冲突模拟器将在后续扩展。指向未发布内容的规则,即使匹配也不会展示。"
+  },
+  "accountType": {
+    "b2c": "用户",
+    "facility": "机构",
+    "clinician": "医护人员",
+    "admin": "管理员"
+  },
+  "adminUsers": {
+    "subtitle": "账号、设备与检测现状 · 基于化名",
+    "colUser": "用户",
+    "colType": "类型",
+    "colEmail": "邮箱",
+    "colDevice": "设备",
+    "active": "启用",
+    "empty": "没有该类型的用户。",
+    "note": "※ 实名与联系方式加密存储于secure模式,控制台以化名与汇总为主展示。账号停用、撤回同意等变更操作会记入审计日志。"
+  },
+  "license": {
+    "doctor": "医师",
+    "nurse": "护士",
+    "medtech": "医学检验技师"
+  },
+  "clinicianStatus": {
+    "pending": "待审批",
+    "active": "已通过",
+    "rejected": "已驳回"
+  },
+  "adminClinicians": {
+    "subtitle": "核验执业资格并审批通过后,即可登录门户 · 待审批 {n}条",
+    "licenseType": "资格类型",
+    "licenseNo": "执业编号",
+    "organization": "所属机构",
+    "department": "科室",
+    "rejectReasonShown": "驳回理由:{reason}",
+    "rejectReasonPlaceholder": "驳回理由(选填)",
+    "approve": "通过",
+    "reject": "驳回",
+    "empty": "没有医护人员注册申请。",
+    "note": "※ 执业编号会做掩码显示,通过/驳回会记入审计日志。生产环境将对接执业资格真实性核验(外部验证)流程。"
+  },
+  "contentCategory": {
+    "result_explain": "结果解读",
+    "disease_edu": "疾病信息",
+    "lifestyle": "生活管理",
+    "risk_action": "行动指南",
+    "motivation": "动力",
+    "safety": "安全",
+    "clinician": "医护人员",
+    "caregiver": "照护者"
+  },
+  "reviewState": {
+    "approved": "通过",
+    "rejected": "驳回",
+    "waiting": "待审"
+  },
+  "contentAction": {
+    "submit": "提交审核",
+    "med_approve": "医学通过",
+    "med_reject": "驳回",
+    "ra_approve": "法规通过",
+    "ra_reject": "驳回",
+    "publish": "发布",
+    "unpublish": "下架",
+    "republish": "重新发布"
+  },
+  "cms": {
+    "title": "内容管理(CMS)",
+    "subtitle": "审核流程:草稿 → 医学审核 → 法规审核 → 待发布 → 发布 · 待审核 {n}条",
+    "colContent": "内容",
+    "colCategory": "分类",
+    "colActions": "操作",
+    "note": "※ 未通过医学审核的内容不会发布,个性化信息流中仅展示已发布的内容。"
+  },
+  "regulatory": {
+    "title": "法规轨道 · 试点准备",
+    "subtitle": "SaMD(医疗器械候选)· 健康管理分轨 · 许可准备度",
+    "intendedUseTitle": "预期用途(Intended Use)",
+    "intendedUseLabel": {
+      "purpose": "使用目的",
+      "users": "使用对象",
+      "environment": "使用环境",
+      "notIntended": "非适用范围"
+    },
+    "intendedUse": {
+      "purpose": "结合尿液化学检查与个人健康记录(PHR),对慢性病风险进行筛查与分层,并帮助用户理解结果、管理生活方式并衔接医护人员咨询。",
+      "users": "普通用户(健康管理)· 医护人员(监测辅助)· 机构/体检中心。",
+      "environment": "家庭、体检中心、医疗机构等具备网络连接的环境。",
+      "notIntended": "不替代确定性诊断、处方或急救医疗判断;最终临床判断由医护人员作出。"
+    },
+    "kpiTotal": "全部风险评估",
+    "kpiSamd": "SaMD候选输出",
+    "kpiWellness": "健康管理输出",
+    "kpiPublished": "已发布内容",
+    "featureTitle": "按功能的分轨(SaMD候选识别)",
+    "colFeature": "功能",
+    "colTrack": "轨道",
+    "colLikelihood": "SaMD可能性",
+    "colBasis": "依据(假设)",
+    "track": {
+      "samd": "医疗器械候选",
+      "wellness": "健康管理",
+      "review": "需评估"
+    },
+    "feature": {
+      "risk_strat": {
+        "label": "风险分层(各疾病风险分数与分级)",
+        "likelihood": "高",
+        "basis": "生成并提供疾病风险信息"
+      },
+      "standard_grade": {
+        "label": "标准风险分级计算(KDIGO型)",
+        "likelihood": "高",
+        "basis": "映射到临床分类体系"
+      },
+      "explain_report": {
+        "label": "解释报告(风险依据、SHAP)",
+        "likelihood": "中",
+        "basis": "从属于风险分层"
+      },
+      "measure_collect": {
+        "label": "检测采集与质量校正",
+        "likelihood": "低～中",
+        "basis": "属数据处理性质"
+      },
+      "lifestyle_content": {
+        "label": "生活管理与教育内容",
+        "likelihood": "低",
+        "basis": "一般健康信息"
+      },
+      "gamification": {
+        "label": "游戏化与任务",
+        "likelihood": "低",
+        "basis": "激励作用"
+      }
+    },
+    "featureNote": "※ 该分类为假设,实际SaMD适用性与分级需经食药处事前咨询确定。轨道通过<code>is_samd_output</code>标记分离并记录。",
+    "prepTitle": "许可准备文件",
+    "prepStarted": "已启动 {done}/{total}",
+    "prepDoc": {
+      "intended_use": {
+        "doc": "预期用途说明(Intended Use)",
+        "note": "本模块已定义摘要 — 仍需正式文档化"
+      },
+      "srs": {
+        "doc": "软件需求规格说明",
+        "note": "与详细执行方案衔接"
+      },
+      "risk_mgmt": {
+        "doc": "风险管理文件(危害分析与缓解)",
+        "note": "需按ISO 14971格式撰写"
+      },
+      "lifecycle": {
+        "doc": "软件生命周期文件",
+        "note": "IEC 62304 开发与验证流程"
+      },
+      "vnv": {
+        "doc": "验证与确认(V&V)记录",
+        "note": "与端到端冒烟测试及测试策略衔接"
+      },
+      "clinical_eval": {
+        "doc": "临床评价资料",
+        "note": "文献与自有数据(试点)"
+      },
+      "cybersecurity": {
+        "doc": "网络安全文件",
+        "note": "已应用安全响应头、限流与审计日志(Step 8)"
+      },
+      "usability": {
+        "doc": "可用性(Usability)资料",
+        "note": "需进行可用性测试"
+      },
+      "labeling": {
+        "doc": "标识与说明资料",
+        "note": "非诊断、筛查提示已应用于全部页面"
+      }
+    },
+    "prepStatus": {
+      "ready": "完成",
+      "partial": "部分",
+      "todo": "待办"
+    },
+    "pilotTitle": "临床验证 · 试点阶段",
+    "pilotPhase": {
+      "internal": {
+        "phase": "内部验证",
+        "goal": "算法可复现性、端到端用户旅程、安全检查"
+      },
+      "facility": {
+        "phase": "机构/体检中心试点",
+        "goal": "以真实数据评估风险分层的有用性与可用性"
+      },
+      "clinical": {
+        "phase": "临床评价",
+        "goal": "收集与标准检查相比的性能与安全性证据"
+      },
+      "submission": {
+        "phase": "SaMD许可申报",
+        "goal": "提交技术文件与临床评价资料包(食药处)"
+      }
+    },
+    "pilotStatus": {
+      "done": "完成",
+      "active": "进行中",
+      "todo": "计划中"
+    },
+    "modelNote": "正在跟踪{n}个模型版本 · 通过变更管理SOP对发布进行把关(假设)。",
+    "disclaimer": "※ 本服务当前按健康管理(wellness)轨道运营,风险分层与分级的计算属于以医疗器械(SaMD)许可为前提的候选输出。发布范围与时间取决于法规审查与事前咨询结果。"
+  },
+  "secEvent": {
+    "login_failed": "登录失败",
+    "login_blocked": "限流拦截",
+    "view_phi": "查看患者信息",
+    "clinician_verify": "医护人员审批"
+  },
+  "system": {
+    "mlUrlMissing": "未配置 ML_SERVICE_URL",
+    "overall": {
+      "healthy": "正常",
+      "degraded": "性能下降(ML降级)",
+      "unhealthy": "故障"
+    },
+    "overallNote": "服务综合状态 · 数据库为核心依赖,ML故障时自动降级到规则引擎",
+    "depDb": "care/secure 模式 · 核心依赖",
+    "depMl": "ML推理服务(LightGBM)",
+    "depMlNote": "端口 8800 · 故障时降级运行",
+    "secMetrics": "安全指标(最近24小时)",
+    "phiViews": "PHI访问",
+    "cumulative": "累计:{list}",
+    "noEvents": "无事件",
+    "recentSec": "最近的认证安全事件",
+    "noRecentSec": "没有最近的认证安全事件。",
+    "runtime": "运行时信息",
+    "env": "环境",
+    "appVersion": "应用版本",
+    "healthEndpoint": "健康检查端点",
+    "note": "※ 已应用安全响应头(CSP、HSTS、X-Frame-Options等)、限流、结构化日志与审计日志。生产环境将扩展外部日志采集、APM与告警对接。"
+  },
+  "alertCategory": {
+    "result": "结果",
+    "risk": "风险",
+    "recheck": "复测",
+    "care": "关怀",
+    "info": "提示"
+  },
+  "alerts": {
+    "markAllRead": "全部标为已读",
+    "empty": "还没有通知。",
+    "note": "※ 推送、短信、KakaoTalk等外部渠道通过发送适配器扩展(需要服务商密钥)。"
+  },
+  "consent": {
+    "sensitive_health": {
+      "label": "[必填] 敏感信息(健康信息)的收集与使用及服务条款",
+      "desc": "尿液检查数值、风险分析等健康信息,将用于提供服务的目的进行处理。"
+    },
+    "research": {
+      "label": "[选填] 用于研究与统计(去标识化)",
+      "desc": "经去标识化处理后,用于算法改进与研究。"
+    },
+    "marketing": {
+      "label": "[选填] 接收营销信息",
+      "desc": "通过邮件等渠道接收健康小贴士与服务动态。"
+    },
+    "clinician_terms": {
+      "label": "[必填] 医护人员服务条款及提供执业信息的同意",
+      "desc": "资格类型、编号与所属机构信息,将用于资质核验(审批)目的进行处理。"
+    },
+    "phi_handling": {
+      "label": "[必填] 患者健康信息(PHI)处理与保护承诺",
+      "desc": "我仅在诊疗与管理目的范围内查阅患者信息,并同意所有查阅均被审计记录。"
+    }
+  },
+  "me": {
+    "title": "我的页面",
+    "profile": "个人资料",
+    "name": "姓名",
+    "role": "角色",
+    "consent": "同意管理",
+    "agreed": "已同意",
+    "agreedWithdraw": "已同意 · 撤回",
+    "notAgreedGrant": "未同意 · 同意",
+    "consentNote": "※ 同意的变更会记入历史。敏感信息(必填)的撤回通过客服处理。",
+    "devices": "已注册设备",
+    "noDevices": "还没有注册设备。可在检测页面连接检测仪。"
+  },
+  "onboarding": {
+    "welcome": "欢迎",
+    "greet": "开始吧",
+    "greetNamed": "{name},开始吧",
+    "lead": "简单介绍如何从一次检测开始健康管理。",
+    "toDashboard": "前往仪表盘",
+    "step": {
+      "measure": {
+        "title": "检测",
+        "desc": "连接检测仪,或使用演示,检测11项尿液指标。"
+      },
+      "read": {
+        "title": "读懂结果",
+        "desc": "结合颜色 — 绿色(良好)、黄色(需观察)、橙色(注意)、红色(偏高) — 与解读一起查看。"
+      },
+      "safety": {
+        "title": "安全提示",
+        "desc": "这是筛查信息。它不能替代医学诊断,若有顾虑请咨询医护人员。"
+      }
+    }
+  },
+  "switchPage": {
+    "eyebrow": "已使用超级账号登录",
+    "title": "要以哪个账号进入?",
+    "lead": "切换到所选账号以查看对应页面。随时可以再次切换。",
+    "select": "选择",
+    "sub": {
+      "b2c": "检测 · 结果 · 关怀",
+      "clinician": "患者监测 · 临床报告"
+    }
+  },
+  "auth": {
+    "toHome": "返回首页",
+    "login": "登录",
+    "signup": "注册",
+    "loggingIn": "登录中…",
+    "signingUp": "注册中…",
+    "email": "邮箱",
+    "password": "密码",
+    "name": "姓名",
+    "namePlaceholder": "张三",
+    "passwordPlaceholder": "8位以上",
+    "choose": "请选择",
+    "loginPanelTitle": "从一次尿液检查开始的<br></br>慢性病早期管理",
+    "loginPanelLead": "体验检测、分析、理解、行动的关怀闭环。",
+    "loginLead": "登录账号,继续你的健康管理。",
+    "noAccount": "还没有账号?",
+    "haveAccount": "已经有账号了?",
+    "clinicianSignupShort": "医护人员注册",
+    "demoAccounts": "演示账号(密码 demo1234)",
+    "demo": {
+      "super": "超级账号(选择账号)",
+      "doctor": "医护人员",
+      "user": "用户 · Choi Eun-seop"
+    },
+    "signupPanelTitle": "一起迈出<br></br>健康管理的第一步",
+    "signupPanelLead": "简单注册,即可开始检测、分析与专属关怀。",
+    "signupLead": "创建账号,开始你的健康管理。",
+    "areYouClinician": "你是医护人员吗?",
+    "clinicianSignup": "医护人员注册申请",
+    "clinPanelTitle": "医护人员门户<br></br>注册申请",
+    "clinPanelLead": "面向患者监测、临床报告与慢性病管理的医护人员专用账号。",
+    "clinPanelNote": "为保护患者健康信息(PHI),将在核验执业资格后由管理员审批。",
+    "toGeneralSignup": "普通注册",
+    "clinLead": "核验执业资格并经管理员审批后,即可使用门户。",
+    "clinSubmitted": "已收到你的申请",
+    "clinSubmittedNote": "管理员核验执业信息并审批通过后,你可以用注册的邮箱登录。审批前登录会受到限制。",
+    "toLoginScreen": "前往登录页面",
+    "licenseTypeLabel": "资格类型",
+    "licenseNo": "执业(资格)编号",
+    "licenseNoPlaceholder": "例:第12345号",
+    "organization": "所属医疗机构",
+    "organizationPlaceholder": "○○医院 / ○○诊所",
+    "department": "科室(选填)",
+    "departmentPlaceholder": "内科、肾内科等",
+    "submitting": "提交中…",
+    "submitApplication": "提交申请"
+  },
+  "landing": {
+    "nav": {
+      "features": "功能",
+      "how": "运作方式",
+      "clinician": "面向医护人员",
+      "contact": "联系我们"
+    },
+    "getStarted": "开始使用",
+    "eyebrow": "尿液化学11项 · 个性化AI",
+    "heroTitle": "一次尿液检查,<br></br><em>提前</em>看见慢性病",
+    "heroLead": "用个性化AI分析尿液化学分析仪的检测值,及早发现肾脏、糖尿病与高血压风险,并衔接易懂的解读与专属关怀。",
+    "startFree": "免费开始",
+    "tryMeasure": "体验检测",
+    "tryMeasureShort": "体验检测",
+    "heroDisclaimer": "本服务提供筛查信息,不能替代医学诊断。",
+    "sampleScreen": "示例页面",
+    "sampleResult": "检测结果示例",
+    "kidneyIndex": "肾脏风险指数 · KDIGO A2",
+    "sampleComment": "蛋白数值比平时略高。可在几天后复测,观察趋势。",
+    "featuresEyebrow": "检测 · 分析 · 理解 · 行动",
+    "featuresTitle": "不中断的关怀闭环",
+    "featuresLead": "把专利技术(P1～P5)落到真实的产品体验中。",
+    "feature": {
+      "analysis": {
+        "tag": "分析",
+        "title": "个性化风险分析",
+        "desc": "将尿液化学11项与个人基线比较,及早发现肾脏、糖尿病与尿路感染风险。"
+      },
+      "explain": {
+        "tag": "解释",
+        "title": "可解释的报告",
+        "desc": "说明为何得出该结果,同时提供通俗语言与面向医护人员的依据。"
+      },
+      "loop": {
+        "tag": "关怀",
+        "title": "关怀闭环",
+        "desc": "从分级行动指南、复测到就诊参考,从检测一路延伸到行动。"
+      },
+      "device": {
+        "tag": "对接",
+        "title": "检测仪对接",
+        "desc": "直接连接尿液化学检测仪,无需手工录入即可检测与分析。"
+      }
+    },
+    "howTitle": "从检测到行动的四个步骤",
+    "step": {
+      "measure": {
+        "title": "检测",
+        "desc": "连接检测仪,检测11项尿液指标。"
+      },
+      "analyze": {
+        "title": "分析",
+        "desc": "通过校正与个性化AI对风险进行分层。"
+      },
+      "understand": {
+        "title": "理解",
+        "desc": "以通俗解读与依据帮助你读懂结果。"
+      },
+      "act": {
+        "title": "行动",
+        "desc": "用专属关怀与内容把认知落到实践。"
+      }
+    },
+    "forClinicians": "面向医护人员",
+    "clinicianTitle": "以证据为中心的医护人员门户",
+    "clinicianLead": "按风险排序的患者监测、标准分级、贡献依据,以及慢病管理行政支持。提供支持临床判断的定量报告。",
+    "clinicianCta": "预览医护人员页面",
+    "samplePatients": "患者列表示例",
+    "byRisk": "按风险排序",
+    "demoPatient": {
+      "p1": "金某",
+      "p2": "李某",
+      "p3": "朴某"
+    },
+    "sampleNote": "示例页面 · 风险分层不能替代诊断。",
+    "ctaEyebrow": "现在就开始",
+    "ctaTitle": "从一次检测开始的<br></br>慢性病早期管理",
+    "trust": {
+      "company": "SDC WellCare 股份有限公司",
+      "encryption": "健康信息加密与分离保存",
+      "advisory": "医护人员顾问审阅的内容",
+      "standards": "基于医疗标准的设计"
+    },
+    "footerCompany": "SDC WellCare 股份有限公司<br></br>基于尿液化学分析仪的慢性病管理平台",
+    "footer": {
+      "product": "产品",
+      "partner": "合作伙伴",
+      "account": "账号"
+    },
+    "footerDisclaimer": "本服务提供协助健康管理的筛查信息,不能替代医学诊断。风险分层与分级的计算以医疗器械(SaMD)许可为前提。"
+  },
+  "measure": {
+    "title": "尿液检查检测",
+    "lead": "连接尿液化学检测仪,检测11个项目。",
+    "connectTitle": "检测仪连接(BLE)",
+    "scanConnect": "搜索并连接设备",
+    "startMeasure": "开始检测",
+    "bleNote": "YOCHECK / PhotoMT / OptoSta 设备。仅在Chrome与Edge中可用(Web Bluetooth)。",
+    "demoTitle": "演示检测(无需试纸)",
+    "runDemo": "运行演示检测",
+    "demoNote": "合成检测仪的响应数据包,经由相同的解析与分析引擎展示结果。",
+    "analyzer": "检测仪",
+    "demoAnalyzer": "演示检测仪",
+    "unnamedDevice": "(无名称)",
+    "measureFailed": "检测处理失败",
+    "status": {
+      "idle": "待机中",
+      "unsupported": "浏览器不支持",
+      "scanning": "正在搜索设备…",
+      "connecting": "连接中…",
+      "connected": "已连接",
+      "disconnected": "连接已断开",
+      "connectFailed": "连接失败",
+      "measuring": "检测中…",
+      "sendFailed": "发送失败",
+      "stripError": "试纸错误",
+      "analyzing": "分析中…",
+      "done": "检测完成",
+      "analyzeFailed": "分析失败"
+    },
+    "scenario": {
+      "normal": "正常(所有项目正常)",
+      "uti": "疑似尿路感染(白细胞、亚硝酸盐)",
+      "diabetes": "疑似糖尿病(葡萄糖、酮体)",
+      "kidney": "疑似肾脏问题(蛋白尿、潜血)"
+    },
+    "log": {
+      "noBluetooth": "不支持 Web Bluetooth — 需要 Chrome/Edge",
+      "selectedDevice": "已选设备:{name}",
+      "subscribed": "连接与Notify订阅完成 — 可以开始检测",
+      "connectFailed": "连接失败:{message}",
+      "txCommand": "TX → %TS(检测指令)",
+      "awaitingResponse": "指令已发送 — 等待响应…",
+      "sendFailed": "检测指令发送失败:{message}",
+      "stripError": "设备ERR — 没有试纸。插入后重新检测",
+      "received": "接收完成 — 正在分析结果",
+      "demoRun": "演示检测({scenario})",
+      "analyzed": "分析完成 — 前往结果页面",
+      "analyzeFailed": "分析失败:{message}"
+    }
+  },
+  "authError": {
+    "rateLimited": "登录尝试过多。请在{minutes}分钟后重试。",
+    "badCredentials": "邮箱或密码不正确。",
+    "pendingApproval": "注册申请正在等待管理员审批。审批通过后即可登录。",
+    "rejected": "注册申请已被驳回。请联系管理员。",
+    "suspended": "该账号已被限制使用。请联系管理员。",
+    "requiredFields": "请填写姓名、邮箱与密码。",
+    "passwordTooShort": "密码需为8位以上。",
+    "consentRequired": "需同意必填的同意项才能注册。",
+    "emailTaken": "该邮箱已被注册。",
+    "licenseTypeRequired": "请选择资格类型。",
+    "licenseNoRequired": "请输入执业(资格)编号。",
+    "organizationRequired": "请输入所属医疗机构。",
+    "clinicianConsentRequired": "需同意必填的同意与承诺项才能提交申请。",
+    "emailTakenClinician": "该邮箱已注册(或已提交申请)。",
+    "noReasonGiven": "未填写理由"
+  },
+  "apiError": {
+    "loginRequired": "需要登录。",
+    "loginRequiredMeasure": "需要登录。检测结果仅保存到你本人的账号。",
+    "badJsonBody": "无法解析JSON请求体。",
+    "phrInvalid": "未找到有效的FHIR PHR数据。请上传从“我的健康记录”下载的JSON文件。",
+    "phrOwnerMismatch": "上传的健康记录属于‘{owner}’,而当前登录账号为‘{account}’。仅可关联本人名下的健康记录。",
+    "phrEmpty": "未找到体检、用药或诊断信息。请确认是否为正确的“我的健康记录”文件。",
+    "phrInternal": "处理PHR时发生错误。请查看服务器日志。(若dev服务器正在运行,可能需要重启以应用Prisma变更。)",
+    "measurementInvalid": "检测值校验失败",
+    "measuredAtFuture": "检测时间不能是未来时间。",
+    "analysisInternal": "分析处理过程中发生错误。",
+    "assessmentNotFound": "未找到风险评估。"
+  }
+}

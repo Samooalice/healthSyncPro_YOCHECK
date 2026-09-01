@@ -1,10 +1,15 @@
 // TrendChart — 측정 추세(SVG) + 정상범위 밴드 + 현재 수치. 상태 없음(서버/클라 공용).
+// 서버 컴포넌트와 클라이언트 컴포넌트 양쪽에서 쓰이므로 훅을 직접 부르지 않고
+// 번역 함수를 주입받는다(호출부에서 getTranslations/useTranslations 로 얻은 t).
+import type { Translate } from "@/i18n/t";
+
 export interface TrendPoint {
   date: string;
   value: number;
 }
 
 export default function TrendChart({
+  t,
   data,
   analyteLabel,
   color = "#2E5A88",
@@ -12,6 +17,7 @@ export default function TrendChart({
   unit,
   valueFormat,
 }: {
+  t: Translate;
   data: TrendPoint[];
   analyteLabel: string;
   color?: string;
@@ -20,7 +26,7 @@ export default function TrendChart({
   valueFormat?: (v: number) => string;
 }) {
   if (!data || data.length === 0) {
-    return <div className="py-6 text-center text-sm text-gray-400">추세 데이터가 아직 없어요.</div>;
+    return <div className="py-6 text-center text-sm text-gray-400">{t("chart.noData")}</div>;
   }
 
   const W = 320, H = 110, padX = 10, padTop = 16, padBottom = 22;
@@ -50,10 +56,10 @@ export default function TrendChart({
   return (
     <div>
       <div className="mb-1 flex items-center justify-between text-xs">
-        <span className="text-gray-500">{analyteLabel} 추세</span>
+        <span className="text-gray-500">{t("chart.trendOf", { name: analyteLabel })}</span>
         <span className="text-gray-700">
-          현재 <b style={{ color }}>{fmt(last.value)}</b>
-          {showNormalText && <span className="text-gray-400"> · 정상 {fmt(normal![0])}~{fmt(normal![1])}</span>}
+          {t("chart.current")} <b style={{ color }}>{fmt(last.value)}</b>
+          {showNormalText && <span className="text-gray-400"> · {t("result.normalInline", { normal: `${fmt(normal![0])}~${fmt(normal![1])}` })}</span>}
         </span>
       </div>
       <svg viewBox={`0 0 ${W} ${H}`} className="w-full" style={{ maxHeight: 130 }}>

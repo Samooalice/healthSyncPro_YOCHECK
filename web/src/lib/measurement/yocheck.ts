@@ -18,22 +18,22 @@ export interface YItem {
   idx: number;
   code: string; // 측정기 코드
   analyte: Analyte; // 내부 코드
-  name: string;
   kind: "qual" | "num";
 }
+// 표시용 항목명은 messages/*.json 의 analyte.* 를 쓴다(여기에 중복 정의하지 않는다).
 
 export const YOCHECK_ITEMS: YItem[] = [
-  { idx: 1, code: "blood", analyte: "blood", name: "잠혈", kind: "qual" },
-  { idx: 2, code: "bilirubin", analyte: "bilirubin", name: "빌리루빈", kind: "qual" },
-  { idx: 3, code: "urobilinogen", analyte: "urobilinogen", name: "우로빌리노겐", kind: "num" },
-  { idx: 4, code: "ketones", analyte: "ketone", name: "케톤", kind: "qual" },
-  { idx: 5, code: "protein", analyte: "protein", name: "단백질", kind: "qual" },
-  { idx: 6, code: "nitrite", analyte: "nitrite", name: "아질산염", kind: "qual" },
-  { idx: 7, code: "glucose", analyte: "glucose", name: "포도당", kind: "qual" },
-  { idx: 8, code: "ph", analyte: "ph", name: "pH", kind: "num" },
-  { idx: 9, code: "specific_gravity", analyte: "specific_gravity", name: "비중", kind: "num" },
-  { idx: 10, code: "leukocyte", analyte: "leukocyte", name: "백혈구", kind: "qual" },
-  { idx: 11, code: "vitamin_c", analyte: "vitamin_c", name: "비타민C", kind: "qual" },
+  { idx: 1, code: "blood", analyte: "blood", kind: "qual" },
+  { idx: 2, code: "bilirubin", analyte: "bilirubin", kind: "qual" },
+  { idx: 3, code: "urobilinogen", analyte: "urobilinogen", kind: "num" },
+  { idx: 4, code: "ketones", analyte: "ketone", kind: "qual" },
+  { idx: 5, code: "protein", analyte: "protein", kind: "qual" },
+  { idx: 6, code: "nitrite", analyte: "nitrite", kind: "qual" },
+  { idx: 7, code: "glucose", analyte: "glucose", kind: "qual" },
+  { idx: 8, code: "ph", analyte: "ph", kind: "num" },
+  { idx: 9, code: "specific_gravity", analyte: "specific_gravity", kind: "num" },
+  { idx: 10, code: "leukocyte", analyte: "leukocyte", kind: "qual" },
+  { idx: 11, code: "vitamin_c", analyte: "vitamin_c", kind: "qual" },
 ];
 
 // 항목별 반정량 상한 (A.1): 대부분 0~4, nitrite 0~1, bilirubin·vitamin_c 0~3
@@ -72,8 +72,15 @@ const numOf = (s: string): number | null => {
   return m ? Number(m[0]) : null;
 };
 
-/** 정성 항목 문자열 → 내부 반정량 코드(0~4). 음성0·미량1·1+2·2+3·3+이상4. */
+/**
+ * 정성 항목 문자열 → 내부 반정량 코드(0~4). 음성0·미량1·1+2·2+3·3+이상4.
+ *
+ * i18n:skip — 아래 "음성"·"미량"·"양성" 은 화면 문구가 아니라 **측정기가 보내는
+ * 프로토콜 값**이다. 기기 펌웨어가 한국어 토큰을 그대로 실어 보내므로 번역하면
+ * 파싱이 깨진다. 영문 토큰(neg/trace/pos)도 함께 받는다.
+ */
 function qualToCode(raw: string): number {
+  // i18n:skip-start
   const v = (raw || "").trim().toLowerCase();
   if (v === "" || v === "0" || v === "0.0" || v === "-" || v === "neg" || v === "negative" || v === "음성")
     return 0;
@@ -87,6 +94,7 @@ function qualToCode(raw: string): number {
   if (v.includes("양성") || v.includes("pos") || v.includes("positive")) return 2;
   const n = numOf(v);
   return n != null && n > 0 ? 1 : 0;
+  // i18n:skip-end
 }
 
 export type InternalValues = Partial<Record<Analyte, number>>;

@@ -548,7 +548,9 @@
     "carePlanTitle": "Kế hoạch chăm sóc · tóm tắt quản lý bệnh mạn tính",
     "noCareAction": "Không có hành động chăm sóc",
     "emrNote": "Việc tự động tạo tham chiếu hướng dẫn và biểu mẫu hành chính quản lý bệnh mạn tính sẽ được bổ sung khi tích hợp EMR (Step 6+).",
-    "disclaimer": "Bản tóm tắt này là kết quả phân tích sàng lọc, không thay thế chẩn đoán hay kê đơn lâm sàng. Phân tầng nguy cơ và xếp mức có điều kiện tiên quyết là được cấp phép thiết bị y tế (SaMD). Quyết định cuối cùng thuộc về đánh giá lâm sàng của nhân viên y tế."
+    "disclaimer": "Bản tóm tắt này là kết quả phân tích sàng lọc, không thay thế chẩn đoán hay kê đơn lâm sàng. Phân tầng nguy cơ và xếp mức có điều kiện tiên quyết là được cấp phép thiết bị y tế (SaMD). Quyết định cuối cùng thuộc về đánh giá lâm sàng của nhân viên y tế.",
+    "measure": "Tiến hành đo",
+    "measureFirst": "Bắt đầu lần đo đầu tiên"
   },
   "report": {
     "backToPatient": "Bảng tổng quan bệnh nhân",
@@ -587,7 +589,18 @@
     "colLastAssessed": "Đánh giá gần nhất",
     "report": "Báo cáo",
     "noMatch": "Không có bệnh nhân phù hợp với bộ lọc.",
-    "disclaimer": "※ Phân tầng nguy cơ và xếp mức là đầu ra ứng viên SaMD. Chúng không thay thế chẩn đoán hay kê đơn lâm sàng, và quyết định cuối cùng thuộc về đánh giá lâm sàng của nhân viên y tế."
+    "disclaimer": "※ Phân tầng nguy cơ và xếp mức là đầu ra ứng viên SaMD. Chúng không thay thế chẩn đoán hay kê đơn lâm sàng, và quyết định cuối cùng thuộc về đánh giá lâm sàng của nhân viên y tế.",
+    "registerPatient": "Đăng ký bệnh nhân",
+    "registerTitle": "Đăng ký bệnh nhân",
+    "registerLead": "Tạo tài khoản bệnh nhân và tiến hành đo ngay. Bệnh nhân cũng có thể tự đăng nhập bằng email và mật khẩu đã đăng ký.",
+    "birthYear": "Năm sinh",
+    "initialPassword": "Mật khẩu ban đầu",
+    "initialPasswordNote": "Hãy gửi cho bệnh nhân và hướng dẫn đổi mật khẩu sau lần đăng nhập đầu tiên.",
+    "consentConfirmNote": "Chỉ đánh dấu sau khi đã xác nhận sự đồng ý với chính bệnh nhân.",
+    "registering": "Đang đăng ký…",
+    "registerSubmit": "Đăng ký bệnh nhân",
+    "unmeasured": "Chưa đo",
+    "measure": "Đo"
   },
   "careStatus": {
     "assigned": "Đã lên lịch",
@@ -761,7 +774,9 @@
     "login": "Đăng nhập",
     "login_failed": "Đăng nhập thất bại",
     "login_blocked": "Chặn đăng nhập (giới hạn tần suất)",
-    "account_switch": "Chuyển tài khoản"
+    "account_switch": "Chuyển tài khoản",
+    "patient_register": "Đăng ký bệnh nhân",
+    "measure_for_patient": "Đo thay cho bệnh nhân"
   },
   "audit": {
     "subtitle": "Bản ghi truy cập PHI, đăng nội dung và hành vi quản trị (200 mục gần nhất)",
@@ -1290,7 +1305,9 @@
       "demoRun": "Đo thử ({scenario})",
       "analyzed": "Phân tích xong — chuyển tới màn hình kết quả",
       "analyzeFailed": "Phân tích thất bại: {message}"
-    }
+    },
+    "backToPatient": "Chi tiết bệnh nhân",
+    "patientTarget": "Đối tượng đo"
   },
   "authError": {
     "rateLimited": "Có quá nhiều lần thử đăng nhập. Vui lòng thử lại sau {minutes} phút.",
@@ -1307,7 +1324,10 @@
     "organizationRequired": "Vui lòng nhập cơ sở y tế công tác.",
     "clinicianConsentRequired": "Bạn cần đồng ý các mục đồng ý và cam kết bắt buộc để gửi yêu cầu.",
     "emailTakenClinician": "Email này đã có tài khoản hoặc yêu cầu đang chờ.",
-    "noReasonGiven": "Không ghi lý do"
+    "noReasonGiven": "Không ghi lý do",
+    "clinicianOnly": "Chỉ tài khoản nhân viên y tế mới có thể đăng ký bệnh nhân.",
+    "birthYearInvalid": "Vui lòng nhập năm sinh hợp lệ.",
+    "patientConsentRequired": "Cần xác nhận các mục đồng ý bắt buộc của bệnh nhân trước khi đăng ký."
   },
   "apiError": {
     "loginRequired": "Bạn cần đăng nhập.",
@@ -1320,7 +1340,9 @@
     "measurementInvalid": "Kiểm tra giá trị đo thất bại",
     "measuredAtFuture": "Thời điểm đo không thể ở tương lai.",
     "analysisInternal": "Đã xảy ra lỗi trong quá trình phân tích.",
-    "assessmentNotFound": "Không tìm thấy đánh giá nguy cơ."
+    "assessmentNotFound": "Không tìm thấy đánh giá nguy cơ.",
+    "measureForPatientForbidden": "Chỉ tài khoản nhân viên y tế mới có thể ghi kết quả đo cho người khác.",
+    "patientNotFound": "Không tìm thấy bệnh nhân."
   },
   "phrOpinion": {
     "htn_dm_controlled": "Tăng huyết áp / đái tháo đường của bạn đang được kiểm soát tốt. Hãy tiếp tục quản lý.",

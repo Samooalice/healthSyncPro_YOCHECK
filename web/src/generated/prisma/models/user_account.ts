@@ -241,6 +241,9 @@ export type user_accountWhereInput = {
   baseline?: Prisma.BaselineListRelationFilter
   care_action?: Prisma.Care_actionListRelationFilter
   clinician_profile?: Prisma.XOR<Prisma.Clinician_profileNullableScalarRelationFilter, Prisma.clinician_profileWhereInput> | null
+  patients?: Prisma.Clinician_patientListRelationFilter
+  clinicians?: Prisma.Clinician_patientListRelationFilter
+  linked_patients?: Prisma.Clinician_patientListRelationFilter
   consent?: Prisma.ConsentListRelationFilter
   device?: Prisma.DeviceListRelationFilter
   feedback_label?: Prisma.Feedback_labelListRelationFilter
@@ -271,6 +274,9 @@ export type user_accountOrderByWithRelationInput = {
   baseline?: Prisma.baselineOrderByRelationAggregateInput
   care_action?: Prisma.care_actionOrderByRelationAggregateInput
   clinician_profile?: Prisma.clinician_profileOrderByWithRelationInput
+  patients?: Prisma.clinician_patientOrderByRelationAggregateInput
+  clinicians?: Prisma.clinician_patientOrderByRelationAggregateInput
+  linked_patients?: Prisma.clinician_patientOrderByRelationAggregateInput
   consent?: Prisma.consentOrderByRelationAggregateInput
   device?: Prisma.deviceOrderByRelationAggregateInput
   feedback_label?: Prisma.feedback_labelOrderByRelationAggregateInput
@@ -304,6 +310,9 @@ export type user_accountWhereUniqueInput = Prisma.AtLeast<{
   baseline?: Prisma.BaselineListRelationFilter
   care_action?: Prisma.Care_actionListRelationFilter
   clinician_profile?: Prisma.XOR<Prisma.Clinician_profileNullableScalarRelationFilter, Prisma.clinician_profileWhereInput> | null
+  patients?: Prisma.Clinician_patientListRelationFilter
+  clinicians?: Prisma.Clinician_patientListRelationFilter
+  linked_patients?: Prisma.Clinician_patientListRelationFilter
   consent?: Prisma.ConsentListRelationFilter
   device?: Prisma.DeviceListRelationFilter
   feedback_label?: Prisma.Feedback_labelListRelationFilter
@@ -370,6 +379,9 @@ export type user_accountCreateInput = {
   baseline?: Prisma.baselineCreateNestedManyWithoutUser_accountInput
   care_action?: Prisma.care_actionCreateNestedManyWithoutUser_accountInput
   clinician_profile?: Prisma.clinician_profileCreateNestedOneWithoutUser_accountInput
+  patients?: Prisma.clinician_patientCreateNestedManyWithoutClinicianInput
+  clinicians?: Prisma.clinician_patientCreateNestedManyWithoutPatientInput
+  linked_patients?: Prisma.clinician_patientCreateNestedManyWithoutLinkerInput
   consent?: Prisma.consentCreateNestedManyWithoutUser_accountInput
   device?: Prisma.deviceCreateNestedManyWithoutUser_accountInput
   feedback_label?: Prisma.feedback_labelCreateNestedManyWithoutUser_accountInput
@@ -400,6 +412,9 @@ export type user_accountUncheckedCreateInput = {
   baseline?: Prisma.baselineUncheckedCreateNestedManyWithoutUser_accountInput
   care_action?: Prisma.care_actionUncheckedCreateNestedManyWithoutUser_accountInput
   clinician_profile?: Prisma.clinician_profileUncheckedCreateNestedOneWithoutUser_accountInput
+  patients?: Prisma.clinician_patientUncheckedCreateNestedManyWithoutClinicianInput
+  clinicians?: Prisma.clinician_patientUncheckedCreateNestedManyWithoutPatientInput
+  linked_patients?: Prisma.clinician_patientUncheckedCreateNestedManyWithoutLinkerInput
   consent?: Prisma.consentUncheckedCreateNestedManyWithoutUser_accountInput
   device?: Prisma.deviceUncheckedCreateNestedManyWithoutUser_accountInput
   feedback_label?: Prisma.feedback_labelUncheckedCreateNestedManyWithoutUser_accountInput
@@ -430,6 +445,9 @@ export type user_accountUpdateInput = {
   baseline?: Prisma.baselineUpdateManyWithoutUser_accountNestedInput
   care_action?: Prisma.care_actionUpdateManyWithoutUser_accountNestedInput
   clinician_profile?: Prisma.clinician_profileUpdateOneWithoutUser_accountNestedInput
+  patients?: Prisma.clinician_patientUpdateManyWithoutClinicianNestedInput
+  clinicians?: Prisma.clinician_patientUpdateManyWithoutPatientNestedInput
+  linked_patients?: Prisma.clinician_patientUpdateManyWithoutLinkerNestedInput
   consent?: Prisma.consentUpdateManyWithoutUser_accountNestedInput
   device?: Prisma.deviceUpdateManyWithoutUser_accountNestedInput
   feedback_label?: Prisma.feedback_labelUpdateManyWithoutUser_accountNestedInput
@@ -460,6 +478,9 @@ export type user_accountUncheckedUpdateInput = {
   baseline?: Prisma.baselineUncheckedUpdateManyWithoutUser_accountNestedInput
   care_action?: Prisma.care_actionUncheckedUpdateManyWithoutUser_accountNestedInput
   clinician_profile?: Prisma.clinician_profileUncheckedUpdateOneWithoutUser_accountNestedInput
+  patients?: Prisma.clinician_patientUncheckedUpdateManyWithoutClinicianNestedInput
+  clinicians?: Prisma.clinician_patientUncheckedUpdateManyWithoutPatientNestedInput
+  linked_patients?: Prisma.clinician_patientUncheckedUpdateManyWithoutLinkerNestedInput
   consent?: Prisma.consentUncheckedUpdateManyWithoutUser_accountNestedInput
   device?: Prisma.deviceUncheckedUpdateManyWithoutUser_accountNestedInput
   feedback_label?: Prisma.feedback_labelUncheckedUpdateManyWithoutUser_accountNestedInput
@@ -567,6 +588,11 @@ export type user_accountMinOrderByAggregateInput = {
   password_hash?: Prisma.SortOrder
   display_name?: Prisma.SortOrder
   is_super?: Prisma.SortOrder
+}
+
+export type User_accountNullableScalarRelationFilter = {
+  is?: Prisma.user_accountWhereInput | null
+  isNot?: Prisma.user_accountWhereInput | null
 }
 
 export type user_accountCreateNestedOneWithoutBaselineInput = {
@@ -751,6 +777,50 @@ export type user_accountUpdateOneRequiredWithoutNotificationNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.user_accountUpdateToOneWithWhereWithoutNotificationInput, Prisma.user_accountUpdateWithoutNotificationInput>, Prisma.user_accountUncheckedUpdateWithoutNotificationInput>
 }
 
+export type user_accountCreateNestedOneWithoutPatientsInput = {
+  create?: Prisma.XOR<Prisma.user_accountCreateWithoutPatientsInput, Prisma.user_accountUncheckedCreateWithoutPatientsInput>
+  connectOrCreate?: Prisma.user_accountCreateOrConnectWithoutPatientsInput
+  connect?: Prisma.user_accountWhereUniqueInput
+}
+
+export type user_accountCreateNestedOneWithoutCliniciansInput = {
+  create?: Prisma.XOR<Prisma.user_accountCreateWithoutCliniciansInput, Prisma.user_accountUncheckedCreateWithoutCliniciansInput>
+  connectOrCreate?: Prisma.user_accountCreateOrConnectWithoutCliniciansInput
+  connect?: Prisma.user_accountWhereUniqueInput
+}
+
+export type user_accountCreateNestedOneWithoutLinked_patientsInput = {
+  create?: Prisma.XOR<Prisma.user_accountCreateWithoutLinked_patientsInput, Prisma.user_accountUncheckedCreateWithoutLinked_patientsInput>
+  connectOrCreate?: Prisma.user_accountCreateOrConnectWithoutLinked_patientsInput
+  connect?: Prisma.user_accountWhereUniqueInput
+}
+
+export type user_accountUpdateOneRequiredWithoutPatientsNestedInput = {
+  create?: Prisma.XOR<Prisma.user_accountCreateWithoutPatientsInput, Prisma.user_accountUncheckedCreateWithoutPatientsInput>
+  connectOrCreate?: Prisma.user_accountCreateOrConnectWithoutPatientsInput
+  upsert?: Prisma.user_accountUpsertWithoutPatientsInput
+  connect?: Prisma.user_accountWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.user_accountUpdateToOneWithWhereWithoutPatientsInput, Prisma.user_accountUpdateWithoutPatientsInput>, Prisma.user_accountUncheckedUpdateWithoutPatientsInput>
+}
+
+export type user_accountUpdateOneRequiredWithoutCliniciansNestedInput = {
+  create?: Prisma.XOR<Prisma.user_accountCreateWithoutCliniciansInput, Prisma.user_accountUncheckedCreateWithoutCliniciansInput>
+  connectOrCreate?: Prisma.user_accountCreateOrConnectWithoutCliniciansInput
+  upsert?: Prisma.user_accountUpsertWithoutCliniciansInput
+  connect?: Prisma.user_accountWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.user_accountUpdateToOneWithWhereWithoutCliniciansInput, Prisma.user_accountUpdateWithoutCliniciansInput>, Prisma.user_accountUncheckedUpdateWithoutCliniciansInput>
+}
+
+export type user_accountUpdateOneWithoutLinked_patientsNestedInput = {
+  create?: Prisma.XOR<Prisma.user_accountCreateWithoutLinked_patientsInput, Prisma.user_accountUncheckedCreateWithoutLinked_patientsInput>
+  connectOrCreate?: Prisma.user_accountCreateOrConnectWithoutLinked_patientsInput
+  upsert?: Prisma.user_accountUpsertWithoutLinked_patientsInput
+  disconnect?: Prisma.user_accountWhereInput | boolean
+  delete?: Prisma.user_accountWhereInput | boolean
+  connect?: Prisma.user_accountWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.user_accountUpdateToOneWithWhereWithoutLinked_patientsInput, Prisma.user_accountUpdateWithoutLinked_patientsInput>, Prisma.user_accountUncheckedUpdateWithoutLinked_patientsInput>
+}
+
 export type user_accountCreateNestedOneWithoutClinician_profileInput = {
   create?: Prisma.XOR<Prisma.user_accountCreateWithoutClinician_profileInput, Prisma.user_accountUncheckedCreateWithoutClinician_profileInput>
   connectOrCreate?: Prisma.user_accountCreateOrConnectWithoutClinician_profileInput
@@ -794,6 +864,9 @@ export type user_accountCreateWithoutBaselineInput = {
   is_super?: boolean
   care_action?: Prisma.care_actionCreateNestedManyWithoutUser_accountInput
   clinician_profile?: Prisma.clinician_profileCreateNestedOneWithoutUser_accountInput
+  patients?: Prisma.clinician_patientCreateNestedManyWithoutClinicianInput
+  clinicians?: Prisma.clinician_patientCreateNestedManyWithoutPatientInput
+  linked_patients?: Prisma.clinician_patientCreateNestedManyWithoutLinkerInput
   consent?: Prisma.consentCreateNestedManyWithoutUser_accountInput
   device?: Prisma.deviceCreateNestedManyWithoutUser_accountInput
   feedback_label?: Prisma.feedback_labelCreateNestedManyWithoutUser_accountInput
@@ -823,6 +896,9 @@ export type user_accountUncheckedCreateWithoutBaselineInput = {
   is_super?: boolean
   care_action?: Prisma.care_actionUncheckedCreateNestedManyWithoutUser_accountInput
   clinician_profile?: Prisma.clinician_profileUncheckedCreateNestedOneWithoutUser_accountInput
+  patients?: Prisma.clinician_patientUncheckedCreateNestedManyWithoutClinicianInput
+  clinicians?: Prisma.clinician_patientUncheckedCreateNestedManyWithoutPatientInput
+  linked_patients?: Prisma.clinician_patientUncheckedCreateNestedManyWithoutLinkerInput
   consent?: Prisma.consentUncheckedCreateNestedManyWithoutUser_accountInput
   device?: Prisma.deviceUncheckedCreateNestedManyWithoutUser_accountInput
   feedback_label?: Prisma.feedback_labelUncheckedCreateNestedManyWithoutUser_accountInput
@@ -868,6 +944,9 @@ export type user_accountUpdateWithoutBaselineInput = {
   is_super?: Prisma.BoolFieldUpdateOperationsInput | boolean
   care_action?: Prisma.care_actionUpdateManyWithoutUser_accountNestedInput
   clinician_profile?: Prisma.clinician_profileUpdateOneWithoutUser_accountNestedInput
+  patients?: Prisma.clinician_patientUpdateManyWithoutClinicianNestedInput
+  clinicians?: Prisma.clinician_patientUpdateManyWithoutPatientNestedInput
+  linked_patients?: Prisma.clinician_patientUpdateManyWithoutLinkerNestedInput
   consent?: Prisma.consentUpdateManyWithoutUser_accountNestedInput
   device?: Prisma.deviceUpdateManyWithoutUser_accountNestedInput
   feedback_label?: Prisma.feedback_labelUpdateManyWithoutUser_accountNestedInput
@@ -897,6 +976,9 @@ export type user_accountUncheckedUpdateWithoutBaselineInput = {
   is_super?: Prisma.BoolFieldUpdateOperationsInput | boolean
   care_action?: Prisma.care_actionUncheckedUpdateManyWithoutUser_accountNestedInput
   clinician_profile?: Prisma.clinician_profileUncheckedUpdateOneWithoutUser_accountNestedInput
+  patients?: Prisma.clinician_patientUncheckedUpdateManyWithoutClinicianNestedInput
+  clinicians?: Prisma.clinician_patientUncheckedUpdateManyWithoutPatientNestedInput
+  linked_patients?: Prisma.clinician_patientUncheckedUpdateManyWithoutLinkerNestedInput
   consent?: Prisma.consentUncheckedUpdateManyWithoutUser_accountNestedInput
   device?: Prisma.deviceUncheckedUpdateManyWithoutUser_accountNestedInput
   feedback_label?: Prisma.feedback_labelUncheckedUpdateManyWithoutUser_accountNestedInput
@@ -926,6 +1008,9 @@ export type user_accountCreateWithoutCare_actionInput = {
   is_super?: boolean
   baseline?: Prisma.baselineCreateNestedManyWithoutUser_accountInput
   clinician_profile?: Prisma.clinician_profileCreateNestedOneWithoutUser_accountInput
+  patients?: Prisma.clinician_patientCreateNestedManyWithoutClinicianInput
+  clinicians?: Prisma.clinician_patientCreateNestedManyWithoutPatientInput
+  linked_patients?: Prisma.clinician_patientCreateNestedManyWithoutLinkerInput
   consent?: Prisma.consentCreateNestedManyWithoutUser_accountInput
   device?: Prisma.deviceCreateNestedManyWithoutUser_accountInput
   feedback_label?: Prisma.feedback_labelCreateNestedManyWithoutUser_accountInput
@@ -955,6 +1040,9 @@ export type user_accountUncheckedCreateWithoutCare_actionInput = {
   is_super?: boolean
   baseline?: Prisma.baselineUncheckedCreateNestedManyWithoutUser_accountInput
   clinician_profile?: Prisma.clinician_profileUncheckedCreateNestedOneWithoutUser_accountInput
+  patients?: Prisma.clinician_patientUncheckedCreateNestedManyWithoutClinicianInput
+  clinicians?: Prisma.clinician_patientUncheckedCreateNestedManyWithoutPatientInput
+  linked_patients?: Prisma.clinician_patientUncheckedCreateNestedManyWithoutLinkerInput
   consent?: Prisma.consentUncheckedCreateNestedManyWithoutUser_accountInput
   device?: Prisma.deviceUncheckedCreateNestedManyWithoutUser_accountInput
   feedback_label?: Prisma.feedback_labelUncheckedCreateNestedManyWithoutUser_accountInput
@@ -1000,6 +1088,9 @@ export type user_accountUpdateWithoutCare_actionInput = {
   is_super?: Prisma.BoolFieldUpdateOperationsInput | boolean
   baseline?: Prisma.baselineUpdateManyWithoutUser_accountNestedInput
   clinician_profile?: Prisma.clinician_profileUpdateOneWithoutUser_accountNestedInput
+  patients?: Prisma.clinician_patientUpdateManyWithoutClinicianNestedInput
+  clinicians?: Prisma.clinician_patientUpdateManyWithoutPatientNestedInput
+  linked_patients?: Prisma.clinician_patientUpdateManyWithoutLinkerNestedInput
   consent?: Prisma.consentUpdateManyWithoutUser_accountNestedInput
   device?: Prisma.deviceUpdateManyWithoutUser_accountNestedInput
   feedback_label?: Prisma.feedback_labelUpdateManyWithoutUser_accountNestedInput
@@ -1029,6 +1120,9 @@ export type user_accountUncheckedUpdateWithoutCare_actionInput = {
   is_super?: Prisma.BoolFieldUpdateOperationsInput | boolean
   baseline?: Prisma.baselineUncheckedUpdateManyWithoutUser_accountNestedInput
   clinician_profile?: Prisma.clinician_profileUncheckedUpdateOneWithoutUser_accountNestedInput
+  patients?: Prisma.clinician_patientUncheckedUpdateManyWithoutClinicianNestedInput
+  clinicians?: Prisma.clinician_patientUncheckedUpdateManyWithoutPatientNestedInput
+  linked_patients?: Prisma.clinician_patientUncheckedUpdateManyWithoutLinkerNestedInput
   consent?: Prisma.consentUncheckedUpdateManyWithoutUser_accountNestedInput
   device?: Prisma.deviceUncheckedUpdateManyWithoutUser_accountNestedInput
   feedback_label?: Prisma.feedback_labelUncheckedUpdateManyWithoutUser_accountNestedInput
@@ -1059,6 +1153,9 @@ export type user_accountCreateWithoutConsentInput = {
   baseline?: Prisma.baselineCreateNestedManyWithoutUser_accountInput
   care_action?: Prisma.care_actionCreateNestedManyWithoutUser_accountInput
   clinician_profile?: Prisma.clinician_profileCreateNestedOneWithoutUser_accountInput
+  patients?: Prisma.clinician_patientCreateNestedManyWithoutClinicianInput
+  clinicians?: Prisma.clinician_patientCreateNestedManyWithoutPatientInput
+  linked_patients?: Prisma.clinician_patientCreateNestedManyWithoutLinkerInput
   device?: Prisma.deviceCreateNestedManyWithoutUser_accountInput
   feedback_label?: Prisma.feedback_labelCreateNestedManyWithoutUser_accountInput
   gamification_state?: Prisma.gamification_stateCreateNestedOneWithoutUser_accountInput
@@ -1088,6 +1185,9 @@ export type user_accountUncheckedCreateWithoutConsentInput = {
   baseline?: Prisma.baselineUncheckedCreateNestedManyWithoutUser_accountInput
   care_action?: Prisma.care_actionUncheckedCreateNestedManyWithoutUser_accountInput
   clinician_profile?: Prisma.clinician_profileUncheckedCreateNestedOneWithoutUser_accountInput
+  patients?: Prisma.clinician_patientUncheckedCreateNestedManyWithoutClinicianInput
+  clinicians?: Prisma.clinician_patientUncheckedCreateNestedManyWithoutPatientInput
+  linked_patients?: Prisma.clinician_patientUncheckedCreateNestedManyWithoutLinkerInput
   device?: Prisma.deviceUncheckedCreateNestedManyWithoutUser_accountInput
   feedback_label?: Prisma.feedback_labelUncheckedCreateNestedManyWithoutUser_accountInput
   gamification_state?: Prisma.gamification_stateUncheckedCreateNestedOneWithoutUser_accountInput
@@ -1133,6 +1233,9 @@ export type user_accountUpdateWithoutConsentInput = {
   baseline?: Prisma.baselineUpdateManyWithoutUser_accountNestedInput
   care_action?: Prisma.care_actionUpdateManyWithoutUser_accountNestedInput
   clinician_profile?: Prisma.clinician_profileUpdateOneWithoutUser_accountNestedInput
+  patients?: Prisma.clinician_patientUpdateManyWithoutClinicianNestedInput
+  clinicians?: Prisma.clinician_patientUpdateManyWithoutPatientNestedInput
+  linked_patients?: Prisma.clinician_patientUpdateManyWithoutLinkerNestedInput
   device?: Prisma.deviceUpdateManyWithoutUser_accountNestedInput
   feedback_label?: Prisma.feedback_labelUpdateManyWithoutUser_accountNestedInput
   gamification_state?: Prisma.gamification_stateUpdateOneWithoutUser_accountNestedInput
@@ -1162,6 +1265,9 @@ export type user_accountUncheckedUpdateWithoutConsentInput = {
   baseline?: Prisma.baselineUncheckedUpdateManyWithoutUser_accountNestedInput
   care_action?: Prisma.care_actionUncheckedUpdateManyWithoutUser_accountNestedInput
   clinician_profile?: Prisma.clinician_profileUncheckedUpdateOneWithoutUser_accountNestedInput
+  patients?: Prisma.clinician_patientUncheckedUpdateManyWithoutClinicianNestedInput
+  clinicians?: Prisma.clinician_patientUncheckedUpdateManyWithoutPatientNestedInput
+  linked_patients?: Prisma.clinician_patientUncheckedUpdateManyWithoutLinkerNestedInput
   device?: Prisma.deviceUncheckedUpdateManyWithoutUser_accountNestedInput
   feedback_label?: Prisma.feedback_labelUncheckedUpdateManyWithoutUser_accountNestedInput
   gamification_state?: Prisma.gamification_stateUncheckedUpdateOneWithoutUser_accountNestedInput
@@ -1191,6 +1297,9 @@ export type user_accountCreateWithoutDeviceInput = {
   baseline?: Prisma.baselineCreateNestedManyWithoutUser_accountInput
   care_action?: Prisma.care_actionCreateNestedManyWithoutUser_accountInput
   clinician_profile?: Prisma.clinician_profileCreateNestedOneWithoutUser_accountInput
+  patients?: Prisma.clinician_patientCreateNestedManyWithoutClinicianInput
+  clinicians?: Prisma.clinician_patientCreateNestedManyWithoutPatientInput
+  linked_patients?: Prisma.clinician_patientCreateNestedManyWithoutLinkerInput
   consent?: Prisma.consentCreateNestedManyWithoutUser_accountInput
   feedback_label?: Prisma.feedback_labelCreateNestedManyWithoutUser_accountInput
   gamification_state?: Prisma.gamification_stateCreateNestedOneWithoutUser_accountInput
@@ -1220,6 +1329,9 @@ export type user_accountUncheckedCreateWithoutDeviceInput = {
   baseline?: Prisma.baselineUncheckedCreateNestedManyWithoutUser_accountInput
   care_action?: Prisma.care_actionUncheckedCreateNestedManyWithoutUser_accountInput
   clinician_profile?: Prisma.clinician_profileUncheckedCreateNestedOneWithoutUser_accountInput
+  patients?: Prisma.clinician_patientUncheckedCreateNestedManyWithoutClinicianInput
+  clinicians?: Prisma.clinician_patientUncheckedCreateNestedManyWithoutPatientInput
+  linked_patients?: Prisma.clinician_patientUncheckedCreateNestedManyWithoutLinkerInput
   consent?: Prisma.consentUncheckedCreateNestedManyWithoutUser_accountInput
   feedback_label?: Prisma.feedback_labelUncheckedCreateNestedManyWithoutUser_accountInput
   gamification_state?: Prisma.gamification_stateUncheckedCreateNestedOneWithoutUser_accountInput
@@ -1265,6 +1377,9 @@ export type user_accountUpdateWithoutDeviceInput = {
   baseline?: Prisma.baselineUpdateManyWithoutUser_accountNestedInput
   care_action?: Prisma.care_actionUpdateManyWithoutUser_accountNestedInput
   clinician_profile?: Prisma.clinician_profileUpdateOneWithoutUser_accountNestedInput
+  patients?: Prisma.clinician_patientUpdateManyWithoutClinicianNestedInput
+  clinicians?: Prisma.clinician_patientUpdateManyWithoutPatientNestedInput
+  linked_patients?: Prisma.clinician_patientUpdateManyWithoutLinkerNestedInput
   consent?: Prisma.consentUpdateManyWithoutUser_accountNestedInput
   feedback_label?: Prisma.feedback_labelUpdateManyWithoutUser_accountNestedInput
   gamification_state?: Prisma.gamification_stateUpdateOneWithoutUser_accountNestedInput
@@ -1294,6 +1409,9 @@ export type user_accountUncheckedUpdateWithoutDeviceInput = {
   baseline?: Prisma.baselineUncheckedUpdateManyWithoutUser_accountNestedInput
   care_action?: Prisma.care_actionUncheckedUpdateManyWithoutUser_accountNestedInput
   clinician_profile?: Prisma.clinician_profileUncheckedUpdateOneWithoutUser_accountNestedInput
+  patients?: Prisma.clinician_patientUncheckedUpdateManyWithoutClinicianNestedInput
+  clinicians?: Prisma.clinician_patientUncheckedUpdateManyWithoutPatientNestedInput
+  linked_patients?: Prisma.clinician_patientUncheckedUpdateManyWithoutLinkerNestedInput
   consent?: Prisma.consentUncheckedUpdateManyWithoutUser_accountNestedInput
   feedback_label?: Prisma.feedback_labelUncheckedUpdateManyWithoutUser_accountNestedInput
   gamification_state?: Prisma.gamification_stateUncheckedUpdateOneWithoutUser_accountNestedInput
@@ -1323,6 +1441,9 @@ export type user_accountCreateWithoutFeedback_labelInput = {
   baseline?: Prisma.baselineCreateNestedManyWithoutUser_accountInput
   care_action?: Prisma.care_actionCreateNestedManyWithoutUser_accountInput
   clinician_profile?: Prisma.clinician_profileCreateNestedOneWithoutUser_accountInput
+  patients?: Prisma.clinician_patientCreateNestedManyWithoutClinicianInput
+  clinicians?: Prisma.clinician_patientCreateNestedManyWithoutPatientInput
+  linked_patients?: Prisma.clinician_patientCreateNestedManyWithoutLinkerInput
   consent?: Prisma.consentCreateNestedManyWithoutUser_accountInput
   device?: Prisma.deviceCreateNestedManyWithoutUser_accountInput
   gamification_state?: Prisma.gamification_stateCreateNestedOneWithoutUser_accountInput
@@ -1352,6 +1473,9 @@ export type user_accountUncheckedCreateWithoutFeedback_labelInput = {
   baseline?: Prisma.baselineUncheckedCreateNestedManyWithoutUser_accountInput
   care_action?: Prisma.care_actionUncheckedCreateNestedManyWithoutUser_accountInput
   clinician_profile?: Prisma.clinician_profileUncheckedCreateNestedOneWithoutUser_accountInput
+  patients?: Prisma.clinician_patientUncheckedCreateNestedManyWithoutClinicianInput
+  clinicians?: Prisma.clinician_patientUncheckedCreateNestedManyWithoutPatientInput
+  linked_patients?: Prisma.clinician_patientUncheckedCreateNestedManyWithoutLinkerInput
   consent?: Prisma.consentUncheckedCreateNestedManyWithoutUser_accountInput
   device?: Prisma.deviceUncheckedCreateNestedManyWithoutUser_accountInput
   gamification_state?: Prisma.gamification_stateUncheckedCreateNestedOneWithoutUser_accountInput
@@ -1397,6 +1521,9 @@ export type user_accountUpdateWithoutFeedback_labelInput = {
   baseline?: Prisma.baselineUpdateManyWithoutUser_accountNestedInput
   care_action?: Prisma.care_actionUpdateManyWithoutUser_accountNestedInput
   clinician_profile?: Prisma.clinician_profileUpdateOneWithoutUser_accountNestedInput
+  patients?: Prisma.clinician_patientUpdateManyWithoutClinicianNestedInput
+  clinicians?: Prisma.clinician_patientUpdateManyWithoutPatientNestedInput
+  linked_patients?: Prisma.clinician_patientUpdateManyWithoutLinkerNestedInput
   consent?: Prisma.consentUpdateManyWithoutUser_accountNestedInput
   device?: Prisma.deviceUpdateManyWithoutUser_accountNestedInput
   gamification_state?: Prisma.gamification_stateUpdateOneWithoutUser_accountNestedInput
@@ -1426,6 +1553,9 @@ export type user_accountUncheckedUpdateWithoutFeedback_labelInput = {
   baseline?: Prisma.baselineUncheckedUpdateManyWithoutUser_accountNestedInput
   care_action?: Prisma.care_actionUncheckedUpdateManyWithoutUser_accountNestedInput
   clinician_profile?: Prisma.clinician_profileUncheckedUpdateOneWithoutUser_accountNestedInput
+  patients?: Prisma.clinician_patientUncheckedUpdateManyWithoutClinicianNestedInput
+  clinicians?: Prisma.clinician_patientUncheckedUpdateManyWithoutPatientNestedInput
+  linked_patients?: Prisma.clinician_patientUncheckedUpdateManyWithoutLinkerNestedInput
   consent?: Prisma.consentUncheckedUpdateManyWithoutUser_accountNestedInput
   device?: Prisma.deviceUncheckedUpdateManyWithoutUser_accountNestedInput
   gamification_state?: Prisma.gamification_stateUncheckedUpdateOneWithoutUser_accountNestedInput
@@ -1455,6 +1585,9 @@ export type user_accountCreateWithoutGamification_stateInput = {
   baseline?: Prisma.baselineCreateNestedManyWithoutUser_accountInput
   care_action?: Prisma.care_actionCreateNestedManyWithoutUser_accountInput
   clinician_profile?: Prisma.clinician_profileCreateNestedOneWithoutUser_accountInput
+  patients?: Prisma.clinician_patientCreateNestedManyWithoutClinicianInput
+  clinicians?: Prisma.clinician_patientCreateNestedManyWithoutPatientInput
+  linked_patients?: Prisma.clinician_patientCreateNestedManyWithoutLinkerInput
   consent?: Prisma.consentCreateNestedManyWithoutUser_accountInput
   device?: Prisma.deviceCreateNestedManyWithoutUser_accountInput
   feedback_label?: Prisma.feedback_labelCreateNestedManyWithoutUser_accountInput
@@ -1484,6 +1617,9 @@ export type user_accountUncheckedCreateWithoutGamification_stateInput = {
   baseline?: Prisma.baselineUncheckedCreateNestedManyWithoutUser_accountInput
   care_action?: Prisma.care_actionUncheckedCreateNestedManyWithoutUser_accountInput
   clinician_profile?: Prisma.clinician_profileUncheckedCreateNestedOneWithoutUser_accountInput
+  patients?: Prisma.clinician_patientUncheckedCreateNestedManyWithoutClinicianInput
+  clinicians?: Prisma.clinician_patientUncheckedCreateNestedManyWithoutPatientInput
+  linked_patients?: Prisma.clinician_patientUncheckedCreateNestedManyWithoutLinkerInput
   consent?: Prisma.consentUncheckedCreateNestedManyWithoutUser_accountInput
   device?: Prisma.deviceUncheckedCreateNestedManyWithoutUser_accountInput
   feedback_label?: Prisma.feedback_labelUncheckedCreateNestedManyWithoutUser_accountInput
@@ -1529,6 +1665,9 @@ export type user_accountUpdateWithoutGamification_stateInput = {
   baseline?: Prisma.baselineUpdateManyWithoutUser_accountNestedInput
   care_action?: Prisma.care_actionUpdateManyWithoutUser_accountNestedInput
   clinician_profile?: Prisma.clinician_profileUpdateOneWithoutUser_accountNestedInput
+  patients?: Prisma.clinician_patientUpdateManyWithoutClinicianNestedInput
+  clinicians?: Prisma.clinician_patientUpdateManyWithoutPatientNestedInput
+  linked_patients?: Prisma.clinician_patientUpdateManyWithoutLinkerNestedInput
   consent?: Prisma.consentUpdateManyWithoutUser_accountNestedInput
   device?: Prisma.deviceUpdateManyWithoutUser_accountNestedInput
   feedback_label?: Prisma.feedback_labelUpdateManyWithoutUser_accountNestedInput
@@ -1558,6 +1697,9 @@ export type user_accountUncheckedUpdateWithoutGamification_stateInput = {
   baseline?: Prisma.baselineUncheckedUpdateManyWithoutUser_accountNestedInput
   care_action?: Prisma.care_actionUncheckedUpdateManyWithoutUser_accountNestedInput
   clinician_profile?: Prisma.clinician_profileUncheckedUpdateOneWithoutUser_accountNestedInput
+  patients?: Prisma.clinician_patientUncheckedUpdateManyWithoutClinicianNestedInput
+  clinicians?: Prisma.clinician_patientUncheckedUpdateManyWithoutPatientNestedInput
+  linked_patients?: Prisma.clinician_patientUncheckedUpdateManyWithoutLinkerNestedInput
   consent?: Prisma.consentUncheckedUpdateManyWithoutUser_accountNestedInput
   device?: Prisma.deviceUncheckedUpdateManyWithoutUser_accountNestedInput
   feedback_label?: Prisma.feedback_labelUncheckedUpdateManyWithoutUser_accountNestedInput
@@ -1587,6 +1729,9 @@ export type user_accountCreateWithoutMeasurementInput = {
   baseline?: Prisma.baselineCreateNestedManyWithoutUser_accountInput
   care_action?: Prisma.care_actionCreateNestedManyWithoutUser_accountInput
   clinician_profile?: Prisma.clinician_profileCreateNestedOneWithoutUser_accountInput
+  patients?: Prisma.clinician_patientCreateNestedManyWithoutClinicianInput
+  clinicians?: Prisma.clinician_patientCreateNestedManyWithoutPatientInput
+  linked_patients?: Prisma.clinician_patientCreateNestedManyWithoutLinkerInput
   consent?: Prisma.consentCreateNestedManyWithoutUser_accountInput
   device?: Prisma.deviceCreateNestedManyWithoutUser_accountInput
   feedback_label?: Prisma.feedback_labelCreateNestedManyWithoutUser_accountInput
@@ -1616,6 +1761,9 @@ export type user_accountUncheckedCreateWithoutMeasurementInput = {
   baseline?: Prisma.baselineUncheckedCreateNestedManyWithoutUser_accountInput
   care_action?: Prisma.care_actionUncheckedCreateNestedManyWithoutUser_accountInput
   clinician_profile?: Prisma.clinician_profileUncheckedCreateNestedOneWithoutUser_accountInput
+  patients?: Prisma.clinician_patientUncheckedCreateNestedManyWithoutClinicianInput
+  clinicians?: Prisma.clinician_patientUncheckedCreateNestedManyWithoutPatientInput
+  linked_patients?: Prisma.clinician_patientUncheckedCreateNestedManyWithoutLinkerInput
   consent?: Prisma.consentUncheckedCreateNestedManyWithoutUser_accountInput
   device?: Prisma.deviceUncheckedCreateNestedManyWithoutUser_accountInput
   feedback_label?: Prisma.feedback_labelUncheckedCreateNestedManyWithoutUser_accountInput
@@ -1661,6 +1809,9 @@ export type user_accountUpdateWithoutMeasurementInput = {
   baseline?: Prisma.baselineUpdateManyWithoutUser_accountNestedInput
   care_action?: Prisma.care_actionUpdateManyWithoutUser_accountNestedInput
   clinician_profile?: Prisma.clinician_profileUpdateOneWithoutUser_accountNestedInput
+  patients?: Prisma.clinician_patientUpdateManyWithoutClinicianNestedInput
+  clinicians?: Prisma.clinician_patientUpdateManyWithoutPatientNestedInput
+  linked_patients?: Prisma.clinician_patientUpdateManyWithoutLinkerNestedInput
   consent?: Prisma.consentUpdateManyWithoutUser_accountNestedInput
   device?: Prisma.deviceUpdateManyWithoutUser_accountNestedInput
   feedback_label?: Prisma.feedback_labelUpdateManyWithoutUser_accountNestedInput
@@ -1690,6 +1841,9 @@ export type user_accountUncheckedUpdateWithoutMeasurementInput = {
   baseline?: Prisma.baselineUncheckedUpdateManyWithoutUser_accountNestedInput
   care_action?: Prisma.care_actionUncheckedUpdateManyWithoutUser_accountNestedInput
   clinician_profile?: Prisma.clinician_profileUncheckedUpdateOneWithoutUser_accountNestedInput
+  patients?: Prisma.clinician_patientUncheckedUpdateManyWithoutClinicianNestedInput
+  clinicians?: Prisma.clinician_patientUncheckedUpdateManyWithoutPatientNestedInput
+  linked_patients?: Prisma.clinician_patientUncheckedUpdateManyWithoutLinkerNestedInput
   consent?: Prisma.consentUncheckedUpdateManyWithoutUser_accountNestedInput
   device?: Prisma.deviceUncheckedUpdateManyWithoutUser_accountNestedInput
   feedback_label?: Prisma.feedback_labelUncheckedUpdateManyWithoutUser_accountNestedInput
@@ -1719,6 +1873,9 @@ export type user_accountCreateWithoutReferralInput = {
   baseline?: Prisma.baselineCreateNestedManyWithoutUser_accountInput
   care_action?: Prisma.care_actionCreateNestedManyWithoutUser_accountInput
   clinician_profile?: Prisma.clinician_profileCreateNestedOneWithoutUser_accountInput
+  patients?: Prisma.clinician_patientCreateNestedManyWithoutClinicianInput
+  clinicians?: Prisma.clinician_patientCreateNestedManyWithoutPatientInput
+  linked_patients?: Prisma.clinician_patientCreateNestedManyWithoutLinkerInput
   consent?: Prisma.consentCreateNestedManyWithoutUser_accountInput
   device?: Prisma.deviceCreateNestedManyWithoutUser_accountInput
   feedback_label?: Prisma.feedback_labelCreateNestedManyWithoutUser_accountInput
@@ -1748,6 +1905,9 @@ export type user_accountUncheckedCreateWithoutReferralInput = {
   baseline?: Prisma.baselineUncheckedCreateNestedManyWithoutUser_accountInput
   care_action?: Prisma.care_actionUncheckedCreateNestedManyWithoutUser_accountInput
   clinician_profile?: Prisma.clinician_profileUncheckedCreateNestedOneWithoutUser_accountInput
+  patients?: Prisma.clinician_patientUncheckedCreateNestedManyWithoutClinicianInput
+  clinicians?: Prisma.clinician_patientUncheckedCreateNestedManyWithoutPatientInput
+  linked_patients?: Prisma.clinician_patientUncheckedCreateNestedManyWithoutLinkerInput
   consent?: Prisma.consentUncheckedCreateNestedManyWithoutUser_accountInput
   device?: Prisma.deviceUncheckedCreateNestedManyWithoutUser_accountInput
   feedback_label?: Prisma.feedback_labelUncheckedCreateNestedManyWithoutUser_accountInput
@@ -1793,6 +1953,9 @@ export type user_accountUpdateWithoutReferralInput = {
   baseline?: Prisma.baselineUpdateManyWithoutUser_accountNestedInput
   care_action?: Prisma.care_actionUpdateManyWithoutUser_accountNestedInput
   clinician_profile?: Prisma.clinician_profileUpdateOneWithoutUser_accountNestedInput
+  patients?: Prisma.clinician_patientUpdateManyWithoutClinicianNestedInput
+  clinicians?: Prisma.clinician_patientUpdateManyWithoutPatientNestedInput
+  linked_patients?: Prisma.clinician_patientUpdateManyWithoutLinkerNestedInput
   consent?: Prisma.consentUpdateManyWithoutUser_accountNestedInput
   device?: Prisma.deviceUpdateManyWithoutUser_accountNestedInput
   feedback_label?: Prisma.feedback_labelUpdateManyWithoutUser_accountNestedInput
@@ -1822,6 +1985,9 @@ export type user_accountUncheckedUpdateWithoutReferralInput = {
   baseline?: Prisma.baselineUncheckedUpdateManyWithoutUser_accountNestedInput
   care_action?: Prisma.care_actionUncheckedUpdateManyWithoutUser_accountNestedInput
   clinician_profile?: Prisma.clinician_profileUncheckedUpdateOneWithoutUser_accountNestedInput
+  patients?: Prisma.clinician_patientUncheckedUpdateManyWithoutClinicianNestedInput
+  clinicians?: Prisma.clinician_patientUncheckedUpdateManyWithoutPatientNestedInput
+  linked_patients?: Prisma.clinician_patientUncheckedUpdateManyWithoutLinkerNestedInput
   consent?: Prisma.consentUncheckedUpdateManyWithoutUser_accountNestedInput
   device?: Prisma.deviceUncheckedUpdateManyWithoutUser_accountNestedInput
   feedback_label?: Prisma.feedback_labelUncheckedUpdateManyWithoutUser_accountNestedInput
@@ -1851,6 +2017,9 @@ export type user_accountCreateWithoutRisk_assessmentInput = {
   baseline?: Prisma.baselineCreateNestedManyWithoutUser_accountInput
   care_action?: Prisma.care_actionCreateNestedManyWithoutUser_accountInput
   clinician_profile?: Prisma.clinician_profileCreateNestedOneWithoutUser_accountInput
+  patients?: Prisma.clinician_patientCreateNestedManyWithoutClinicianInput
+  clinicians?: Prisma.clinician_patientCreateNestedManyWithoutPatientInput
+  linked_patients?: Prisma.clinician_patientCreateNestedManyWithoutLinkerInput
   consent?: Prisma.consentCreateNestedManyWithoutUser_accountInput
   device?: Prisma.deviceCreateNestedManyWithoutUser_accountInput
   feedback_label?: Prisma.feedback_labelCreateNestedManyWithoutUser_accountInput
@@ -1880,6 +2049,9 @@ export type user_accountUncheckedCreateWithoutRisk_assessmentInput = {
   baseline?: Prisma.baselineUncheckedCreateNestedManyWithoutUser_accountInput
   care_action?: Prisma.care_actionUncheckedCreateNestedManyWithoutUser_accountInput
   clinician_profile?: Prisma.clinician_profileUncheckedCreateNestedOneWithoutUser_accountInput
+  patients?: Prisma.clinician_patientUncheckedCreateNestedManyWithoutClinicianInput
+  clinicians?: Prisma.clinician_patientUncheckedCreateNestedManyWithoutPatientInput
+  linked_patients?: Prisma.clinician_patientUncheckedCreateNestedManyWithoutLinkerInput
   consent?: Prisma.consentUncheckedCreateNestedManyWithoutUser_accountInput
   device?: Prisma.deviceUncheckedCreateNestedManyWithoutUser_accountInput
   feedback_label?: Prisma.feedback_labelUncheckedCreateNestedManyWithoutUser_accountInput
@@ -1925,6 +2097,9 @@ export type user_accountUpdateWithoutRisk_assessmentInput = {
   baseline?: Prisma.baselineUpdateManyWithoutUser_accountNestedInput
   care_action?: Prisma.care_actionUpdateManyWithoutUser_accountNestedInput
   clinician_profile?: Prisma.clinician_profileUpdateOneWithoutUser_accountNestedInput
+  patients?: Prisma.clinician_patientUpdateManyWithoutClinicianNestedInput
+  clinicians?: Prisma.clinician_patientUpdateManyWithoutPatientNestedInput
+  linked_patients?: Prisma.clinician_patientUpdateManyWithoutLinkerNestedInput
   consent?: Prisma.consentUpdateManyWithoutUser_accountNestedInput
   device?: Prisma.deviceUpdateManyWithoutUser_accountNestedInput
   feedback_label?: Prisma.feedback_labelUpdateManyWithoutUser_accountNestedInput
@@ -1954,6 +2129,9 @@ export type user_accountUncheckedUpdateWithoutRisk_assessmentInput = {
   baseline?: Prisma.baselineUncheckedUpdateManyWithoutUser_accountNestedInput
   care_action?: Prisma.care_actionUncheckedUpdateManyWithoutUser_accountNestedInput
   clinician_profile?: Prisma.clinician_profileUncheckedUpdateOneWithoutUser_accountNestedInput
+  patients?: Prisma.clinician_patientUncheckedUpdateManyWithoutClinicianNestedInput
+  clinicians?: Prisma.clinician_patientUncheckedUpdateManyWithoutPatientNestedInput
+  linked_patients?: Prisma.clinician_patientUncheckedUpdateManyWithoutLinkerNestedInput
   consent?: Prisma.consentUncheckedUpdateManyWithoutUser_accountNestedInput
   device?: Prisma.deviceUncheckedUpdateManyWithoutUser_accountNestedInput
   feedback_label?: Prisma.feedback_labelUncheckedUpdateManyWithoutUser_accountNestedInput
@@ -1983,6 +2161,9 @@ export type user_accountCreateWithoutUser_content_logInput = {
   baseline?: Prisma.baselineCreateNestedManyWithoutUser_accountInput
   care_action?: Prisma.care_actionCreateNestedManyWithoutUser_accountInput
   clinician_profile?: Prisma.clinician_profileCreateNestedOneWithoutUser_accountInput
+  patients?: Prisma.clinician_patientCreateNestedManyWithoutClinicianInput
+  clinicians?: Prisma.clinician_patientCreateNestedManyWithoutPatientInput
+  linked_patients?: Prisma.clinician_patientCreateNestedManyWithoutLinkerInput
   consent?: Prisma.consentCreateNestedManyWithoutUser_accountInput
   device?: Prisma.deviceCreateNestedManyWithoutUser_accountInput
   feedback_label?: Prisma.feedback_labelCreateNestedManyWithoutUser_accountInput
@@ -2012,6 +2193,9 @@ export type user_accountUncheckedCreateWithoutUser_content_logInput = {
   baseline?: Prisma.baselineUncheckedCreateNestedManyWithoutUser_accountInput
   care_action?: Prisma.care_actionUncheckedCreateNestedManyWithoutUser_accountInput
   clinician_profile?: Prisma.clinician_profileUncheckedCreateNestedOneWithoutUser_accountInput
+  patients?: Prisma.clinician_patientUncheckedCreateNestedManyWithoutClinicianInput
+  clinicians?: Prisma.clinician_patientUncheckedCreateNestedManyWithoutPatientInput
+  linked_patients?: Prisma.clinician_patientUncheckedCreateNestedManyWithoutLinkerInput
   consent?: Prisma.consentUncheckedCreateNestedManyWithoutUser_accountInput
   device?: Prisma.deviceUncheckedCreateNestedManyWithoutUser_accountInput
   feedback_label?: Prisma.feedback_labelUncheckedCreateNestedManyWithoutUser_accountInput
@@ -2057,6 +2241,9 @@ export type user_accountUpdateWithoutUser_content_logInput = {
   baseline?: Prisma.baselineUpdateManyWithoutUser_accountNestedInput
   care_action?: Prisma.care_actionUpdateManyWithoutUser_accountNestedInput
   clinician_profile?: Prisma.clinician_profileUpdateOneWithoutUser_accountNestedInput
+  patients?: Prisma.clinician_patientUpdateManyWithoutClinicianNestedInput
+  clinicians?: Prisma.clinician_patientUpdateManyWithoutPatientNestedInput
+  linked_patients?: Prisma.clinician_patientUpdateManyWithoutLinkerNestedInput
   consent?: Prisma.consentUpdateManyWithoutUser_accountNestedInput
   device?: Prisma.deviceUpdateManyWithoutUser_accountNestedInput
   feedback_label?: Prisma.feedback_labelUpdateManyWithoutUser_accountNestedInput
@@ -2086,6 +2273,9 @@ export type user_accountUncheckedUpdateWithoutUser_content_logInput = {
   baseline?: Prisma.baselineUncheckedUpdateManyWithoutUser_accountNestedInput
   care_action?: Prisma.care_actionUncheckedUpdateManyWithoutUser_accountNestedInput
   clinician_profile?: Prisma.clinician_profileUncheckedUpdateOneWithoutUser_accountNestedInput
+  patients?: Prisma.clinician_patientUncheckedUpdateManyWithoutClinicianNestedInput
+  clinicians?: Prisma.clinician_patientUncheckedUpdateManyWithoutPatientNestedInput
+  linked_patients?: Prisma.clinician_patientUncheckedUpdateManyWithoutLinkerNestedInput
   consent?: Prisma.consentUncheckedUpdateManyWithoutUser_accountNestedInput
   device?: Prisma.deviceUncheckedUpdateManyWithoutUser_accountNestedInput
   feedback_label?: Prisma.feedback_labelUncheckedUpdateManyWithoutUser_accountNestedInput
@@ -2115,6 +2305,9 @@ export type user_accountCreateWithoutUser_piiInput = {
   baseline?: Prisma.baselineCreateNestedManyWithoutUser_accountInput
   care_action?: Prisma.care_actionCreateNestedManyWithoutUser_accountInput
   clinician_profile?: Prisma.clinician_profileCreateNestedOneWithoutUser_accountInput
+  patients?: Prisma.clinician_patientCreateNestedManyWithoutClinicianInput
+  clinicians?: Prisma.clinician_patientCreateNestedManyWithoutPatientInput
+  linked_patients?: Prisma.clinician_patientCreateNestedManyWithoutLinkerInput
   consent?: Prisma.consentCreateNestedManyWithoutUser_accountInput
   device?: Prisma.deviceCreateNestedManyWithoutUser_accountInput
   feedback_label?: Prisma.feedback_labelCreateNestedManyWithoutUser_accountInput
@@ -2144,6 +2337,9 @@ export type user_accountUncheckedCreateWithoutUser_piiInput = {
   baseline?: Prisma.baselineUncheckedCreateNestedManyWithoutUser_accountInput
   care_action?: Prisma.care_actionUncheckedCreateNestedManyWithoutUser_accountInput
   clinician_profile?: Prisma.clinician_profileUncheckedCreateNestedOneWithoutUser_accountInput
+  patients?: Prisma.clinician_patientUncheckedCreateNestedManyWithoutClinicianInput
+  clinicians?: Prisma.clinician_patientUncheckedCreateNestedManyWithoutPatientInput
+  linked_patients?: Prisma.clinician_patientUncheckedCreateNestedManyWithoutLinkerInput
   consent?: Prisma.consentUncheckedCreateNestedManyWithoutUser_accountInput
   device?: Prisma.deviceUncheckedCreateNestedManyWithoutUser_accountInput
   feedback_label?: Prisma.feedback_labelUncheckedCreateNestedManyWithoutUser_accountInput
@@ -2189,6 +2385,9 @@ export type user_accountUpdateWithoutUser_piiInput = {
   baseline?: Prisma.baselineUpdateManyWithoutUser_accountNestedInput
   care_action?: Prisma.care_actionUpdateManyWithoutUser_accountNestedInput
   clinician_profile?: Prisma.clinician_profileUpdateOneWithoutUser_accountNestedInput
+  patients?: Prisma.clinician_patientUpdateManyWithoutClinicianNestedInput
+  clinicians?: Prisma.clinician_patientUpdateManyWithoutPatientNestedInput
+  linked_patients?: Prisma.clinician_patientUpdateManyWithoutLinkerNestedInput
   consent?: Prisma.consentUpdateManyWithoutUser_accountNestedInput
   device?: Prisma.deviceUpdateManyWithoutUser_accountNestedInput
   feedback_label?: Prisma.feedback_labelUpdateManyWithoutUser_accountNestedInput
@@ -2218,6 +2417,9 @@ export type user_accountUncheckedUpdateWithoutUser_piiInput = {
   baseline?: Prisma.baselineUncheckedUpdateManyWithoutUser_accountNestedInput
   care_action?: Prisma.care_actionUncheckedUpdateManyWithoutUser_accountNestedInput
   clinician_profile?: Prisma.clinician_profileUncheckedUpdateOneWithoutUser_accountNestedInput
+  patients?: Prisma.clinician_patientUncheckedUpdateManyWithoutClinicianNestedInput
+  clinicians?: Prisma.clinician_patientUncheckedUpdateManyWithoutPatientNestedInput
+  linked_patients?: Prisma.clinician_patientUncheckedUpdateManyWithoutLinkerNestedInput
   consent?: Prisma.consentUncheckedUpdateManyWithoutUser_accountNestedInput
   device?: Prisma.deviceUncheckedUpdateManyWithoutUser_accountNestedInput
   feedback_label?: Prisma.feedback_labelUncheckedUpdateManyWithoutUser_accountNestedInput
@@ -2247,6 +2449,9 @@ export type user_accountCreateWithoutPhr_recordInput = {
   baseline?: Prisma.baselineCreateNestedManyWithoutUser_accountInput
   care_action?: Prisma.care_actionCreateNestedManyWithoutUser_accountInput
   clinician_profile?: Prisma.clinician_profileCreateNestedOneWithoutUser_accountInput
+  patients?: Prisma.clinician_patientCreateNestedManyWithoutClinicianInput
+  clinicians?: Prisma.clinician_patientCreateNestedManyWithoutPatientInput
+  linked_patients?: Prisma.clinician_patientCreateNestedManyWithoutLinkerInput
   consent?: Prisma.consentCreateNestedManyWithoutUser_accountInput
   device?: Prisma.deviceCreateNestedManyWithoutUser_accountInput
   feedback_label?: Prisma.feedback_labelCreateNestedManyWithoutUser_accountInput
@@ -2276,6 +2481,9 @@ export type user_accountUncheckedCreateWithoutPhr_recordInput = {
   baseline?: Prisma.baselineUncheckedCreateNestedManyWithoutUser_accountInput
   care_action?: Prisma.care_actionUncheckedCreateNestedManyWithoutUser_accountInput
   clinician_profile?: Prisma.clinician_profileUncheckedCreateNestedOneWithoutUser_accountInput
+  patients?: Prisma.clinician_patientUncheckedCreateNestedManyWithoutClinicianInput
+  clinicians?: Prisma.clinician_patientUncheckedCreateNestedManyWithoutPatientInput
+  linked_patients?: Prisma.clinician_patientUncheckedCreateNestedManyWithoutLinkerInput
   consent?: Prisma.consentUncheckedCreateNestedManyWithoutUser_accountInput
   device?: Prisma.deviceUncheckedCreateNestedManyWithoutUser_accountInput
   feedback_label?: Prisma.feedback_labelUncheckedCreateNestedManyWithoutUser_accountInput
@@ -2321,6 +2529,9 @@ export type user_accountUpdateWithoutPhr_recordInput = {
   baseline?: Prisma.baselineUpdateManyWithoutUser_accountNestedInput
   care_action?: Prisma.care_actionUpdateManyWithoutUser_accountNestedInput
   clinician_profile?: Prisma.clinician_profileUpdateOneWithoutUser_accountNestedInput
+  patients?: Prisma.clinician_patientUpdateManyWithoutClinicianNestedInput
+  clinicians?: Prisma.clinician_patientUpdateManyWithoutPatientNestedInput
+  linked_patients?: Prisma.clinician_patientUpdateManyWithoutLinkerNestedInput
   consent?: Prisma.consentUpdateManyWithoutUser_accountNestedInput
   device?: Prisma.deviceUpdateManyWithoutUser_accountNestedInput
   feedback_label?: Prisma.feedback_labelUpdateManyWithoutUser_accountNestedInput
@@ -2350,6 +2561,9 @@ export type user_accountUncheckedUpdateWithoutPhr_recordInput = {
   baseline?: Prisma.baselineUncheckedUpdateManyWithoutUser_accountNestedInput
   care_action?: Prisma.care_actionUncheckedUpdateManyWithoutUser_accountNestedInput
   clinician_profile?: Prisma.clinician_profileUncheckedUpdateOneWithoutUser_accountNestedInput
+  patients?: Prisma.clinician_patientUncheckedUpdateManyWithoutClinicianNestedInput
+  clinicians?: Prisma.clinician_patientUncheckedUpdateManyWithoutPatientNestedInput
+  linked_patients?: Prisma.clinician_patientUncheckedUpdateManyWithoutLinkerNestedInput
   consent?: Prisma.consentUncheckedUpdateManyWithoutUser_accountNestedInput
   device?: Prisma.deviceUncheckedUpdateManyWithoutUser_accountNestedInput
   feedback_label?: Prisma.feedback_labelUncheckedUpdateManyWithoutUser_accountNestedInput
@@ -2379,6 +2593,9 @@ export type user_accountCreateWithoutNotificationInput = {
   baseline?: Prisma.baselineCreateNestedManyWithoutUser_accountInput
   care_action?: Prisma.care_actionCreateNestedManyWithoutUser_accountInput
   clinician_profile?: Prisma.clinician_profileCreateNestedOneWithoutUser_accountInput
+  patients?: Prisma.clinician_patientCreateNestedManyWithoutClinicianInput
+  clinicians?: Prisma.clinician_patientCreateNestedManyWithoutPatientInput
+  linked_patients?: Prisma.clinician_patientCreateNestedManyWithoutLinkerInput
   consent?: Prisma.consentCreateNestedManyWithoutUser_accountInput
   device?: Prisma.deviceCreateNestedManyWithoutUser_accountInput
   feedback_label?: Prisma.feedback_labelCreateNestedManyWithoutUser_accountInput
@@ -2408,6 +2625,9 @@ export type user_accountUncheckedCreateWithoutNotificationInput = {
   baseline?: Prisma.baselineUncheckedCreateNestedManyWithoutUser_accountInput
   care_action?: Prisma.care_actionUncheckedCreateNestedManyWithoutUser_accountInput
   clinician_profile?: Prisma.clinician_profileUncheckedCreateNestedOneWithoutUser_accountInput
+  patients?: Prisma.clinician_patientUncheckedCreateNestedManyWithoutClinicianInput
+  clinicians?: Prisma.clinician_patientUncheckedCreateNestedManyWithoutPatientInput
+  linked_patients?: Prisma.clinician_patientUncheckedCreateNestedManyWithoutLinkerInput
   consent?: Prisma.consentUncheckedCreateNestedManyWithoutUser_accountInput
   device?: Prisma.deviceUncheckedCreateNestedManyWithoutUser_accountInput
   feedback_label?: Prisma.feedback_labelUncheckedCreateNestedManyWithoutUser_accountInput
@@ -2453,6 +2673,9 @@ export type user_accountUpdateWithoutNotificationInput = {
   baseline?: Prisma.baselineUpdateManyWithoutUser_accountNestedInput
   care_action?: Prisma.care_actionUpdateManyWithoutUser_accountNestedInput
   clinician_profile?: Prisma.clinician_profileUpdateOneWithoutUser_accountNestedInput
+  patients?: Prisma.clinician_patientUpdateManyWithoutClinicianNestedInput
+  clinicians?: Prisma.clinician_patientUpdateManyWithoutPatientNestedInput
+  linked_patients?: Prisma.clinician_patientUpdateManyWithoutLinkerNestedInput
   consent?: Prisma.consentUpdateManyWithoutUser_accountNestedInput
   device?: Prisma.deviceUpdateManyWithoutUser_accountNestedInput
   feedback_label?: Prisma.feedback_labelUpdateManyWithoutUser_accountNestedInput
@@ -2482,12 +2705,447 @@ export type user_accountUncheckedUpdateWithoutNotificationInput = {
   baseline?: Prisma.baselineUncheckedUpdateManyWithoutUser_accountNestedInput
   care_action?: Prisma.care_actionUncheckedUpdateManyWithoutUser_accountNestedInput
   clinician_profile?: Prisma.clinician_profileUncheckedUpdateOneWithoutUser_accountNestedInput
+  patients?: Prisma.clinician_patientUncheckedUpdateManyWithoutClinicianNestedInput
+  clinicians?: Prisma.clinician_patientUncheckedUpdateManyWithoutPatientNestedInput
+  linked_patients?: Prisma.clinician_patientUncheckedUpdateManyWithoutLinkerNestedInput
   consent?: Prisma.consentUncheckedUpdateManyWithoutUser_accountNestedInput
   device?: Prisma.deviceUncheckedUpdateManyWithoutUser_accountNestedInput
   feedback_label?: Prisma.feedback_labelUncheckedUpdateManyWithoutUser_accountNestedInput
   gamification_state?: Prisma.gamification_stateUncheckedUpdateOneWithoutUser_accountNestedInput
   measurement?: Prisma.measurementUncheckedUpdateManyWithoutUser_accountNestedInput
   mission_log?: Prisma.mission_logUncheckedUpdateManyWithoutUser_accountNestedInput
+  phr_record?: Prisma.phr_recordUncheckedUpdateOneWithoutUser_accountNestedInput
+  referral?: Prisma.referralUncheckedUpdateManyWithoutUser_accountNestedInput
+  risk_assessment?: Prisma.risk_assessmentUncheckedUpdateManyWithoutUser_accountNestedInput
+  user_content_log?: Prisma.user_content_logUncheckedUpdateManyWithoutUser_accountNestedInput
+  user_pii?: Prisma.user_piiUncheckedUpdateOneWithoutUser_accountNestedInput
+}
+
+export type user_accountCreateWithoutPatientsInput = {
+  id?: string
+  pseudo_id: string
+  account_type: string
+  status?: string
+  locale?: string | null
+  auth_user_id?: string | null
+  created_at?: Date | string
+  updated_at?: Date | string
+  email?: string | null
+  password_hash?: string | null
+  display_name?: string | null
+  is_super?: boolean
+  baseline?: Prisma.baselineCreateNestedManyWithoutUser_accountInput
+  care_action?: Prisma.care_actionCreateNestedManyWithoutUser_accountInput
+  clinician_profile?: Prisma.clinician_profileCreateNestedOneWithoutUser_accountInput
+  clinicians?: Prisma.clinician_patientCreateNestedManyWithoutPatientInput
+  linked_patients?: Prisma.clinician_patientCreateNestedManyWithoutLinkerInput
+  consent?: Prisma.consentCreateNestedManyWithoutUser_accountInput
+  device?: Prisma.deviceCreateNestedManyWithoutUser_accountInput
+  feedback_label?: Prisma.feedback_labelCreateNestedManyWithoutUser_accountInput
+  gamification_state?: Prisma.gamification_stateCreateNestedOneWithoutUser_accountInput
+  measurement?: Prisma.measurementCreateNestedManyWithoutUser_accountInput
+  mission_log?: Prisma.mission_logCreateNestedManyWithoutUser_accountInput
+  notification?: Prisma.notificationCreateNestedManyWithoutUser_accountInput
+  phr_record?: Prisma.phr_recordCreateNestedOneWithoutUser_accountInput
+  referral?: Prisma.referralCreateNestedManyWithoutUser_accountInput
+  risk_assessment?: Prisma.risk_assessmentCreateNestedManyWithoutUser_accountInput
+  user_content_log?: Prisma.user_content_logCreateNestedManyWithoutUser_accountInput
+  user_pii?: Prisma.user_piiCreateNestedOneWithoutUser_accountInput
+}
+
+export type user_accountUncheckedCreateWithoutPatientsInput = {
+  id?: string
+  pseudo_id: string
+  account_type: string
+  status?: string
+  locale?: string | null
+  auth_user_id?: string | null
+  created_at?: Date | string
+  updated_at?: Date | string
+  email?: string | null
+  password_hash?: string | null
+  display_name?: string | null
+  is_super?: boolean
+  baseline?: Prisma.baselineUncheckedCreateNestedManyWithoutUser_accountInput
+  care_action?: Prisma.care_actionUncheckedCreateNestedManyWithoutUser_accountInput
+  clinician_profile?: Prisma.clinician_profileUncheckedCreateNestedOneWithoutUser_accountInput
+  clinicians?: Prisma.clinician_patientUncheckedCreateNestedManyWithoutPatientInput
+  linked_patients?: Prisma.clinician_patientUncheckedCreateNestedManyWithoutLinkerInput
+  consent?: Prisma.consentUncheckedCreateNestedManyWithoutUser_accountInput
+  device?: Prisma.deviceUncheckedCreateNestedManyWithoutUser_accountInput
+  feedback_label?: Prisma.feedback_labelUncheckedCreateNestedManyWithoutUser_accountInput
+  gamification_state?: Prisma.gamification_stateUncheckedCreateNestedOneWithoutUser_accountInput
+  measurement?: Prisma.measurementUncheckedCreateNestedManyWithoutUser_accountInput
+  mission_log?: Prisma.mission_logUncheckedCreateNestedManyWithoutUser_accountInput
+  notification?: Prisma.notificationUncheckedCreateNestedManyWithoutUser_accountInput
+  phr_record?: Prisma.phr_recordUncheckedCreateNestedOneWithoutUser_accountInput
+  referral?: Prisma.referralUncheckedCreateNestedManyWithoutUser_accountInput
+  risk_assessment?: Prisma.risk_assessmentUncheckedCreateNestedManyWithoutUser_accountInput
+  user_content_log?: Prisma.user_content_logUncheckedCreateNestedManyWithoutUser_accountInput
+  user_pii?: Prisma.user_piiUncheckedCreateNestedOneWithoutUser_accountInput
+}
+
+export type user_accountCreateOrConnectWithoutPatientsInput = {
+  where: Prisma.user_accountWhereUniqueInput
+  create: Prisma.XOR<Prisma.user_accountCreateWithoutPatientsInput, Prisma.user_accountUncheckedCreateWithoutPatientsInput>
+}
+
+export type user_accountCreateWithoutCliniciansInput = {
+  id?: string
+  pseudo_id: string
+  account_type: string
+  status?: string
+  locale?: string | null
+  auth_user_id?: string | null
+  created_at?: Date | string
+  updated_at?: Date | string
+  email?: string | null
+  password_hash?: string | null
+  display_name?: string | null
+  is_super?: boolean
+  baseline?: Prisma.baselineCreateNestedManyWithoutUser_accountInput
+  care_action?: Prisma.care_actionCreateNestedManyWithoutUser_accountInput
+  clinician_profile?: Prisma.clinician_profileCreateNestedOneWithoutUser_accountInput
+  patients?: Prisma.clinician_patientCreateNestedManyWithoutClinicianInput
+  linked_patients?: Prisma.clinician_patientCreateNestedManyWithoutLinkerInput
+  consent?: Prisma.consentCreateNestedManyWithoutUser_accountInput
+  device?: Prisma.deviceCreateNestedManyWithoutUser_accountInput
+  feedback_label?: Prisma.feedback_labelCreateNestedManyWithoutUser_accountInput
+  gamification_state?: Prisma.gamification_stateCreateNestedOneWithoutUser_accountInput
+  measurement?: Prisma.measurementCreateNestedManyWithoutUser_accountInput
+  mission_log?: Prisma.mission_logCreateNestedManyWithoutUser_accountInput
+  notification?: Prisma.notificationCreateNestedManyWithoutUser_accountInput
+  phr_record?: Prisma.phr_recordCreateNestedOneWithoutUser_accountInput
+  referral?: Prisma.referralCreateNestedManyWithoutUser_accountInput
+  risk_assessment?: Prisma.risk_assessmentCreateNestedManyWithoutUser_accountInput
+  user_content_log?: Prisma.user_content_logCreateNestedManyWithoutUser_accountInput
+  user_pii?: Prisma.user_piiCreateNestedOneWithoutUser_accountInput
+}
+
+export type user_accountUncheckedCreateWithoutCliniciansInput = {
+  id?: string
+  pseudo_id: string
+  account_type: string
+  status?: string
+  locale?: string | null
+  auth_user_id?: string | null
+  created_at?: Date | string
+  updated_at?: Date | string
+  email?: string | null
+  password_hash?: string | null
+  display_name?: string | null
+  is_super?: boolean
+  baseline?: Prisma.baselineUncheckedCreateNestedManyWithoutUser_accountInput
+  care_action?: Prisma.care_actionUncheckedCreateNestedManyWithoutUser_accountInput
+  clinician_profile?: Prisma.clinician_profileUncheckedCreateNestedOneWithoutUser_accountInput
+  patients?: Prisma.clinician_patientUncheckedCreateNestedManyWithoutClinicianInput
+  linked_patients?: Prisma.clinician_patientUncheckedCreateNestedManyWithoutLinkerInput
+  consent?: Prisma.consentUncheckedCreateNestedManyWithoutUser_accountInput
+  device?: Prisma.deviceUncheckedCreateNestedManyWithoutUser_accountInput
+  feedback_label?: Prisma.feedback_labelUncheckedCreateNestedManyWithoutUser_accountInput
+  gamification_state?: Prisma.gamification_stateUncheckedCreateNestedOneWithoutUser_accountInput
+  measurement?: Prisma.measurementUncheckedCreateNestedManyWithoutUser_accountInput
+  mission_log?: Prisma.mission_logUncheckedCreateNestedManyWithoutUser_accountInput
+  notification?: Prisma.notificationUncheckedCreateNestedManyWithoutUser_accountInput
+  phr_record?: Prisma.phr_recordUncheckedCreateNestedOneWithoutUser_accountInput
+  referral?: Prisma.referralUncheckedCreateNestedManyWithoutUser_accountInput
+  risk_assessment?: Prisma.risk_assessmentUncheckedCreateNestedManyWithoutUser_accountInput
+  user_content_log?: Prisma.user_content_logUncheckedCreateNestedManyWithoutUser_accountInput
+  user_pii?: Prisma.user_piiUncheckedCreateNestedOneWithoutUser_accountInput
+}
+
+export type user_accountCreateOrConnectWithoutCliniciansInput = {
+  where: Prisma.user_accountWhereUniqueInput
+  create: Prisma.XOR<Prisma.user_accountCreateWithoutCliniciansInput, Prisma.user_accountUncheckedCreateWithoutCliniciansInput>
+}
+
+export type user_accountCreateWithoutLinked_patientsInput = {
+  id?: string
+  pseudo_id: string
+  account_type: string
+  status?: string
+  locale?: string | null
+  auth_user_id?: string | null
+  created_at?: Date | string
+  updated_at?: Date | string
+  email?: string | null
+  password_hash?: string | null
+  display_name?: string | null
+  is_super?: boolean
+  baseline?: Prisma.baselineCreateNestedManyWithoutUser_accountInput
+  care_action?: Prisma.care_actionCreateNestedManyWithoutUser_accountInput
+  clinician_profile?: Prisma.clinician_profileCreateNestedOneWithoutUser_accountInput
+  patients?: Prisma.clinician_patientCreateNestedManyWithoutClinicianInput
+  clinicians?: Prisma.clinician_patientCreateNestedManyWithoutPatientInput
+  consent?: Prisma.consentCreateNestedManyWithoutUser_accountInput
+  device?: Prisma.deviceCreateNestedManyWithoutUser_accountInput
+  feedback_label?: Prisma.feedback_labelCreateNestedManyWithoutUser_accountInput
+  gamification_state?: Prisma.gamification_stateCreateNestedOneWithoutUser_accountInput
+  measurement?: Prisma.measurementCreateNestedManyWithoutUser_accountInput
+  mission_log?: Prisma.mission_logCreateNestedManyWithoutUser_accountInput
+  notification?: Prisma.notificationCreateNestedManyWithoutUser_accountInput
+  phr_record?: Prisma.phr_recordCreateNestedOneWithoutUser_accountInput
+  referral?: Prisma.referralCreateNestedManyWithoutUser_accountInput
+  risk_assessment?: Prisma.risk_assessmentCreateNestedManyWithoutUser_accountInput
+  user_content_log?: Prisma.user_content_logCreateNestedManyWithoutUser_accountInput
+  user_pii?: Prisma.user_piiCreateNestedOneWithoutUser_accountInput
+}
+
+export type user_accountUncheckedCreateWithoutLinked_patientsInput = {
+  id?: string
+  pseudo_id: string
+  account_type: string
+  status?: string
+  locale?: string | null
+  auth_user_id?: string | null
+  created_at?: Date | string
+  updated_at?: Date | string
+  email?: string | null
+  password_hash?: string | null
+  display_name?: string | null
+  is_super?: boolean
+  baseline?: Prisma.baselineUncheckedCreateNestedManyWithoutUser_accountInput
+  care_action?: Prisma.care_actionUncheckedCreateNestedManyWithoutUser_accountInput
+  clinician_profile?: Prisma.clinician_profileUncheckedCreateNestedOneWithoutUser_accountInput
+  patients?: Prisma.clinician_patientUncheckedCreateNestedManyWithoutClinicianInput
+  clinicians?: Prisma.clinician_patientUncheckedCreateNestedManyWithoutPatientInput
+  consent?: Prisma.consentUncheckedCreateNestedManyWithoutUser_accountInput
+  device?: Prisma.deviceUncheckedCreateNestedManyWithoutUser_accountInput
+  feedback_label?: Prisma.feedback_labelUncheckedCreateNestedManyWithoutUser_accountInput
+  gamification_state?: Prisma.gamification_stateUncheckedCreateNestedOneWithoutUser_accountInput
+  measurement?: Prisma.measurementUncheckedCreateNestedManyWithoutUser_accountInput
+  mission_log?: Prisma.mission_logUncheckedCreateNestedManyWithoutUser_accountInput
+  notification?: Prisma.notificationUncheckedCreateNestedManyWithoutUser_accountInput
+  phr_record?: Prisma.phr_recordUncheckedCreateNestedOneWithoutUser_accountInput
+  referral?: Prisma.referralUncheckedCreateNestedManyWithoutUser_accountInput
+  risk_assessment?: Prisma.risk_assessmentUncheckedCreateNestedManyWithoutUser_accountInput
+  user_content_log?: Prisma.user_content_logUncheckedCreateNestedManyWithoutUser_accountInput
+  user_pii?: Prisma.user_piiUncheckedCreateNestedOneWithoutUser_accountInput
+}
+
+export type user_accountCreateOrConnectWithoutLinked_patientsInput = {
+  where: Prisma.user_accountWhereUniqueInput
+  create: Prisma.XOR<Prisma.user_accountCreateWithoutLinked_patientsInput, Prisma.user_accountUncheckedCreateWithoutLinked_patientsInput>
+}
+
+export type user_accountUpsertWithoutPatientsInput = {
+  update: Prisma.XOR<Prisma.user_accountUpdateWithoutPatientsInput, Prisma.user_accountUncheckedUpdateWithoutPatientsInput>
+  create: Prisma.XOR<Prisma.user_accountCreateWithoutPatientsInput, Prisma.user_accountUncheckedCreateWithoutPatientsInput>
+  where?: Prisma.user_accountWhereInput
+}
+
+export type user_accountUpdateToOneWithWhereWithoutPatientsInput = {
+  where?: Prisma.user_accountWhereInput
+  data: Prisma.XOR<Prisma.user_accountUpdateWithoutPatientsInput, Prisma.user_accountUncheckedUpdateWithoutPatientsInput>
+}
+
+export type user_accountUpdateWithoutPatientsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  pseudo_id?: Prisma.StringFieldUpdateOperationsInput | string
+  account_type?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  locale?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  auth_user_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password_hash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  display_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  is_super?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  baseline?: Prisma.baselineUpdateManyWithoutUser_accountNestedInput
+  care_action?: Prisma.care_actionUpdateManyWithoutUser_accountNestedInput
+  clinician_profile?: Prisma.clinician_profileUpdateOneWithoutUser_accountNestedInput
+  clinicians?: Prisma.clinician_patientUpdateManyWithoutPatientNestedInput
+  linked_patients?: Prisma.clinician_patientUpdateManyWithoutLinkerNestedInput
+  consent?: Prisma.consentUpdateManyWithoutUser_accountNestedInput
+  device?: Prisma.deviceUpdateManyWithoutUser_accountNestedInput
+  feedback_label?: Prisma.feedback_labelUpdateManyWithoutUser_accountNestedInput
+  gamification_state?: Prisma.gamification_stateUpdateOneWithoutUser_accountNestedInput
+  measurement?: Prisma.measurementUpdateManyWithoutUser_accountNestedInput
+  mission_log?: Prisma.mission_logUpdateManyWithoutUser_accountNestedInput
+  notification?: Prisma.notificationUpdateManyWithoutUser_accountNestedInput
+  phr_record?: Prisma.phr_recordUpdateOneWithoutUser_accountNestedInput
+  referral?: Prisma.referralUpdateManyWithoutUser_accountNestedInput
+  risk_assessment?: Prisma.risk_assessmentUpdateManyWithoutUser_accountNestedInput
+  user_content_log?: Prisma.user_content_logUpdateManyWithoutUser_accountNestedInput
+  user_pii?: Prisma.user_piiUpdateOneWithoutUser_accountNestedInput
+}
+
+export type user_accountUncheckedUpdateWithoutPatientsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  pseudo_id?: Prisma.StringFieldUpdateOperationsInput | string
+  account_type?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  locale?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  auth_user_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password_hash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  display_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  is_super?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  baseline?: Prisma.baselineUncheckedUpdateManyWithoutUser_accountNestedInput
+  care_action?: Prisma.care_actionUncheckedUpdateManyWithoutUser_accountNestedInput
+  clinician_profile?: Prisma.clinician_profileUncheckedUpdateOneWithoutUser_accountNestedInput
+  clinicians?: Prisma.clinician_patientUncheckedUpdateManyWithoutPatientNestedInput
+  linked_patients?: Prisma.clinician_patientUncheckedUpdateManyWithoutLinkerNestedInput
+  consent?: Prisma.consentUncheckedUpdateManyWithoutUser_accountNestedInput
+  device?: Prisma.deviceUncheckedUpdateManyWithoutUser_accountNestedInput
+  feedback_label?: Prisma.feedback_labelUncheckedUpdateManyWithoutUser_accountNestedInput
+  gamification_state?: Prisma.gamification_stateUncheckedUpdateOneWithoutUser_accountNestedInput
+  measurement?: Prisma.measurementUncheckedUpdateManyWithoutUser_accountNestedInput
+  mission_log?: Prisma.mission_logUncheckedUpdateManyWithoutUser_accountNestedInput
+  notification?: Prisma.notificationUncheckedUpdateManyWithoutUser_accountNestedInput
+  phr_record?: Prisma.phr_recordUncheckedUpdateOneWithoutUser_accountNestedInput
+  referral?: Prisma.referralUncheckedUpdateManyWithoutUser_accountNestedInput
+  risk_assessment?: Prisma.risk_assessmentUncheckedUpdateManyWithoutUser_accountNestedInput
+  user_content_log?: Prisma.user_content_logUncheckedUpdateManyWithoutUser_accountNestedInput
+  user_pii?: Prisma.user_piiUncheckedUpdateOneWithoutUser_accountNestedInput
+}
+
+export type user_accountUpsertWithoutCliniciansInput = {
+  update: Prisma.XOR<Prisma.user_accountUpdateWithoutCliniciansInput, Prisma.user_accountUncheckedUpdateWithoutCliniciansInput>
+  create: Prisma.XOR<Prisma.user_accountCreateWithoutCliniciansInput, Prisma.user_accountUncheckedCreateWithoutCliniciansInput>
+  where?: Prisma.user_accountWhereInput
+}
+
+export type user_accountUpdateToOneWithWhereWithoutCliniciansInput = {
+  where?: Prisma.user_accountWhereInput
+  data: Prisma.XOR<Prisma.user_accountUpdateWithoutCliniciansInput, Prisma.user_accountUncheckedUpdateWithoutCliniciansInput>
+}
+
+export type user_accountUpdateWithoutCliniciansInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  pseudo_id?: Prisma.StringFieldUpdateOperationsInput | string
+  account_type?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  locale?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  auth_user_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password_hash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  display_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  is_super?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  baseline?: Prisma.baselineUpdateManyWithoutUser_accountNestedInput
+  care_action?: Prisma.care_actionUpdateManyWithoutUser_accountNestedInput
+  clinician_profile?: Prisma.clinician_profileUpdateOneWithoutUser_accountNestedInput
+  patients?: Prisma.clinician_patientUpdateManyWithoutClinicianNestedInput
+  linked_patients?: Prisma.clinician_patientUpdateManyWithoutLinkerNestedInput
+  consent?: Prisma.consentUpdateManyWithoutUser_accountNestedInput
+  device?: Prisma.deviceUpdateManyWithoutUser_accountNestedInput
+  feedback_label?: Prisma.feedback_labelUpdateManyWithoutUser_accountNestedInput
+  gamification_state?: Prisma.gamification_stateUpdateOneWithoutUser_accountNestedInput
+  measurement?: Prisma.measurementUpdateManyWithoutUser_accountNestedInput
+  mission_log?: Prisma.mission_logUpdateManyWithoutUser_accountNestedInput
+  notification?: Prisma.notificationUpdateManyWithoutUser_accountNestedInput
+  phr_record?: Prisma.phr_recordUpdateOneWithoutUser_accountNestedInput
+  referral?: Prisma.referralUpdateManyWithoutUser_accountNestedInput
+  risk_assessment?: Prisma.risk_assessmentUpdateManyWithoutUser_accountNestedInput
+  user_content_log?: Prisma.user_content_logUpdateManyWithoutUser_accountNestedInput
+  user_pii?: Prisma.user_piiUpdateOneWithoutUser_accountNestedInput
+}
+
+export type user_accountUncheckedUpdateWithoutCliniciansInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  pseudo_id?: Prisma.StringFieldUpdateOperationsInput | string
+  account_type?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  locale?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  auth_user_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password_hash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  display_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  is_super?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  baseline?: Prisma.baselineUncheckedUpdateManyWithoutUser_accountNestedInput
+  care_action?: Prisma.care_actionUncheckedUpdateManyWithoutUser_accountNestedInput
+  clinician_profile?: Prisma.clinician_profileUncheckedUpdateOneWithoutUser_accountNestedInput
+  patients?: Prisma.clinician_patientUncheckedUpdateManyWithoutClinicianNestedInput
+  linked_patients?: Prisma.clinician_patientUncheckedUpdateManyWithoutLinkerNestedInput
+  consent?: Prisma.consentUncheckedUpdateManyWithoutUser_accountNestedInput
+  device?: Prisma.deviceUncheckedUpdateManyWithoutUser_accountNestedInput
+  feedback_label?: Prisma.feedback_labelUncheckedUpdateManyWithoutUser_accountNestedInput
+  gamification_state?: Prisma.gamification_stateUncheckedUpdateOneWithoutUser_accountNestedInput
+  measurement?: Prisma.measurementUncheckedUpdateManyWithoutUser_accountNestedInput
+  mission_log?: Prisma.mission_logUncheckedUpdateManyWithoutUser_accountNestedInput
+  notification?: Prisma.notificationUncheckedUpdateManyWithoutUser_accountNestedInput
+  phr_record?: Prisma.phr_recordUncheckedUpdateOneWithoutUser_accountNestedInput
+  referral?: Prisma.referralUncheckedUpdateManyWithoutUser_accountNestedInput
+  risk_assessment?: Prisma.risk_assessmentUncheckedUpdateManyWithoutUser_accountNestedInput
+  user_content_log?: Prisma.user_content_logUncheckedUpdateManyWithoutUser_accountNestedInput
+  user_pii?: Prisma.user_piiUncheckedUpdateOneWithoutUser_accountNestedInput
+}
+
+export type user_accountUpsertWithoutLinked_patientsInput = {
+  update: Prisma.XOR<Prisma.user_accountUpdateWithoutLinked_patientsInput, Prisma.user_accountUncheckedUpdateWithoutLinked_patientsInput>
+  create: Prisma.XOR<Prisma.user_accountCreateWithoutLinked_patientsInput, Prisma.user_accountUncheckedCreateWithoutLinked_patientsInput>
+  where?: Prisma.user_accountWhereInput
+}
+
+export type user_accountUpdateToOneWithWhereWithoutLinked_patientsInput = {
+  where?: Prisma.user_accountWhereInput
+  data: Prisma.XOR<Prisma.user_accountUpdateWithoutLinked_patientsInput, Prisma.user_accountUncheckedUpdateWithoutLinked_patientsInput>
+}
+
+export type user_accountUpdateWithoutLinked_patientsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  pseudo_id?: Prisma.StringFieldUpdateOperationsInput | string
+  account_type?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  locale?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  auth_user_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password_hash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  display_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  is_super?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  baseline?: Prisma.baselineUpdateManyWithoutUser_accountNestedInput
+  care_action?: Prisma.care_actionUpdateManyWithoutUser_accountNestedInput
+  clinician_profile?: Prisma.clinician_profileUpdateOneWithoutUser_accountNestedInput
+  patients?: Prisma.clinician_patientUpdateManyWithoutClinicianNestedInput
+  clinicians?: Prisma.clinician_patientUpdateManyWithoutPatientNestedInput
+  consent?: Prisma.consentUpdateManyWithoutUser_accountNestedInput
+  device?: Prisma.deviceUpdateManyWithoutUser_accountNestedInput
+  feedback_label?: Prisma.feedback_labelUpdateManyWithoutUser_accountNestedInput
+  gamification_state?: Prisma.gamification_stateUpdateOneWithoutUser_accountNestedInput
+  measurement?: Prisma.measurementUpdateManyWithoutUser_accountNestedInput
+  mission_log?: Prisma.mission_logUpdateManyWithoutUser_accountNestedInput
+  notification?: Prisma.notificationUpdateManyWithoutUser_accountNestedInput
+  phr_record?: Prisma.phr_recordUpdateOneWithoutUser_accountNestedInput
+  referral?: Prisma.referralUpdateManyWithoutUser_accountNestedInput
+  risk_assessment?: Prisma.risk_assessmentUpdateManyWithoutUser_accountNestedInput
+  user_content_log?: Prisma.user_content_logUpdateManyWithoutUser_accountNestedInput
+  user_pii?: Prisma.user_piiUpdateOneWithoutUser_accountNestedInput
+}
+
+export type user_accountUncheckedUpdateWithoutLinked_patientsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  pseudo_id?: Prisma.StringFieldUpdateOperationsInput | string
+  account_type?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  locale?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  auth_user_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password_hash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  display_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  is_super?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  baseline?: Prisma.baselineUncheckedUpdateManyWithoutUser_accountNestedInput
+  care_action?: Prisma.care_actionUncheckedUpdateManyWithoutUser_accountNestedInput
+  clinician_profile?: Prisma.clinician_profileUncheckedUpdateOneWithoutUser_accountNestedInput
+  patients?: Prisma.clinician_patientUncheckedUpdateManyWithoutClinicianNestedInput
+  clinicians?: Prisma.clinician_patientUncheckedUpdateManyWithoutPatientNestedInput
+  consent?: Prisma.consentUncheckedUpdateManyWithoutUser_accountNestedInput
+  device?: Prisma.deviceUncheckedUpdateManyWithoutUser_accountNestedInput
+  feedback_label?: Prisma.feedback_labelUncheckedUpdateManyWithoutUser_accountNestedInput
+  gamification_state?: Prisma.gamification_stateUncheckedUpdateOneWithoutUser_accountNestedInput
+  measurement?: Prisma.measurementUncheckedUpdateManyWithoutUser_accountNestedInput
+  mission_log?: Prisma.mission_logUncheckedUpdateManyWithoutUser_accountNestedInput
+  notification?: Prisma.notificationUncheckedUpdateManyWithoutUser_accountNestedInput
   phr_record?: Prisma.phr_recordUncheckedUpdateOneWithoutUser_accountNestedInput
   referral?: Prisma.referralUncheckedUpdateManyWithoutUser_accountNestedInput
   risk_assessment?: Prisma.risk_assessmentUncheckedUpdateManyWithoutUser_accountNestedInput
@@ -2510,6 +3168,9 @@ export type user_accountCreateWithoutClinician_profileInput = {
   is_super?: boolean
   baseline?: Prisma.baselineCreateNestedManyWithoutUser_accountInput
   care_action?: Prisma.care_actionCreateNestedManyWithoutUser_accountInput
+  patients?: Prisma.clinician_patientCreateNestedManyWithoutClinicianInput
+  clinicians?: Prisma.clinician_patientCreateNestedManyWithoutPatientInput
+  linked_patients?: Prisma.clinician_patientCreateNestedManyWithoutLinkerInput
   consent?: Prisma.consentCreateNestedManyWithoutUser_accountInput
   device?: Prisma.deviceCreateNestedManyWithoutUser_accountInput
   feedback_label?: Prisma.feedback_labelCreateNestedManyWithoutUser_accountInput
@@ -2539,6 +3200,9 @@ export type user_accountUncheckedCreateWithoutClinician_profileInput = {
   is_super?: boolean
   baseline?: Prisma.baselineUncheckedCreateNestedManyWithoutUser_accountInput
   care_action?: Prisma.care_actionUncheckedCreateNestedManyWithoutUser_accountInput
+  patients?: Prisma.clinician_patientUncheckedCreateNestedManyWithoutClinicianInput
+  clinicians?: Prisma.clinician_patientUncheckedCreateNestedManyWithoutPatientInput
+  linked_patients?: Prisma.clinician_patientUncheckedCreateNestedManyWithoutLinkerInput
   consent?: Prisma.consentUncheckedCreateNestedManyWithoutUser_accountInput
   device?: Prisma.deviceUncheckedCreateNestedManyWithoutUser_accountInput
   feedback_label?: Prisma.feedback_labelUncheckedCreateNestedManyWithoutUser_accountInput
@@ -2584,6 +3248,9 @@ export type user_accountUpdateWithoutClinician_profileInput = {
   is_super?: Prisma.BoolFieldUpdateOperationsInput | boolean
   baseline?: Prisma.baselineUpdateManyWithoutUser_accountNestedInput
   care_action?: Prisma.care_actionUpdateManyWithoutUser_accountNestedInput
+  patients?: Prisma.clinician_patientUpdateManyWithoutClinicianNestedInput
+  clinicians?: Prisma.clinician_patientUpdateManyWithoutPatientNestedInput
+  linked_patients?: Prisma.clinician_patientUpdateManyWithoutLinkerNestedInput
   consent?: Prisma.consentUpdateManyWithoutUser_accountNestedInput
   device?: Prisma.deviceUpdateManyWithoutUser_accountNestedInput
   feedback_label?: Prisma.feedback_labelUpdateManyWithoutUser_accountNestedInput
@@ -2613,6 +3280,9 @@ export type user_accountUncheckedUpdateWithoutClinician_profileInput = {
   is_super?: Prisma.BoolFieldUpdateOperationsInput | boolean
   baseline?: Prisma.baselineUncheckedUpdateManyWithoutUser_accountNestedInput
   care_action?: Prisma.care_actionUncheckedUpdateManyWithoutUser_accountNestedInput
+  patients?: Prisma.clinician_patientUncheckedUpdateManyWithoutClinicianNestedInput
+  clinicians?: Prisma.clinician_patientUncheckedUpdateManyWithoutPatientNestedInput
+  linked_patients?: Prisma.clinician_patientUncheckedUpdateManyWithoutLinkerNestedInput
   consent?: Prisma.consentUncheckedUpdateManyWithoutUser_accountNestedInput
   device?: Prisma.deviceUncheckedUpdateManyWithoutUser_accountNestedInput
   feedback_label?: Prisma.feedback_labelUncheckedUpdateManyWithoutUser_accountNestedInput
@@ -2643,6 +3313,9 @@ export type user_accountCreateWithoutMission_logInput = {
   baseline?: Prisma.baselineCreateNestedManyWithoutUser_accountInput
   care_action?: Prisma.care_actionCreateNestedManyWithoutUser_accountInput
   clinician_profile?: Prisma.clinician_profileCreateNestedOneWithoutUser_accountInput
+  patients?: Prisma.clinician_patientCreateNestedManyWithoutClinicianInput
+  clinicians?: Prisma.clinician_patientCreateNestedManyWithoutPatientInput
+  linked_patients?: Prisma.clinician_patientCreateNestedManyWithoutLinkerInput
   consent?: Prisma.consentCreateNestedManyWithoutUser_accountInput
   device?: Prisma.deviceCreateNestedManyWithoutUser_accountInput
   feedback_label?: Prisma.feedback_labelCreateNestedManyWithoutUser_accountInput
@@ -2672,6 +3345,9 @@ export type user_accountUncheckedCreateWithoutMission_logInput = {
   baseline?: Prisma.baselineUncheckedCreateNestedManyWithoutUser_accountInput
   care_action?: Prisma.care_actionUncheckedCreateNestedManyWithoutUser_accountInput
   clinician_profile?: Prisma.clinician_profileUncheckedCreateNestedOneWithoutUser_accountInput
+  patients?: Prisma.clinician_patientUncheckedCreateNestedManyWithoutClinicianInput
+  clinicians?: Prisma.clinician_patientUncheckedCreateNestedManyWithoutPatientInput
+  linked_patients?: Prisma.clinician_patientUncheckedCreateNestedManyWithoutLinkerInput
   consent?: Prisma.consentUncheckedCreateNestedManyWithoutUser_accountInput
   device?: Prisma.deviceUncheckedCreateNestedManyWithoutUser_accountInput
   feedback_label?: Prisma.feedback_labelUncheckedCreateNestedManyWithoutUser_accountInput
@@ -2717,6 +3393,9 @@ export type user_accountUpdateWithoutMission_logInput = {
   baseline?: Prisma.baselineUpdateManyWithoutUser_accountNestedInput
   care_action?: Prisma.care_actionUpdateManyWithoutUser_accountNestedInput
   clinician_profile?: Prisma.clinician_profileUpdateOneWithoutUser_accountNestedInput
+  patients?: Prisma.clinician_patientUpdateManyWithoutClinicianNestedInput
+  clinicians?: Prisma.clinician_patientUpdateManyWithoutPatientNestedInput
+  linked_patients?: Prisma.clinician_patientUpdateManyWithoutLinkerNestedInput
   consent?: Prisma.consentUpdateManyWithoutUser_accountNestedInput
   device?: Prisma.deviceUpdateManyWithoutUser_accountNestedInput
   feedback_label?: Prisma.feedback_labelUpdateManyWithoutUser_accountNestedInput
@@ -2746,6 +3425,9 @@ export type user_accountUncheckedUpdateWithoutMission_logInput = {
   baseline?: Prisma.baselineUncheckedUpdateManyWithoutUser_accountNestedInput
   care_action?: Prisma.care_actionUncheckedUpdateManyWithoutUser_accountNestedInput
   clinician_profile?: Prisma.clinician_profileUncheckedUpdateOneWithoutUser_accountNestedInput
+  patients?: Prisma.clinician_patientUncheckedUpdateManyWithoutClinicianNestedInput
+  clinicians?: Prisma.clinician_patientUncheckedUpdateManyWithoutPatientNestedInput
+  linked_patients?: Prisma.clinician_patientUncheckedUpdateManyWithoutLinkerNestedInput
   consent?: Prisma.consentUncheckedUpdateManyWithoutUser_accountNestedInput
   device?: Prisma.deviceUncheckedUpdateManyWithoutUser_accountNestedInput
   feedback_label?: Prisma.feedback_labelUncheckedUpdateManyWithoutUser_accountNestedInput
@@ -2767,6 +3449,9 @@ export type user_accountUncheckedUpdateWithoutMission_logInput = {
 export type User_accountCountOutputType = {
   baseline: number
   care_action: number
+  patients: number
+  clinicians: number
+  linked_patients: number
   consent: number
   device: number
   feedback_label: number
@@ -2781,6 +3466,9 @@ export type User_accountCountOutputType = {
 export type User_accountCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   baseline?: boolean | User_accountCountOutputTypeCountBaselineArgs
   care_action?: boolean | User_accountCountOutputTypeCountCare_actionArgs
+  patients?: boolean | User_accountCountOutputTypeCountPatientsArgs
+  clinicians?: boolean | User_accountCountOutputTypeCountCliniciansArgs
+  linked_patients?: boolean | User_accountCountOutputTypeCountLinked_patientsArgs
   consent?: boolean | User_accountCountOutputTypeCountConsentArgs
   device?: boolean | User_accountCountOutputTypeCountDeviceArgs
   feedback_label?: boolean | User_accountCountOutputTypeCountFeedback_labelArgs
@@ -2814,6 +3502,27 @@ export type User_accountCountOutputTypeCountBaselineArgs<ExtArgs extends runtime
  */
 export type User_accountCountOutputTypeCountCare_actionArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.care_actionWhereInput
+}
+
+/**
+ * User_accountCountOutputType without action
+ */
+export type User_accountCountOutputTypeCountPatientsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.clinician_patientWhereInput
+}
+
+/**
+ * User_accountCountOutputType without action
+ */
+export type User_accountCountOutputTypeCountCliniciansArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.clinician_patientWhereInput
+}
+
+/**
+ * User_accountCountOutputType without action
+ */
+export type User_accountCountOutputTypeCountLinked_patientsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.clinician_patientWhereInput
 }
 
 /**
@@ -2896,6 +3605,9 @@ export type user_accountSelect<ExtArgs extends runtime.Types.Extensions.Internal
   baseline?: boolean | Prisma.user_account$baselineArgs<ExtArgs>
   care_action?: boolean | Prisma.user_account$care_actionArgs<ExtArgs>
   clinician_profile?: boolean | Prisma.user_account$clinician_profileArgs<ExtArgs>
+  patients?: boolean | Prisma.user_account$patientsArgs<ExtArgs>
+  clinicians?: boolean | Prisma.user_account$cliniciansArgs<ExtArgs>
+  linked_patients?: boolean | Prisma.user_account$linked_patientsArgs<ExtArgs>
   consent?: boolean | Prisma.user_account$consentArgs<ExtArgs>
   device?: boolean | Prisma.user_account$deviceArgs<ExtArgs>
   feedback_label?: boolean | Prisma.user_account$feedback_labelArgs<ExtArgs>
@@ -2961,6 +3673,9 @@ export type user_accountInclude<ExtArgs extends runtime.Types.Extensions.Interna
   baseline?: boolean | Prisma.user_account$baselineArgs<ExtArgs>
   care_action?: boolean | Prisma.user_account$care_actionArgs<ExtArgs>
   clinician_profile?: boolean | Prisma.user_account$clinician_profileArgs<ExtArgs>
+  patients?: boolean | Prisma.user_account$patientsArgs<ExtArgs>
+  clinicians?: boolean | Prisma.user_account$cliniciansArgs<ExtArgs>
+  linked_patients?: boolean | Prisma.user_account$linked_patientsArgs<ExtArgs>
   consent?: boolean | Prisma.user_account$consentArgs<ExtArgs>
   device?: boolean | Prisma.user_account$deviceArgs<ExtArgs>
   feedback_label?: boolean | Prisma.user_account$feedback_labelArgs<ExtArgs>
@@ -2984,6 +3699,9 @@ export type $user_accountPayload<ExtArgs extends runtime.Types.Extensions.Intern
     baseline: Prisma.$baselinePayload<ExtArgs>[]
     care_action: Prisma.$care_actionPayload<ExtArgs>[]
     clinician_profile: Prisma.$clinician_profilePayload<ExtArgs> | null
+    patients: Prisma.$clinician_patientPayload<ExtArgs>[]
+    clinicians: Prisma.$clinician_patientPayload<ExtArgs>[]
+    linked_patients: Prisma.$clinician_patientPayload<ExtArgs>[]
     consent: Prisma.$consentPayload<ExtArgs>[]
     device: Prisma.$devicePayload<ExtArgs>[]
     feedback_label: Prisma.$feedback_labelPayload<ExtArgs>[]
@@ -3407,6 +4125,9 @@ export interface Prisma__user_accountClient<T, Null = never, ExtArgs extends run
   baseline<T extends Prisma.user_account$baselineArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.user_account$baselineArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$baselinePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   care_action<T extends Prisma.user_account$care_actionArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.user_account$care_actionArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$care_actionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   clinician_profile<T extends Prisma.user_account$clinician_profileArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.user_account$clinician_profileArgs<ExtArgs>>): Prisma.Prisma__clinician_profileClient<runtime.Types.Result.GetResult<Prisma.$clinician_profilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  patients<T extends Prisma.user_account$patientsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.user_account$patientsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$clinician_patientPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  clinicians<T extends Prisma.user_account$cliniciansArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.user_account$cliniciansArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$clinician_patientPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  linked_patients<T extends Prisma.user_account$linked_patientsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.user_account$linked_patientsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$clinician_patientPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   consent<T extends Prisma.user_account$consentArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.user_account$consentArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$consentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   device<T extends Prisma.user_account$deviceArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.user_account$deviceArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$devicePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   feedback_label<T extends Prisma.user_account$feedback_labelArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.user_account$feedback_labelArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$feedback_labelPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -3917,6 +4638,78 @@ export type user_account$clinician_profileArgs<ExtArgs extends runtime.Types.Ext
    */
   include?: Prisma.clinician_profileInclude<ExtArgs> | null
   where?: Prisma.clinician_profileWhereInput
+}
+
+/**
+ * user_account.patients
+ */
+export type user_account$patientsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the clinician_patient
+   */
+  select?: Prisma.clinician_patientSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the clinician_patient
+   */
+  omit?: Prisma.clinician_patientOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.clinician_patientInclude<ExtArgs> | null
+  where?: Prisma.clinician_patientWhereInput
+  orderBy?: Prisma.clinician_patientOrderByWithRelationInput | Prisma.clinician_patientOrderByWithRelationInput[]
+  cursor?: Prisma.clinician_patientWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.Clinician_patientScalarFieldEnum | Prisma.Clinician_patientScalarFieldEnum[]
+}
+
+/**
+ * user_account.clinicians
+ */
+export type user_account$cliniciansArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the clinician_patient
+   */
+  select?: Prisma.clinician_patientSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the clinician_patient
+   */
+  omit?: Prisma.clinician_patientOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.clinician_patientInclude<ExtArgs> | null
+  where?: Prisma.clinician_patientWhereInput
+  orderBy?: Prisma.clinician_patientOrderByWithRelationInput | Prisma.clinician_patientOrderByWithRelationInput[]
+  cursor?: Prisma.clinician_patientWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.Clinician_patientScalarFieldEnum | Prisma.Clinician_patientScalarFieldEnum[]
+}
+
+/**
+ * user_account.linked_patients
+ */
+export type user_account$linked_patientsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the clinician_patient
+   */
+  select?: Prisma.clinician_patientSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the clinician_patient
+   */
+  omit?: Prisma.clinician_patientOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.clinician_patientInclude<ExtArgs> | null
+  where?: Prisma.clinician_patientWhereInput
+  orderBy?: Prisma.clinician_patientOrderByWithRelationInput | Prisma.clinician_patientOrderByWithRelationInput[]
+  cursor?: Prisma.clinician_patientWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.Clinician_patientScalarFieldEnum | Prisma.Clinician_patientScalarFieldEnum[]
 }
 
 /**

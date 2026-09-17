@@ -548,7 +548,9 @@
     "carePlanTitle": "ケアプラン · 慢性疾患管理の要約",
     "noCareAction": "ケアアクションなし",
     "emrNote": "参考ガイドライン・慢性疾患管理の行政フォーム自動生成は、EMR連携(Step 6+)で対応します。",
-    "disclaimer": "本要約はスクリーニング分析の結果であり、臨床的な診断・処方に代わるものではありません。リスク層別化・等級の算出は医療機器(SaMD)の承認を前提とします。最終判断は医療者の臨床的評価によります。"
+    "disclaimer": "本要約はスクリーニング分析の結果であり、臨床的な診断・処方に代わるものではありません。リスク層別化・等級の算出は医療機器(SaMD)の承認を前提とします。最終判断は医療者の臨床的評価によります。",
+    "measure": "測定する",
+    "measureFirst": "最初の測定を開始"
   },
   "report": {
     "backToPatient": "患者ダッシュボード",
@@ -587,7 +589,18 @@
     "colLastAssessed": "最新評価",
     "report": "レポート",
     "noMatch": "条件に合う患者がいません。",
-    "disclaimer": "※ リスク層別化・等級はSaMD候補出力です。臨床的な診断・処方に代わるものではなく、最終判断は医療者の臨床的評価によります。"
+    "disclaimer": "※ リスク層別化・等級はSaMD候補出力です。臨床的な診断・処方に代わるものではなく、最終判断は医療者の臨床的評価によります。",
+    "registerPatient": "患者登録",
+    "registerTitle": "患者登録",
+    "registerLead": "患者アカウントを作成し、すぐに測定を行えます。患者は登録したメールアドレスとパスワードで自分でログインすることもできます。",
+    "birthYear": "生年",
+    "initialPassword": "初期パスワード",
+    "initialPasswordNote": "患者に伝え、初回ログイン後に変更するようご案内ください。",
+    "consentConfirmNote": "患者本人に同意の有無を確認してからチェックしてください。",
+    "registering": "登録中…",
+    "registerSubmit": "患者を登録",
+    "unmeasured": "未測定",
+    "measure": "測定"
   },
   "careStatus": {
     "assigned": "予定",
@@ -761,7 +774,9 @@
     "login": "ログイン",
     "login_failed": "ログイン失敗",
     "login_blocked": "ログイン遮断(レート制限)",
-    "account_switch": "アカウント切り替え"
+    "account_switch": "アカウント切り替え",
+    "patient_register": "患者登録",
+    "measure_for_patient": "患者の代理測定"
   },
   "audit": {
     "subtitle": "PHIアクセス・コンテンツ公開・管理行為の記録 (直近200件)",
@@ -1290,7 +1305,9 @@
       "demoRun": "デモ測定 ({scenario})",
       "analyzed": "分析完了 — 結果画面へ移動します",
       "analyzeFailed": "分析に失敗: {message}"
-    }
+    },
+    "backToPatient": "患者詳細",
+    "patientTarget": "測定対象"
   },
   "authError": {
     "rateLimited": "ログインの試行が多すぎます。{minutes}分後に再度お試しください。",
@@ -1307,7 +1324,10 @@
     "organizationRequired": "所属医療機関を入力してください。",
     "clinicianConsentRequired": "必須の同意・誓約項目に同意すると申請できます。",
     "emailTakenClinician": "すでに登録(申請)されているメールアドレスです。",
-    "noReasonGiven": "理由の記載なし"
+    "noReasonGiven": "理由の記載なし",
+    "clinicianOnly": "患者を登録できるのは医療従事者アカウントのみです。",
+    "birthYearInvalid": "生年を正しく入力してください。",
+    "patientConsentRequired": "患者の必須同意を確認してから登録してください。"
   },
   "apiError": {
     "loginRequired": "ログインが必要です。",
@@ -1320,7 +1340,9 @@
     "measurementInvalid": "測定値の検証に失敗しました",
     "measuredAtFuture": "測定時刻を未来にすることはできません。",
     "analysisInternal": "分析処理中にエラーが発生しました。",
-    "assessmentNotFound": "リスク評価が見つかりませんでした。"
+    "assessmentNotFound": "リスク評価が見つかりませんでした。",
+    "measureForPatientForbidden": "他の人の測定を記録できるのは医療従事者アカウントのみです。",
+    "patientNotFound": "患者が見つかりません。"
   },
   "phrOpinion": {
     "htn_dm_controlled": "高血圧・糖尿病は良好にコントロールされています。継続して管理してください。",

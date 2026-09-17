@@ -3,6 +3,7 @@ import Link from "next/link";
 import { getLocale, getTranslations } from "next-intl/server";
 import { prisma } from "@/lib/db";
 import { requireRole } from "@/lib/auth/guard";
+import { patientScope } from "@/lib/auth/careTeam";
 import { GRADE_TOKEN, gradeLabel, diseaseLabel } from "@/lib/ui/labels";
 import { gradeDistribution } from "@/lib/ui/clinical";
 import { fmtDateTime } from "@/i18n/format";
@@ -22,13 +23,14 @@ function decodeName(buf: Uint8Array | null, fallback: string): string {
 }
 
 export default async function PatientListPage({ searchParams }: { searchParams: Promise<{ grade?: string; disease?: string }> }) {
-  await requireRole(["clinician", "admin"]);
+  const me = await requireRole(["clinician", "admin"]);
   const t = await getTranslations();
   const locale = (await getLocale()) as Locale;
   const sp = await searchParams;
   const gradeF = GRADE_FILTERS.includes(sp.grade ?? "") ? sp.grade! : "all";
   const diseaseF = DISEASE_FILTERS.includes(sp.disease ?? "") ? sp.disease! : "all";
-  const users = await prisma.user_account.findMany({ where: { account_type: "b2c" } });
+  // 의료진은 담당(연결)된 환자만, 관리자·슈퍼는 전체
+  const users = await prisma.user_account.findMany({ where: patientScope(me) });
   const ids = users.map((u) => u.id);
 
   const weekAgo = new Date(Date.now() - 7 * 86400_000);
@@ -42,16 +44,21 @@ export default async function PatientListPage({ searchParams }: { searchParams: 
   const nameByUser = new Map(piis.map((p) => [p.user_id, decodeName(p.name_enc as Uint8Array | null, noName)]));
   const latestByUser = new Map(ids.map((id, i) => [id, latestList[i]]));
 
-  const evaluated = users
+  const allPatients = users
     .map((u) => {
       const a = latestByUser.get(u.id);
       return {
         id: u.id, name: nameByUser.get(u.id) ?? u.pseudo_id, pseudo: u.pseudo_id,
         grade: a?.risk_grade ?? null, score: a ? Number(a.risk_score) : null,
         kdigo: a?.standard_grade ?? null, disease: a?.disease ?? null, at: a?.assessed_at ?? null,
+        createdAt: u.created_at,
       };
-    })
-    .filter((r) => r.grade);
+    });
+  const evaluated = allPatients.filter((r) => r.grade);
+  // 미측정(평가 없음) 환자 — 등록 직후 환자가 목록에서 사라지지 않도록 필터가 '전체'일 때 함께 노출
+  const unmeasured = allPatients
+    .filter((r) => !r.grade)
+    .sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime());
 
   // 코호트 통계 (필터 전 전체 기준)
   const dist = gradeDistribution(evaluated.map((r) => r.grade));
@@ -65,6 +72,7 @@ export default async function PatientListPage({ searchParams }: { searchParams: 
     .filter((r) => gradeF === "all" || r.grade === gradeF)
     .filter((r) => diseaseF === "all" || r.disease === diseaseF)
     .sort((a, b) => (SEVERITY[b.grade!] - SEVERITY[a.grade!]) || (b.at!.getTime() - a.at!.getTime()));
+  const showUnmeasured = gradeF === "all" && diseaseF === "all";
 
   const qs = (over: Partial<{ grade: string; disease: string }>) => {
     const g = over.grade ?? gradeF, d = over.disease ?? diseaseF;
@@ -92,7 +100,12 @@ export default async function PatientListPage({ searchParams }: { searchParams: 
           <h1 className="text-2xl font-bold text-[#2E5A88]">{t("portal.title")}</h1>
           <p className="text-sm text-gray-500">{t("portal.subtitle")}</p>
         </div>
-        <Link href="/admin" className="text-sm text-gray-400">{t("nav.admin")} →</Link>
+        <div className="flex items-center gap-3">
+          <Link href="/admin" className="text-sm text-gray-400">{t("nav.admin")} →</Link>
+          <Link href="/clinician/patients/new" className="rounded-lg bg-[#2E5A88] px-3 py-2 text-sm font-semibold text-white transition hover:opacity-90">
+            + {t("portal.registerPatient")}
+          </Link>
+        </div>
       </header>
 
       {/* KPI */}
@@ -194,7 +207,20 @@ export default async function PatientListPage({ searchParams }: { searchParams: 
                 </tr>
               );
             })}
-            {rows.length === 0 && <tr><td colSpan={6} className="px-4 py-8 text-center text-gray-400">{t("portal.noMatch")}</td></tr>}
+            {showUnmeasured && unmeasured.map((r) => (
+              <tr key={r.id} className="border-t border-gray-100 hover:bg-gray-50">
+                <td className="px-4 py-3">
+                  <Link href={`/clinician/patients/${r.id}`} className="font-semibold text-gray-800">{r.name}</Link>
+                  <div className="text-[11px] text-gray-400">{r.pseudo}</div>
+                </td>
+                <td className="px-4 py-3 text-gray-400">-</td>
+                <td className="px-4 py-3"><span className="rounded-full border border-gray-300 px-2 py-0.5 text-xs text-gray-500">{t("portal.unmeasured")}</span></td>
+                <td className="px-4 py-3 text-gray-400">-</td>
+                <td className="px-4 py-3 text-xs text-gray-400">-</td>
+                <td className="px-4 py-3 text-right"><Link href={`/clinician/patients/${r.id}/measure`} className="text-xs font-semibold text-[#2E5A88]">{t("portal.measure")} →</Link></td>
+              </tr>
+            ))}
+            {rows.length === 0 && !(showUnmeasured && unmeasured.length > 0) && <tr><td colSpan={6} className="px-4 py-8 text-center text-gray-400">{t("portal.noMatch")}</td></tr>}
           </tbody>
         </table>
       </div>

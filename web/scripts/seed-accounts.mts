@@ -28,6 +28,17 @@ async function main() {
     create: { pseudo_id: "clinician-001", account_type: "clinician", email: "doctor@demo.kr", display_name: "김민수 · 신장내과", password_hash: pwHash },
   });
 
+  // 2-1) 데모 의료진 ↔ 데모 환자 3명 담당 관계 (일반 가입자는 연결하지 않는다)
+  const doctor = await prisma.user_account.findUniqueOrThrow({ where: { pseudo_id: "clinician-001" } });
+  for (const p of patients) {
+    const patient = await prisma.user_account.findUniqueOrThrow({ where: { pseudo_id: p.pseudo } });
+    await prisma.clinician_patient.upsert({
+      where: { clinician_id_patient_id: { clinician_id: doctor.id, patient_id: patient.id } },
+      update: {},
+      create: { clinician_id: doctor.id, patient_id: patient.id, source: "seed" },
+    });
+  }
+
   // 3) 슈퍼 계정 (계정 전환 가능)
   await prisma.user_account.upsert({
     where: { pseudo_id: "super-admin" },

@@ -72,6 +72,7 @@ export const ModelName = {
   user_pii: 'user_pii',
   phr_record: 'phr_record',
   notification: 'notification',
+  clinician_patient: 'clinician_patient',
   clinician_profile: 'clinician_profile',
   mission_log: 'mission_log'
 } as const
@@ -384,6 +385,17 @@ export const NotificationScalarFieldEnum = {
 } as const
 
 export type NotificationScalarFieldEnum = (typeof NotificationScalarFieldEnum)[keyof typeof NotificationScalarFieldEnum]
+
+
+export const Clinician_patientScalarFieldEnum = {
+  clinician_id: 'clinician_id',
+  patient_id: 'patient_id',
+  source: 'source',
+  linked_by: 'linked_by',
+  created_at: 'created_at'
+} as const
+
+export type Clinician_patientScalarFieldEnum = (typeof Clinician_patientScalarFieldEnum)[keyof typeof Clinician_patientScalarFieldEnum]
 
 
 export const Clinician_profileScalarFieldEnum = {

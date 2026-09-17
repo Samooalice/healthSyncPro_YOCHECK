@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { getLocale, getTranslations } from "next-intl/server";
 import { prisma } from "@/lib/db";
 import { requireRole } from "@/lib/auth/guard";
+import { canAccessPatient } from "@/lib/auth/careTeam";
 import { audit } from "@/lib/audit";
 import TrendChart, { type TrendPoint } from "@/components/TrendChart";
 import PrintButton from "@/components/PrintButton";
@@ -33,6 +34,8 @@ function decodeName(buf: Uint8Array | null, fallback: string): string {
 export default async function ClinicalReport({ params }: { params: Promise<{ id: string }> }) {
   const me = await requireRole(["clinician", "admin"]);
   const { id } = await params;
+  // 담당 관계가 없는 환자는 존재 여부도 드러내지 않는다
+  if (!(await canAccessPatient(me, id))) notFound();
   const user = await prisma.user_account.findUnique({ where: { id } });
   if (!user) notFound();
   await audit(me.id, "view_phi", `patient:${id}`, { context: "clinical_report" });

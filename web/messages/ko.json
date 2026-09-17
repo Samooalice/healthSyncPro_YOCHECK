@@ -448,7 +448,9 @@
     "carePlanTitle": "케어플랜 · 만관제 요약",
     "noCareAction": "케어 액션 없음",
     "emrNote": "참고 가이드라인·만관제 행정 폼 자동생성은 EMR 연동(Step 6+)에서 채워집니다.",
-    "disclaimer": "본 요약은 선별 분석 결과로, 임상적 진단·처방을 대체하지 않습니다. 위험계층화·등급 산출은 의료기기(SaMD) 인허가를 전제로 합니다. 최종 판단은 의료진의 임상적 평가에 따릅니다."
+    "disclaimer": "본 요약은 선별 분석 결과로, 임상적 진단·처방을 대체하지 않습니다. 위험계층화·등급 산출은 의료기기(SaMD) 인허가를 전제로 합니다. 최종 판단은 의료진의 임상적 평가에 따릅니다.",
+    "measure": "측정하기",
+    "measureFirst": "첫 측정 시작"
   },
   "report": {
     "backToPatient": "환자 대시보드",
@@ -487,7 +489,18 @@
     "colLastAssessed": "최근 평가",
     "report": "리포트",
     "noMatch": "조건에 맞는 환자가 없습니다.",
-    "disclaimer": "※ 위험계층화·등급은 의료기기(SaMD) 후보 출력입니다. 임상적 진단·처방을 대체하지 않으며 최종 판단은 의료진의 임상적 평가에 따릅니다."
+    "disclaimer": "※ 위험계층화·등급은 의료기기(SaMD) 후보 출력입니다. 임상적 진단·처방을 대체하지 않으며 최종 판단은 의료진의 임상적 평가에 따릅니다.",
+    "registerPatient": "환자 등록",
+    "registerTitle": "환자 등록",
+    "registerLead": "환자 계정을 만들고 바로 측정을 진행할 수 있습니다. 환자는 등록한 이메일·비밀번호로 직접 로그인할 수도 있어요.",
+    "birthYear": "출생연도",
+    "initialPassword": "초기 비밀번호",
+    "initialPasswordNote": "환자에게 전달하고, 첫 로그인 후 변경하도록 안내해 주세요.",
+    "consentConfirmNote": "환자 본인에게 아래 동의 여부를 확인한 뒤 체크하세요.",
+    "registering": "등록 중…",
+    "registerSubmit": "환자 등록",
+    "unmeasured": "미측정",
+    "measure": "측정"
   },
   "careStatus": {
     "assigned": "예정",
@@ -579,7 +592,9 @@
     "login": "로그인",
     "login_failed": "로그인 실패",
     "login_blocked": "로그인 차단(레이트리밋)",
-    "account_switch": "계정 전환"
+    "account_switch": "계정 전환",
+    "patient_register": "환자 등록",
+    "measure_for_patient": "환자 대리 측정"
   },
   "audit": {
     "subtitle": "PHI 접근·콘텐츠 게시·관리 행위 기록 (최근 200건)",
@@ -1108,7 +1123,9 @@
       "demoRun": "데모 측정 ({scenario})",
       "analyzed": "분석 완료 — 결과 화면으로 이동",
       "analyzeFailed": "분석 실패: {message}"
-    }
+    },
+    "backToPatient": "환자 상세",
+    "patientTarget": "측정 대상"
   },
   "chart": {
     "noData": "추세 데이터가 아직 없어요.",
@@ -1307,7 +1324,10 @@
     "organizationRequired": "소속 의료기관을 입력하세요.",
     "clinicianConsentRequired": "필수 동의·서약 항목에 동의해야 신청할 수 있습니다.",
     "emailTakenClinician": "이미 가입(신청)된 이메일입니다.",
-    "noReasonGiven": "사유 미기재"
+    "noReasonGiven": "사유 미기재",
+    "clinicianOnly": "의료진 계정만 환자를 등록할 수 있습니다.",
+    "birthYearInvalid": "출생연도를 올바르게 입력하세요.",
+    "patientConsentRequired": "환자의 필수 동의 여부를 확인해야 등록할 수 있습니다."
   },
   "apiError": {
     "loginRequired": "로그인이 필요합니다.",
@@ -1320,7 +1340,9 @@
     "measurementInvalid": "측정값 검증 실패",
     "measuredAtFuture": "측정 시각은 미래일 수 없습니다.",
     "analysisInternal": "분석 처리 중 오류가 발생했습니다.",
-    "assessmentNotFound": "위험평가를 찾을 수 없습니다."
+    "assessmentNotFound": "위험평가를 찾을 수 없습니다.",
+    "measureForPatientForbidden": "의료진 계정만 다른 사람의 측정을 기록할 수 있습니다.",
+    "patientNotFound": "환자를 찾을 수 없습니다."
   },
   "phrOpinion": {
     "htn_dm_controlled": "고혈압 / 당뇨병이 잘 조절되고 있습니다. 지속적으로 관리하십시오.",

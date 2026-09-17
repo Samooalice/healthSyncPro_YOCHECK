@@ -405,6 +405,7 @@ export const ModelName = {
   user_pii: 'user_pii',
   phr_record: 'phr_record',
   notification: 'notification',
+  clinician_patient: 'clinician_patient',
   clinician_profile: 'clinician_profile',
   mission_log: 'mission_log'
 } as const
@@ -422,7 +423,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "audit_log" | "baseline" | "care_action" | "consent" | "content" | "content_curation_rule" | "correction" | "device" | "explanation" | "feedback_label" | "gamification_state" | "measurement" | "notification_template" | "referral" | "risk_assessment" | "schema_migration" | "user_account" | "user_content_log" | "user_pii" | "phr_record" | "notification" | "clinician_profile" | "mission_log"
+    modelProps: "audit_log" | "baseline" | "care_action" | "consent" | "content" | "content_curation_rule" | "correction" | "device" | "explanation" | "feedback_label" | "gamification_state" | "measurement" | "notification_template" | "referral" | "risk_assessment" | "schema_migration" | "user_account" | "user_content_log" | "user_pii" | "phr_record" | "notification" | "clinician_patient" | "clinician_profile" | "mission_log"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -1980,6 +1981,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    clinician_patient: {
+      payload: Prisma.$clinician_patientPayload<ExtArgs>
+      fields: Prisma.clinician_patientFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.clinician_patientFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$clinician_patientPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.clinician_patientFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$clinician_patientPayload>
+        }
+        findFirst: {
+          args: Prisma.clinician_patientFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$clinician_patientPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.clinician_patientFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$clinician_patientPayload>
+        }
+        findMany: {
+          args: Prisma.clinician_patientFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$clinician_patientPayload>[]
+        }
+        create: {
+          args: Prisma.clinician_patientCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$clinician_patientPayload>
+        }
+        createMany: {
+          args: Prisma.clinician_patientCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.clinician_patientCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$clinician_patientPayload>[]
+        }
+        delete: {
+          args: Prisma.clinician_patientDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$clinician_patientPayload>
+        }
+        update: {
+          args: Prisma.clinician_patientUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$clinician_patientPayload>
+        }
+        deleteMany: {
+          args: Prisma.clinician_patientDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.clinician_patientUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.clinician_patientUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$clinician_patientPayload>[]
+        }
+        upsert: {
+          args: Prisma.clinician_patientUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$clinician_patientPayload>
+        }
+        aggregate: {
+          args: Prisma.Clinician_patientAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateClinician_patient>
+        }
+        groupBy: {
+          args: Prisma.clinician_patientGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.Clinician_patientGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.clinician_patientCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.Clinician_patientCountAggregateOutputType> | number
+        }
+      }
+    }
     clinician_profile: {
       payload: Prisma.$clinician_profilePayload<ExtArgs>
       fields: Prisma.clinician_profileFieldRefs
@@ -2461,6 +2536,17 @@ export const NotificationScalarFieldEnum = {
 export type NotificationScalarFieldEnum = (typeof NotificationScalarFieldEnum)[keyof typeof NotificationScalarFieldEnum]
 
 
+export const Clinician_patientScalarFieldEnum = {
+  clinician_id: 'clinician_id',
+  patient_id: 'patient_id',
+  source: 'source',
+  linked_by: 'linked_by',
+  created_at: 'created_at'
+} as const
+
+export type Clinician_patientScalarFieldEnum = (typeof Clinician_patientScalarFieldEnum)[keyof typeof Clinician_patientScalarFieldEnum]
+
+
 export const Clinician_profileScalarFieldEnum = {
   user_id: 'user_id',
   license_type: 'license_type',
@@ -2792,6 +2878,7 @@ export type GlobalOmitConfig = {
   user_pii?: Prisma.user_piiOmit
   phr_record?: Prisma.phr_recordOmit
   notification?: Prisma.notificationOmit
+  clinician_patient?: Prisma.clinician_patientOmit
   clinician_profile?: Prisma.clinician_profileOmit
   mission_log?: Prisma.mission_logOmit
 }

@@ -548,7 +548,9 @@
     "carePlanTitle": "Care plan · chronic care summary",
     "noCareAction": "No care actions",
     "emrNote": "Guideline references and chronic care administrative forms will be generated automatically once EMR integration lands (Step 6+).",
-    "disclaimer": "This summary is a screening analysis result and does not replace clinical diagnosis or prescription. Risk stratification and grading presuppose medical device (SaMD) regulatory clearance. The final judgment rests with the clinician."
+    "disclaimer": "This summary is a screening analysis result and does not replace clinical diagnosis or prescription. Risk stratification and grading presuppose medical device (SaMD) regulatory clearance. The final judgment rests with the clinician.",
+    "measure": "Measure",
+    "measureFirst": "Start first measurement"
   },
   "report": {
     "backToPatient": "Patient dashboard",
@@ -587,7 +589,18 @@
     "colLastAssessed": "Last assessed",
     "report": "Report",
     "noMatch": "No patients match these filters.",
-    "disclaimer": "※ Risk stratification and grading are SaMD candidate outputs. They do not replace clinical diagnosis or prescription, and the final judgment rests with the clinician."
+    "disclaimer": "※ Risk stratification and grading are SaMD candidate outputs. They do not replace clinical diagnosis or prescription, and the final judgment rests with the clinician.",
+    "registerPatient": "Register patient",
+    "registerTitle": "Register patient",
+    "registerLead": "Create a patient account and start measuring right away. The patient can also log in with the email and password you set.",
+    "birthYear": "Birth year",
+    "initialPassword": "Initial password",
+    "initialPasswordNote": "Share it with the patient and ask them to change it after their first login.",
+    "consentConfirmNote": "Check each item only after confirming consent with the patient.",
+    "registering": "Registering…",
+    "registerSubmit": "Register patient",
+    "unmeasured": "Not measured",
+    "measure": "Measure"
   },
   "careStatus": {
     "assigned": "Scheduled",
@@ -761,7 +774,9 @@
     "login": "Log in",
     "login_failed": "Failed login",
     "login_blocked": "Login blocked (rate limit)",
-    "account_switch": "Account switch"
+    "account_switch": "Account switch",
+    "patient_register": "Patient registration",
+    "measure_for_patient": "Measurement for patient"
   },
   "audit": {
     "subtitle": "Records of PHI access, content publishing and administrative actions (latest 200)",
@@ -1290,7 +1305,9 @@
       "demoRun": "Demo measurement ({scenario})",
       "analyzed": "Analysis complete — moving to the result screen",
       "analyzeFailed": "Analysis failed: {message}"
-    }
+    },
+    "backToPatient": "Patient details",
+    "patientTarget": "Measuring for"
   },
   "authError": {
     "rateLimited": "Too many login attempts. Please try again in {minutes} minutes.",
@@ -1307,7 +1324,10 @@
     "organizationRequired": "Please enter your healthcare organization.",
     "clinicianConsentRequired": "You must agree to the required consent and pledge items to submit the request.",
     "emailTakenClinician": "This email already has an account or a pending request.",
-    "noReasonGiven": "No reason given"
+    "noReasonGiven": "No reason given",
+    "clinicianOnly": "Only clinician accounts can register patients.",
+    "birthYearInvalid": "Enter a valid birth year.",
+    "patientConsentRequired": "Confirm the patient's required consent before registering."
   },
   "apiError": {
     "loginRequired": "Login is required.",
@@ -1320,7 +1340,9 @@
     "measurementInvalid": "Measurement value validation failed",
     "measuredAtFuture": "The measurement time cannot be in the future.",
     "analysisInternal": "An error occurred during analysis processing.",
-    "assessmentNotFound": "The risk assessment could not be found."
+    "assessmentNotFound": "The risk assessment could not be found.",
+    "measureForPatientForbidden": "Only clinician accounts can record measurements for someone else.",
+    "patientNotFound": "Patient not found."
   },
   "phrOpinion": {
     "htn_dm_controlled": "Your hypertension / diabetes is well controlled. Please continue managing it.",

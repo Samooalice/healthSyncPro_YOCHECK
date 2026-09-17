@@ -14,7 +14,7 @@ import type * as Prisma from "../internal/prismaNamespace"
 
 /**
  * Model clinician_profile
- * This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+ * 
  */
 export type clinician_profileModel = runtime.Types.Result.DefaultSelection<Prisma.$clinician_profilePayload>
 

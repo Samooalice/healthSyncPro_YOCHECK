@@ -17,6 +17,8 @@ export const CLIENT_NAMESPACES = [
   "chart",      // TrendChart (클라이언트에서 렌더될 때)
   "result",     // TrendChart 가 쓰는 result.normalInline
   "errors",     // error.tsx
+  "portal",     // 의료진 환자 등록 폼
+  "patient",    // 환자 등록 폼의 성별 라벨
 ] as const;
 
 type AnyMessages = Record<string, unknown>;

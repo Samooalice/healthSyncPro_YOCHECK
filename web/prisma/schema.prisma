@@ -264,6 +264,9 @@ model user_account {
   baseline           baseline[]
   care_action        care_action[]
   clinician_profile  clinician_profile?
+  patients           clinician_patient[] @relation("clinician_patient_clinician")
+  clinicians         clinician_patient[] @relation("clinician_patient_patient")
+  linked_patients    clinician_patient[] @relation("clinician_patient_linked_by")
   consent            consent[]
   device             device[]
   feedback_label     feedback_label[]
@@ -341,6 +344,21 @@ model notification {
 }
 
 /// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model clinician_patient {
+  clinician_id String        @db.Uuid
+  patient_id   String        @db.Uuid
+  source       String        @default("registered") @db.VarChar(20)
+  linked_by    String?       @db.Uuid
+  created_at   DateTime      @default(now()) @db.Timestamptz(6)
+  clinician    user_account  @relation("clinician_patient_clinician", fields: [clinician_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  patient      user_account  @relation("clinician_patient_patient", fields: [patient_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  linker       user_account? @relation("clinician_patient_linked_by", fields: [linked_by], references: [id], onUpdate: NoAction)
+
+  @@id([clinician_id, patient_id])
+  @@index([patient_id], map: "idx_clinician_patient_patient")
+  @@schema("care")
+}
+
 model clinician_profile {
   user_id       String       @id @db.Uuid
   license_type  String       @db.VarChar(20)

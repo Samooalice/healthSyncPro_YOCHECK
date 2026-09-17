@@ -548,7 +548,9 @@
     "carePlanTitle": "關懷計畫 · 慢性病管理摘要",
     "noCareAction": "沒有關懷行動",
     "emrNote": "指引參考與慢性病管理行政表單的自動產生,將於 EMR 介接(Step 6+)時補齊。",
-    "disclaimer": "本摘要為篩檢分析結果,不能取代臨床診斷與處方。風險分層與分級的計算以醫療器材(SaMD)許可為前提。最終判斷以醫護人員的臨床評估為準。"
+    "disclaimer": "本摘要為篩檢分析結果,不能取代臨床診斷與處方。風險分層與分級的計算以醫療器材(SaMD)許可為前提。最終判斷以醫護人員的臨床評估為準。",
+    "measure": "進行量測",
+    "measureFirst": "開始首次量測"
   },
   "report": {
     "backToPatient": "病人儀表板",
@@ -587,7 +589,18 @@
     "colLastAssessed": "最近評估",
     "report": "報告",
     "noMatch": "沒有符合條件的病人。",
-    "disclaimer": "※ 風險分層與分級為 SaMD 候選輸出。它不能取代臨床診斷與處方,最終判斷以醫護人員的臨床評估為準。"
+    "disclaimer": "※ 風險分層與分級為 SaMD 候選輸出。它不能取代臨床診斷與處方,最終判斷以醫護人員的臨床評估為準。",
+    "registerPatient": "登錄病患",
+    "registerTitle": "登錄病患",
+    "registerLead": "建立病患帳號後即可立即進行量測。病患也可以使用登錄的電子郵件和密碼自行登入。",
+    "birthYear": "出生年份",
+    "initialPassword": "初始密碼",
+    "initialPasswordNote": "請告知病患,並提醒其首次登入後變更密碼。",
+    "consentConfirmNote": "請向病患本人確認同意情況後再勾選。",
+    "registering": "登錄中…",
+    "registerSubmit": "登錄病患",
+    "unmeasured": "未量測",
+    "measure": "量測"
   },
   "careStatus": {
     "assigned": "待辦",
@@ -761,7 +774,9 @@
     "login": "登入",
     "login_failed": "登入失敗",
     "login_blocked": "登入被阻擋(流量限制)",
-    "account_switch": "切換帳號"
+    "account_switch": "切換帳號",
+    "patient_register": "登錄病患",
+    "measure_for_patient": "代病患量測"
   },
   "audit": {
     "subtitle": "PHI 存取、內容發布與管理行為的紀錄(最近200筆)",
@@ -1290,7 +1305,9 @@
       "demoRun": "示範檢測({scenario})",
       "analyzed": "分析完成 — 前往結果畫面",
       "analyzeFailed": "分析失敗:{message}"
-    }
+    },
+    "backToPatient": "病患詳情",
+    "patientTarget": "量測對象"
   },
   "authError": {
     "rateLimited": "登入嘗試次數過多。請於{minutes}分鐘後再試。",
@@ -1307,7 +1324,10 @@
     "organizationRequired": "請輸入所屬醫療機構。",
     "clinicianConsentRequired": "需同意必填的同意與承諾項目才能送出申請。",
     "emailTakenClinician": "此電子郵件已註冊(或已送出申請)。",
-    "noReasonGiven": "未填寫理由"
+    "noReasonGiven": "未填寫理由",
+    "clinicianOnly": "只有醫護人員帳號可以登錄病患。",
+    "birthYearInvalid": "請輸入正確的出生年份。",
+    "patientConsentRequired": "須確認病患的必要同意事項後才能登錄。"
   },
   "apiError": {
     "loginRequired": "需要登入。",
@@ -1320,7 +1340,9 @@
     "measurementInvalid": "檢測值驗證失敗",
     "measuredAtFuture": "檢測時間不可為未來時間。",
     "analysisInternal": "分析處理過程中發生錯誤。",
-    "assessmentNotFound": "找不到風險評估。"
+    "assessmentNotFound": "找不到風險評估。",
+    "measureForPatientForbidden": "只有醫護人員帳號可以為他人記錄量測。",
+    "patientNotFound": "找不到該病患。"
   },
   "phrOpinion": {
     "htn_dm_controlled": "高血壓/糖尿病控制良好。請持續管理。",

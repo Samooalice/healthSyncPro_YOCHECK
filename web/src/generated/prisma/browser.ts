@@ -124,8 +124,13 @@ export type phr_record = Prisma.phr_recordModel
  */
 export type notification = Prisma.notificationModel
 /**
- * Model clinician_profile
+ * Model clinician_patient
  * This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+ */
+export type clinician_patient = Prisma.clinician_patientModel
+/**
+ * Model clinician_profile
+ * 
  */
 export type clinician_profile = Prisma.clinician_profileModel
 /**

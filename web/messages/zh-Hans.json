@@ -548,7 +548,9 @@
     "carePlanTitle": "关怀计划 · 慢病管理摘要",
     "noCareAction": "无关怀行动",
     "emrNote": "指南参考与慢病管理行政表单的自动生成,将在EMR对接(Step 6+)中补齐。",
-    "disclaimer": "本摘要为筛查分析结果,不能替代临床诊断与处方。风险分层与分级的计算以医疗器械(SaMD)许可为前提。最终判断以医护人员的临床评估为准。"
+    "disclaimer": "本摘要为筛查分析结果,不能替代临床诊断与处方。风险分层与分级的计算以医疗器械(SaMD)许可为前提。最终判断以医护人员的临床评估为准。",
+    "measure": "进行测量",
+    "measureFirst": "开始首次测量"
   },
   "report": {
     "backToPatient": "患者仪表盘",
@@ -587,7 +589,18 @@
     "colLastAssessed": "最近评估",
     "report": "报告",
     "noMatch": "没有符合条件的患者。",
-    "disclaimer": "※ 风险分层与分级为SaMD候选输出。它不能替代临床诊断与处方,最终判断以医护人员的临床评估为准。"
+    "disclaimer": "※ 风险分层与分级为SaMD候选输出。它不能替代临床诊断与处方,最终判断以医护人员的临床评估为准。",
+    "registerPatient": "登记患者",
+    "registerTitle": "登记患者",
+    "registerLead": "创建患者账号后即可立即进行测量。患者也可以使用登记的邮箱和密码自行登录。",
+    "birthYear": "出生年份",
+    "initialPassword": "初始密码",
+    "initialPasswordNote": "请告知患者,并提醒其首次登录后修改密码。",
+    "consentConfirmNote": "请向患者本人确认同意情况后再勾选。",
+    "registering": "登记中…",
+    "registerSubmit": "登记患者",
+    "unmeasured": "未测量",
+    "measure": "测量"
   },
   "careStatus": {
     "assigned": "待办",
@@ -761,7 +774,9 @@
     "login": "登录",
     "login_failed": "登录失败",
     "login_blocked": "登录被拦截(限流)",
-    "account_switch": "切换账号"
+    "account_switch": "切换账号",
+    "patient_register": "登记患者",
+    "measure_for_patient": "代患者测量"
   },
   "audit": {
     "subtitle": "PHI访问、内容发布与管理行为的记录(最近200条)",
@@ -1290,7 +1305,9 @@
       "demoRun": "演示检测({scenario})",
       "analyzed": "分析完成 — 前往结果页面",
       "analyzeFailed": "分析失败:{message}"
-    }
+    },
+    "backToPatient": "患者详情",
+    "patientTarget": "测量对象"
   },
   "authError": {
     "rateLimited": "登录尝试过多。请在{minutes}分钟后重试。",
@@ -1307,7 +1324,10 @@
     "organizationRequired": "请输入所属医疗机构。",
     "clinicianConsentRequired": "需同意必填的同意与承诺项才能提交申请。",
     "emailTakenClinician": "该邮箱已注册(或已提交申请)。",
-    "noReasonGiven": "未填写理由"
+    "noReasonGiven": "未填写理由",
+    "clinicianOnly": "只有医护人员账号可以登记患者。",
+    "birthYearInvalid": "请输入正确的出生年份。",
+    "patientConsentRequired": "须确认患者的必需同意事项后才能登记。"
   },
   "apiError": {
     "loginRequired": "需要登录。",
@@ -1320,7 +1340,9 @@
     "measurementInvalid": "检测值校验失败",
     "measuredAtFuture": "检测时间不能是未来时间。",
     "analysisInternal": "分析处理过程中发生错误。",
-    "assessmentNotFound": "未找到风险评估。"
+    "assessmentNotFound": "未找到风险评估。",
+    "measureForPatientForbidden": "只有医护人员账号可以为他人记录测量。",
+    "patientNotFound": "未找到该患者。"
   },
   "phrOpinion": {
     "htn_dm_controlled": "高血压/糖尿病控制良好。请持续管理。",

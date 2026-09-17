@@ -6,11 +6,11 @@ import { useTranslations } from "next-intl";
 import { login, type LoginState } from "./actions";
 
 // 데모 계정 — 설명 문구는 auth.demo.<key> 카탈로그 (이메일·이름은 데이터라 번역하지 않는다)
-const DEMO = [
-  { email: "super@demo.kr", key: "super" },
-  { email: "doctor@demo.kr", key: "doctor" },
-  { email: "choi@demo.kr", key: "user" },
-];
+// const DEMO = [
+//   { email: "super@demo.kr", key: "super" },
+//   { email: "doctor@demo.kr", key: "doctor" },
+//   { email: "choi@demo.kr", key: "user" },
+// ];
 
 export default function LoginPage() {
   const t = useTranslations("auth");
@@ -62,13 +62,14 @@ export default function LoginPage() {
             <Link href="/signup/clinician" className="font-semibold text-primary">{t("clinicianSignupShort")}</Link>
           </p>
 
-          {/* 데모 계정 안내 */}
+          {/* 데모 계정 안내 (주석처리)
           <div className="mt-6 rounded-xl border border-line bg-surface p-4">
             <div className="mb-2 text-xs font-semibold text-subtle">{t("demoAccounts")}</div>
             <ul className="space-y-1 text-xs text-body">
               {DEMO.map((d) => <li key={d.email}><span className="num font-medium text-ink">{d.email}</span> — {t(`demo.${d.key}`)}</li>)}
             </ul>
           </div>
+          */}
         </div>
       </div>
     </div>

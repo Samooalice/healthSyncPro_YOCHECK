@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { getLocale, getTranslations } from "next-intl/server";
 import { prisma } from "@/lib/db";
 import { requireRole } from "@/lib/auth/guard";
+import { canAccessPatient } from "@/lib/auth/careTeam";
 import { audit } from "@/lib/audit";
 import TrendChart, { type TrendPoint } from "@/components/TrendChart";
 import { GRADE_TOKEN, gradeLabel, careLabel, diseaseLabel, featureLabel } from "@/lib/ui/labels";
@@ -40,6 +41,8 @@ function decodeName(buf: Uint8Array | null, fallback: string): string {
 export default async function PatientDetail({ params }: { params: Promise<{ id: string }> }) {
   const me = await requireRole(["clinician", "admin"]);
   const { id } = await params;
+  // 담당 관계가 없는 환자는 존재 여부도 드러내지 않는다
+  if (!(await canAccessPatient(me, id))) notFound();
   const user = await prisma.user_account.findUnique({ where: { id } });
   if (!user) notFound();
   await audit(me.id, "view_phi", `patient:${id}`, { context: "patient_detail" });
@@ -104,7 +107,10 @@ export default async function PatientDetail({ params }: { params: Promise<{ id: 
         <Link href="/clinician/patients" className="text-sm text-gray-400">← {t("nav.patients")}</Link>
         <h1 className="text-2xl font-bold text-[#2E5A88]">{name}</h1>
         <span className="text-xs text-gray-400">{user.pseudo_id}</span>
-        <Link href={`/clinician/patients/${id}/report`} className="ml-auto rounded-lg border border-[#2E5A88]/30 px-3 py-1.5 text-sm font-medium text-[#2E5A88] transition hover:bg-[#2E5A88]/5">
+        <Link href={`/clinician/patients/${id}/measure`} className="ml-auto rounded-lg bg-[#2E5A88] px-3 py-1.5 text-sm font-semibold text-white transition hover:opacity-90">
+          {t("patient.measure")}
+        </Link>
+        <Link href={`/clinician/patients/${id}/report`} className="rounded-lg border border-[#2E5A88]/30 px-3 py-1.5 text-sm font-medium text-[#2E5A88] transition hover:bg-[#2E5A88]/5">
           {t("patient.toReport")} →
         </Link>
       </header>
@@ -116,7 +122,14 @@ export default async function PatientDetail({ params }: { params: Promise<{ id: 
         ))}
       </section>
 
-      {!latest && <p className="rounded-xl border border-dashed border-gray-300 p-8 text-center text-gray-400">{t("patient.noAssessment")}</p>}
+      {!latest && (
+        <div className="rounded-xl border border-dashed border-gray-300 p-8 text-center text-gray-400">
+          <p>{t("patient.noAssessment")}</p>
+          <Link href={`/clinician/patients/${id}/measure`} className="mt-3 inline-block rounded-lg bg-[#2E5A88] px-4 py-2 text-sm font-semibold text-white transition hover:opacity-90">
+            {t("patient.measureFirst")}
+          </Link>
+        </div>
+      )}
 
       {latest && g && (
         <div className="space-y-5">

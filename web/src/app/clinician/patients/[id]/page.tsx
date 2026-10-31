@@ -9,7 +9,7 @@ import { canAccessPatient } from "@/lib/auth/careTeam";
 import { audit } from "@/lib/audit";
 import TrendChart, { type TrendPoint } from "@/components/TrendChart";
 import { GRADE_TOKEN, gradeLabel, careLabel, diseaseLabel, featureLabel } from "@/lib/ui/labels";
-import { ANALYTE_META, analyteName, formatAnalyte, analyteStatus, normalText, STATUS_COLOR, statusLabel } from "@/lib/ui/analyte";
+import { ANALYTE_META, analyteName, formatAnalyte, analyteStatus, analyteBadge, normalText, STATUS_COLOR, statusLabel } from "@/lib/ui/analyte";
 import { analyteSignificance, diseaseGuideline } from "@/lib/ui/clinical";
 import { localizeExplanation } from "@/lib/ui/explanation";
 import { medClassList } from "@/lib/ui/phr";
@@ -218,7 +218,7 @@ export default async function PatientDetail({ params }: { params: Promise<{ id: 
                       <td className="py-2 text-gray-600">{analyteName(t, a)}</td>
                       <td className="num py-2 font-medium text-gray-800">{formatAnalyte(t, a, v)}</td>
                       <td className="py-2 text-xs text-gray-400">{normalText(t, a)}</td>
-                      <td className="py-2"><span className="rounded-full px-2 py-0.5 text-[11px] font-bold text-white" style={{ background: STATUS_COLOR[st] }}>{statusLabel(t, st)}</span></td>
+                      <td className="py-2">{(() => { const b = analyteBadge(t, a, v); return <span className="rounded-full px-2 py-0.5 text-[11px] font-bold text-white" style={{ background: b.color }}>{b.label}</span>; })()}</td>
                       <td className="py-2 text-xs leading-relaxed" style={{ color: abn ? "#7a5230" : "#cbd0d6" }}>{abn ? analyteSignificance(t, a) : t("status.inRange")}</td>
                     </tr>
                   );

@@ -76,3 +76,39 @@ export const STATUS_COLOR: Record<Status, string> = {
 export function statusLabel(t: Translate, s: Status): string {
   return t(`status.${s}`);
 }
+
+// ── 판정 배지 ──
+// pH·비중·비타민C 는 질환 위험 판정이 아니라 "기준 측정값"이다. YoCheck 어플과 같이
+// 회색 배지에 단계 이름(산성·약산성… / -·+·++…)을 붙인다. 나머지 항목은 정상·주의·이상.
+export const REFERENCE_ANALYTES = new Set(["ph", "specific_gravity", "vitamin_c"]);
+
+const PH_LEVELS = ["acidic", "weakAcidic", "neutral", "alkaline", "strongAlkaline"];
+
+/** 등급 → 기호. 0 = "-", 1 = "+", 2 = "++" … (언어 공통 기호라 번역하지 않는다). */
+const plusMarks = (grade: number) => (grade <= 0 ? "-" : "+".repeat(grade));
+
+/** 기준 측정값 항목의 단계 이름. 해당 항목이 아니면 null. */
+export function referenceLabel(t: Translate, a: string, v: number): string | null {
+  if (a === "ph") {
+    // 검사기 등급 pH 5·6·7·8·9 기준. 데모·수기 입력의 소수(6.5 등)는 가까운 쪽으로.
+    const i = v <= 5.5 ? 0 : v <= 6.5 ? 1 : v < 7.5 ? 2 : v < 8.5 ? 3 : 4;
+    return t(`phLevel.${PH_LEVELS[i]}`);
+  }
+  if (a === "specific_gravity") {
+    // 검사기 등급 1.000·1.005·1.015·1.025·1.030 → -·+·++·+++·++++
+    const g = v < 1.0025 ? 0 : v < 1.01 ? 1 : v < 1.02 ? 2 : v < 1.0275 ? 3 : 4;
+    return plusMarks(g);
+  }
+  if (a === "vitamin_c") return plusMarks(Math.round(v));
+  return null;
+}
+
+/** 결과 표의 판정 배지 문구·색. */
+export function analyteBadge(t: Translate, a: string, v: number | null | undefined): { label: string; color: string } {
+  if (v != null && REFERENCE_ANALYTES.has(a)) {
+    const label = referenceLabel(t, a, v);
+    if (label) return { label, color: STATUS_COLOR.info };
+  }
+  const st = analyteStatus(a, v);
+  return { label: statusLabel(t, st), color: STATUS_COLOR[st] };
+}

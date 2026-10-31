@@ -59,6 +59,13 @@
     "p3": "3+",
     "p4": "4+"
   },
+  "phLevel": {
+    "acidic": "酸性",
+    "weakAcidic": "弱酸性",
+    "neutral": "中性",
+    "alkaline": "アルカリ性",
+    "strongAlkaline": "強アルカリ性"
+  },
   "status": {
     "normal": "正常",
     "caution": "境界",

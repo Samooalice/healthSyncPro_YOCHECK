@@ -59,6 +59,13 @@
     "p3": "3+",
     "p4": "4+"
   },
+  "phLevel": {
+    "acidic": "Acidic",
+    "weakAcidic": "Slightly acidic",
+    "neutral": "Neutral",
+    "alkaline": "Alkaline",
+    "strongAlkaline": "Strongly alkaline"
+  },
   "status": {
     "normal": "Normal",
     "caution": "Borderline",

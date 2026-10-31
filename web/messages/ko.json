@@ -59,6 +59,13 @@
     "p3": "3+",
     "p4": "4+"
   },
+  "phLevel": {
+    "acidic": "산성",
+    "weakAcidic": "약산성",
+    "neutral": "중성",
+    "alkaline": "알칼리",
+    "strongAlkaline": "강알칼리"
+  },
   "status": {
     "normal": "정상",
     "caution": "주의",

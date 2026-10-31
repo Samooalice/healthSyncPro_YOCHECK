@@ -59,6 +59,13 @@
     "p3": "3+",
     "p4": "4+"
   },
+  "phLevel": {
+    "acidic": "Axit",
+    "weakAcidic": "Axit nhẹ",
+    "neutral": "Trung tính",
+    "alkaline": "Kiềm",
+    "strongAlkaline": "Kiềm mạnh"
+  },
   "status": {
     "normal": "Bình thường",
     "caution": "Ranh giới",

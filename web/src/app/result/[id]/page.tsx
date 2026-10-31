@@ -7,7 +7,7 @@ import TrendChart, { type TrendPoint } from "@/components/TrendChart";
 import PhrUpload from "@/components/PhrUpload";
 import { curateFeed, type CurationContext } from "@/lib/content/curate";
 import { GRADE_TOKEN, gradeLabel, careLabel, diseaseLabel } from "@/lib/ui/labels";
-import { ANALYTE_META, analyteName, formatAnalyte, analyteStatus, normalText, STATUS_COLOR, statusLabel } from "@/lib/ui/analyte";
+import { ANALYTE_META, analyteName, formatAnalyte, analyteStatus, analyteBadge, normalText, STATUS_COLOR, statusLabel } from "@/lib/ui/analyte";
 import { describeDriver, sourceLabel } from "@/lib/ui/driver";
 import { localizeExplanation } from "@/lib/ui/explanation";
 import { bpText as fmtBpText, medClassList, phrMetricLabel } from "@/lib/ui/phr";
@@ -145,14 +145,14 @@ export default async function ResultDetail({ params }: { params: Promise<{ id: s
             <tbody>
               {ANALYTE_ORDER.map((a) => {
                 const v = mv(a);
-                const st = analyteStatus(a, v);
+                const badge = analyteBadge(t, a, v);
                 return (
                   <tr key={a} className="border-t border-gray-50">
                     <td className="py-1.5 text-gray-600">{analyteName(t, a)}</td>
                     <td className="num py-1.5 font-medium text-gray-800">{formatAnalyte(t, a, v)}</td>
                     <td className="py-1.5 text-xs text-gray-400">{normalText(t, a)}</td>
                     <td className="py-1.5 text-right">
-                      <span className="rounded-full px-2 py-0.5 text-[11px] font-bold text-white" style={{ background: STATUS_COLOR[st] }}>{statusLabel(t, st)}</span>
+                      <span className="rounded-full px-2 py-0.5 text-[11px] font-bold text-white" style={{ background: badge.color }}>{badge.label}</span>
                     </td>
                   </tr>
                 );

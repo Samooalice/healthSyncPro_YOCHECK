@@ -41,12 +41,12 @@ export default function LoginPage() {
           <form action={formAction} className="mt-8 space-y-4">
             <div>
               <label className="mb-1 block text-sm font-medium text-ink">{t("email")}</label>
-              <input name="email" type="email" required defaultValue="super@demo.kr"
+              <input name="email" type="email" required
                 className="w-full rounded-lg border border-line bg-surface px-3 py-2.5 text-sm text-ink outline-none focus:border-primary focus:ring-2 focus:ring-primary/15" />
             </div>
             <div>
               <label className="mb-1 block text-sm font-medium text-ink">{t("password")}</label>
-              <input name="password" type="password" required defaultValue="demo1234"
+              <input name="password" type="password" required
                 className="w-full rounded-lg border border-line bg-surface px-3 py-2.5 text-sm text-ink outline-none focus:border-primary focus:ring-2 focus:ring-primary/15" />
             </div>
             {state?.error && <p className="text-sm text-risk-red">⚠ {state.error}</p>}

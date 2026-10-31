@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useLocale, useTranslations } from "next-intl";
 import {
-  BLE, parsePacket, buildPacket, yocheckToInternal,
+  BLE, parsePacket, buildPacket, yocheckToInternal, yocheckRawToInternal,
 } from "@/lib/measurement/yocheck";
 import { fmtTime } from "@/i18n/format";
 import type { Locale } from "@/i18n/config";
@@ -98,17 +98,23 @@ export default function MeasureClient({ patient }: { patient?: MeasurePatient })
     const chunk = new TextDecoder().decode(event.target.value).replace(/\n/g, "");
     rxBuffer.current += chunk;
     if (rxBuffer.current.includes("ERR")) { log(t("log.stripError")); setStatus({ key: "stripError", tone: "err" }); return; }
-    if (rxBuffer.current.includes(BLE.DONE_MARKER)) { log(t("log.received")); handlePacket(rxBuffer.current, dev.current?.name ?? t("analyzer")); }
+    if (rxBuffer.current.includes(BLE.DONE_MARKER)) {
+      log(t("log.received"));
+      // 실제 검사기는 센서 raw 값을 보낸다 → APK 환산표로 등급 변환
+      const raw = parsePacket(rxBuffer.current);
+      log(t("log.rawValues", { values: Object.values(raw).map((v) => v || "?").join(", ") }));
+      handlePacket(yocheckRawToInternal(raw), dev.current?.name ?? t("analyzer"));
+    }
   }
 
   function onDemo() {
     const packet = buildPacket(SCENARIOS[scenario]);
     log(t("log.demoRun", { scenario: t(`scenario.${scenario}`) }));
-    handlePacket(packet, t("demoAnalyzer"));
+    // 데모 패킷은 판정 토큰("음성"·"1.025")이라 기존 텍스트 해석을 쓴다
+    handlePacket(yocheckToInternal(parsePacket(packet)), t("demoAnalyzer"));
   }
 
-  async function handlePacket(buf: string, deviceName: string) {
-    const values = yocheckToInternal(parsePacket(buf));
+  async function handlePacket(values: ReturnType<typeof yocheckToInternal>, deviceName: string) {
     setBusy(true);
     setStatus({ key: "analyzing", tone: "busy" });
     try {
@@ -117,7 +123,11 @@ export default function MeasureClient({ patient }: { patient?: MeasurePatient })
         headers: { "content-type": "application/json" },
         body: JSON.stringify({ values, source: "analyzer", device: deviceName, ...(patient ? { patient_id: patient.id } : {}) }),
       });
-      if (!post.ok) throw new Error((await post.json()).detail ?? t("measureFailed"));
+      if (!post.ok) {
+        const err = await post.json().catch(() => ({}));
+        // 검증 실패 시 실제로 보낸 값을 함께 남겨 어느 항목이 범위를 벗어났는지 보이게 한다
+        throw new Error(`${err.detail ?? t("measureFailed")} · ${JSON.stringify(values)}`);
+      }
       const { assessment_id } = await post.json();
       setStatus({ key: "done", tone: "ok" });
       log(t("log.analyzed"));

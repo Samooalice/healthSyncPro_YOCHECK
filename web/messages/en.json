@@ -1302,6 +1302,7 @@
       "sendFailed": "Failed to send measurement command: {message}",
       "stripError": "Device ERR — no strip. Insert one and measure again",
       "received": "Reception complete — analyzing result",
+      "rawValues": "Device raw values: {values}",
       "demoRun": "Demo measurement ({scenario})",
       "analyzed": "Analysis complete — moving to the result screen",
       "analyzeFailed": "Analysis failed: {message}"

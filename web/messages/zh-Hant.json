@@ -1302,6 +1302,7 @@
       "sendFailed": "檢測指令傳送失敗:{message}",
       "stripError": "裝置 ERR — 沒有試紙。放入後重新檢測",
       "received": "接收完成 — 正在分析結果",
+      "rawValues": "裝置原始值: {values}",
       "demoRun": "示範檢測({scenario})",
       "analyzed": "分析完成 — 前往結果畫面",
       "analyzeFailed": "分析失敗:{message}"

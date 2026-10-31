@@ -1120,6 +1120,7 @@
       "sendFailed": "측정 전송 실패: {message}",
       "stripError": "기기 ERR — 스트립 없음. 삽입 후 재측정",
       "received": "수신 완료 — 결과 분석",
+      "rawValues": "기기 원시값: {values}",
       "demoRun": "데모 측정 ({scenario})",
       "analyzed": "분석 완료 — 결과 화면으로 이동",
       "analyzeFailed": "분석 실패: {message}"

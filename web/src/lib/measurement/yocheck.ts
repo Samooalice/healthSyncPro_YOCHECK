@@ -1,6 +1,7 @@
 // yocheck_pet 요화학 측정기 연동 — BLE(NUS) 프로토콜 상수 · 패킷 파싱 ·
 // 측정기 원시값 → 내부 분석 코드 변환.
-// 출처: sdc_deploy/petdaycare ble_test.html, ai/grading.py (BLE_ITEMS, grade 규칙)
+// 출처: sdc_deploy/petdaycare ble_test.html, ai/grading.py (BLE_ITEMS, grade 규칙),
+//       YoCheck Gold APK lib/common/utils/branch.dart (05_데이터_매핑.md — raw→status 환산)
 import type { Analyte } from "@/config/algoParams";
 
 // ── BLE (Nordic UART Service) 상수 ──
@@ -117,6 +118,66 @@ export function yocheckToInternal(raw: Record<string, string>): InternalValues {
       if (code > max) code = max;
       out[it.analyte] = code;
     }
+  }
+  return out;
+}
+
+// ── 실제 검사기(BLE) 원시값 → 등급 환산 ──
+// 검사기는 "음성"·"1.025" 같은 판정값이 아니라 센서 raw double(예: 53.7)을 보낸다.
+// 아래 표는 YoCheck Gold APK Branch.urineGradeResult 를 그대로 옮긴 것(05_데이터_매핑.md §5.2).
+// 각 함수는 raw → status(0~4) 를 돌려준다.
+type Grader = (x: number) => number;
+const RAW_GRADE: Record<string, Grader> = {
+  // DT01 잠혈 (APK 원본: 52 미만 구간은 정의 없음 → 0 으로 처리)
+  blood: (x) => (x >= 130 ? 3 : x >= 100 ? 2 : x >= 57 ? 1 : 0),
+  // DT02 빌리루빈
+  bilirubin: (x) => (x >= 41 ? 0 : x >= 35 ? 1 : x >= 28 ? 2 : 3),
+  // DT03 우로빌리노겐
+  urobilinogen: (x) => (x >= 42 ? 0 : x >= 39 ? 1 : x >= 30 ? 2 : x >= 21 ? 3 : 4),
+  // DT04 케톤 (APK 원본 구간 그대로: 22 미만이 2, 22~30.5 가 3)
+  ketones: (x) => (x >= 40 ? 0 : x >= 30.5 ? 1 : x >= 22 ? 3 : 2),
+  // DT05 단백질
+  protein: (x) => (x >= 140 ? 4 : x >= 122 ? 3 : x >= 110 ? 2 : x >= 60 ? 1 : 0),
+  // DT06 아질산염
+  nitrite: (x) => (x >= 42 ? 0 : 1),
+  // DT07 포도당
+  glucose: (x) => (x >= 100 ? (x >= 170 ? 0 : 1) : x >= 46 ? 2 : x >= 21 ? 3 : 4),
+  // DT08 pH (status 0~4 = pH 5~9)
+  ph: (x) => (x >= 200 ? 4 : x >= 100 ? 3 : x >= 50 ? 2 : x >= 20 ? 1 : 0),
+  // DT09 비중
+  specific_gravity: (x) => (x >= 200 ? 0 : x >= 90 ? 1 : x >= 75 ? 2 : x >= 41 ? 3 : 4),
+  // DT10 백혈구
+  leukocyte: (x) => (x >= 42 ? 0 : x >= 40.2 ? 1 : x >= 35.5 ? 2 : 3),
+  // DT11 비타민C
+  vitamin_c: (x) => (x >= 110 ? 0 : x >= 30 ? 1 : x >= 13 ? 2 : 3),
+};
+
+// 수치 항목의 status → 표시 수치 (05_데이터_매핑.md §5.3.2)
+const STATUS_TO_NUMBER: Partial<Record<Analyte, number[]>> = {
+  ph: [5, 6, 7, 8, 9],
+  specific_gravity: [1.0, 1.005, 1.015, 1.025, 1.03],
+  urobilinogen: [0.1, 1, 2, 4, 8],
+};
+
+/** 측정기 raw 문자열 → 등급(status 0~4). 값이 없거나 숫자가 아니면 null. */
+export function rawToStatus(code: string, raw: string): number | null {
+  const x = numOf(raw ?? "");
+  const g = RAW_GRADE[code];
+  return x == null || !g ? null : g(x);
+}
+
+/**
+ * 실제 검사기(BLE) 패킷의 raw 값 → 내부 분석 입력값.
+ * 정성 항목은 status 를 반정량 코드(0~4)로, 수치 항목은 status 에 대응하는 대표 수치로 바꾼다.
+ */
+export function yocheckRawToInternal(raw: Record<string, string>): InternalValues {
+  const out: InternalValues = {};
+  for (const it of YOCHECK_ITEMS) {
+    const st = rawToStatus(it.code, raw[it.code]);
+    if (st == null) continue;
+    const nums = STATUS_TO_NUMBER[it.analyte];
+    if (nums) out[it.analyte] = nums[Math.min(st, nums.length - 1)];
+    else out[it.analyte] = Math.min(st, QUAL_MAX[it.analyte] ?? 4);
   }
   return out;
 }

@@ -1302,6 +1302,7 @@
       "sendFailed": "Gửi lệnh đo thất bại: {message}",
       "stripError": "Thiết bị báo ERR — không có que thử. Hãy lắp que và đo lại",
       "received": "Đã nhận xong — đang phân tích kết quả",
+      "rawValues": "Giá trị thô từ thiết bị: {values}",
       "demoRun": "Đo thử ({scenario})",
       "analyzed": "Phân tích xong — chuyển tới màn hình kết quả",
       "analyzeFailed": "Phân tích thất bại: {message}"

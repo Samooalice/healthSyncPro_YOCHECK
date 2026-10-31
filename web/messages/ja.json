@@ -1302,6 +1302,7 @@
       "sendFailed": "測定コマンドの送信に失敗: {message}",
       "stripError": "機器ERR — 試験紙がありません。挿入して再測定してください",
       "received": "受信完了 — 結果を分析します",
+      "rawValues": "機器の生データ: {values}",
       "demoRun": "デモ測定 ({scenario})",
       "analyzed": "分析完了 — 結果画面へ移動します",
       "analyzeFailed": "分析に失敗: {message}"

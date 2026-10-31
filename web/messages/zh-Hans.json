@@ -1302,6 +1302,7 @@
       "sendFailed": "检测指令发送失败:{message}",
       "stripError": "设备ERR — 没有试纸。插入后重新检测",
       "received": "接收完成 — 正在分析结果",
+      "rawValues": "设备原始值: {values}",
       "demoRun": "演示检测({scenario})",
       "analyzed": "分析完成 — 前往结果页面",
       "analyzeFailed": "分析失败:{message}"
